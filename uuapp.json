@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.2",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -11,14 +11,59 @@
   "imageUri": "",
   "devkit": {
     "development": {
-      "appBoxLocationUri": "----- VALUE REQUIRED -----",
-      "appDeploymentUri": null,
-      "resourcePoolUri": "----- VALUE REQUIRED -----"
+      "appBoxLocationUri": "ues:DEV0114-BT:UU.LAMP/APPBOXES",
+      "appDeploymentUri": "ues:DEV0114-BT[84723967990073193]:AWE_DEMO[5c90a9904f1d8a75778df379]:UU.LAMPG01[603626d5f439f915fa74eb96]",
+      "resourcePoolUri": "ues:DEV0114-BT:AWE_DEMO"
     }
   },
   "uu_lampg01": {
     "namespace": "UuLamp",
     "sourceUri": "https://cdn.plus4u.net/uu-lampg01/%s/uu_lampg01.min.js",
-    "componentList": []
+    "componentList": [
+      {
+        "code": "UuLamp.Level01",
+        "name": "Level01",
+        "tagList": ["UuLamp", "Level01"],
+        "docCode": "UuLampLevel01",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuLamp.Level01 />"
+      },
+      {
+        "code": "UuLamp.Level01.Lamp",
+        "name": "Lamp",
+        "tagList": ["UuLamp", "Level01", "Lamp"],
+        "docCode": "UuLampLevel01Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuLamp.Level01.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level02",
+        "name": "Level02",
+        "tagList": ["UuLamp", "Level02"],
+        "docCode": "UuLampLevel02",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuLamp.Level02 />"
+      },
+      {
+        "code": "UuLamp.Level03",
+        "name": "Level03",
+        "tagList": ["UuLamp", "Level03"],
+        "docCode": "UuLampLevel03",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuLamp.Level03 />"
+      }
+    ]
   }
 }
