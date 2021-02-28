@@ -3,12 +3,11 @@
   "version": "0.1.0-beta.2",
   "license": "License Commercial",
   "description": {
-    "en": "",
-    "cs": ""
+    "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
   },
-  "docUri": "",
-  "flsUri": "",
-  "imageUri": "",
+  "docUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791",
+  "flsUri": "https://uuapp.plus4u.net/uu-flsg01-main/ee611766e9894794bc5f7bc81e2396f5",
+  "imageUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/473f29c1997149ba9d3007f756fd4a02/getBookLogo?language=en&type=16x9",
   "devkit": {
     "development": {
       "appBoxLocationUri": "ues:DEV0114-BT:UU.LAMP/APPBOXES",
