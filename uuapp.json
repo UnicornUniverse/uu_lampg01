@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.3",
   "license": "License Commercial",
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
@@ -22,7 +22,10 @@
       {
         "code": "UuLamp.Level01",
         "name": "Level01",
-        "tagList": ["UuLamp", "Level01"],
+        "tagList": [
+          "UuLamp",
+          "Level01"
+        ],
         "docCode": "UuLampLevel01",
         "desc": "",
         "icon": "",
@@ -31,20 +34,12 @@
         "template": "<UuLamp.Level01 />"
       },
       {
-        "code": "UuLamp.Level01.Lamp",
-        "name": "Lamp",
-        "tagList": ["UuLamp", "Level01", "Lamp"],
-        "docCode": "UuLampLevel01Lamp",
-        "desc": "",
-        "icon": "",
-        "imageUri": "",
-        "uuEccReady": false,
-        "template": "<UuLamp.Level01.Lamp />"
-      },
-      {
         "code": "UuLamp.Level02",
         "name": "Level02",
-        "tagList": ["UuLamp", "Level02"],
+        "tagList": [
+          "UuLamp",
+          "Level02"
+        ],
         "docCode": "UuLampLevel02",
         "desc": "",
         "icon": "",
@@ -55,13 +50,30 @@
       {
         "code": "UuLamp.Level03",
         "name": "Level03",
-        "tagList": ["UuLamp", "Level03"],
+        "tagList": [
+          "UuLamp",
+          "Level03"
+        ],
         "docCode": "UuLampLevel03",
         "desc": "",
         "icon": "",
         "imageUri": "",
         "uuEccReady": false,
         "template": "<UuLamp.Level03 />"
+      },
+      {
+        "code": "UuLamp.Level04",
+        "name": "Level04",
+        "tagList": [
+          "UuLamp",
+          "Level04"
+        ],
+        "docCode": "UuLampLevel04",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuLamp.Level04 />"
       }
     ]
   }

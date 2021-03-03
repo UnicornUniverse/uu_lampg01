@@ -1,19 +1,22 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
-import "uu_pg01-bricks";
-import Config from "./config/config";
-import Lsi from "./lamp-lsi";
+import Config from "../config/config";
 //@@viewOff:imports
 
-export const Level03 = createVisualComponent({
+export const Lamp = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "Level03",
+  displayName: Config.TAG + "Lamp",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
-  propTypes: {},
+  propTypes: {
+    on: UU5.PropTypes.bool,
+    iconStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    size: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
+    bgStyle: UU5.PropTypes.string,
+    colorSchema: UU5.PropTypes.string,
+  },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
@@ -35,33 +38,17 @@ export const Level03 = createVisualComponent({
     const lampColorSchema = on ? colorSchema : "black";
 
     return (
-      <UuP.Bricks.ComponentWrapper
-        header="uuLamp Level 03 - Lamp With Props"
-        help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-        cardView="full"
-        copyTagFunc={createTag}
-      >
-        <UU5.Bricks.Card
-          bgStyle={bgStyle}
-          colorSchema={colorSchema}
-          className="center"
-          elevation={0}
-          elevationHover={0}
-        >
-          <UU5.Bricks.Text className={getTextCss(size)} colorSchema={lampColorSchema}>
-            <UU5.Bricks.Icon icon={icon} />
-          </UU5.Bricks.Text>
-        </UU5.Bricks.Card>
-      </UuP.Bricks.ComponentWrapper>
+      <UU5.Bricks.Card bgStyle={bgStyle} colorSchema={colorSchema} className="center" elevation={0} elevationHover={0}>
+        <UU5.Bricks.Text className={getTextCss(size)} colorSchema={lampColorSchema}>
+          <UU5.Bricks.Icon icon={icon} />
+        </UU5.Bricks.Text>
+      </UU5.Bricks.Card>
     );
     //@@viewOff:render
   },
 });
 
 //@@viewOn:helpers
-function createTag() {
-  return "<UuLamp.Level03 />";
-}
 //@@viewOff:helpers
 
 //@@viewOn:css
@@ -85,4 +72,4 @@ function getFontSize(size) {
 }
 //@@viewOff:css
 
-export default Level03;
+export default Lamp;
