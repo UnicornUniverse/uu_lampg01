@@ -5,7 +5,7 @@
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
   },
-  "docUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791",
+  "docUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/473f29c1997149ba9d3007f756fd4a02",
   "flsUri": "https://uuapp.plus4u.net/uu-flsg01-main/ee611766e9894794bc5f7bc81e2396f5",
   "imageUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/473f29c1997149ba9d3007f756fd4a02/getBookLogo?language=en&type=16x9",
   "devkit": {
@@ -22,10 +22,7 @@
       {
         "code": "UuLamp.Level01",
         "name": "Level01",
-        "tagList": [
-          "UuLamp",
-          "Level01"
-        ],
+        "tagList": ["UuLamp", "Level01"],
         "docCode": "UuLampLevel01",
         "desc": "",
         "icon": "",
@@ -36,10 +33,7 @@
       {
         "code": "UuLamp.Level02",
         "name": "Level02",
-        "tagList": [
-          "UuLamp",
-          "Level02"
-        ],
+        "tagList": ["UuLamp", "Level02"],
         "docCode": "UuLampLevel02",
         "desc": "",
         "icon": "",
@@ -50,10 +44,7 @@
       {
         "code": "UuLamp.Level03",
         "name": "Level03",
-        "tagList": [
-          "UuLamp",
-          "Level03"
-        ],
+        "tagList": ["UuLamp", "Level03"],
         "docCode": "UuLampLevel03",
         "desc": "",
         "icon": "",
@@ -64,10 +55,7 @@
       {
         "code": "UuLamp.Level04",
         "name": "Level04",
-        "tagList": [
-          "UuLamp",
-          "Level04"
-        ],
+        "tagList": ["UuLamp", "Level04"],
         "docCode": "UuLampLevel04",
         "desc": "",
         "icon": "",
