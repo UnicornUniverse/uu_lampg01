@@ -12,8 +12,8 @@ export const Lamp = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     on: UU5.PropTypes.bool,
-    iconStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    size: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
+    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
   },
@@ -22,24 +22,24 @@ export const Lamp = createVisualComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     on: false,
-    iconStyle: "filled",
-    size: "xl",
+    bulbStyle: "filled",
+    bulbSize: "xl",
     bgStyle: "transparent",
     colorSchema: "amber",
   },
   //@@viewOff:defaultProps
 
-  render({ on, iconStyle, size, bgStyle, colorSchema }) {
+  render({ on, bulbStyle, bulbSize, bgStyle, colorSchema }) {
     //@@viewOn:render
     const iconStateCode = on ? "-on" : "";
-    const iconStyleCode = iconStyle == "outline" ? "-outline" : "";
-    const icon = `mdi-lightbulb${iconStateCode}${iconStyleCode}`;
+    const bulbStyleCode = bulbStyle == "outline" ? "-outline" : "";
+    const icon = `mdi-lightbulb${iconStateCode}${bulbStyleCode}`;
 
     const lampColorSchema = on ? colorSchema : "black";
 
     return (
       <UU5.Bricks.Card bgStyle={bgStyle} colorSchema={colorSchema} className="center" elevation={0} elevationHover={0}>
-        <UU5.Bricks.Text className={getTextCss(size)} colorSchema={lampColorSchema}>
+        <UU5.Bricks.Text className={getTextCss(bulbSize)} colorSchema={lampColorSchema}>
           <UU5.Bricks.Icon icon={icon} />
         </UU5.Bricks.Text>
       </UU5.Bricks.Card>
@@ -52,14 +52,14 @@ export const Lamp = createVisualComponent({
 //@@viewOff:helpers
 
 //@@viewOn:css
-const getTextCss = (size) => {
+const getTextCss = (bulbSize) => {
   return Config.Css.css`
-    font-size: ${getFontSize(size)}px
+    font-size: ${getFontSize(bulbSize)}px
   `;
 };
 
-function getFontSize(size) {
-  switch (size) {
+function getFontSize(bulbSize) {
+  switch (bulbSize) {
     case "s":
       return 35;
     case "m":

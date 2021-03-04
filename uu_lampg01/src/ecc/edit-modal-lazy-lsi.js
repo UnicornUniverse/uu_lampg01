@@ -1,7 +1,7 @@
 export const Lsi = {
   properties: {
-    cs: "Základní vlastnosti",
-    en: "Basic Properties",
+    cs: "Lampa",
+    en: "Lamp",
   },
   state: {
     cs: "Stav",
@@ -15,11 +15,11 @@ export const Lsi = {
     en: "off",
     cs: "vypnuto",
   },
-  iconStyle: {
+  bulbStyle: {
     cs: "Styl žárovky",
     en: "Bulb Style",
   },
-  size: {
+  bulbSize: {
     cs: "Velikost žárovky",
     en: "Bulb Size",
   },

@@ -20,13 +20,13 @@ const STATICS = {
 
 const DEFAULT_PROPS = {
   on: false,
-  iconStyle: "filled",
-  size: "xl",
+  bulbStyle: "filled",
+  bulbSize: "xl",
   bgStyle: "transparent",
   cardView: "full",
   colorSchema: "amber",
   elevation: 1,
-  borderRadius: 0,
+  borderRadius: "0",
 };
 
 export const Level04 = createVisualComponent({
@@ -39,8 +39,8 @@ export const Level04 = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     on: UU5.PropTypes.bool,
-    iconStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    size: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
+    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -63,7 +63,7 @@ export const Level04 = createVisualComponent({
   _editRef: UU5.Common.Reference.create(),
 
   _handleCopyTag() {
-    return createCopyTag(STATICS.displayName, this.props, ["on", "iconStyle", "size"], DEFAULT_PROPS);
+    return createCopyTag(STATICS.displayName, this.props, ["on", "bulbStyle", "bulbSize"], DEFAULT_PROPS);
   },
   //@@viewOff:private
 

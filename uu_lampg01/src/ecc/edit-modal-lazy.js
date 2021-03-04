@@ -66,9 +66,9 @@ const EditModalLazy = createComponentWithRef({
                 },
               },
               {
-                name: "iconStyle",
+                name: "bulbStyle",
                 type: "switchSelector",
-                label: Lsi.iconStyle,
+                label: Lsi.bulbStyle,
                 getProps: () => {
                   return {
                     items: [
@@ -79,9 +79,9 @@ const EditModalLazy = createComponentWithRef({
                 },
               },
               {
-                name: "size",
+                name: "bulbSize",
                 type: "switchSelector",
-                label: Lsi.size,
+                label: Lsi.bulbSize,
                 getProps: () => {
                   return {
                     items: [

@@ -22,8 +22,8 @@ export const Level04Body = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     on: UU5.PropTypes.bool,
-    iconStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    size: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
+    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -35,13 +35,13 @@ export const Level04Body = createVisualComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     on: false,
-    iconStyle: "filled",
-    size: "xl",
+    bulbStyle: "filled",
+    bulbSize: "xl",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
     elevation: 1,
-    borderRadius: 0,
+    borderRadius: "0",
   },
   //@@viewOff:defaultProps
 
@@ -58,8 +58,8 @@ export const Level04Body = createVisualComponent({
       >
         <Lamp
           on={props.on}
-          iconStyle={props.iconStyle}
-          size={props.size}
+          bulbStyle={props.bulbStyle}
+          bulbSize={props.bulbSize}
           colorSchema={props.colorSchema}
           bgStyle={props.bgStyle}
         />

@@ -17,8 +17,8 @@ const STATICS = {
 
 const DEFAULT_PROPS = {
   on: false,
-  iconStyle: "filled",
-  size: "xl",
+  bulbStyle: "filled",
+  bulbSize: "xl",
   bgStyle: "transparent",
   cardView: "full",
   colorSchema: "amber",
@@ -34,8 +34,8 @@ export const Level03 = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     on: UU5.PropTypes.bool,
-    iconStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    size: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
+    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -51,7 +51,7 @@ export const Level03 = createVisualComponent({
   render(props) {
     //@@viewOn:private
     function _handleCopyTag() {
-      return createCopyTag(STATICS.displayName, props, ["on", "iconStyle", "size"], DEFAULT_PROPS);
+      return createCopyTag(STATICS.displayName, props, ["on", "bulbStyle", "bulbSize"], DEFAULT_PROPS);
     }
     //@@viewOff:private
 
@@ -70,8 +70,8 @@ export const Level03 = createVisualComponent({
       >
         <Lamp
           on={props.on}
-          iconStyle={props.iconStyle}
-          size={props.size}
+          bulbStyle={props.bulbStyle}
+          bulbSize={props.bulbSize}
           bgStyle={props.bgStyle}
           colorSchema={props.colorSchema}
         />
