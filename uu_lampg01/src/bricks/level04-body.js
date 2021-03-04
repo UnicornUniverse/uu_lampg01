@@ -5,7 +5,7 @@ import { createVisualComponent } from "uu5g04-hooks";
 import "uu_pg01-bricks";
 import Config from "../config/config";
 import Lamp from "../core/lamp";
-import Lsi from "./level-lsi";
+import Lsi from "./level04-body-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -21,6 +21,7 @@ export const Level04Body = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    header: UU5.PropTypes.node,
     on: UU5.PropTypes.bool,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
@@ -49,7 +50,7 @@ export const Level04Body = createVisualComponent({
     //@@viewOn:render
     return (
       <UuP.Bricks.ComponentWrapper
-        header="uuLamp Level 04 - Editable Lamp"
+        header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
         help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
         cardView={props.cardView}
         copyTagFunc={props.copyTagFunc}

@@ -23,6 +23,10 @@ export const Lsi = {
     cs: "Velikost žárovky",
     en: "Bulb Size",
   },
+  header: {
+    cs: "Záhlaví",
+    en: "Header",
+  },
   visual: {
     cs: "Vzhled",
     en: "Visual",

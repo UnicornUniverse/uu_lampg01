@@ -6,6 +6,8 @@ import Config from "./config/config";
 import Lsi from "./edit-modal-lazy-lsi";
 //@@viewOff:imports
 
+//TODO MFA - Add documentation link to info header
+
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "EditModalLazy",
@@ -93,8 +95,13 @@ const EditModalLazy = createComponentWithRef({
                   };
                 },
               },
+              {
+                name: "header",
+                type: "text",
+                label: Lsi.header,
+              },
             ],
-            info: <UU5.Bricks.Lsi lsi={{ en: "Info pokus" }} params={[]} />,
+            info: <UU5.Bricks.Lsi lsi={Lsi.info} params={[]} />,
           },
           {
             name: <UU5.Bricks.Lsi lsi={Lsi.visual} />,

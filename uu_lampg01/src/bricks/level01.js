@@ -5,7 +5,7 @@ import { createVisualComponent } from "uu5g04-hooks";
 import "uu_pg01-bricks";
 import Lamp from "../core/lamp";
 import Config from "../config/config";
-import Lsi from "./level-lsi";
+import Lsi from "./level01-lsi";
 import createCopyTag from "../utils/createCopyTag";
 //@@viewOff:imports
 
@@ -19,7 +19,9 @@ export const Level01 = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
-  propTypes: {},
+  propTypes: {
+    header: UU5.PropTypes.node,
+  },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
@@ -29,7 +31,7 @@ export const Level01 = createVisualComponent({
   render(props) {
     //@@viewOn:private
     function _handleCopyTag() {
-      return createCopyTag(STATICS.displayName, props);
+      return createCopyTag(STATICS.displayName, props, ["header"]);
     }
     //@@viewOff:private
 
@@ -38,7 +40,7 @@ export const Level01 = createVisualComponent({
 
     return (
       <UuP.Bricks.ComponentWrapper
-        header="uuLamp Level 01 - Dynamic Rendering"
+        header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
         help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
         cardView="full"
         copyTagFunc={_handleCopyTag}

@@ -109,10 +109,24 @@
         render() {
           return (
             <UU5.Bricks.Container header="UuLamp.Level04 Demo">
-              <UU5.Bricks.Section>
+              <UU5.Bricks.Section header="Default Properties">
                 <DccComponent
                   dccData={`<uu5string/>
                     <UuLamp.Level04 />
+                  `}
+                />
+              </UU5.Bricks.Section>
+              <UU5.Bricks.Section header="Custom Header (string)">
+                <DccComponent
+                  dccData={`<uu5string/>
+                    <UuLamp.Level04 header="Lamp 4"/>
+                  `}
+                />
+              </UU5.Bricks.Section>
+              <UU5.Bricks.Section header="Custom Header (LSI)">
+                <DccComponent
+                  dccData={`<uu5string/>
+                    <UuLamp.Level04  header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 4\\\", \\\"cs\\\": \\\"Lampa 4\\\"}"/>' />
                   `}
                 />
               </UU5.Bricks.Section>
