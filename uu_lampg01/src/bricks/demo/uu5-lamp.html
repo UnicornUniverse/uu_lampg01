@@ -74,20 +74,32 @@
       import UU5 from "uu5g04";
       import "uu5g04-bricks";
       import { createVisualComponent } from "uu5g04-hooks";
+      import UuP from "uu_pg01";
+      import "uu_pg01-bricks";
 
       const Lamp = createVisualComponent({
         render() {
           return (
-            <div className="center">
+            <UuP.Bricks.ComponentWrapper header="Lamp" cardView="full">
               <UU5.Bricks.Text className={UU5.Common.Css.css`font-size:80px`} colorSchema="amber">
                 <UU5.Bricks.Icon icon="mdi-lightbulb-on" />
               </UU5.Bricks.Text>
-            </div>
+            </UuP.Bricks.ComponentWrapper>
           );
         },
       });
 
-      UU5.Common.DOM.render(<Lamp />, document.getElementById("renderHere"));
+      function Content() {
+        return (
+          <div className="center">
+            <Lamp />
+            <Lamp />
+            <Lamp />
+          </div>
+        );
+      }
+
+      UU5.Common.DOM.render(<Content />, document.getElementById("renderHere"));
       /*@@viewOff:0*/
     </script>
   </body>
