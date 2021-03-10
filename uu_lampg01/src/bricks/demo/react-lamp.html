@@ -82,7 +82,10 @@
       import ReactDOM from "react-dom";
 
       function Lamp(props) {
-     
+        const iconStateCode = props.on ? "-on" : "";
+        const bulbStyleCode = props.bulbStyle == "outline" ? "-outline" : "";
+        const className = `mdi mdi-lightbulb${iconStateCode}${bulbStyleCode}`;
+
         return (
           <div className="card">
             <div className="header">
@@ -93,7 +96,7 @@
               <button className="mdi mdi-dots-vertical button-menu" />
             </div>
             <div className="content">
-              <span className="mdi mdi-lightbulb-on"></span>
+              <span className={className} style={{color: props.colorSchema}}></span>
             </div>
           </div>
         );
@@ -102,9 +105,9 @@
       function Content() {
         return (
           <div>
-            <Lamp />
-            <Lamp />
-            <Lamp />
+            <Lamp on />
+            <Lamp colorSchema="black" />
+            <Lamp colorSchema="black" bulbStyle="outline" />
           </div>
         );
       }
