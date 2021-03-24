@@ -1,9 +1,10 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import UuP from "uu_pg01";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useSession } from "uu5g04-hooks";
 import "uu_pg01-bricks";
 import Lamp from "../core/lamp";
+import LampInBox from "../core/lamp-in-box";
 import Config from "./config/config";
 import Lsi from "./level03-lsi";
 import createCopyTag from "../utils/createCopyTag";
@@ -51,6 +52,8 @@ export const Level03 = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
+    const { sessionState } = useSession();
+
     function _handleCopyTag() {
       return createCopyTag(STATICS.displayName, props, ["on", "bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
     }
@@ -69,13 +72,17 @@ export const Level03 = createVisualComponent({
         elevation={props.elevation}
         {...attrs}
       >
-        <Lamp
-          on={props.on}
-          bulbStyle={props.bulbStyle}
-          bulbSize={props.bulbSize}
-          bgStyle={props.bgStyle}
-          colorSchema={props.colorSchema}
-        />
+        {sessionState === "authenticated" ? (
+          <Lamp
+            on={props.on}
+            bulbStyle={props.bulbStyle}
+            bulbSize={props.bulbSize}
+            bgStyle={props.bgStyle}
+            colorSchema={props.colorSchema}
+          />
+        ) : (
+          <LampInBox bgStyle={props.bgStyle} colorSchema={props.colorSchema} />
+        )}
       </UuP.Bricks.ComponentWrapper>
     );
     //@@viewOff:render

@@ -1,13 +1,13 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Lsi from "../bricks/level02-lsi";
+import Lsi from "./lamp-in-box-lsi";
 import Config from "../config/config";
 //@@viewOff:imports
 
-export const HiddenInBox = createVisualComponent({
+export const LampInBox = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "HiddenInBox",
+  displayName: Config.TAG + "LampInBox",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -27,9 +27,17 @@ export const HiddenInBox = createVisualComponent({
   render({ bgStyle, colorSchema }) {
     //@@viewOn:render
     return (
-      <UU5.Bricks.Card bgStyle={bgStyle} colorSchema={colorSchema} className="center padding-s" elevation={0} elevationHover={0}>
-        <UU5.Bricks.P><UU5.Bricks.Lsi lsi={Lsi.hiddenInfo} /></UU5.Bricks.P>
-        <UU5.Bricks.Icon className={Config.Css.css`font-size: 65px`} icon="mdi-gift" />
+      <UU5.Bricks.Card
+        bgStyle={bgStyle}
+        colorSchema={colorSchema}
+        className="center padding-s"
+        elevation={0}
+        elevationHover={0}
+      >
+        <UU5.Bricks.Lsi lsi={Lsi.info} />
+        <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={colorSchema ?? "green"}>
+          <UU5.Bricks.Icon icon="mdi-gift" />
+        </UU5.Bricks.Text>
       </UU5.Bricks.Card>
     );
     //@@viewOff:render
@@ -42,4 +50,4 @@ export const HiddenInBox = createVisualComponent({
 //@@viewOn:css
 //@@viewOff:css
 
-export default HiddenInBox;
+export default LampInBox;

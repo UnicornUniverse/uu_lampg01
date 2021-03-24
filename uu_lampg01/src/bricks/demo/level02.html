@@ -73,11 +73,11 @@
     <script type="text/babel">
       import UU5 from "uu5g04";
       import * as Plus4U5 from "uu_plus4u5g01";
-      import { createComponent } from "uu5g04-hooks";
+      import { createComponent, SessionProvider } from "uu5g04-hooks";
+      import UuLamp from "uu_lampg01";
       import "uu5g04-bricks";
       import "uu_plus4u5g01-app";
       import "uu_plus4u5g01-bricks";
-      import UuLamp from "uu_lampg01";
 
       const App = createComponent({
         render() {
@@ -92,6 +92,11 @@
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Custom Header (LSI)">
                   <UuLamp.Level02 header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 2", cs: "Lampa 2" }} />} />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level02 />
+                  </SessionProvider>
                 </UU5.Bricks.Section>
               </UU5.Bricks.Container>
             </Plus4U5.App.Page>

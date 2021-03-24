@@ -60,7 +60,7 @@
         "desc": "",
         "icon": "",
         "imageUri": "",
-        "uuEccReady": false,
+        "uuEccReady": true,
         "template": "<UuLamp.Level04 />"
       }
     ]
