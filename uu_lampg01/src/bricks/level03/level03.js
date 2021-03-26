@@ -1,10 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import UuP from "uu_pg01";
 import { createVisualComponent, useSession } from "uu5g04-hooks";
 import "uu_pg01-bricks";
-import Lamp from "../../core/lamp";
-import Package from "../../core/package";
+import Lamp from "../../core/lamp/lamp";
+import Package from "../../core/package/package";
 import Config from "./config/config";
 import Lsi from "./level03-lsi";
 import createCopyTag from "../../utils/createCopyTag";
@@ -13,11 +12,13 @@ import createCopyTag from "../../utils/createCopyTag";
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Level03",
+  nestingLevel: ["inline", "smallBox", "box"],
   //@@viewOff:statics
 };
 
 const DEFAULT_PROPS = {
   on: false,
+  header: undefined,
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
@@ -25,6 +26,7 @@ const DEFAULT_PROPS = {
   colorSchema: "amber",
   elevation: 1,
   borderRadius: 0,
+  nestingLevel: "box",
 };
 
 export const Level03 = createVisualComponent({
@@ -61,30 +63,42 @@ export const Level03 = createVisualComponent({
 
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-    return (
-      <UuP.Bricks.ComponentWrapper
-        header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-        help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-        copyTagFunc={_handleCopyTag}
-        cardView={props.cardView}
-        borderRadius={props.borderRadius}
-        elevation={props.elevation}
-        {...attrs}
-      >
-        {sessionState === "authenticated" ? (
-          <Lamp
-            on={props.on}
-            bulbStyle={props.bulbStyle}
-            bulbSize={props.bulbSize}
-            bgStyle={props.bgStyle}
-            colorSchema={props.colorSchema}
-          />
-        ) : (
-          <Package bgStyle={props.bgStyle} colorSchema={props.colorSchema} />
-        )}
-      </UuP.Bricks.ComponentWrapper>
-    );
+    if (sessionState === "authenticated") {
+      return (
+        <Lamp
+          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+          copyTagFunc={props.copyTagFunc}
+          on={props.on}
+          bulbStyle={props.bulbStyle}
+          bulbSize={props.bulbSize}
+          bgStyle={props.bgStyle}
+          cardView={props.cardView}
+          colorSchema={props.colorSchema}
+          elevation={props.elevation}
+          borderRadius={props.borderRadius}
+          nestingLevel={currentNestingLevel}
+          {...attrs}
+        />
+      );
+    } else {
+      return (
+        <Package
+          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+          cardView={props.cardView}
+          copyTagFunc={props.copyTagFunc}
+          elevation={props.elevation}
+          borderRadius={props.borderRadius}
+          bgStyle={props.bgStyle}
+          colorSchema={props.colorSchema}
+          nestingLevel={currentNestingLevel}
+          {...attrs}
+        />
+      );
+    }
     //@@viewOff:render
   },
 });

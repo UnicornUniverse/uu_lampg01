@@ -1,27 +1,31 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useSession } from "uu5g04-hooks";
+import UuP from "uu_pg01";
+import { createVisualComponent, useSession, useState } from "uu5g04-hooks";
 import "uu_pg01-bricks";
+import Config from "./config/config";
 import Lamp from "../../core/lamp/lamp";
 import Package from "../../core/package/package";
-import Config from "./config/config";
-import Lsi from "./level02-lsi";
-import createCopyTag from "../../utils/createCopyTag";
+import Lsi from "./level05-body-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level02",
-  nestingLevel: ["inline", "smallBox", "box"],
+  displayName: Config.TAG + "Level05Body",
   //@@viewOff:statics
 };
 
-export const Level02 = createVisualComponent({
+export const Level05Body = createVisualComponent({
+  //@@viewOn:statics
   ...STATICS,
+  //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
     header: UU5.PropTypes.node,
+    on: UU5.PropTypes.bool,
+    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -32,28 +36,27 @@ export const Level02 = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    header: undefined,
+    on: false,
+    bulbStyle: "filled",
+    bulbSize: "xl",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
     elevation: 1,
-    borderRadius: 0,
-    nestingLevel: "box",
+    borderRadius: "0",
   },
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:private
-    const { sessionState } = useSession();
-
-    function _handleCopyTag() {
-      return createCopyTag(STATICS.displayName, props, ["header"]);
-    }
-    //@@viewOff:private
-
     //@@viewOn:render
+    const { sessionState } = useSession();
+    const [on, setOn] = useState(props.on);
+
+    function handleSwitchClick() {
+      setOn(!on);
+    }
+
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     if (sessionState === "authenticated") {
       return (
@@ -61,13 +64,17 @@ export const Level02 = createVisualComponent({
           header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
           help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           copyTagFunc={props.copyTagFunc}
+          on={on}
+          bulbStyle={props.bulbStyle}
+          bulbSize={props.bulbSize}
           bgStyle={props.bgStyle}
           cardView={props.cardView}
           colorSchema={props.colorSchema}
           elevation={props.elevation}
           borderRadius={props.borderRadius}
-          nestingLevel={currentNestingLevel}
-          on
+          nestingLevel={props.nestingLevel}
+          onSwitchClick={handleSwitchClick}
+          showSwitch
           {...attrs}
         />
       );
@@ -82,13 +89,13 @@ export const Level02 = createVisualComponent({
           borderRadius={props.borderRadius}
           bgStyle={props.bgStyle}
           colorSchema={props.colorSchema}
-          nestingLevel={currentNestingLevel}
+          nestingLevel={props.nestingLevel}
           {...attrs}
         />
       );
     }
-    //@@viewOff:render
   },
+  //@@viewOff:render
 });
 
-export default Level02;
+export default Level05Body;

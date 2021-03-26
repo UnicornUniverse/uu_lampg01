@@ -7,8 +7,10 @@ import { Level03 } from "./bricks/level03/level03.js";
 export * from "./bricks/level03/level03.js";
 import { Level04 } from "./bricks/level04/level04.js";
 export * from "./bricks/level04/level04.js";
+import { Level05 } from "./bricks/level05/level05.js";
+export * from "./bricks/level05/level05.js";
 
-export default { Level01, Level02, Level03, Level04 };
+export default { Level01, Level02, Level03, Level04, Level05 };
 
 if (process.env.NODE_ENV !== "test") {
   console.log(

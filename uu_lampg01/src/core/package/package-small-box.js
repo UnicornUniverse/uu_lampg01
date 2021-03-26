@@ -1,11 +1,10 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Lsi from "./package-lsi";
 import Config from "./config/config";
 //@@viewOff:imports
 
-export const Package = createVisualComponent({
+export const PackageSmallBox = createVisualComponent({
   //@@viewOn:statics
   displayName: Config.TAG + "Package",
   //@@viewOff:statics
@@ -13,29 +12,35 @@ export const Package = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     bgStyle: UU5.PropTypes.string,
+    cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
+    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     bgStyle: "transparent",
-    colorSchema: "amber",
+    cardView: "full",
+    colorSchema: undefined,
+    elevation: 1,
+    borderRadius: "0",
   },
   //@@viewOff:defaultProps
 
-  render({ bgStyle, colorSchema }) {
+  render(props) {
     //@@viewOn:render
     return (
       <UU5.Bricks.Card
-        bgStyle={bgStyle}
-        colorSchema={colorSchema}
+        colorSchema={props.colorSchema}
+        bgStyle={props.bgStyle}
+        borderRadius={props.borderRadius}
+        elevation={props.elevation}
+        elevationHover={props.elevation}
         className="center padding-s"
-        elevation={0}
-        elevationHover={0}
       >
-        <UU5.Bricks.Lsi lsi={Lsi.info} />
-        <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={colorSchema ?? "green"}>
+        <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={props.colorSchema}>
           <UU5.Bricks.Icon icon="mdi-gift" />
         </UU5.Bricks.Text>
       </UU5.Bricks.Card>
@@ -44,10 +49,4 @@ export const Package = createVisualComponent({
   },
 });
 
-//@@viewOn:helpers
-//@@viewOff:helpers
-
-//@@viewOn:css
-//@@viewOff:css
-
-export default Package;
+export default PackageSmallBox;

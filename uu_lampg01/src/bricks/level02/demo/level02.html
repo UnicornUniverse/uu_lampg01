@@ -92,9 +92,28 @@
                 <UU5.Bricks.Section header="Custom Header (LSI)">
                   <UuLamp.Level02 header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 2", cs: "Lampa 2" }} />} />
                 </UU5.Bricks.Section>
-                <UU5.Bricks.Section header="Not-authenticated">
+                <UU5.Bricks.Section header="Nesting Level = Inline">
+                  <UuLamp.Level02 nestingLevel="inline" />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Nesting Level = SmallBox">
+                  <UuLamp.Level02 nestingLevel="smallBox" />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Nesting Level = Box">
+                  <UuLamp.Level02 nestingLevel="box" />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Inline">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level02 />
+                    <UuLamp.Level02 nestingLevel="inline" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and Nesting Level = SmallBox">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level02 nestingLevel="smallBox" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Box">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level02 nestingLevel="box" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
               </UU5.Bricks.Container>

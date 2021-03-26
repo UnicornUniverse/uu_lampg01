@@ -1,14 +1,14 @@
 //@@viewOn:imports
 import UU5, { createVisualComponent } from "uu5g04";
 import Config from "./config/config";
-import Level04Body from "./level04-body";
+import Level05Body from "./level05-body";
 import EditModal from "./edit-modal/edit-modal";
 import createCopyTag from "../../utils/createCopyTag";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level04",
+  displayName: Config.TAG + "Level05",
   nestingLevel: ["inline", "smallBox", "box"],
   editMode: {
     displayType: "block",
@@ -31,7 +31,7 @@ const DEFAULT_PROPS = {
   nestingLevel: "box",
 };
 
-export const Level04 = createVisualComponent({
+export const Level05 = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:mixins
@@ -88,11 +88,11 @@ export const Level04 = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <Level04Body {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
+        <Level05Body {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
       </>
     );
   },
   //@@viewOff:render
 });
 
-export default Level04;
+export default Level05;

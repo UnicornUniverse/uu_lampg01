@@ -132,6 +132,27 @@
                   `}
                   />
                 </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Nesting Level = Inline">
+                  <DccComponent
+                    dccData={`<uu5string/>
+                    <UuLamp.Level04 nestingLevel="inline" />
+                  `}
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Nesting Level = SmallBox">
+                  <DccComponent
+                    dccData={`<uu5string/>
+                    <UuLamp.Level04 nestingLevel="smallBox" />
+                  `}
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Nesting Level = Box">
+                  <DccComponent
+                    dccData={`<uu5string/>
+                    <UuLamp.Level04 nestingLevel="box" />
+                  `}
+                  />
+                </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated">
                   <SessionProvider session={{}}>
                     <UuLamp.Level04 />
@@ -145,6 +166,21 @@
                 <UU5.Bricks.Section header="Not-authenticated and bgStyle = Filled">
                   <SessionProvider session={{}}>
                     <UuLamp.Level04 bgStyle="filled" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Inline">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level04 nestingLevel="inline" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and Nesting Level = SmallBox">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level04 nestingLevel="smallBox" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Box">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level04 nestingLevel="box" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
               </UU5.Bricks.Container>

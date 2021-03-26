@@ -89,6 +89,15 @@
               <UU5.Bricks.Section header="Custom Header (LSI)">
                 <UuLamp.Level01 header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 1", cs: "Lampa 1" }} />} />
               </UU5.Bricks.Section>
+              <UU5.Bricks.Section header="Nesting Level = Inline">
+                <UuLamp.Level01 nestingLevel="inline" />
+              </UU5.Bricks.Section>
+              <UU5.Bricks.Section header="Nesting Level = SmallBox">
+                <UuLamp.Level01 nestingLevel="smallBox" />
+              </UU5.Bricks.Section>
+              <UU5.Bricks.Section header="Nesting Level = Box">
+                <UuLamp.Level01 nestingLevel="box" />
+              </UU5.Bricks.Section>
             </UU5.Bricks.Container>
           );
         },
