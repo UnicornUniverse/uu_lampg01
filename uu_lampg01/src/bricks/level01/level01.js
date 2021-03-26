@@ -3,10 +3,10 @@ import UU5 from "uu5g04";
 import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
 import "uu_pg01-bricks";
-import Lamp from "../core/lamp";
-import Config from "../config/config";
+import Lamp from "../../core/lamp";
+import Config from "./config/config";
 import Lsi from "./level01-lsi";
-import createCopyTag from "../utils/createCopyTag";
+import createCopyTag from "../../utils/createCopyTag";
 //@@viewOff:imports
 
 const STATICS = {

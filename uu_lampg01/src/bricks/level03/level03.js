@@ -3,19 +3,31 @@ import UU5 from "uu5g04";
 import UuP from "uu_pg01";
 import { createVisualComponent, useSession } from "uu5g04-hooks";
 import "uu_pg01-bricks";
-import Config from "../config/config";
-import Lamp from "../core/lamp";
-import LampInBox from "../core/lamp-in-box";
-import Lsi from "./level04-body-lsi";
+import Lamp from "../../core/lamp";
+import Package from "../../core/package";
+import Config from "./config/config";
+import Lsi from "./level03-lsi";
+import createCopyTag from "../../utils/createCopyTag";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level04Body",
+  displayName: Config.TAG + "Level03",
   //@@viewOff:statics
 };
 
-export const Level04Body = createVisualComponent({
+const DEFAULT_PROPS = {
+  on: false,
+  bulbStyle: "filled",
+  bulbSize: "xl",
+  bgStyle: "transparent",
+  cardView: "full",
+  colorSchema: "amber",
+  elevation: 1,
+  borderRadius: 0,
+};
+
+export const Level03 = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -35,30 +47,30 @@ export const Level04Body = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    on: false,
-    bulbStyle: "filled",
-    bulbSize: "xl",
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
-  },
+  defaultProps: DEFAULT_PROPS,
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:render
+    //@@viewOn:private
     const { sessionState } = useSession();
+
+    function _handleCopyTag() {
+      return createCopyTag(STATICS.displayName, props, ["on", "bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
+    }
+    //@@viewOff:private
+
+    //@@viewOn:render
+    const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
       <UuP.Bricks.ComponentWrapper
         header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
         help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+        copyTagFunc={_handleCopyTag}
         cardView={props.cardView}
-        copyTagFunc={props.copyTagFunc}
-        elevation={props.elevation}
         borderRadius={props.borderRadius}
+        elevation={props.elevation}
+        {...attrs}
       >
         {sessionState === "authenticated" ? (
           <Lamp
@@ -69,7 +81,7 @@ export const Level04Body = createVisualComponent({
             colorSchema={props.colorSchema}
           />
         ) : (
-          <LampInBox bgStyle={props.bgStyle} colorSchema={props.colorSchema} />
+          <Package bgStyle={props.bgStyle} colorSchema={props.colorSchema} />
         )}
       </UuP.Bricks.ComponentWrapper>
     );
@@ -77,4 +89,4 @@ export const Level04Body = createVisualComponent({
   },
 });
 
-export default Level04Body;
+export default Level03;

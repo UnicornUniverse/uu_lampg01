@@ -1,13 +1,13 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Lsi from "./lamp-in-box-lsi";
-import Config from "../config/config";
+import Lsi from "./package-lsi";
+import Config from "./config/config";
 //@@viewOff:imports
 
-export const LampInBox = createVisualComponent({
+export const Package = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "LampInBox",
+  displayName: Config.TAG + "Package",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -50,4 +50,4 @@ export const LampInBox = createVisualComponent({
 //@@viewOn:css
 //@@viewOff:css
 
-export default LampInBox;
+export default Package;

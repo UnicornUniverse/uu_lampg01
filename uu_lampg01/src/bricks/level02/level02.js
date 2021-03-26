@@ -3,11 +3,11 @@ import UU5 from "uu5g04";
 import UuP from "uu_pg01";
 import { createVisualComponent, useSession } from "uu5g04-hooks";
 import "uu_pg01-bricks";
-import Lamp from "../core/lamp";
-import LampInBox from "../core/lamp-in-box";
-import Config from "../config/config";
+import Lamp from "../../core/lamp";
+import Package from "../../core/package";
+import Config from "./config/config";
 import Lsi from "./level02-lsi";
-import createCopyTag from "../utils/createCopyTag";
+import createCopyTag from "../../utils/createCopyTag";
 //@@viewOff:imports
 
 const STATICS = {
@@ -49,7 +49,7 @@ export const Level02 = createVisualComponent({
         copyTagFunc={_handleCopyTag}
         {...attrs}
       >
-        {sessionState === "authenticated" ? <Lamp on /> : <LampInBox />}
+        {sessionState === "authenticated" ? <Lamp on /> : <Package />}
       </UuP.Bricks.ComponentWrapper>
     );
     //@@viewOff:render

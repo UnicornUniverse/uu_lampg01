@@ -2,8 +2,8 @@
 import UU5, { createVisualComponent } from "uu5g04";
 import Config from "./config/config";
 import Level04Body from "./level04-body";
-import { EditModal } from "../ecc/ecc";
-import createCopyTag from "../utils/createCopyTag";
+import EditModal from "./edit-modal/edit-modal";
+import createCopyTag from "../../utils/createCopyTag";
 //@@viewOff:imports
 
 const STATICS = {
