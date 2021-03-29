@@ -18,6 +18,59 @@
         },
       });
     </script>
+    <style>
+      html {
+        font-family: ClearSans, sans-serif;
+      }
+
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        margin-top: 24px;
+        margin-bottom: 24px;
+      }
+
+      .help-icon {
+        margin-left: 4px;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.54);
+      }
+
+      .header {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .heading {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .button-menu {
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(189, 189, 189);
+        border-width: 1px;
+        border-style: solid;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .content {
+        color: #f9c033;
+        font-size: 80px;
+        text-align: center;
+        margin-top: 16px;
+      }
+    </style>
   </head>
   <body>
     <div id="renderHere"></div>
@@ -28,15 +81,38 @@
       import React from "react";
       import ReactDOM from "react-dom";
 
-      function Lamp() {
+      function Lamp(props) {
+        const iconStateCode = props.on ? "-on" : "";
+        const bulbStyleCode = props.bulbStyle == "outline" ? "-outline" : "";
+        const className = `mdi mdi-lightbulb${iconStateCode}${bulbStyleCode}`;
+
         return (
-          <div style={{ color: "#f9c033", fontSize: "80px", textAlign: "center" }}>
-            <span className="mdi mdi-lightbulb-on"></span>
+          <div className="card">
+            <div className="header">
+              <div className="heading">
+                Lamp
+                <span className="help-icon mdi mdi-help-circle" />
+              </div>
+              <button className="mdi mdi-dots-vertical button-menu" />
+            </div>
+            <div className="content">
+              <span className={className} style={{color: props.colorSchema}}></span>
+            </div>
           </div>
         );
       }
 
-      ReactDOM.render(<Lamp />, document.getElementById("renderHere"));
+      function Content() {
+        return (
+          <div>
+            <Lamp on />
+            <Lamp colorSchema="black" />
+            <Lamp colorSchema="black" bulbStyle="outline" />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Content />, document.getElementById("renderHere"));
       /*@@viewOff:0*/
     </script>
   </body>

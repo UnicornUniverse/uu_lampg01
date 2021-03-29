@@ -42,10 +42,10 @@
           "prop-types": "https://cdn.plus4u.net/libs/prop-types/15.7.2/prop-types.js",
           immutable: "https://cdn.plus4u.net/libs/immutable/3.8.2/immutable.js",
 
-          uu5g04: "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04.js",
-          "uu5g04-bricks": "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04-bricks.js",
-          "uu5g04-hooks": "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04-hooks.js",
-          "uu5g04-forms": "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04-forms.js",
+          uu5g04: "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04.js",
+          "uu5g04-bricks": "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04-bricks.js",
+          "uu5g04-hooks": "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04-hooks.js",
+          "uu5g04-forms": "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04-forms.js",
           "uu5g04-block-layout": "https://cdn.plus4u.net/uu-uu5g04/1.32.0/uu5g04-block-layout.js",
           "uu5g04-bricks-editable": "https://cdn.plus4u.net/uu-uu5g04/1.32.0/uu5g04-bricks-editable.js",
           uu5g05: "https://cdn.plus4u.net/uu-uu5g04/1.42.0/uu5g05/uu5g05.js",
@@ -80,10 +80,12 @@
     <script src="https://cdn.plus4u.net/uu-app-templateg01/1.0.0/in-browser-transpilation.js"></script>
     <script type="text/babel">
       import UU5, { createComponent } from "uu5g04";
-      import "uu5g04-bricks";
-
+      import { SessionProvider } from "uu5g04-hooks";
       import * as UuDcc from "uu_dynamiccomponentcontentg02";
       import UuLamp from "uu_lampg01";
+      import "uu5g04-bricks";
+      import "uu_plus4u5g01-app";
+      import "uu_plus4u5g01-bricks";
 
       UU5.Common.Tools.setLanguage("en");
 
@@ -108,29 +110,46 @@
       const Page = createComponent({
         render() {
           return (
-            <UU5.Bricks.Container header="UuLamp.Level04 Demo">
-              <UU5.Bricks.Section header="Default Properties">
-                <DccComponent
-                  dccData={`<uu5string/>
+            <Plus4U5.App.Page>
+              <UU5.Bricks.Container header="UuLamp.Level04 Demo">
+                <UU5.Bricks.Section header="Default Properties">
+                  <DccComponent
+                    dccData={`<uu5string/>
                     <UuLamp.Level04 />
                   `}
-                />
-              </UU5.Bricks.Section>
-              <UU5.Bricks.Section header="Custom Header (string)">
-                <DccComponent
-                  dccData={`<uu5string/>
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Custom Header (string)">
+                  <DccComponent
+                    dccData={`<uu5string/>
                     <UuLamp.Level04 header="Lamp 4"/>
                   `}
-                />
-              </UU5.Bricks.Section>
-              <UU5.Bricks.Section header="Custom Header (LSI)">
-                <DccComponent
-                  dccData={`<uu5string/>
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Custom Header (LSI)">
+                  <DccComponent
+                    dccData={`<uu5string/>
                     <UuLamp.Level04  header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 4\\\", \\\"cs\\\": \\\"Lampa 4\\\"}"/>' />
                   `}
-                />
-              </UU5.Bricks.Section>
-            </UU5.Bricks.Container>
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level04 />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and colorSchema = Blue">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level04 colorSchema="blue" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authenticated and bgStyle = Filled">
+                  <SessionProvider session={{}}>
+                    <UuLamp.Level04 bgStyle="filled" />
+                  </SessionProvider>
+                </UU5.Bricks.Section>
+              </UU5.Bricks.Container>
+            </Plus4U5.App.Page>
           );
         },
       });

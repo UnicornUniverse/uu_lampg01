@@ -41,10 +41,10 @@
           "create-react-class": "https://cdn.plus4u.net/libs/create-react-class/15.6.3/create-react-class.js",
           "prop-types": "https://cdn.plus4u.net/libs/prop-types/15.7.2/prop-types.js",
 
-          uu5g04: "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04.js",
-          "uu5g04-bricks": "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04-bricks.js",
-          "uu5g04-forms": "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04-forms.js",
-          "uu5g04-hooks": "https://cdn.plus4u.net/uu-uu5g04/1.0.0/uu5g04-hooks.js",
+          uu5g04: "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04.js",
+          "uu5g04-bricks": "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04-bricks.js",
+          "uu5g04-forms": "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04-forms.js",
+          "uu5g04-hooks": "https://cdn.plus4u.net/uu-uu5g04/1.42.2/uu5g04-hooks.js",
           "uu5g04-block-layout": "https://cdn.plus4u.net/uu-uu5g04/1.32.0/uu5g04-block-layout.js",
 
           uu_appg01_core: "https://cdn.plus4u.net/uu-appg01-core/4.0.0/uu_appg01_core.js",
@@ -74,20 +74,50 @@
       import UU5 from "uu5g04";
       import "uu5g04-bricks";
       import { createVisualComponent } from "uu5g04-hooks";
+      import UuP from "uu_pg01";
+      import "uu_pg01-bricks";
+
+      const Lsi = {
+        help: {
+          en:
+            '<uu5string/>The <UU5.Bricks.Code>UuLamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href="https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791" content="uuLamp educational material" target="_blank"/>.',
+        },
+      };
 
       const Lamp = createVisualComponent({
-        render() {
+        defaultProps: {
+          colorSchema: "amber",
+        },
+
+        render(props) {
+          const iconStateCode = props.on ? "-on" : "";
+          const bulbStyleCode = props.bulbStyle == "outline" ? "-outline" : "";
+          const icon = `mdi mdi-lightbulb${iconStateCode}${bulbStyleCode}`;
+
           return (
-            <div className="center">
-              <UU5.Bricks.Text className={UU5.Common.Css.css`font-size:80px`} colorSchema="amber">
-                <UU5.Bricks.Icon icon="mdi-lightbulb-on" />
+            <UuP.Bricks.ComponentWrapper header="Lamp" cardView="full" help={<UU5.Bricks.Lsi lsi={Lsi.help} />}>
+              <UU5.Bricks.Text
+                className={UU5.Common.Css.css`font-size:80px;text-align:center`}
+                colorSchema={props.colorSchema}
+              >
+                <UU5.Bricks.Icon icon={icon} />
               </UU5.Bricks.Text>
-            </div>
+            </UuP.Bricks.ComponentWrapper>
           );
         },
       });
 
-      UU5.Common.DOM.render(<Lamp />, document.getElementById("renderHere"));
+      function Content() {
+        return (
+          <div>
+            <Lamp on />
+            <Lamp colorSchema="black" />
+            <Lamp colorSchema="black" bulbStyle="outline" />
+          </div>
+        );
+      }
+
+      UU5.Common.DOM.render(<Content />, document.getElementById("renderHere"));
       /*@@viewOff:0*/
     </script>
   </body>

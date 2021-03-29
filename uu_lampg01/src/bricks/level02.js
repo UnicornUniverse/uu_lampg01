@@ -4,6 +4,7 @@ import UuP from "uu_pg01";
 import { createVisualComponent, useSession } from "uu5g04-hooks";
 import "uu_pg01-bricks";
 import Lamp from "../core/lamp";
+import LampInBox from "../core/lamp-in-box";
 import Config from "../config/config";
 import Lsi from "./level02-lsi";
 import createCopyTag from "../utils/createCopyTag";
@@ -48,7 +49,7 @@ export const Level02 = createVisualComponent({
         copyTagFunc={_handleCopyTag}
         {...attrs}
       >
-        <Lamp on={sessionState == "authenticated"} />
+        {sessionState === "authenticated" ? <Lamp on /> : <LampInBox />}
       </UuP.Bricks.ComponentWrapper>
     );
     //@@viewOff:render
