@@ -39,20 +39,19 @@ export const LampInline = createVisualComponent({
 
     const switchStateCode = props.on ? "-outline" : "-off";
     const switchIcon = `mdi-toggle-switch${switchStateCode}`;
+    const switchCss = Config.Css.css`cursor: pointer`;
 
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <>
-        <UU5.Bricks.Text colorSchema={lampColorSchema} nestingLevel="inline" {...attrs}>
-          <UU5.Bricks.Icon icon={bulbIcon} />
-          {props.showSwitch && (
-            <span onClick={props.onSwitchClick}>
-              <UU5.Bricks.Icon icon={switchIcon} />
-            </span>
-          )}
-        </UU5.Bricks.Text>
-      </>
+      <UU5.Bricks.Text colorSchema={lampColorSchema} nestingLevel="inline" {...attrs}>
+        <UU5.Bricks.Icon icon={bulbIcon} />
+        {props.showSwitch && (
+          <span onClick={props.onSwitchClick} className={switchCss}>
+            <UU5.Bricks.Icon icon={switchIcon} />
+          </span>
+        )}
+      </UU5.Bricks.Text>
     );
     //@@viewOff:render
   },
