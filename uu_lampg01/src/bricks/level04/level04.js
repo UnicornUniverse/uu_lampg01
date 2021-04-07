@@ -4,12 +4,13 @@ import Config from "./config/config";
 import Level04Body from "./level04-body";
 import EditModal from "./edit-modal/edit-modal";
 import createCopyTag from "../../utils/createCopyTag";
+import Lsi from "./level04-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Level04",
-  nestingLevel: ["inline", "smallBox", "box"],
+  nestingLevel: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
     startMode: "button",
@@ -28,7 +29,6 @@ const DEFAULT_PROPS = {
   colorSchema: "amber",
   elevation: 1,
   borderRadius: "0",
-  nestingLevel: "box",
 };
 
 export const Level04 = createVisualComponent({
@@ -88,7 +88,14 @@ export const Level04 = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <Level04Body {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
+        <Level04Body
+          {...this.props}
+          {...attrs}
+          header={this.props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+          nestingLevel={currentNestingLevel}
+          copyTagFunc={this._handleCopyTag}
+        />
       </>
     );
   },

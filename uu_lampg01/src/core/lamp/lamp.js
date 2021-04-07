@@ -10,7 +10,7 @@ import LampBox from "./lamp-box";
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Lamp",
-  nestingLevel: ["inline", "smallBox", "box"],
+  nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 

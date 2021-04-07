@@ -10,7 +10,7 @@ import PackageBox from "./package-box";
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Package",
-  nestingLevel: ["inline", "smallBox", "box"],
+  nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
@@ -21,6 +21,7 @@ export const Package = createVisualComponent({
   propTypes: {
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
+    info: UU5.PropTypes.node,
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -33,12 +34,12 @@ export const Package = createVisualComponent({
   defaultProps: {
     header: "",
     help: "",
+    info: null,
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    nestingLevel: "box",
   },
   //@@viewOff:defaultProps
 

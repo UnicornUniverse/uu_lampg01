@@ -1,7 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useSession } from "uu5g04-hooks";
-import "uu_pg01-bricks";
 import Lamp from "../../core/lamp/lamp";
 import Package from "../../core/package/package";
 import Config from "./config/config";
@@ -12,7 +11,7 @@ import createCopyTag from "../../utils/createCopyTag";
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Level02",
-  nestingLevel: ["inline", "smallBox", "box"],
+  nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
@@ -38,7 +37,6 @@ export const Level02 = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: 0,
-    nestingLevel: "box",
   },
   //@@viewOff:defaultProps
 
@@ -60,7 +58,7 @@ export const Level02 = createVisualComponent({
         <Lamp
           header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
           help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          copyTagFunc={props.copyTagFunc}
+          copyTagFunc={_handleCopyTag}
           bgStyle={props.bgStyle}
           cardView={props.cardView}
           colorSchema={props.colorSchema}
@@ -77,7 +75,7 @@ export const Level02 = createVisualComponent({
           header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
           help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           cardView={props.cardView}
-          copyTagFunc={props.copyTagFunc}
+          copyTagFunc={_handleCopyTag}
           elevation={props.elevation}
           borderRadius={props.borderRadius}
           bgStyle={props.bgStyle}

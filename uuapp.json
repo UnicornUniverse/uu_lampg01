@@ -73,6 +73,39 @@
         "imageUri": "",
         "uuEccReady": true,
         "template": "<UuLamp.Level05 />"
+      },
+      {
+        "code": "UuLamp.Level06.Lamp",
+        "name": "Level06.Lamp",
+        "tagList": ["UuLamp", "Level06", "Lamp"],
+        "docCode": "UuLampLevel06Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level06.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level06.Switch",
+        "name": "Level06.Switch",
+        "tagList": ["UuLamp", "Level06", "Swith"],
+        "docCode": "UuLampLevel06Switch",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level06.Switch />"
+      },
+      {
+        "code": "UuLamp.Level06.Room",
+        "name": "Level06.Room",
+        "tagList": ["UuLamp", "Level06", "Room"],
+        "docCode": "UuLampLevel06Room",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level06.Room />"
       }
     ]
   }

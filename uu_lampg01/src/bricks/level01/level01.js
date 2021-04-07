@@ -11,7 +11,7 @@ import createCopyTag from "../../utils/createCopyTag";
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Level01",
-  nestingLevel: ["inline", "smallBox", "box"],
+  nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
@@ -37,7 +37,6 @@ export const Level01 = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: 0,
-    nestingLevel: "box",
   },
   //@@viewOff:defaultProps
 

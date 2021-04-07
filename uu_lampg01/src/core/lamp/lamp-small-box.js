@@ -5,10 +5,15 @@ import Config from "./config/config";
 import Bulb from "./bulb";
 //@@viewOff:imports
 
-export const LampSmallBox = createVisualComponent({
+const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "LampSmallBox",
+  nestingLevel: "smallBox",
   //@@viewOff:statics
+};
+
+export const LampSmallBox = createVisualComponent({
+  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -44,6 +49,7 @@ export const LampSmallBox = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
+    const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
       <UU5.Bricks.Card
@@ -53,6 +59,7 @@ export const LampSmallBox = createVisualComponent({
         elevation={props.elevation}
         elevationHover={props.elevation}
         className="center padding-s"
+        {...attrs}
       >
         <Bulb on={props.on} bulbSize={props.bulbSize} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
         {props.showSwitch && (

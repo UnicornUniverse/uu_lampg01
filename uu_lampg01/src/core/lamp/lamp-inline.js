@@ -4,10 +4,15 @@ import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 //@@viewOff:imports
 
-export const LampInline = createVisualComponent({
+const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "LampInline",
+  nestingLevel: "inline",
   //@@viewOff:statics
+};
+
+export const LampInline = createVisualComponent({
+  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {

@@ -1,7 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Lsi from "./package-box-lsi";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -14,6 +13,7 @@ export const PackageBox = createVisualComponent({
   propTypes: {
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
+    info: UU5.PropTypes.node,
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -26,6 +26,7 @@ export const PackageBox = createVisualComponent({
   defaultProps: {
     header: "",
     help: "",
+    info: null,
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
@@ -52,7 +53,7 @@ export const PackageBox = createVisualComponent({
           elevation={0}
           elevationHover={0}
         >
-          <UU5.Bricks.Lsi lsi={Lsi.info} />
+          {props.info}
           <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={props.colorSchema}>
             <UU5.Bricks.Icon icon="mdi-gift" />
           </UU5.Bricks.Text>
