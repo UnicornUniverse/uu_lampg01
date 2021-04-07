@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UuLamp.Level02 Demo</title>
+    <title>UuLamp.Level02.Lamp Demo</title>
 
     <script>
       if (!location.href.match(/^(about:|file:)/)) {
@@ -82,38 +82,38 @@
         render() {
           return (
             <Plus4U5.App.Page>
-              <UU5.Bricks.Container header="UuLamp.Level02 Demo">
+              <UU5.Bricks.Container header="UuLamp.Level02.Lamp Demo">
                 <UU5.Bricks.Section header="Default Properties">
-                  <UuLamp.Level02 />
+                  <UuLamp.Level02.Lamp />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Custom Header (string)">
-                  <UuLamp.Level02 header="Lamp 2" />
+                  <UuLamp.Level02.Lamp header="Lamp 2" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Custom Header (LSI)">
-                  <UuLamp.Level02 header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 2", cs: "Lampa 2" }} />} />
+                  <UuLamp.Level02.Lamp header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 2", cs: "Lampa 2" }} />} />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Nesting Level = Inline">
-                  <UuLamp.Level02 nestingLevel="inline" />
+                  <UuLamp.Level02.Lamp nestingLevel="inline" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Nesting Level = SmallBox">
-                  <UuLamp.Level02 nestingLevel="smallBox" />
+                  <UuLamp.Level02.Lamp nestingLevel="smallBox" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Nesting Level = Box">
-                  <UuLamp.Level02 nestingLevel="box" />
+                  <UuLamp.Level02.Lamp nestingLevel="box" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Inline">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level02 nestingLevel="inline" />
+                    <UuLamp.Level02.Lamp nestingLevel="inline" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and Nesting Level = SmallBox">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level02 nestingLevel="smallBox" />
+                    <UuLamp.Level02.Lamp nestingLevel="smallBox" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Box">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level02 nestingLevel="box" />
+                    <UuLamp.Level02.Lamp nestingLevel="box" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
               </UU5.Bricks.Container>

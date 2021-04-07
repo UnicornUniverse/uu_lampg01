@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UuLamp.Level03 Demo</title>
+    <title>UuLamp.Level03.Lamp Demo</title>
 
     <script>
       if (!location.href.match(/^(about:|file:)/)) {
@@ -81,71 +81,71 @@
         render() {
           return (
             <Plus4U5.App.Page>
-              <UU5.Bricks.Container header="UuLamp.Level03 Demo">
+              <UU5.Bricks.Container header="UuLamp.Level03.Lamp Demo">
                 <UU5.Bricks.Section header="Default Properties">
-                  <UuLamp.Level03 />
+                  <UuLamp.Level03.Lamp />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="on = True">
-                  <UuLamp.Level03 on />
+                  <UuLamp.Level03.Lamp on />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="on = True and colorSchema = Green">
-                  <UuLamp.Level03 colorSchema="green" on />
+                  <UuLamp.Level03.Lamp colorSchema="green" on />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="bulbStyle = outline">
-                  <UuLamp.Level03 bulbStyle="outline" />
+                  <UuLamp.Level03.Lamp bulbStyle="outline" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="on = True and bulbSize = S">
-                  <UuLamp.Level03 bulbSize="s" on />
+                  <UuLamp.Level03.Lamp bulbSize="s" on />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="on = True and bgStyle = Filled and colorSchema = Blue">
-                  <UuLamp.Level03 bgStyle="filled" colorSchema="blue" on />
+                  <UuLamp.Level03.Lamp bgStyle="filled" colorSchema="blue" on />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="bgStyle = Filled and colorSchema = Blue">
-                  <UuLamp.Level03 bgStyle="filled" colorSchema="blue" />
+                  <UuLamp.Level03.Lamp bgStyle="filled" colorSchema="blue" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Custom Header (string)">
-                  <UuLamp.Level03 header="Lamp 3" />
+                  <UuLamp.Level03.Lamp header="Lamp 3" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Custom Header (LSI)">
-                  <UuLamp.Level03 header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 3", cs: "Lampa 3" }} />} />
+                  <UuLamp.Level03.Lamp header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 3", cs: "Lampa 3" }} />} />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Nesting Level = Inline">
-                  <UuLamp.Level01 nestingLevel="inline" />
+                  <UuLamp.Level03.Lamp nestingLevel="inline" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Nesting Level = SmallBox">
-                  <UuLamp.Level01 nestingLevel="smallBox" />
+                  <UuLamp.Level03.Lamp nestingLevel="smallBox" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Nesting Level = Box">
-                  <UuLamp.Level01 nestingLevel="box" />
+                  <UuLamp.Level03.Lamp nestingLevel="box" />
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level03 />
+                    <UuLamp.Level03.Lamp />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and colorSchema = Blue">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level03 colorSchema="blue" />
+                    <UuLamp.Level03.Lamp colorSchema="blue" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and bgStyle = Filled">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level03 bgStyle="filled" />
+                    <UuLamp.Level03.Lamp bgStyle="filled" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Inline">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level03 nestingLevel="inline" />
+                    <UuLamp.Level03.Lamp nestingLevel="inline" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and Nesting Level = SmallBox">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level03 nestingLevel="smallBox" />
+                    <UuLamp.Level03.Lamp nestingLevel="smallBox" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Box">
                   <SessionProvider session={{}}>
-                    <UuLamp.Level03 nestingLevel="box" />
+                    <UuLamp.Level03.Lamp nestingLevel="box" />
                   </SessionProvider>
                 </UU5.Bricks.Section>
               </UU5.Bricks.Container>

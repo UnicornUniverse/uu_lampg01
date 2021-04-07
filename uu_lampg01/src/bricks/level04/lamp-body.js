@@ -1,18 +1,19 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useState } from "uu5g04-hooks";
+import { createVisualComponent } from "uu5g04-hooks";
 import withAuthentication from "../../core/with-authentication/with-authentication";
-import Lamp from "../../core/lamp/lamp";
+import LampView from "../../core/lamp/lamp";
 import Config from "./config/config";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level05Body",
+  displayName: Config.TAG + "Level04Body",
+  nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
-export const Level05Body = createVisualComponent({
+export const Level04Body = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -49,20 +50,14 @@ export const Level05Body = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [on, setOn] = useState(props.on);
-
-    function handleSwitchClick() {
-      setOn(!on);
-    }
-
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <Lamp
+      <LampView
         header={props.header}
         help={props.help}
         copyTagFunc={props.copyTagFunc}
-        on={on}
+        on={props.on}
         bulbStyle={props.bulbStyle}
         bulbSize={props.bulbSize}
         bgStyle={props.bgStyle}
@@ -71,13 +66,11 @@ export const Level05Body = createVisualComponent({
         elevation={props.elevation}
         borderRadius={props.borderRadius}
         nestingLevel={props.nestingLevel}
-        onSwitchClick={handleSwitchClick}
-        showSwitch
         {...attrs}
       />
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
-export default withAuthentication(Level05Body, STATICS.displayName);
+export default withAuthentication(Level04Body, STATICS.displayName);

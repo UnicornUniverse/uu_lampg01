@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UuLamp.Level01 Demo</title>
+    <title>UuLamp.Level01.Lamp Demo</title>
 
     <script>
       if (!location.href.match(/^(about:|file:)/)) {
@@ -79,24 +79,24 @@
       const Page = createComponent({
         render() {
           return (
-            <UU5.Bricks.Container header="UuLamp.Level01 Demo">
+            <UU5.Bricks.Container header="UuLamp.Level01.Lamp Demo">
               <UU5.Bricks.Section header="Default Properties">
-                <UuLamp.Level01 />
+                <UuLamp.Level01.Lamp />
               </UU5.Bricks.Section>
               <UU5.Bricks.Section header="Custom Header (string)">
-                <UuLamp.Level01 header="Lamp 1" />
+                <UuLamp.Level01.Lamp header="Lamp 1" />
               </UU5.Bricks.Section>
               <UU5.Bricks.Section header="Custom Header (LSI)">
-                <UuLamp.Level01 header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 1", cs: "Lampa 1" }} />} />
+                <UuLamp.Level01.Lamp header={<UU5.Bricks.Lsi lsi={{ en: "Lamp 1", cs: "Lampa 1" }} />} />
               </UU5.Bricks.Section>
               <UU5.Bricks.Section header="Nesting Level = Inline">
-                <UuLamp.Level01 nestingLevel="inline" />
+                <UuLamp.Level01.Lamp nestingLevel="inline" />
               </UU5.Bricks.Section>
               <UU5.Bricks.Section header="Nesting Level = SmallBox">
-                <UuLamp.Level01 nestingLevel="smallBox" />
+                <UuLamp.Level01.Lamp nestingLevel="smallBox" />
               </UU5.Bricks.Section>
               <UU5.Bricks.Section header="Nesting Level = Box">
-                <UuLamp.Level01 nestingLevel="box" />
+                <UuLamp.Level01.Lamp nestingLevel="box" />
               </UU5.Bricks.Section>
             </UU5.Bricks.Container>
           );
