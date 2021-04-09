@@ -53,6 +53,10 @@ export const LampBody = createVisualComponent({
     const room = useRoom();
 
     useEffect(() => {
+      if (!room.registerLamp || !room.unregisterLamp) {
+        return;
+      }
+
       room.registerLamp(props.id);
 
       return () => room.unregisterLamp(props.id);
