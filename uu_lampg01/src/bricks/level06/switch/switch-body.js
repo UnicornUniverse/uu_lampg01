@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useEffect } from "uu5g04-hooks";
 import Package from "../../../core/package/package";
 import Config from "./config/config";
 import Switch from "../../../core/switch/switch";
@@ -42,13 +42,25 @@ export const SwitchBody = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:render
+    //@@viewOn:private
     const room = useRoom();
+
+    useEffect(() => {
+      if (!room.registerSwitch || !room.unregisterSwitch) {
+        return;
+      }
+
+      room.registerSwitch(props.id);
+
+      return () => room.unregisterSwitch(props.id);
+    }, []);
 
     function handleSwitchClick() {
       room.light.setOn(!room.light.on);
     }
+    //@@viewOff:private
 
+    //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     if (room.light) {
