@@ -31,8 +31,36 @@ export const RoomProvider = createComponent({
   render(props) {
     //@@viewOn:render
     const [on, setOn] = useState(props.on);
+    const [lampTotal, setLampTotal] = useState(0);
+    const [switchTotal, setSwitchTotal] = useState(0);
 
-    const room = { light: { on, setOn } };
+    function registerLamp(id) {
+      console.log("Register Lamp: " + id);
+      setLampTotal(lampTotal + 1);
+    }
+
+    function unregisterLamp(id) {
+      console.log("Unregister Lamp: " + id);
+      setLampTotal(lampTotal - 1);
+    }
+
+    function registerSwitch() {
+      setSwitchTotal(switchTotal + 1);
+    }
+
+    function unregisterSwitch() {
+      setSwitchTotal(switchTotal - 1);
+    }
+
+    const room = {
+      light: { on, setOn },
+      lampTotal,
+      registerLamp,
+      unregisterLamp,
+      switchTotal,
+      registerSwitch,
+      unregisterSwitch,
+    };
 
     return <RoomContext.Provider value={room}>{props.children}</RoomContext.Provider>;
   },

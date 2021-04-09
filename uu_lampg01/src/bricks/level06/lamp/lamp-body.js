@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useEffect } from "uu5g04-hooks";
 import Package from "../../../core/package/package";
 import withAuthentication from "../../../core/with-authentication/with-authentication";
 import Config from "./config/config";
@@ -49,9 +49,17 @@ export const LampBody = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:render
+    //@@viewOn:private
     const room = useRoom();
 
+    useEffect(() => {
+      room.registerLamp(props.id);
+
+      return () => room.unregisterLamp(props.id);
+    }, []);
+    //@@viewOff:private
+
+    //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     if (room.light) {

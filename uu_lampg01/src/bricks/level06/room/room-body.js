@@ -6,6 +6,7 @@ import Config from "./config/config";
 import Room from "../../../core/room/room";
 import withAuthentication from "../../../core/with-authentication/with-authentication";
 import RoomProvider from "./room-provider";
+import RoomHeader from "./room-header";
 //@@viewOff:imports
 
 const STATICS = {
@@ -52,7 +53,7 @@ export const RoomBody = createVisualComponent({
     return (
       <RoomProvider on={props.on}>
         <Room
-          header={props.header}
+          header={<RoomHeader header={props.header} />}
           help={props.help}
           copyTagFunc={props.copyTagFunc}
           bgStyle={props.bgStyle}
