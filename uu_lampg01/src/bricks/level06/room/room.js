@@ -7,7 +7,6 @@ import createCopyTag from "../../../utils/createCopyTag";
 import Lsi from "./room-lsi";
 //@@viewOff:imports
 
-// TODO MFA: Waiting for fix of placeholder in uuEcc g03
 const STATICS = {
   //@@viewOn:statics
   tagName: Config.TAG + "Room",
@@ -95,7 +94,7 @@ export const Room = createVisualComponent({
           nestingLevel={currentNestingLevel}
           copyTagFunc={this._handleCopyTag}
         >
-          {this.props.content ?? this.props.children}
+          {this.props.content || this.props.children}
         </RoomBody>
       </>
     );
