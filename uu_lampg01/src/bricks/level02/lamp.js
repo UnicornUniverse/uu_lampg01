@@ -21,22 +21,12 @@ export const Lamp = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     header: UU5.PropTypes.node,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     header: undefined,
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: 0,
   },
   //@@viewOff:defaultProps
 
@@ -59,11 +49,6 @@ export const Lamp = createVisualComponent({
           header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
           help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           copyTagFunc={_handleCopyTag}
-          bgStyle={props.bgStyle}
-          cardView={props.cardView}
-          colorSchema={props.colorSchema}
-          elevation={props.elevation}
-          borderRadius={props.borderRadius}
           nestingLevel={currentNestingLevel}
           on
           {...attrs}
@@ -75,12 +60,7 @@ export const Lamp = createVisualComponent({
           header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
           help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           info={<UU5.Bricks.Lsi lsi={Lsi.hiddenInfo} />}
-          cardView={props.cardView}
           copyTagFunc={_handleCopyTag}
-          elevation={props.elevation}
-          borderRadius={props.borderRadius}
-          bgStyle={props.bgStyle}
-          colorSchema={props.colorSchema}
           nestingLevel={currentNestingLevel}
           {...attrs}
         />
