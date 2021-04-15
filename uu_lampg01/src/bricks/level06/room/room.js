@@ -10,7 +10,7 @@ import Lsi from "./room-lsi";
 // TODO MFA: Waiting for fix of placeholder in uuEcc g03
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Room",
+  tagName: Config.TAG + "Room",
   nestingLevel: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
@@ -32,7 +32,7 @@ const DEFAULT_PROPS = {
 };
 
 export const Room = createVisualComponent({
-  ...STATICS,
+  statics: STATICS,
 
   //@@viewOn:mixins
   mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
@@ -94,7 +94,9 @@ export const Room = createVisualComponent({
           help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           nestingLevel={currentNestingLevel}
           copyTagFunc={this._handleCopyTag}
-        />
+        >
+          {this.props.content ?? this.props.children}
+        </RoomBody>
       </>
     );
   },
