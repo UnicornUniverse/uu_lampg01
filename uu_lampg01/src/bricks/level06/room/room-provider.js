@@ -36,22 +36,22 @@ export const RoomProvider = createComponent({
 
     function registerLamp(id) {
       console.log("Register Lamp: " + id);
-      setLampTotal(lampTotal + 1);
+      setLampTotal((prevTotal) => prevTotal + 1);
     }
 
     function unregisterLamp(id) {
       console.log("Unregister Lamp: " + id);
-      setLampTotal(lampTotal - 1);
+      setLampTotal((prevTotal) => prevTotal - 1);
     }
 
     function registerSwitch(id) {
       console.log("Register Switch: " + id);
-      setSwitchTotal(switchTotal + 1);
+      setSwitchTotal((prevTotal) => prevTotal + 1);
     }
 
     function unregisterSwitch(id) {
       console.log("Unregister Switch: " + id);
-      setSwitchTotal(switchTotal - 1);
+      setSwitchTotal((prevTotal) => prevTotal - 1);
     }
 
     const room = {
