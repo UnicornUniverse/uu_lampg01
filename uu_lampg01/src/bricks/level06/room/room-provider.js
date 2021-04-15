@@ -35,22 +35,18 @@ export const RoomProvider = createComponent({
     const [switchTotal, setSwitchTotal] = useState(0);
 
     function registerLamp(id) {
-      console.log("Register Lamp: " + id);
       setLampTotal((prevTotal) => prevTotal + 1);
     }
 
     function unregisterLamp(id) {
-      console.log("Unregister Lamp: " + id);
       setLampTotal((prevTotal) => prevTotal - 1);
     }
 
     function registerSwitch(id) {
-      console.log("Register Switch: " + id);
       setSwitchTotal((prevTotal) => prevTotal + 1);
     }
 
     function unregisterSwitch(id) {
-      console.log("Unregister Switch: " + id);
       setSwitchTotal((prevTotal) => prevTotal - 1);
     }
 
