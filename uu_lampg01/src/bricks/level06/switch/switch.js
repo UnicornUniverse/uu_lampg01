@@ -10,7 +10,7 @@ import Lsi from "./switch-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Switch",
+  tagName: Config.TAG + "Switch",
   nestingLevel: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
@@ -30,7 +30,7 @@ const DEFAULT_PROPS = {
 };
 
 export const Switch = createVisualComponent({
-  ...STATICS,
+  statics: STATICS,
 
   //@@viewOn:mixins
   mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],

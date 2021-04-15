@@ -9,7 +9,7 @@ import Lsi from "./lamp-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Lamp",
+  tagName: Config.TAG + "Lamp",
   nestingLevel: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
@@ -32,7 +32,7 @@ const DEFAULT_PROPS = {
 };
 
 export const Lamp = createVisualComponent({
-  ...STATICS,
+  statics: STATICS,
 
   //@@viewOn:mixins
   mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
