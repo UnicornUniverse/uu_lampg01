@@ -7,6 +7,7 @@ import createCopyTag from "../../../utils/createCopyTag";
 import Lsi from "./room-lsi";
 //@@viewOff:imports
 
+// TODO MFA: Waiting for fix of placeholder in uuEcc g03
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Room",
@@ -16,6 +17,7 @@ const STATICS = {
     startMode: "button",
     customEdit: true,
     lazy: true,
+    enablePlaceholder: true,
   },
   //@@viewOff:statics
 };
