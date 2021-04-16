@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useEffect } from "uu5g04-hooks";
-import Core from "../../core";
+import Core from "../../core/core";
 import useRoom from "../room/use-room";
 import Config from "./config/config";
 import Lsi from "./switch-body-lsi";

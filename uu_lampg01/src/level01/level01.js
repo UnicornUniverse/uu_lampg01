@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import Lamp from "./level01/lamp";
+import Lamp from "./lamp";
 //@@viewOff:imports
 
 const Level01 = { Lamp };

@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5, { createVisualComponent } from "uu5g04";
-import { createCopyTag } from "../utils";
+import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
 import RoomBody from "./room/room-body";
 import EditModal from "./room/edit-modal";
@@ -9,7 +9,7 @@ import Lsi from "./room-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Room",
+  tagName: Config.TAG + "Room",
   nestingLevelList: ["box", "inline"],
   editMode: {
     displayType: "block",

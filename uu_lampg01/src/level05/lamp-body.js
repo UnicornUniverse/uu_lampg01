@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useState } from "uu5g04-hooks";
-import Core from "../core";
+import Core from "../core/core";
 import Config from "./config/config";
 //@@viewOff:imports
 

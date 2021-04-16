@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5, { createVisualComponent } from "uu5g04";
-import { createCopyTag } from "../utils";
+import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
 import SwitchBody from "./switch/switch-body";
 import EditModal from "./switch/edit-modal";
@@ -9,7 +9,7 @@ import Lsi from "./switch-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Switch",
+  tagName: Config.TAG + "Switch",
   nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",

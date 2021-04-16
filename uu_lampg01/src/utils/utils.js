@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import createCopyTag from "./utils/createCopyTag";
+import createCopyTag from "./createCopyTag";
 //@@viewOff:imports
 
 const Utils = { createCopyTag };

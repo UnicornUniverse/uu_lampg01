@@ -1,8 +1,8 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useSession } from "uu5g04-hooks";
-import { createCopyTag } from "../utils";
-import Core from "../core";
+import { createCopyTag } from "../utils/utils";
+import Core from "../core/core";
 import Config from "./config/config";
 import Lsi from "./lamp-lsi";
 //@@viewOff:imports
