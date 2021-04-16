@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.5.0-beta.1",
+  "version": "0.5.0-beta.2",
   "license": "License Commercial",
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
@@ -22,7 +22,11 @@
       {
         "code": "UuLamp.Level01.Lamp",
         "name": "Level01.Lamp",
-        "tagList": ["UuLamp", "Level01", "Lamp"],
+        "tagList": [
+          "UuLamp",
+          "Level01",
+          "Lamp"
+        ],
         "docCode": "UuLampLevel01Lamp",
         "desc": "",
         "icon": "",
@@ -33,7 +37,11 @@
       {
         "code": "UuLamp.Level02.Lamp",
         "name": "Level02.Lamp",
-        "tagList": ["UuLamp", "Level02", "Lamp"],
+        "tagList": [
+          "UuLamp",
+          "Level02",
+          "Lamp"
+        ],
         "docCode": "UuLampLevel02Lamp",
         "desc": "",
         "icon": "",
@@ -44,7 +52,11 @@
       {
         "code": "UuLamp.Level03.Lamp",
         "name": "Level03.Lamp",
-        "tagList": ["UuLamp", "Level03", "Lamp"],
+        "tagList": [
+          "UuLamp",
+          "Level03",
+          "Lamp"
+        ],
         "docCode": "UuLampLevel03Lamp",
         "desc": "",
         "icon": "",
@@ -55,7 +67,11 @@
       {
         "code": "UuLamp.Level04.Lamp",
         "name": "Level04.Lamp",
-        "tagList": ["UuLamp", "Level04", "Lamp"],
+        "tagList": [
+          "UuLamp",
+          "Level04",
+          "Lamp"
+        ],
         "docCode": "UuLampLevel04Lamp",
         "desc": "",
         "icon": "",
@@ -66,7 +82,11 @@
       {
         "code": "UuLamp.Level05.Lamp",
         "name": "Level05.Lamp",
-        "tagList": ["UuLamp", "Level05", "Lamp"],
+        "tagList": [
+          "UuLamp",
+          "Level05",
+          "Lamp"
+        ],
         "docCode": "UuLampLevel05Lamp",
         "desc": "",
         "icon": "",
@@ -77,7 +97,11 @@
       {
         "code": "UuLamp.Level06.Lamp",
         "name": "Level06.Lamp",
-        "tagList": ["UuLamp", "Level06", "Lamp"],
+        "tagList": [
+          "UuLamp",
+          "Level06",
+          "Lamp"
+        ],
         "docCode": "UuLampLevel06Lamp",
         "desc": "",
         "icon": "",
@@ -88,7 +112,11 @@
       {
         "code": "UuLamp.Level06.Switch",
         "name": "Level06.Switch",
-        "tagList": ["UuLamp", "Level06", "Swith"],
+        "tagList": [
+          "UuLamp",
+          "Level06",
+          "Swith"
+        ],
         "docCode": "UuLampLevel06Switch",
         "desc": "",
         "icon": "",
@@ -99,7 +127,11 @@
       {
         "code": "UuLamp.Level06.Room",
         "name": "Level06.Room",
-        "tagList": ["UuLamp", "Level06", "Room"],
+        "tagList": [
+          "UuLamp",
+          "Level06",
+          "Room"
+        ],
         "docCode": "UuLampLevel06Room",
         "desc": "",
         "icon": "",
