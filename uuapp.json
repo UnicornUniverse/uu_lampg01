@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.4.0-beta.2",
+  "version": "0.5.0",
   "license": "License Commercial",
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
@@ -20,74 +20,92 @@
     "sourceUri": "https://cdn.plus4u.net/uu-lampg01/%s/uu_lampg01.min.js",
     "componentList": [
       {
-        "code": "UuLamp.Level01",
-        "name": "Level01",
-        "tagList": [
-          "UuLamp",
-          "Level01"
-        ],
-        "docCode": "UuLampLevel01",
-        "desc": "",
-        "icon": "",
-        "imageUri": "",
-        "uuEccReady": false,
-        "template": "<UuLamp.Level01 />"
-      },
-      {
-        "code": "UuLamp.Level02",
-        "name": "Level02",
-        "tagList": [
-          "UuLamp",
-          "Level02"
-        ],
-        "docCode": "UuLampLevel02",
-        "desc": "",
-        "icon": "",
-        "imageUri": "",
-        "uuEccReady": false,
-        "template": "<UuLamp.Level02 />"
-      },
-      {
-        "code": "UuLamp.Level03",
-        "name": "Level03",
-        "tagList": [
-          "UuLamp",
-          "Level03"
-        ],
-        "docCode": "UuLampLevel03",
-        "desc": "",
-        "icon": "",
-        "imageUri": "",
-        "uuEccReady": false,
-        "template": "<UuLamp.Level03 />"
-      },
-      {
-        "code": "UuLamp.Level04",
-        "name": "Level04",
-        "tagList": [
-          "UuLamp",
-          "Level04"
-        ],
-        "docCode": "UuLampLevel04",
+        "code": "UuLamp.Level01.Lamp",
+        "name": "Level01.Lamp",
+        "tagList": ["UuLamp", "Level01", "Lamp"],
+        "docCode": "UuLampLevel01Lamp",
         "desc": "",
         "icon": "",
         "imageUri": "",
         "uuEccReady": true,
-        "template": "<UuLamp.Level04 />"
+        "template": "<UuLamp.Level01.Lamp />"
       },
       {
-        "code": "UuLamp.Level05",
-        "name": "Level05",
-        "tagList": [
-          "UuLamp",
-          "Level05"
-        ],
-        "docCode": "UuLampLevel05",
+        "code": "UuLamp.Level02.Lamp",
+        "name": "Level02.Lamp",
+        "tagList": ["UuLamp", "Level02", "Lamp"],
+        "docCode": "UuLampLevel02Lamp",
         "desc": "",
         "icon": "",
         "imageUri": "",
         "uuEccReady": true,
-        "template": "<UuLamp.Level05 />"
+        "template": "<UuLamp.Level02.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level03.Lamp",
+        "name": "Level03.Lamp",
+        "tagList": ["UuLamp", "Level03", "Lamp"],
+        "docCode": "UuLampLevel03Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level03.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level04.Lamp",
+        "name": "Level04.Lamp",
+        "tagList": ["UuLamp", "Level04", "Lamp"],
+        "docCode": "UuLampLevel04Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level04.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level05.Lamp",
+        "name": "Level05.Lamp",
+        "tagList": ["UuLamp", "Level05", "Lamp"],
+        "docCode": "UuLampLevel05Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level05.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level06.Lamp",
+        "name": "Level06.Lamp",
+        "tagList": ["UuLamp", "Level06", "Lamp"],
+        "docCode": "UuLampLevel06Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level06.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level06.Switch",
+        "name": "Level06.Switch",
+        "tagList": ["UuLamp", "Level06", "Swith"],
+        "docCode": "UuLampLevel06Switch",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level06.Switch />"
+      },
+      {
+        "code": "UuLamp.Level06.Room",
+        "name": "Level06.Room",
+        "tagList": ["UuLamp", "Level06", "Room"],
+        "docCode": "UuLampLevel06Room",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level06.Room />"
       }
     ]
   }

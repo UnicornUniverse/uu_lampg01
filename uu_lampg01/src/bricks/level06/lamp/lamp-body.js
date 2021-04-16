@@ -1,21 +1,22 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useSession } from "uu5g04-hooks";
-import "uu_pg01-bricks";
+import { createVisualComponent, useEffect } from "uu5g04-hooks";
+import Package from "../../../core/package/package";
+import withAuthentication from "../../../core/with-authentication/with-authentication";
 import Config from "./config/config";
-import Lamp from "../../core/lamp/lamp";
-import Package from "../../core/package/package";
-import Lsi from "./level04-body-lsi";
+import LampView from "../../../core/lamp/lamp";
+import useRoom from "../room/use-room";
+import Lsi from "./lamp-body-lsi";
+
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level04Body",
-  nestingLevel: ["inline", "smallBox", "box"],
+  displayName: Config.TAG + "LampBody",
   //@@viewOff:statics
 };
 
-export const Level04Body = createVisualComponent({
+export const LampBody = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -44,23 +45,34 @@ export const Level04Body = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    nestingLevel: "box",
   },
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:render
-    const { sessionState } = useSession();
+    //@@viewOn:private
+    const room = useRoom();
 
+    useEffect(() => {
+      if (!room.registerLamp || !room.unregisterLamp) {
+        return;
+      }
+
+      room.registerLamp(props.id);
+
+      return () => room.unregisterLamp(props.id);
+    }, []);
+    //@@viewOff:private
+
+    //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
-    if (sessionState === "authenticated") {
+    if (room.light) {
       return (
-        <Lamp
-          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+        <LampView
+          header={props.header}
+          help={props.header}
           copyTagFunc={props.copyTagFunc}
-          on={props.on}
+          on={room.light.on}
           bulbStyle={props.bulbStyle}
           bulbSize={props.bulbSize}
           bgStyle={props.bgStyle}
@@ -75,8 +87,9 @@ export const Level04Body = createVisualComponent({
     } else {
       return (
         <Package
-          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+          header={props.header}
+          help={props.help}
+          info={<UU5.Bricks.Lsi lsi={Lsi.noRoom} />}
           cardView={props.cardView}
           copyTagFunc={props.copyTagFunc}
           elevation={props.elevation}
@@ -88,8 +101,8 @@ export const Level04Body = createVisualComponent({
         />
       );
     }
-    //@@viewOff:render
   },
+  //@@viewOff:render
 });
 
-export default Level04Body;
+export default withAuthentication(LampBody, STATICS.displayName);

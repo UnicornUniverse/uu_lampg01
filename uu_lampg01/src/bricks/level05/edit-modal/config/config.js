@@ -1,8 +1,9 @@
 // This file was auto-generated according to the "namespace" setting in package.json.
 // Manual changes to this file are discouraged, if values are inconsistent with package.json setting.
 import UU5 from "uu5g04";
+import Config from "../../config/config";
 
-const TAG = "UuLamp.Level05.EditModal";
+const TAG = Config.TAG + "EditModal.";
 
 export default {
   TAG,

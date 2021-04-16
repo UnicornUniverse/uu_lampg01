@@ -6,10 +6,15 @@ import Lsi from "./lamp-box-lsi";
 import Bulb from "./bulb";
 //@@viewOff:imports
 
-export const LampBox = createVisualComponent({
+const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "LampBox",
+  nestingLevel: "box",
   //@@viewOff:statics
+};
+
+export const LampBox = createVisualComponent({
+  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -57,6 +62,8 @@ export const LampBox = createVisualComponent({
       });
     }
 
+    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+
     return (
       <UuP.Bricks.ComponentWrapper
         header={props.header}
@@ -66,6 +73,7 @@ export const LampBox = createVisualComponent({
         elevation={props.elevation}
         borderRadius={props.borderRadius}
         actionList={actionList}
+        {...attrs}
       >
         <UU5.Bricks.Card
           bgStyle={props.bgStyle}

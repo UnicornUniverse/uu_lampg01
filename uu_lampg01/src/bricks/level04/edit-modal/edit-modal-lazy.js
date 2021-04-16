@@ -45,10 +45,10 @@ const EditModalLazy = createComponentWithRef({
     //@@viewOn:render
     return (
       <UU5.BricksEditable.Modal
-        header={<UU5.Bricks.Lsi lsi={{ en: "Edit Level04" }} />}
+        header={<UU5.Bricks.Lsi lsi={{ en: "Edit Level04.Lamp" }} />}
         shown
         onClose={onClose}
-        componentName={"UuLamp.Level04"}
+        componentName={"UuLamp.Level04.Lamp"}
         componentProps={props}
         componentPropsForm={[
           {
