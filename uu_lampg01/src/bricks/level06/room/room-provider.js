@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent, useState } from "uu5g04-hooks";
+import { createComponent, useState, useMemo } from "uu5g04-hooks";
 import Config from "./config/config";
 import RoomContext from "./room-context";
 //@@viewOff:imports
@@ -35,6 +35,7 @@ export const RoomProvider = createComponent({
     const [switchTotal, setSwitchTotal] = useState(0);
 
     function registerLamp(id) {
+      console.log("Register Lamp: " + id);
       setLampTotal((prevTotal) => prevTotal + 1);
     }
 
@@ -50,17 +51,23 @@ export const RoomProvider = createComponent({
       setSwitchTotal((prevTotal) => prevTotal - 1);
     }
 
-    const room = {
-      light: { on, setOn },
-      lampTotal,
-      registerLamp,
-      unregisterLamp,
-      switchTotal,
-      registerSwitch,
-      unregisterSwitch,
-    };
+    const room = useMemo(() => {
+      return {
+        light: { on, setOn },
+        lampTotal,
+        registerLamp,
+        unregisterLamp,
+        switchTotal,
+        registerSwitch,
+        unregisterSwitch,
+      };
+    }, [on, lampTotal, switchTotal]);
 
-    return <RoomContext.Provider value={room}>{props.children}</RoomContext.Provider>;
+    return (
+      <RoomContext.Provider value={room}>
+        {typeof props.children === "function" ? props.children(room) : props.children}
+      </RoomContext.Provider>
+    );
   },
   //@@viewOff:render
 });

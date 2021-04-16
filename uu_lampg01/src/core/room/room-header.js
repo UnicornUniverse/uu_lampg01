@@ -1,8 +1,8 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Config from "./config/config";
-import useRoom from "./use-room";
+import Config from "../../bricks/level06/room/config/config";
+import RoomTotal from "./room-total";
 //@@viewOff:imports
 
 const STATICS = {
@@ -18,31 +18,28 @@ export const RoomHeader = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    room: UU5.PropTypes.object.isRequired,
     header: UU5.PropTypes.node,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
+    room: undefined,
     header: "",
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const room = useRoom();
-
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <>
+      <UU5.Bricks.Text {...attrs}>
         {props.header}
-        {` [ ${room.lampTotal} `}
-        <UU5.Bricks.Icon icon="mdi-lightbulb-on" />
-        {` ${room.switchTotal} `}
-        <UU5.Bricks.Icon icon="mdi-toggle-switch" />
-        {` ]`}
-      </>
+        {` `}
+        <RoomTotal room={props.room} />
+      </UU5.Bricks.Text>
     );
   },
   //@@viewOff:render

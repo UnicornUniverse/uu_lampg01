@@ -1,6 +1,5 @@
 //@@viewOn:imports
 import UU5, { createVisualComponent } from "uu5g04";
-import Package from "../../../core/package/package";
 import Config from "./config/config";
 import LampBody from "./lamp-body";
 import EditModal from "./edit-modal/edit-modal";

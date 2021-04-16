@@ -2,6 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
+import RoomHeader from "./room-header";
 //@@viewOff:imports
 
 const STATICS = {
@@ -16,7 +17,7 @@ export const RoomBox = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
+    room: UU5.PropTypes.object.isRequired,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
     bgStyle: UU5.PropTypes.string,
@@ -29,7 +30,7 @@ export const RoomBox = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    on: false,
+    room: undefined,
     header: "",
     help: "",
     bgStyle: "transparent",
@@ -46,7 +47,7 @@ export const RoomBox = createVisualComponent({
 
     return (
       <UuP.Bricks.ComponentWrapper
-        header={props.header}
+        header={<RoomHeader room={props.room} header={props.header} />}
         help={props.help}
         cardView={props.cardView}
         copyTagFunc={props.copyTagFunc}

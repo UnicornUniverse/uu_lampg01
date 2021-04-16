@@ -18,7 +18,7 @@ export const Room = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
+    room: UU5.PropTypes.object.isRequired,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
     bgStyle: UU5.PropTypes.string,
@@ -26,13 +26,12 @@ export const Room = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    on: false,
+    room: undefined,
     header: "",
     help: "",
     bgStyle: "transparent",

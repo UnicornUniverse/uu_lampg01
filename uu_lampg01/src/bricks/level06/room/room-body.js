@@ -3,10 +3,9 @@ import UU5 from "uu5g04";
 import { createVisualComponent, useSession, useState } from "uu5g04-hooks";
 import "uu_pg01-bricks";
 import Config from "./config/config";
-import Room from "../../../core/room/room";
+import RoomView from "../../../core/room/room";
 import withAuthentication from "../../../core/with-authentication/with-authentication";
 import RoomProvider from "./room-provider";
-import RoomHeader from "./room-header";
 //@@viewOff:imports
 
 const STATICS = {
@@ -52,20 +51,25 @@ export const RoomBody = createVisualComponent({
 
     return (
       <RoomProvider on={props.on}>
-        <Room
-          header={<RoomHeader header={props.header} />}
-          help={props.help}
-          copyTagFunc={props.copyTagFunc}
-          bgStyle={props.bgStyle}
-          cardView={props.cardView}
-          colorSchema={props.colorSchema}
-          elevation={props.elevation}
-          borderRadius={props.borderRadius}
-          nestingLevel={props.nestingLevel}
-          {...attrs}
-        >
-          {props.children}
-        </Room>
+        {(room) => {
+          return (
+            <RoomView
+              header={props.header}
+              help={props.help}
+              copyTagFunc={props.copyTagFunc}
+              bgStyle={props.bgStyle}
+              cardView={props.cardView}
+              colorSchema={props.colorSchema}
+              elevation={props.elevation}
+              borderRadius={props.borderRadius}
+              nestingLevel={props.nestingLevel}
+              room={room}
+              {...attrs}
+            >
+              {props.children}
+            </RoomView>
+          );
+        }}
       </RoomProvider>
     );
   },
