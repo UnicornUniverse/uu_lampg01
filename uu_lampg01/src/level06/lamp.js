@@ -9,8 +9,8 @@ import Lsi from "./lamp-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevel: ["box", "smallBox", "inline"],
+  displayName: Config.TAG + "Lamp",
+  nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
     startMode: "button",

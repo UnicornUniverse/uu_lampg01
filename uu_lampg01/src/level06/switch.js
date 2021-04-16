@@ -9,8 +9,8 @@ import Lsi from "./switch-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  tagName: Config.TAG + "Switch",
-  nestingLevel: ["box", "smallBox", "inline"],
+  displayName: Config.TAG + "Switch",
+  nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
     startMode: "button",

@@ -9,8 +9,8 @@ import Lsi from "./room-lsi";
 
 const STATICS = {
   //@@viewOn:statics
-  tagName: Config.TAG + "Room",
-  nestingLevel: ["box", "smallBox", "inline"],
+  displayName: Config.TAG + "Room",
+  nestingLevelList: ["box", "inline"],
   editMode: {
     displayType: "block",
     startMode: "button",
