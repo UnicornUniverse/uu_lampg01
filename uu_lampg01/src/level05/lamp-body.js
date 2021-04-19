@@ -7,11 +7,11 @@ import Config from "./config/config";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level05Body",
+  displayName: Config.TAG + "LampBody",
   //@@viewOff:statics
 };
 
-export const Level05Body = createVisualComponent({
+export const LampBody = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -79,4 +79,4 @@ export const Level05Body = createVisualComponent({
   //@@viewOff:render
 });
 
-export default Core.withAuthentication(Level05Body, STATICS.displayName);
+export default Core.withAuthentication(LampBody, STATICS.displayName);

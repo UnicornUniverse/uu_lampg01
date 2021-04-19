@@ -7,12 +7,12 @@ import Config from "./config/config";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level04Body",
+  displayName: Config.TAG + "LampBody",
   nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
-export const Level04Body = createVisualComponent({
+export const LampBody = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -72,4 +72,4 @@ export const Level04Body = createVisualComponent({
   },
 });
 
-export default Core.withAuthentication(Level04Body, STATICS.displayName);
+export default Core.withAuthentication(LampBody, STATICS.displayName);
