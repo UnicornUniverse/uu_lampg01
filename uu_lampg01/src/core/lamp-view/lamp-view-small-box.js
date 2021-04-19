@@ -2,7 +2,8 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
-import Bulb from "./bulb";
+import Bulb from "../bulb";
+import LampSwitch from "./lamp-switch";
 //@@viewOff:imports
 
 const STATICS = {
@@ -63,12 +64,11 @@ export const LampViewSmallBox = createVisualComponent({
       >
         <Bulb on={props.on} bulbSize={props.bulbSize} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
         {props.showSwitch && (
-          <UU5.Bricks.Switch
-            switchedOn={props.on}
-            onChange={props.onSwitchClick}
-            onIcon="mdi-power-plug"
-            offIcon="mdi-power-plug-off"
-            size={getSwitchSize(props.bulbSize)}
+          <LampSwitch
+            on={props.on}
+            bulbSize={props.bulbSize}
+            colorSchema={props.colorSchema}
+            onClick={props.onSwitchClick}
           />
         )}
       </UU5.Bricks.Card>
@@ -76,19 +76,5 @@ export const LampViewSmallBox = createVisualComponent({
     //@@viewOff:render
   },
 });
-
-//@@viewOn:helpers
-function getSwitchSize(bulbSize) {
-  switch (bulbSize) {
-    case "s":
-    case "m":
-      return "s";
-    case "l":
-    case "xl":
-    default:
-      return "m";
-  }
-}
-//@@viewOff:helpers
 
 export default LampViewSmallBox;

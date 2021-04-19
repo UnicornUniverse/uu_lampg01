@@ -1,6 +1,8 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
+import Bulb from "../bulb";
+import LampSwitchInline from "./lamp-switch-inline";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -36,25 +38,14 @@ export const LampViewInline = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const bulbStateCode = props.on ? "-on" : "";
-    const bulbStyleCode = props.bulbStyle == "outline" ? "-outline" : "";
-    const bulbIcon = `mdi-lightbulb${bulbStateCode}${bulbStyleCode}`;
-
-    const lampColorSchema = props.on ? props.colorSchema : "black";
-
-    const switchStateCode = props.on ? "-outline" : "-off";
-    const switchIcon = `mdi-toggle-switch${switchStateCode}`;
-    const switchCss = Config.Css.css`cursor: pointer`;
-
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <UU5.Bricks.Text colorSchema={lampColorSchema} nestingLevel="inline" {...attrs}>
-        <UU5.Bricks.Icon icon={bulbIcon} />
+      <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
+        <Bulb on={props.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
         {props.showSwitch && (
-          <span onClick={props.onSwitchClick} className={switchCss}>
-            <UU5.Bricks.Icon icon={switchIcon} />
-          </span>
+          <LampSwitchInline on={props.on} colorSchema={props.colorSchema} onClick={props.onSwitchClick} />
         )}
       </UU5.Bricks.Text>
     );

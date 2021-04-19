@@ -5,9 +5,10 @@ import Level03 from "./level03/level03.js";
 import Level04 from "./level04/level04.js";
 import Level05 from "./level05/level05.js";
 import Level06 from "./level06/level06.js";
+import Level07 from "./level07/level07.js";
 
-const UuLamp = { Level01, Level02, Level03, Level04, Level05, Level06 };
-export { Level01, Level02, Level03, Level04, Level05, Level06 };
+const UuLamp = { Level01, Level02, Level03, Level04, Level05, Level06, Level07 };
+export { Level01, Level02, Level03, Level04, Level05, Level06, Level07 };
 export default UuLamp;
 
 if (process.env.NODE_ENV !== "test") {

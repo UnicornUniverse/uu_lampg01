@@ -1,26 +1,26 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useState } from "uu5g04-hooks";
+import Core from "../core/core";
 import Config from "./config/config";
-import Lsi from "./lamp-view-box-lsi";
-import Bulb from "../bulb";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampViewBox",
-  nestingLevel: "box",
+  displayName: Config.TAG + "Level05Body",
   //@@viewOff:statics
 };
 
-export const LampViewBox = createVisualComponent({
+export const Level05Body = createVisualComponent({
+  //@@viewOn:statics
   ...STATICS,
+  //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
+    on: UU5.PropTypes.bool,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
@@ -28,16 +28,14 @@ export const LampViewBox = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    showSwitch: UU5.PropTypes.bool,
-    onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    on: false,
     header: "",
     help: "",
+    on: false,
     bulbStyle: "filled",
     bulbSize: "xl",
     bgStyle: "transparent",
@@ -45,49 +43,32 @@ export const LampViewBox = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    showSwitch: false,
-    onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const actionList = [];
-
-    if (props.showSwitch) {
-      actionList.push({
-        content: <UU5.Bricks.Lsi lsi={props.on ? Lsi.switchOn : Lsi.switchOff} />,
-        active: true,
-        onClick: props.onSwitchClick,
-      });
-    }
-
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <UuP.Bricks.ComponentWrapper
+      <Core.LampView
         header={props.header}
         help={props.help}
-        cardView={props.cardView}
         copyTagFunc={props.copyTagFunc}
+        on={true}
+        bulbStyle={props.bulbStyle}
+        bulbSize={props.bulbSize}
+        bgStyle={props.bgStyle}
+        cardView={props.cardView}
+        colorSchema={props.colorSchema}
         elevation={props.elevation}
         borderRadius={props.borderRadius}
-        actionList={actionList}
+        nestingLevel={props.nestingLevel}
         {...attrs}
-      >
-        <UU5.Bricks.Card
-          bgStyle={props.bgStyle}
-          colorSchema={props.colorSchema}
-          className="center"
-          elevation={0}
-          elevationHover={0}
-        >
-          <Bulb on={props.on} bulbSize={props.bulbSize} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
-        </UU5.Bricks.Card>
-      </UuP.Bricks.ComponentWrapper>
+      />
     );
-    //@@viewOff:render
   },
+  //@@viewOff:render
 });
 
-export default LampViewBox;
+export default Core.withAuthentication(Level05Body, STATICS.displayName);
