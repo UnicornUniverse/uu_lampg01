@@ -59,7 +59,7 @@ export const Switch = createVisualComponent({
   _editRef: UU5.Common.Reference.create(),
 
   _handleCopyTag() {
-    return createCopyTag(STATICS.displayName, this.props, ["on", "header"], DEFAULT_PROPS);
+    return createCopyTag(STATICS.tagName, this.props, ["on", "header"], DEFAULT_PROPS);
   },
   //@@viewOff:private
 
