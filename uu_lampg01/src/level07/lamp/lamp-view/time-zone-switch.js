@@ -1,8 +1,8 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useTimeZone } from "uu5g04-hooks";
-import Config from "./config/config";
-import TimeZone from "./utils/time-zone";
+import Config from "../config/config";
+import TimeZone from "../utils/time-zone";
 import TimeZoneSwitchInline from "./time-zone-switch/time-zone-switch-inline";
 //@@viewOff:imports
 

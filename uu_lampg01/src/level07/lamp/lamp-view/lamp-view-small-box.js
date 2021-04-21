@@ -3,8 +3,8 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import Core from "../../../core/core";
-import TimeZoneSwitch from "../time-zone-switch";
-import Clock from "../clock";
+import TimeZoneSwitch from "./time-zone-switch";
+import Clock from "./clock";
 //@@viewOff:imports
 
 const STATICS = {

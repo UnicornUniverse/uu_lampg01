@@ -20,7 +20,8 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
-  timeZone: "Europe/Prague",
+  territoryUri: undefined,
+  unitCode: undefined,
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
@@ -39,7 +40,8 @@ export const Lamp = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    timeZone: UU5.PropTypes.string,
+    territoryUri: UU5.PropTypes.string,
+    unitCode: UU5.PropTypes.string,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
