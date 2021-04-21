@@ -1,7 +1,7 @@
 //@@viewOn:imports
-import Lamp from "./lamp";
-import Switch from "./switch";
-import Room from "./room";
+import Lamp from "./lamp.js";
+import Switch from "./switch.js";
+import Room from "./room.js";
 //@@viewOff:imports
 
 const Level06 = { Lamp, Switch, Room };
