@@ -4,6 +4,7 @@ import { createComponentWithRef, useRef, useImperativeHandle } from "uu5g04-hook
 import "uu5g04-bricks";
 import Config from "./config/config";
 import Lsi from "./edit-modal-lazy-lsi";
+import TimeZone from "../utils/time-zone";
 //@@viewOff:imports
 
 //TODO MFA - Add documentation link to info header
@@ -43,27 +44,31 @@ const EditModalLazy = createComponentWithRef({
     //@@viewOff:interface
 
     //@@viewOn:render
+    const timeZoneItems = TimeZone.list().map((timeZone) => {
+      return {
+        value: timeZone,
+        content: <UU5.Bricks.Lsi lsi={TimeZone.getLsi(timeZone)} />,
+      };
+    });
+
     return (
       <UU5.BricksEditable.Modal
-        header={<UU5.Bricks.Lsi lsi={{ en: "Edit Level05.Lamp" }} />}
+        header={<UU5.Bricks.Lsi lsi={{ en: "Edit Level07.Lamp" }} />}
         shown
         onClose={onClose}
-        componentName={"UuLamp.Level05.Lamp"}
+        componentName={"UuLamp.Level07.Lamp"}
         componentProps={props}
         componentPropsForm={[
           {
             name: <UU5.Bricks.Lsi lsi={Lsi.properties} />,
             setup: [
               {
-                name: "on",
+                name: "timeZone",
                 type: "switchSelector",
-                label: Lsi.state,
+                label: Lsi.timeZone,
                 getProps: () => {
                   return {
-                    items: [
-                      { content: <UU5.Bricks.Lsi lsi={Lsi.on} />, value: true },
-                      { content: <UU5.Bricks.Lsi lsi={Lsi.off} />, value: false },
-                    ],
+                    items: timeZoneItems,
                   };
                 },
               },

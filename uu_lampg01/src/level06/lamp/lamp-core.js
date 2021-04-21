@@ -4,17 +4,17 @@ import { createVisualComponent, useEffect } from "uu5g04-hooks";
 import Core from "../../core/core";
 import Config from "./config/config";
 import useRoom from "../room/use-room";
-import Lsi from "./lamp-body-lsi";
+import Lsi from "./lamp-core-lsi";
 
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampBody",
+  displayName: Config.TAG + "LampCore",
   //@@viewOff:statics
 };
 
-export const LampBody = createVisualComponent({
+export const LampCore = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -63,12 +63,13 @@ export const LampBody = createVisualComponent({
 
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     if (room.light) {
       return (
         <Core.LampView
-          header={props.header}
-          help={props.header}
+          header={header}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           copyTagFunc={props.copyTagFunc}
           on={room.light.on}
           bulbStyle={props.bulbStyle}
@@ -103,4 +104,4 @@ export const LampBody = createVisualComponent({
   //@@viewOff:render
 });
 
-export default Core.withAuthentication(LampBody, STATICS.displayName);
+export default Core.withAuthentication(LampCore, STATICS.displayName);

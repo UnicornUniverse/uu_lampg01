@@ -2,9 +2,8 @@
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampBody from "./lamp-body";
-import EditModal from "./edit-modal";
-import Lsi from "./lamp-lsi";
+import LampCore from "./lamp/lamp-core";
+import EditModal from "./lamp/edit-modal";
 //@@viewOff:imports
 
 const STATICS = {
@@ -21,6 +20,7 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
+  timeZone: "Europe/Prague",
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
@@ -39,6 +39,7 @@ export const Lamp = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    timeZone: UU5.PropTypes.string,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
@@ -64,7 +65,12 @@ export const Lamp = createVisualComponent({
   _editRef: UU5.Common.Reference.create(),
 
   _handleCopyTag() {
-    return createCopyTag(STATICS.displayName, this.props, ["on", "bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
+    return createCopyTag(
+      STATICS.displayName,
+      this.props,
+      ["timeZone", "bulbStyle", "bulbSize", "header"],
+      DEFAULT_PROPS
+    );
   },
   //@@viewOff:private
 
@@ -75,7 +81,6 @@ export const Lamp = createVisualComponent({
   render() {
     const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-    const header = this.props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
       <>
@@ -87,14 +92,8 @@ export const Lamp = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <LampBody
-          {...this.props}
-          {...attrs}
-          header={header}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-        />
+
+        <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
       </>
     );
   },

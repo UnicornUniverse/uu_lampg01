@@ -5,15 +5,16 @@ import "uu_pg01-bricks";
 import Core from "../../core/core";
 import Config from "./config/config";
 import RoomProvider from "./room-provider";
+import Lsi from "./room-core-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "RoomBody",
+  displayName: Config.TAG + "RoomCore",
   //@@viewOff:statics
 };
 
-export const RoomBody = createVisualComponent({
+export const RoomCore = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -47,14 +48,15 @@ export const RoomBody = createVisualComponent({
   render(props) {
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
       <RoomProvider on={props.on}>
         {(room) => {
           return (
             <Core.RoomView
-              header={props.header}
-              help={props.help}
+              header={header}
+              help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
               copyTagFunc={props.copyTagFunc}
               bgStyle={props.bgStyle}
               cardView={props.cardView}
@@ -75,4 +77,4 @@ export const RoomBody = createVisualComponent({
   //@@viewOff:render
 });
 
-export default Core.withAuthentication(RoomBody, STATICS.displayName);
+export default Core.withAuthentication(RoomCore, STATICS.displayName);

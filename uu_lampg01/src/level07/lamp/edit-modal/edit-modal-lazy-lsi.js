@@ -3,17 +3,9 @@ export const Lsi = {
     cs: "Lampa",
     en: "Lamp",
   },
-  state: {
-    cs: "Stav",
-    en: "State",
-  },
-  on: {
-    en: "on",
-    cs: "zapnuto",
-  },
-  off: {
-    en: "off",
-    cs: "vypnuto",
+  timeZone: {
+    cs: "Časové pásmo",
+    en: "Time Zone",
   },
   bulbStyle: {
     cs: "Styl žárovky",

@@ -4,16 +4,16 @@ import { createVisualComponent, useEffect } from "uu5g04-hooks";
 import Core from "../../core/core";
 import useRoom from "../room/use-room";
 import Config from "./config/config";
-import Lsi from "./switch-body-lsi";
+import Lsi from "./switch-core-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "SwitchBody",
+  displayName: Config.TAG + "SwitchCore",
   //@@viewOff:statics
 };
 
-export const SwitchBody = createVisualComponent({
+export const SwitchCore = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -60,12 +60,13 @@ export const SwitchBody = createVisualComponent({
 
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     if (room.light) {
       return (
         <Core.SwitchView
-          header={props.header}
-          help={props.help}
+          header={header}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           copyTagFunc={props.copyTagFunc}
           on={room.light && room.light.on}
           bgStyle={props.bgStyle}
@@ -99,4 +100,4 @@ export const SwitchBody = createVisualComponent({
   //@@viewOff:render
 });
 
-export default Core.withAuthentication(SwitchBody, STATICS.displayName);
+export default Core.withAuthentication(SwitchCore, STATICS.displayName);

@@ -1,17 +1,19 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useState } from "uu5g04-hooks";
-import Core from "../core/core";
+import { createVisualComponent } from "uu5g04-hooks";
+import Core from "../../core/core";
 import Config from "./config/config";
+import Lsi from "./lamp-core-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampBody",
+  displayName: Config.TAG + "LampCore",
+  nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
-export const LampBody = createVisualComponent({
+export const LampCore = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -48,20 +50,15 @@ export const LampBody = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [on, setOn] = useState(props.on);
-
-    function handleSwitchClick() {
-      setOn(!on);
-    }
-
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
       <Core.LampView
-        header={props.header}
-        help={props.help}
+        header={header}
+        help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
         copyTagFunc={props.copyTagFunc}
-        on={on}
+        on={props.on}
         bulbStyle={props.bulbStyle}
         bulbSize={props.bulbSize}
         bgStyle={props.bgStyle}
@@ -70,13 +67,11 @@ export const LampBody = createVisualComponent({
         elevation={props.elevation}
         borderRadius={props.borderRadius}
         nestingLevel={props.nestingLevel}
-        onSwitchClick={handleSwitchClick}
-        showSwitch
         {...attrs}
       />
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
-export default Core.withAuthentication(LampBody, STATICS.displayName);
+export default Core.withAuthentication(LampCore, STATICS.displayName);

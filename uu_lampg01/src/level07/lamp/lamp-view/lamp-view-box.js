@@ -1,26 +1,28 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useState } from "uu5g04-hooks";
-import Core from "../core/core";
+import UuP from "uu_pg01";
+import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
+import Core from "../../../core/core";
+import TimeZoneSwitch from "../time-zone-switch";
+import Clock from "../clock";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Level05Body",
+  displayName: Config.TAG + "LampViewBox",
+  nestingLevel: "box",
   //@@viewOff:statics
 };
 
-export const Level05Body = createVisualComponent({
-  //@@viewOn:statics
+export const LampViewBox = createVisualComponent({
   ...STATICS,
-  //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
+    on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
-    on: UU5.PropTypes.bool,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
@@ -28,14 +30,16 @@ export const Level05Body = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    showSwitch: UU5.PropTypes.bool,
+    onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
+    on: false,
     header: "",
     help: "",
-    on: false,
     bulbStyle: "filled",
     bulbSize: "xl",
     bgStyle: "transparent",
@@ -43,32 +47,47 @@ export const Level05Body = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
+    showSwitch: false,
+    onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const clockCss = Config.Css.css`margin: 20px`;
+    const switchCss = Config.Css.css`margin: 20px`;
 
     return (
-      <Core.LampView
+      <UuP.Bricks.ComponentWrapper
         header={props.header}
         help={props.help}
-        copyTagFunc={props.copyTagFunc}
-        on={true}
-        bulbStyle={props.bulbStyle}
-        bulbSize={props.bulbSize}
-        bgStyle={props.bgStyle}
         cardView={props.cardView}
-        colorSchema={props.colorSchema}
+        copyTagFunc={props.copyTagFunc}
         elevation={props.elevation}
         borderRadius={props.borderRadius}
-        nestingLevel={props.nestingLevel}
         {...attrs}
-      />
+      >
+        <UU5.Bricks.Card
+          bgStyle={props.bgStyle}
+          colorSchema={props.colorSchema}
+          className="center"
+          elevation={0}
+          elevationHover={0}
+        >
+          <Core.Bulb
+            on={props.on}
+            bulbSize={props.bulbSize}
+            bulbStyle={props.bulbStyle}
+            colorSchema={props.colorSchema}
+          />
+          <Clock className={clockCss} />
+          <TimeZoneSwitch className={switchCss} />
+        </UU5.Bricks.Card>
+      </UuP.Bricks.ComponentWrapper>
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
-export default Core.withAuthentication(Level05Body, STATICS.displayName);
+export default LampViewBox;

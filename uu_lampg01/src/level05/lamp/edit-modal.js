@@ -2,7 +2,7 @@
 import UU5 from "uu5g04";
 import { createComponentWithRef } from "uu5g04-hooks";
 import "uu5g04-bricks";
-import Config from "./config/config";
+import Config from "../config/config";
 //@@viewOff:imports
 
 //@@viewOn:lazy

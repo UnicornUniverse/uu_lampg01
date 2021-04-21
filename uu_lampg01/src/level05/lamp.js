@@ -2,9 +2,8 @@
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampBody from "./lamp-body";
-import EditModal from "./edit-modal";
-import Lsi from "./lamp-lsi";
+import LampCore from "./lamp/lamp-core";
+import EditModal from "./lamp/edit-modal";
 //@@viewOff:imports
 
 const STATICS = {
@@ -88,14 +87,7 @@ export const Lamp = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <LampBody
-          {...this.props}
-          {...attrs}
-          header={this.props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-        />
+        <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
       </>
     );
   },

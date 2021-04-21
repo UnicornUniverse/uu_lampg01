@@ -2,9 +2,8 @@
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampBody from "./lamp/lamp-body";
+import LampCore from "./lamp/lamp-core";
 import EditModal from "./lamp/edit-modal";
-import Lsi from "./lamp-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -75,7 +74,6 @@ export const Lamp = createVisualComponent({
   render() {
     const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-    const header = this.props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
       <>
@@ -87,14 +85,7 @@ export const Lamp = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <LampBody
-          {...this.props}
-          {...attrs}
-          header={header}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-        />
+        <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
       </>
     );
   },

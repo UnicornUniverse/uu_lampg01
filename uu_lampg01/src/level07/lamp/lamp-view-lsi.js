@@ -1,7 +1,7 @@
 const Lsi = {
   header: {
-    en: "uuLamp Level 07 - Timezone Lamp",
-    cs: "uuLamp Level 07 - Lampa s časovou zónou",
+    en: "uuLamp Level 07 - Time Zone Lamp",
+    cs: "uuLamp Level 07 - Lampa s časovým pásmem",
   },
   help: {
     en:

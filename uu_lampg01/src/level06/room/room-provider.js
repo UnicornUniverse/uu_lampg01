@@ -67,8 +67,8 @@ export const RoomProvider = createComponent({
         {typeof props.children === "function" ? props.children(room) : props.children}
       </RoomContext.Provider>
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
 export default RoomProvider;

@@ -2,9 +2,8 @@
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import RoomBody from "./room/room-body";
+import RoomCore from "./room/room-core";
 import EditModal from "./room/edit-modal";
-import Lsi from "./room-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -74,7 +73,6 @@ export const Room = createVisualComponent({
   render() {
     const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-    const header = this.props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
       <>
@@ -86,16 +84,9 @@ export const Room = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <RoomBody
-          {...this.props}
-          {...attrs}
-          header={header}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-        >
+        <RoomCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag}>
           {this.props.content || this.props.children}
-        </RoomBody>
+        </RoomCore>
       </>
     );
   },

@@ -2,9 +2,8 @@
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import SwitchBody from "./switch/switch-body";
+import SwitchCore from "./switch/switch-core";
 import EditModal from "./switch/edit-modal";
-import Lsi from "./switch-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -71,7 +70,6 @@ export const Switch = createVisualComponent({
   render() {
     const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-    const header = this.props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
       <>
@@ -83,14 +81,7 @@ export const Switch = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-        <SwitchBody
-          {...this.props}
-          {...attrs}
-          header={header}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-        />
+        <SwitchCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
       </>
     );
   },
