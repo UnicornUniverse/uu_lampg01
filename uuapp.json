@@ -153,6 +153,21 @@
         "imageUri": "",
         "uuEccReady": true,
         "template": "<UuLamp.Level07.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level08.Lamp",
+        "name": "Lamp",
+        "tagList": [
+          "UuLamp",
+          "Level08",
+          "Lamp"
+        ],
+        "docCode": "UuLampLevel08Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuLamp.Level08.Lamp />"
       }
     ]
   }
