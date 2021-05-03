@@ -3,6 +3,22 @@ export const Lsi = {
     cs: "Lampa",
     en: "Lamp",
   },
+  documentUri: {
+    cs: "URL dokumentu",
+    en: "Document URL",
+  },
+  state: {
+    cs: "Stav",
+    en: "State",
+  },
+  on: {
+    en: "on",
+    cs: "zapnuto",
+  },
+  off: {
+    en: "off",
+    cs: "vypnuto",
+  },
   bulbStyle: {
     cs: "Styl žárovky",
     en: "Bulb Style",

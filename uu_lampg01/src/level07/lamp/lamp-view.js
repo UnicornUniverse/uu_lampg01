@@ -68,8 +68,8 @@ export const LampView = createVisualComponent({
             bulbStyle={props.bulbStyle}
             colorSchema={props.colorSchema}
             header={header}
-            {...attrs}
             help={help}
+            {...attrs}
           />
         );
     }

@@ -1,6 +1,7 @@
 //@@viewOn:imports
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
+import Core from "../core/core";
 import Config from "./config/config";
 import LampCore from "./lamp/lamp-core";
 import EditModal from "./lamp/edit-modal";
@@ -20,8 +21,8 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
-  territoryUri: undefined,
-  unitCode: undefined,
+  documentUri: undefined,
+  on: false,
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
@@ -40,8 +41,8 @@ export const Lamp = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    territoryUri: UU5.PropTypes.string,
-    unitCode: UU5.PropTypes.string,
+    documentUri: UU5.PropTypes.string.isRequired,
+    on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
@@ -67,7 +68,12 @@ export const Lamp = createVisualComponent({
   _editRef: UU5.Common.Reference.create(),
 
   _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
+    return createCopyTag(
+      STATICS.tagName,
+      this.props,
+      ["on", "documentUri", "bulbStyle", "bulbSize", "header"],
+      DEFAULT_PROPS
+    );
   },
   //@@viewOff:private
 
@@ -76,11 +82,12 @@ export const Lamp = createVisualComponent({
 
   //@@viewOn:render
   render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
+    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
+    const { baseUri, documentId } = parseBaseUriAndId(this.props.documentUri);
 
     return (
-      <>
+      <Core.ErrorBoundary nestingLevel={currentNestingLevel} {...attrs}>
         {this.isInlineEdited() && (
           <EditModal
             props={this.props}
@@ -90,11 +97,36 @@ export const Lamp = createVisualComponent({
           />
         )}
 
-        <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
-      </>
+        <LampCore
+          uuDocKitUri={baseUri}
+          documentId={documentId}
+          bulbStyle={this.props.bulbStyle}
+          bulbSize={this.props.bulbSize}
+          bgStyle={this.props.bgStyle}
+          cardView={this.props.cardView}
+          colorSchema={this.props.colorSchema}
+          elevation={this.props.elevation}
+          borderRadius={this.props.borderRadius}
+          nestingLevel={currentNestingLevel}
+          copyTagFunc={this._handleCopyTag}
+        />
+      </Core.ErrorBoundary>
     );
   },
   //@@viewOff:render
 });
+
+//@@viewOn:helpers
+function parseBaseUriAndId(documentUri) {
+  if (!documentUri) {
+    return { baseUri: undefined, documentId: undefined };
+  }
+
+  const baseUri = documentUri.match("(http|https)://.*/").shift();
+  const url = UU5.Common.Url.parse(documentUri);
+  const documentId = url.parameters.documentId;
+  return { baseUri, documentId };
+}
+//@@viewOff:helpers
 
 export default Lamp;

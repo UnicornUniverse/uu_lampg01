@@ -58,9 +58,9 @@ export const LampView = createVisualComponent({
 
     switch (currentNestingLevel) {
       case "box":
-        return <LampViewBox {...props} {...attrs} />;
+        return <LampViewBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
       case "smallBox":
-        return <LampViewSmallBox {...props} {...attrs} />;
+        return <LampViewSmallBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
       case "inline":
       default:
         return (
@@ -70,6 +70,7 @@ export const LampView = createVisualComponent({
             colorSchema={props.colorSchema}
             showSwitch={props.showSwitch}
             onSwitchClick={props.onSwitchClick}
+            nestingLevel={currentNestingLevel}
             {...attrs}
           />
         );

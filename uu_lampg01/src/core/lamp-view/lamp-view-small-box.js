@@ -3,7 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import Bulb from "../bulb";
-import LampSwitch from "./lamp-switch";
+import LampSwitch from "../lamp-switch";
 //@@viewOff:imports
 
 const STATICS = {

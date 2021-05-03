@@ -4,6 +4,8 @@ import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import Core from "../../../core/core";
+import Lsi from "./lamp-view-box-lsi";
+import DocumentErrorLsi from "./document-error-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -18,6 +20,7 @@ export const LampViewBox = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    documentDataObject: UU5.PropTypes.object.isRequired,
     on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
@@ -35,6 +38,7 @@ export const LampViewBox = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    documentDataObject: undefined,
     on: false,
     header: "",
     help: "",
@@ -52,7 +56,18 @@ export const LampViewBox = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+
+    const actionList = [];
+
+    if (props.showSwitch) {
+      actionList.push({
+        content: <UU5.Bricks.Lsi lsi={props.on ? Lsi.switchOn : Lsi.switchOff} />,
+        active: true,
+        onClick: props.onSwitchClick,
+      });
+    }
 
     return (
       <UuP.Bricks.ComponentWrapper
@@ -62,22 +77,31 @@ export const LampViewBox = createVisualComponent({
         copyTagFunc={props.copyTagFunc}
         elevation={props.elevation}
         borderRadius={props.borderRadius}
+        actionList={actionList}
         {...attrs}
       >
-        <UU5.Bricks.Card
-          bgStyle={props.bgStyle}
-          colorSchema={props.colorSchema}
-          className="center"
-          elevation={0}
-          elevationHover={0}
+        <Core.DataObjectStateResolver
+          dataObject={props.documentDataObject}
+          nestingLevel={currentNestingLevel}
+          height={120}
+          customErrorLsi={DocumentErrorLsi}
         >
-          <Core.Bulb
-            on={props.on}
-            bulbSize={props.bulbSize}
-            bulbStyle={props.bulbStyle}
+          <UU5.Bricks.Card
+            bgStyle={props.bgStyle}
             colorSchema={props.colorSchema}
-          />
-        </UU5.Bricks.Card>
+            className="center"
+            elevation={0}
+            elevationHover={0}
+          >
+            <Core.Bulb
+              on={props.on}
+              bulbSize={props.bulbSize}
+              bulbStyle={props.bulbStyle}
+              colorSchema={props.colorSchema}
+              nestingLevel={currentNestingLevel}
+            />
+          </UU5.Bricks.Card>
+        </Core.DataObjectStateResolver>
       </UuP.Bricks.ComponentWrapper>
     );
     //@@viewOff:render

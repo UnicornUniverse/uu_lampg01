@@ -5,7 +5,6 @@ import Config from "./config/config";
 import LampViewInline from "./lamp-view/lamp-view-inline";
 import LampViewSmallBox from "./lamp-view/lamp-view-small-box";
 import LampViewBox from "./lamp-view/lamp-view-box";
-import Lsi from "./lamp-view-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -20,6 +19,7 @@ export const LampView = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    documentDataObject: UU5.PropTypes.object.isRequired,
     on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
@@ -35,6 +35,7 @@ export const LampView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    documentDataObject: undefined,
     on: false,
     header: "",
     help: "",
@@ -52,26 +53,15 @@ export const LampView = createVisualComponent({
     //@@viewOn:render
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
-    const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
-    const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
 
     switch (currentNestingLevel) {
       case "box":
-        return <LampViewBox {...props} {...attrs} header={header} help={help} />;
+        return <LampViewBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
       case "smallBox":
-        return <LampViewSmallBox {...props} {...attrs} header={header} help={help} />;
+        return <LampViewSmallBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
       case "inline":
       default:
-        return (
-          <LampViewInline
-            on={props.on}
-            bulbStyle={props.bulbStyle}
-            colorSchema={props.colorSchema}
-            header={header}
-            help={help}
-            {...attrs}
-          />
-        );
+        return <LampViewInline {...props} {...attrs} nestingLevel={currentNestingLevel} />;
     }
     //@@viewOff:render
   },

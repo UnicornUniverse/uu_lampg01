@@ -3,6 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import Core from "../../../core/core";
+import DocumentErrorLsi from "./document-error-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -17,6 +18,7 @@ export const LampViewSmallBox = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    documentDataObject: UU5.PropTypes.object.isRequired,
     on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
@@ -33,6 +35,7 @@ export const LampViewSmallBox = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    documentDataObject: undefined,
     on: false,
     header: "",
     bulbStyle: "filled",
@@ -49,6 +52,7 @@ export const LampViewSmallBox = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
@@ -61,12 +65,29 @@ export const LampViewSmallBox = createVisualComponent({
         className="center padding-s"
         {...attrs}
       >
-        <Core.Bulb
-          on={props.on}
-          bulbSize={props.bulbSize}
-          bulbStyle={props.bulbStyle}
-          colorSchema={props.colorSchema}
-        />
+        <Core.DataObjectStateResolver
+          dataObject={props.documentDataObject}
+          height={120}
+          nestingLevel={currentNestingLevel}
+          customErrorLsi={DocumentErrorLsi}
+        >
+          <Core.Bulb
+            on={props.on}
+            bulbSize={props.bulbSize}
+            bulbStyle={props.bulbStyle}
+            colorSchema={props.colorSchema}
+            nestingLevel={currentNestingLevel}
+          />
+          {props.showSwitch && (
+            <Core.LampSwitch
+              on={props.on}
+              bulbSize={props.bulbSize}
+              colorSchema={props.colorSchema}
+              onClick={props.onSwitchClick}
+              nestingLevel={currentNestingLevel}
+            />
+          )}
+        </Core.DataObjectStateResolver>
       </UU5.Bricks.Card>
     );
     //@@viewOff:render

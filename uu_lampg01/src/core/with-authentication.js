@@ -5,7 +5,7 @@ import PackageView from "./package-view";
 import Lsi from "./with-authentication-lsi";
 //@@viewOff:imports
 
-function withAuthentication(Component, displayName) {
+function withAuthentication(Component, displayName, header, help) {
   return createComponent({
     //@@viewOn:statics
     displayName,

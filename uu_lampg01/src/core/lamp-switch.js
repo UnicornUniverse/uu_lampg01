@@ -1,9 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Config from "./config/config";
-import LampSwitchInline from "./lamp-switch-inline";
-import LampSwitchSmallBox from "./lamp-switch-small-box";
+import Config from "./lamp-view/config/config";
+import LampSwitchInline from "./lamp-switch/lamp-switch-inline";
+import LampSwitchSmallBox from "./lamp-switch/lamp-switch-small-box";
 //@@viewOff:imports
 
 const STATICS = {

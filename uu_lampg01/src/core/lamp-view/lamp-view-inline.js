@@ -2,7 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Bulb from "../bulb";
-import LampSwitchInline from "./lamp-switch-inline";
+import LampSwitch from "../lamp-switch";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -44,9 +44,7 @@ export const LampViewInline = createVisualComponent({
     return (
       <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
         <Bulb on={props.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
-        {props.showSwitch && (
-          <LampSwitchInline on={props.on} colorSchema={props.colorSchema} onClick={props.onSwitchClick} />
-        )}
+        {props.showSwitch && <LampSwitch on={props.on} colorSchema={props.colorSchema} onClick={props.onSwitchClick} />}
       </UU5.Bricks.Text>
     );
     //@@viewOff:render

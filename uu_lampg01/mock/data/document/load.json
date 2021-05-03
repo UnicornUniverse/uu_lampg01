@@ -1,0 +1,46 @@
+{
+  "name": "Test Document",
+  "code": "913aeb39843d3e9c081d20912d6f9293",
+  "state": "active",
+  "desc": "",
+  "creatorUuIdentity": "13-2340-1",
+  "awid": "d112828dcd1445e2a916cdd59331a359",
+  "sheetList": ["6023ba26cdc1ea0025011e53"],
+  "sys": {
+    "cts": "2021-02-10T10:49:10.533Z",
+    "mts": "2021-04-15T09:51:56.024Z",
+    "rev": 24
+  },
+  "mainSheet": "6023ba26cdc1ea0025011e53",
+  "artifactId": "6023ba263bc08d0033d5c196",
+  "id": "6023ba26cdc1ea0025011e52",
+  "authorizationStrategy": "artifact",
+  "artifactUri": "https://uuappg01-eu-w-1.plus4u.net/uu-businessterritory-maing01/de03d1a9b0a342b399dbeacbce137869/userGate/artifactDetail?id=6023ba263bc08d0033d5c196",
+  "uuAppProfileList": ["Users", "Auditors"],
+  "uuAppTypeProfileList": ["Writers"],
+  "uuAppTypeProfiles": ["Writers"],
+  "sheetNameList": [
+    {
+      "name": "",
+      "sys": {
+        "cts": "2021-02-10T10:49:10.975Z",
+        "mts": "2021-03-17T14:26:38.716Z",
+        "rev": 18
+      },
+      "id": "6023ba26cdc1ea0025011e53"
+    }
+  ],
+  "sheetNames": [
+    {
+      "name": "",
+      "sys": {
+        "cts": "2021-02-10T10:49:10.975Z",
+        "mts": "2021-03-17T14:26:38.716Z",
+        "rev": 18
+      },
+      "id": "6023ba26cdc1ea0025011e53"
+    }
+  ],
+  "uuTerritoryBaseUri": "https://uuappg01-eu-w-1.plus4u.net/uu-businessterritory-maing01/de03d1a9b0a342b399dbeacbce137869",
+  "uuAppErrorMap": {}
+}

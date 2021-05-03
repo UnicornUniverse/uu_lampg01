@@ -3,6 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
 import Config from "./config/config";
+import DocumentErrorLsi from "./document-error-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -17,6 +18,7 @@ export const LampViewInline = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    documentDataObject: UU5.PropTypes.object.isRequired,
     on: UU5.PropTypes.bool,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     colorSchema: UU5.PropTypes.string,
@@ -27,6 +29,7 @@ export const LampViewInline = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    documentDataObject: undefined,
     on: false,
     bulbStyle: "filled",
     colorSchema: "amber",
@@ -41,9 +44,18 @@ export const LampViewInline = createVisualComponent({
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
-        <Core.Bulb on={props.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
-      </UU5.Bricks.Text>
+      <Core.DataObjectStateResolver
+        dataObject={props.documentDataObject}
+        nestingLevel={currentNestingLevel}
+        customErrorLsi={DocumentErrorLsi}
+      >
+        <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
+          <Core.Bulb on={props.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
+          {props.showSwitch && (
+            <Core.LampSwitch on={props.on} colorSchema={props.colorSchema} onClick={props.onSwitchClick} />
+          )}
+        </UU5.Bricks.Text>
+      </Core.DataObjectStateResolver>
     );
     //@@viewOff:render
   },
