@@ -1,8 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useState } from "uu5g04-hooks";
+import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../core/core";
 import Config from "../config/config";
+import LampProvider from "./lamp-provider";
 import Lsi from "./lamp-core-lsi";
 //@@viewOff:imports
 
@@ -49,33 +50,37 @@ export const LampCore = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [on, setOn] = useState(props.on);
-
-    function handleSwitchClick() {
-      setOn(!on);
-    }
-
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
     const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
 
     return (
-      <Core.LampView
-        header={header}
-        help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-        copyTagFunc={props.copyTagFunc}
-        on={on}
-        bulbStyle={props.bulbStyle}
-        bulbSize={props.bulbSize}
-        bgStyle={props.bgStyle}
-        cardView={props.cardView}
-        colorSchema={props.colorSchema}
-        elevation={props.elevation}
-        borderRadius={props.borderRadius}
-        nestingLevel={props.nestingLevel}
-        onSwitchClick={handleSwitchClick}
-        showSwitch
-        {...attrs}
-      />
+      <LampProvider on={props.on}>
+        {(lamp) => {
+          function handleSwitchClick() {
+            lamp.setOn(!lamp.on);
+          }
+
+          return (
+            <Core.LampView
+              header={header}
+              help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+              copyTagFunc={props.copyTagFunc}
+              on={lamp.on}
+              bulbStyle={props.bulbStyle}
+              bulbSize={props.bulbSize}
+              bgStyle={props.bgStyle}
+              cardView={props.cardView}
+              colorSchema={props.colorSchema}
+              elevation={props.elevation}
+              borderRadius={props.borderRadius}
+              nestingLevel={props.nestingLevel}
+              onSwitchClick={handleSwitchClick}
+              showSwitch
+              {...attrs}
+            />
+          );
+        }}
+      </LampProvider>
     );
   },
   //@@viewOff:render

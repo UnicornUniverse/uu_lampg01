@@ -1,7 +1,6 @@
 //@@viewOn:imports
-import { createComponent, useMemo, useState, useDataObject, useEffect } from "uu5g04-hooks";
+import { createComponent, useMemo, useState, useEffect } from "uu5g04-hooks";
 import Config from "./config/config";
-import Calls from "calls";
 //@@viewOff:imports
 
 const STATICS = {
@@ -17,34 +16,18 @@ export const LampProvider = createComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    uuDocKitUri: UU5.PropTypes.string.isRequired,
-    documentId: UU5.PropTypes.string.isRequired,
     on: UU5.PropTypes.bool,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    uuDocKitUri: undefined,
-    documentId: undefined,
     on: false,
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:private
-
-    // *** DOCUMENT ***
-    const documentDataObject = useDataObject({
-      handlerMap: {
-        load: handleLoad,
-      },
-    });
-
-    async function handleLoad() {
-      const dtoIn = { id: props.documentId };
-      return await Calls.documentLoad(props.uuDocKitUri, dtoIn);
-    }
 
     // *** ON ***
     const [on, setOn] = useState({ value: props.on, initValue: props.on });
@@ -56,16 +39,6 @@ export const LampProvider = createComponent({
     }, [props.on]);
 
     // *** LAMP ***
-    const canSwitch = useMemo(() => {
-      if (documentDataObject.state !== "ready") {
-        return false;
-      }
-
-      const profiles = documentDataObject.data.uuAppTypeProfileList;
-      const isWriter = profiles.indexOf("Writers") > -1;
-      return isWriter;
-    }, [documentDataObject]);
-
     function handleSetOn(on) {
       setOn((prevOn) => {
         return { value: on, initValue: prevOn.initValue };
@@ -73,14 +46,11 @@ export const LampProvider = createComponent({
     }
 
     const lamp = useMemo(() => {
-      const result = { on: on.value, canSwitch, documentDataObject };
-
-      if (canSwitch) {
-        result.setOn = handleSetOn;
-      }
-
-      return result;
-    }, [on, setOn, canSwitch, documentDataObject]);
+      return {
+        on: on.value,
+        setOn: handleSetOn,
+      };
+    }, [on, handleSetOn]);
     //@@viewOff:private
 
     //@@viewOn:render

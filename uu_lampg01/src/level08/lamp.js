@@ -98,8 +98,10 @@ export const Lamp = createVisualComponent({
         )}
 
         <LampCore
+          key={this.props.documentUri}
           uuDocKitUri={baseUri}
           documentId={documentId}
+          on={this.props.on}
           bulbStyle={this.props.bulbStyle}
           bulbSize={this.props.bulbSize}
           bgStyle={this.props.bgStyle}
