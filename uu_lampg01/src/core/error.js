@@ -67,6 +67,7 @@ export const Error = createVisualComponent({
         moreInfo={props.moreInfo}
         errorData={props.errorData}
         inline={props.inline || currentNestingLevel === "inline"}
+        colorSchema="danger"
         {...attrs}
       >
         <UU5.Bricks.Lsi lsi={lsi} />
