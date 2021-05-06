@@ -45,16 +45,6 @@ export const DataObjectStateResolver = createComponent({
       case "error":
       case "pending":
         return props.children;
-      case "readyNoData":
-        return (
-          <UU5.Bricks.Block
-            background
-            colorSchema="warning"
-            content={<UU5.Bricks.Lsi lsi={Lsi.noData} />}
-            nestingLevel={currentNestingLevel}
-            {...attrs}
-          />
-        );
       case "errorNoData":
         return (
           <Error
@@ -66,6 +56,7 @@ export const DataObjectStateResolver = createComponent({
             {...attrs}
           />
         );
+      case "readyNoData":
       case "pendingNoData":
         return <DataObjectPending height={props.height} nestingLevel={currentNestingLevel} {...attrs} />;
       default:

@@ -1,0 +1,37 @@
+{
+  "uuAppErrorMap": {},
+  "id": "60926060f180580058767384",
+  "awid": "840ea668bdde4e7694edd7752a632a30",
+  "sys": {
+    "cts": "2021-05-05T09:07:44.988Z",
+    "mts": "2021-05-05T09:16:33.360Z",
+    "rev": 5,
+    "lockHash": null,
+    "lockExpTs": null
+  },
+  "code": "UuLampLevel09LampLampProvider",
+  "uuVendor": "uu",
+  "uuApp": "lamp",
+  "uuSubApp": "maing01",
+  "uuAppWorkspace": "22222222222222222222222222222222",
+  "data": {
+    "uuAppErrorMap": {},
+    "id": "60926060f180580058767384",
+    "awid": "840ea668bdde4e7694edd7752a632a30",
+    "sys": {
+      "cts": "2021-05-05T09:07:44.988Z",
+      "mts": "2021-05-05T09:16:33.360Z",
+      "rev": 5,
+      "lockHash": null,
+      "lockExpTs": null
+    },
+    "code": "UuLampLevel09LampLampProvider",
+    "uuVendor": "uu",
+    "uuApp": "lamp",
+    "uuSubApp": "maing01",
+    "uuAppWorkspace": "22222222222222222222222222222222",
+    "data": {
+      "on": true
+    }
+  }
+}

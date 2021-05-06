@@ -11,6 +11,10 @@ const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "Lamp",
   nestingLevel: ["box", "smallBox", "inline"],
+  editMode: {
+    displayType: "block",
+    startMode: "button",
+  },
   //@@viewOff:statics
 };
 
