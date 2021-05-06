@@ -1,7 +1,7 @@
 export const Lsi = {
   properties: {
-    cs: "Lampa",
-    en: "Lamp",
+    cs: "Vypínač",
+    en: "Switch",
   },
   baseUri: {
     cs: "URL aplikace Lamp",
@@ -15,26 +15,6 @@ export const Lsi = {
     cs: "Kód může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",
     en:
       "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
-  },
-  state: {
-    cs: "Stav",
-    en: "State",
-  },
-  on: {
-    en: "on",
-    cs: "zapnuto",
-  },
-  off: {
-    en: "off",
-    cs: "vypnuto",
-  },
-  bulbStyle: {
-    cs: "Styl žárovky",
-    en: "Bulb Style",
-  },
-  bulbSize: {
-    cs: "Velikost žárovky",
-    en: "Bulb Size",
   },
   header: {
     cs: "Záhlaví",

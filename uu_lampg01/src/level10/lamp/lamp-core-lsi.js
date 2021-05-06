@@ -1,11 +1,11 @@
 const Lsi = {
   header: {
-    en: "uuLamp Level 09 - Server Lamp",
-    cs: "uuLamp Level 09 - Lampa se serverem",
+    en: "uuLamp Level 10 - Server Lamp",
+    cs: "uuLamp Level 10 - Lampa se serverem",
   },
   help: {
     en:
-      '<uu5string/>The <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href="https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791" content="uuLamp educational material" target="_blank"/>.',
+      '<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href="https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791" content="uuLamp educational material" target="_blank"/>.',
     cs:
       '<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href="https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791" content="vzdělávacích materiálech uuLamp" target="_blank"/>.',
   },

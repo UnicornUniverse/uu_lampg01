@@ -46,10 +46,10 @@ const EditModalLazy = createComponentWithRef({
     //@@viewOn:render
     return (
       <UU5.BricksEditable.Modal
-        header={<UU5.Bricks.Lsi lsi={{ en: "Edit Level10.Lamp" }} />}
+        header={<UU5.Bricks.Lsi lsi={{ en: "Edit Level10.Switch" }} />}
         shown
         onClose={onClose}
-        componentName={"UuLamp.Level10.Lamp"}
+        componentName={"UuLamp.Level10.Switch"}
         componentProps={props}
         componentPropsForm={[
           {
@@ -68,47 +68,6 @@ const EditModalLazy = createComponentWithRef({
                 required: true,
                 getProps: () => {
                   return { pattern: "^\\w{3,32}$", patternMessage: lsiValues.codePatternMessage };
-                },
-              },
-              {
-                name: "on",
-                type: "switchSelector",
-                label: Lsi.state,
-                getProps: () => {
-                  return {
-                    items: [
-                      { content: <UU5.Bricks.Lsi lsi={Lsi.on} />, value: true },
-                      { content: <UU5.Bricks.Lsi lsi={Lsi.off} />, value: false },
-                    ],
-                  };
-                },
-              },
-              {
-                name: "bulbStyle",
-                type: "switchSelector",
-                label: Lsi.bulbStyle,
-                getProps: () => {
-                  return {
-                    items: [
-                      { content: "filled", value: "filled" },
-                      { content: "outline", value: "outline" },
-                    ],
-                  };
-                },
-              },
-              {
-                name: "bulbSize",
-                type: "switchSelector",
-                label: Lsi.bulbSize,
-                getProps: () => {
-                  return {
-                    items: [
-                      { content: "s", value: "s" },
-                      { content: "m", value: "m" },
-                      { content: "l", value: "l" },
-                      { content: "xl", value: "xl" },
-                    ],
-                  };
                 },
               },
               {

@@ -1,20 +1,19 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
-import Config from "./config/config";
 import Core from "../../../core/core";
-import Lsi from "./lamp-view-box-lsi";
+import Config from "./config/config";
+import Lsi from "./switch-view-box-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampViewBox",
+  displayName: Config.TAG + "SwitchViewBox",
   nestingLevel: "box",
   //@@viewOff:statics
 };
 
-export const LampViewBox = createVisualComponent({
+export const SwitchViewBox = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -22,16 +21,12 @@ export const LampViewBox = createVisualComponent({
     lampDataObject: UU5.PropTypes.object.isRequired,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    showSwitch: UU5.PropTypes.bool,
     onSwitchClick: UU5.PropTypes.func,
-    onCopySwitch: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -40,38 +35,27 @@ export const LampViewBox = createVisualComponent({
     lampDataObject: undefined,
     header: "",
     help: "",
-    bulbStyle: "filled",
-    bulbSize: "xl",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    showSwitch: false,
     onSwitchClick: () => {},
-    onCopySwitch: () => {},
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
+    const actionList = [];
+
+    actionList.push({
+      content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
+      active: true,
+      onClick: props.onSwitchClick,
+    });
+
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
-
-    const actionList = [
-      {
-        content: <UU5.Bricks.Lsi lsi={Lsi.copySwitch} />,
-        onClick: props.onCopySwitch,
-      },
-    ];
-
-    if (props.showSwitch) {
-      actionList.push({
-        content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
-        active: true,
-        onClick: props.onSwitchClick,
-      });
-    }
 
     return (
       <UuP.Bricks.ComponentWrapper
@@ -84,27 +68,25 @@ export const LampViewBox = createVisualComponent({
         actionList={actionList}
         {...attrs}
       >
-        <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel} height={120}>
-          <UU5.Bricks.Card
-            bgStyle={props.bgStyle}
-            colorSchema={props.colorSchema}
-            className="center"
-            elevation={0}
-            elevationHover={0}
+        <UU5.Bricks.Card
+          bgStyle={props.bgStyle}
+          colorSchema={props.colorSchema}
+          className="center"
+          elevation={0}
+          elevationHover={0}
+        >
+          <Core.DataObjectStateResolver
+            dataObject={props.lampDataObject}
+            height={120}
+            nestingLevel={currentNestingLevel}
           >
-            <Core.Bulb
-              on={props.lampDataObject.data?.on}
-              bulbSize={props.bulbSize}
-              bulbStyle={props.bulbStyle}
-              colorSchema={props.colorSchema}
-              nestingLevel={currentNestingLevel}
-            />
-          </UU5.Bricks.Card>
-        </Core.DataObjectStateResolver>
+            TODO Add switch
+          </Core.DataObjectStateResolver>
+        </UU5.Bricks.Card>
       </UuP.Bricks.ComponentWrapper>
     );
     //@@viewOff:render
   },
 });
 
-export default LampViewBox;
+export default SwitchViewBox;

@@ -7,10 +7,6 @@ const Lsi = {
     en: "Turn on",
     cs: "Rozsvítit",
   },
-  copySwitch: {
-    en: "Copy only switch",
-    cs: "Zkopíruj pouze vypínač",
-  },
 };
 
 export default Lsi;

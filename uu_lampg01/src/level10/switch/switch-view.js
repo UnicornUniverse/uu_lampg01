@@ -2,19 +2,19 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
-import LampViewInline from "./lamp-view/lamp-view-inline";
-import LampViewSmallBox from "./lamp-view/lamp-view-small-box";
-import LampViewBox from "./lamp-view/lamp-view-box";
+import SwitchViewInline from "./switch-view/switch-view-inline";
+import SwitchViewSmallBox from "./switch-view/switch-view-small-box";
+import SwitchViewBox from "./switch-view/switch-view-box";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampView",
+  displayName: Config.TAG + "Switch",
   nestingLevel: ["box", "smallBox", "inline"],
   //@@viewOff:statics
 };
 
-export const LampView = createVisualComponent({
+export const Switch = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -22,14 +22,12 @@ export const LampView = createVisualComponent({
     lampDataObject: UU5.PropTypes.object.isRequired,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onCopySwitch: UU5.PropTypes.func,
+    onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -38,14 +36,12 @@ export const LampView = createVisualComponent({
     lampDataObject: undefined,
     header: "",
     help: "",
-    bulbStyle: "filled",
-    bulbSize: "xl",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    onCopySwitch: () => {},
+    onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -56,15 +52,15 @@ export const LampView = createVisualComponent({
 
     switch (currentNestingLevel) {
       case "box":
-        return <LampViewBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        return <SwitchViewBox {...props} {...attrs} />;
       case "smallBox":
-        return <LampViewSmallBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        return <SwitchViewSmallBox {...props} {...attrs} />;
       case "inline":
       default:
-        return <LampViewInline {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        return <SwitchViewInline {...props} {...attrs} />;
     }
     //@@viewOff:render
   },
 });
 
-export default LampView;
+export default Switch;

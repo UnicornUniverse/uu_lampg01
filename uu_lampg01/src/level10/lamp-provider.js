@@ -22,6 +22,7 @@ export const LampProvider = createComponent({
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
     personDataObject: UU5.PropTypes.object.isRequired,
+    code: UU5.PropTypes.string,
     on: UU5.PropTypes.bool,
   },
   //@@viewOff:propTypes
@@ -29,7 +30,8 @@ export const LampProvider = createComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     baseUri: undefined,
-    code: undefined,
+    personDataObject: undefined,
+    code: UU5.Common.Tools.generateUUID(),
     on: false,
   },
   //@@viewOff:defaultProps
@@ -99,13 +101,10 @@ export const LampProvider = createComponent({
   },
 });
 
-//@@viewOn:render
+//@@viewOn:helpers
 function getPropertyCode(code) {
-  if (code) {
-    return `${PROPERTY_CODE}_${code}`;
-  } else {
-    return PROPERTY_CODE;
-  }
+  return `${PROPERTY_CODE}_${code}`;
 }
+//@@viewOff:helpers
 
 export default LampProvider;

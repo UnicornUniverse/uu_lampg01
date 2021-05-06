@@ -1,15 +1,15 @@
 //@@viewOn:imports
 import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
-import Core from "../core/core";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
-import EditModal from "./lamp/edit-modal";
+import Core from "../core/core";
+import SwitchCore from "./switch/switch-core";
+import EditModal from "./switch/edit-modal";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
+  tagName: Config.TAG + "Switch",
   nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
@@ -23,9 +23,6 @@ const STATICS = {
 const DEFAULT_PROPS = {
   baseUri: undefined,
   code: UU5.Common.Tools.generateUUID(),
-  on: false,
-  bulbStyle: "filled",
-  bulbSize: "xl",
   bgStyle: "transparent",
   cardView: "full",
   colorSchema: "amber",
@@ -33,7 +30,7 @@ const DEFAULT_PROPS = {
   borderRadius: "0",
 };
 
-export const Lamp = createVisualComponent({
+export const Switch = createVisualComponent({
   statics: STATICS,
 
   //@@viewOn:mixins
@@ -44,10 +41,7 @@ export const Lamp = createVisualComponent({
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
     code: UU5.PropTypes.string,
-    on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -71,7 +65,7 @@ export const Lamp = createVisualComponent({
 
   // We need to copy baseUri and code even they are same as default value.
   _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["on", "baseUri", "bulbStyle", "bulbSize", "header", "code"], {
+    return createCopyTag(STATICS.tagName, this.props, ["on", "header", "baseUri", "code"], {
       ...DEFAULT_PROPS,
       baseUri: undefined,
       code: undefined,
@@ -84,8 +78,8 @@ export const Lamp = createVisualComponent({
 
   //@@viewOn:render
   render() {
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
 
     return (
       <Core.ErrorBoundary nestingLevel={currentNestingLevel} {...attrs}>
@@ -97,13 +91,9 @@ export const Lamp = createVisualComponent({
             fallback={this.getEditingLoading()}
           />
         )}
-
-        <LampCore
+        <SwitchCore
           code={this.props.code}
           baseUri={this.props.baseUri}
-          on={this.props.on}
-          bulbStyle={this.props.bulbStyle}
-          bulbSize={this.props.bulbSize}
           bgStyle={this.props.bgStyle}
           cardView={this.props.cardView}
           colorSchema={this.props.colorSchema}
@@ -118,4 +108,4 @@ export const Lamp = createVisualComponent({
   //@@viewOff:render
 });
 
-export default Lamp;
+export default Switch;
