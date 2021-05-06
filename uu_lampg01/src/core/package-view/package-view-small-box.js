@@ -11,6 +11,7 @@ export const PackageViewSmallBox = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    icon: UU5.PropTypes.string,
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -21,6 +22,7 @@ export const PackageViewSmallBox = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    icon: "mdi-gift",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: undefined,
@@ -41,7 +43,7 @@ export const PackageViewSmallBox = createVisualComponent({
         className="center padding-s"
       >
         <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={props.colorSchema}>
-          <UU5.Bricks.Icon icon="mdi-gift" />
+          <UU5.Bricks.Icon icon={props.icon} />
         </UU5.Bricks.Text>
       </UU5.Bricks.Card>
     );

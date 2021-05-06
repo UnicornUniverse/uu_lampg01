@@ -22,6 +22,7 @@ export const PackageView = createVisualComponent({
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
     info: UU5.PropTypes.node,
+    icon: UU5.PropTypes.string,
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -35,6 +36,7 @@ export const PackageView = createVisualComponent({
     header: "",
     help: "",
     info: null,
+    icon: "mdi-gift",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
@@ -54,7 +56,7 @@ export const PackageView = createVisualComponent({
         return <PackageViewSmallBox {...props} />;
       case "inline":
       default:
-        return <PackageViewInline colorSchema={props.colorSchema} />;
+        return <PackageViewInline icon={props.icon} colorSchema={props.colorSchema} />;
     }
     //@@viewOff:render
   },

@@ -11,12 +11,14 @@ export const PackageViewInline = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    icon: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
+    icon: "mdi-gift",
     colorSchema: undefined,
   },
   //@@viewOff:defaultProps
@@ -27,7 +29,7 @@ export const PackageViewInline = createVisualComponent({
 
     return (
       <UU5.Bricks.Text colorSchema={props.colorSchema} nestingLevel="inline" {...attrs}>
-        <UU5.Bricks.Icon icon="mdi-gift" />
+        <UU5.Bricks.Icon icon={props.icon} />
       </UU5.Bricks.Text>
     );
     //@@viewOff:render
