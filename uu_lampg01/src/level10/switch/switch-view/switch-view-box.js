@@ -13,6 +13,8 @@ const STATICS = {
   //@@viewOff:statics
 };
 
+const switchCss = () => Config.Css.css`margin: 20px`;
+
 export const SwitchViewBox = createVisualComponent({
   ...STATICS,
 
@@ -46,16 +48,19 @@ export const SwitchViewBox = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const actionList = [];
-
-    actionList.push({
-      content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
-      active: true,
-      onClick: props.onSwitchClick,
-    });
-
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
+
+    const switchItems = [
+      {
+        value: true,
+        content: <UU5.Bricks.Lsi lsi={Lsi.switchOn} />,
+      },
+      {
+        value: false,
+        content: <UU5.Bricks.Lsi lsi={Lsi.switchOff} />,
+      },
+    ];
 
     return (
       <UuP.Bricks.ComponentWrapper
@@ -65,7 +70,6 @@ export const SwitchViewBox = createVisualComponent({
         copyTagFunc={props.copyTagFunc}
         elevation={props.elevation}
         borderRadius={props.borderRadius}
-        actionList={actionList}
         {...attrs}
       >
         <UU5.Bricks.Card
@@ -80,7 +84,13 @@ export const SwitchViewBox = createVisualComponent({
             height={120}
             nestingLevel={currentNestingLevel}
           >
-            TODO Add switch
+            <UU5.Bricks.SwitchSelector
+              items={switchItems}
+              onChange={props.onSwitchClick}
+              value={props.lampDataObject.data?.on}
+              size="xl"
+              className={switchCss()}
+            />
           </Core.DataObjectStateResolver>
         </UU5.Bricks.Card>
       </UuP.Bricks.ComponentWrapper>

@@ -21,7 +21,7 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
-  baseUri: undefined,
+  baseUri: Config.DEFAULT_LAMP_BASE_URI,
   code: UU5.Common.Tools.generateUUID(),
   bgStyle: "transparent",
   cardView: "full",

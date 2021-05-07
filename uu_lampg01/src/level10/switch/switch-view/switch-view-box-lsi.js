@@ -1,11 +1,11 @@
 const Lsi = {
   switchOn: {
-    en: "Turn off",
-    cs: "Zhasnout",
+    en: "ON",
+    cs: "Zapnuto",
   },
   switchOff: {
-    en: "Turn on",
-    cs: "Rozsvítit",
+    en: "OFF",
+    cs: "Vypnuto",
   },
 };
 

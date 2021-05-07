@@ -70,7 +70,7 @@ export const LampCore = createVisualComponent({
                 }
 
                 function handleCopySwitch() {
-                  const component = `<UuLamp.Level10.Switch baseUri=${props.baseUri} code=${props.code} />`;
+                  const component = `<UuLamp.Level10.Switch baseUri="${props.baseUri}" code="${props.code}" />`;
                   UU5.Utils.Clipboard.write(component);
                 }
 

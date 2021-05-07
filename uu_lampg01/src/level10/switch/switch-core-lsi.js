@@ -6,8 +6,8 @@ const Lsi = {
       "Komponenta Switch není umístěna v místnosti! Proto jsme schovali vypínač do krabice, protože neznáme stav osvětlení v místnosti. Asi je na čase vložit komponentu Switch do komponenty Room.",
   },
   header: {
-    en: "uuLamp Level 10 - Server Call Switch",
-    cs: "uuLamp Level 06 - Vypínač se serverem",
+    en: "uuLamp Level 10 - Server Switch",
+    cs: "uuLamp Level 10 - Vypínač se serverem",
   },
   help: {
     en:
