@@ -71,19 +71,6 @@ const EditModalLazy = createComponentWithRef({
                 },
               },
               {
-                name: "on",
-                type: "switchSelector",
-                label: Lsi.state,
-                getProps: () => {
-                  return {
-                    items: [
-                      { content: <UU5.Bricks.Lsi lsi={Lsi.on} />, value: true },
-                      { content: <UU5.Bricks.Lsi lsi={Lsi.off} />, value: false },
-                    ],
-                  };
-                },
-              },
-              {
                 name: "bulbStyle",
                 type: "switchSelector",
                 label: Lsi.bulbStyle,

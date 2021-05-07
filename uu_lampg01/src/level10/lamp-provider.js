@@ -20,19 +20,17 @@ export const LampProvider = createComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: UU5.PropTypes.string.isRequired,
     personDataObject: UU5.PropTypes.object.isRequired,
+    baseUri: UU5.PropTypes.string.isRequired,
     code: UU5.PropTypes.string,
-    on: UU5.PropTypes.bool,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    baseUri: undefined,
     personDataObject: undefined,
+    baseUri: undefined,
     code: UU5.Common.Tools.generateUUID(),
-    on: false,
   },
   //@@viewOff:defaultProps
 
@@ -46,7 +44,7 @@ export const LampProvider = createComponent({
     });
 
     async function handleGet() {
-      let lamp = { on: props.on }; // default lamp
+      let lamp = { on: false }; // default lamp
 
       const dtoIn = {
         mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,

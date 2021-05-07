@@ -29,6 +29,7 @@ export const LampView = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    onSwitchClick: UU5.PropTypes.func,
     onCopySwitch: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
@@ -45,6 +46,7 @@ export const LampView = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
+    onSwitchClick: () => {},
     onCopySwitch: () => {},
   },
   //@@viewOff:defaultProps

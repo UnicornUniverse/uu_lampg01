@@ -51,6 +51,15 @@ export const SwitchViewBox = createVisualComponent({
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
+    const actionList = [
+      {
+        content: <UU5.Bricks.Icon icon="mdi-reload" />,
+        active: true,
+        onClick: props.lampDataObject.handlerMap.get,
+        bgStyle: "outline",
+      },
+    ];
+
     const switchItems = [
       {
         value: true,
@@ -70,6 +79,7 @@ export const SwitchViewBox = createVisualComponent({
         copyTagFunc={props.copyTagFunc}
         elevation={props.elevation}
         borderRadius={props.borderRadius}
+        actionList={actionList}
         {...attrs}
       >
         <UU5.Bricks.Card

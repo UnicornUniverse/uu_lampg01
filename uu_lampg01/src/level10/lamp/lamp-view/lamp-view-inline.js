@@ -20,7 +20,6 @@ export const LampViewInline = createVisualComponent({
     lampDataObject: UU5.PropTypes.object.isRequired,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     colorSchema: UU5.PropTypes.string,
-    showSwitch: UU5.PropTypes.bool,
     onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
@@ -30,7 +29,6 @@ export const LampViewInline = createVisualComponent({
     lampDataObject: undefined,
     bulbStyle: "filled",
     colorSchema: "amber",
-    showSwitch: false,
     onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
@@ -44,13 +42,11 @@ export const LampViewInline = createVisualComponent({
       <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
         <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
           <Core.Bulb on={props.lampDataObject.data?.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
-          {props.showSwitch && (
-            <Core.LampSwitch
-              on={props.lampDataObject.data?.on}
-              colorSchema={props.colorSchema}
-              onClick={props.onSwitchClick}
-            />
-          )}
+          <Core.LampSwitch
+            on={props.lampDataObject.data?.on}
+            colorSchema={props.colorSchema}
+            onClick={props.onSwitchClick}
+          />
         </UU5.Bricks.Text>
       </Core.DataObjectStateResolver>
     );

@@ -23,7 +23,6 @@ const STATICS = {
 const DEFAULT_PROPS = {
   baseUri: Config.DEFAULT_LAMP_BASE_URI,
   code: UU5.Common.Tools.generateUUID(),
-  on: false,
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
@@ -44,7 +43,6 @@ export const Lamp = createVisualComponent({
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
     code: UU5.PropTypes.string,
-    on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),

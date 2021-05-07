@@ -22,9 +22,9 @@ export const LampCore = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
+    code: UU5.PropTypes.string.isRequired,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
-    on: UU5.PropTypes.bool,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
@@ -41,7 +41,6 @@ export const LampCore = createVisualComponent({
     code: undefined,
     header: "",
     help: "",
-    on: false,
     bulbStyle: "filled",
     bulbSize: "xl",
     bgStyle: "transparent",
@@ -63,7 +62,7 @@ export const LampCore = createVisualComponent({
       <Core.PersonProvider>
         {(personDataObject) => {
           return (
-            <LampProvider baseUri={props.baseUri} on={props.on} personDataObject={personDataObject} code={props.code}>
+            <LampProvider personDataObject={personDataObject} baseUri={props.baseUri} code={props.code}>
               {(lampDataObject) => {
                 function handleSwitchClick() {
                   lampDataObject.handlerMap.setOn(!lampDataObject.data.on);
@@ -88,7 +87,6 @@ export const LampCore = createVisualComponent({
                     elevation={props.elevation}
                     borderRadius={props.borderRadius}
                     nestingLevel={currentNestingLevel}
-                    showSwitch={true}
                     onSwitchClick={handleSwitchClick}
                     onCopySwitch={handleCopySwitch}
                     {...attrs}

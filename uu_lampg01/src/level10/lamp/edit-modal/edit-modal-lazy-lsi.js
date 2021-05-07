@@ -16,18 +16,6 @@ export const Lsi = {
     en:
       "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
   },
-  state: {
-    cs: "Stav",
-    en: "State",
-  },
-  on: {
-    en: "on",
-    cs: "zapnuto",
-  },
-  off: {
-    en: "off",
-    cs: "vypnuto",
-  },
   bulbStyle: {
     cs: "Styl žárovky",
     en: "Bulb Style",

@@ -26,7 +26,6 @@ export const LampViewSmallBox = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    showSwitch: UU5.PropTypes.bool,
     onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
@@ -42,7 +41,6 @@ export const LampViewSmallBox = createVisualComponent({
     colorSchema: "amber",
     elevation: 0,
     borderRadius: "0",
-    showSwitch: false,
     onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
@@ -70,15 +68,13 @@ export const LampViewSmallBox = createVisualComponent({
             colorSchema={props.colorSchema}
             nestingLevel={currentNestingLevel}
           />
-          {props.showSwitch && (
-            <Core.LampSwitch
-              on={props.lampDataObject.data?.on}
-              bulbSize={props.bulbSize}
-              colorSchema={props.colorSchema}
-              onClick={props.onSwitchClick}
-              nestingLevel={currentNestingLevel}
-            />
-          )}
+          <Core.LampSwitch
+            on={props.lampDataObject.data?.on}
+            bulbSize={props.bulbSize}
+            colorSchema={props.colorSchema}
+            onClick={props.onSwitchClick}
+            nestingLevel={currentNestingLevel}
+          />
         </Core.DataObjectStateResolver>
       </UU5.Bricks.Card>
     );

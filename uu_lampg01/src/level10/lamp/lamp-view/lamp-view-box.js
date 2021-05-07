@@ -29,7 +29,6 @@ export const LampViewBox = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    showSwitch: UU5.PropTypes.bool,
     onSwitchClick: UU5.PropTypes.func,
     onCopySwitch: UU5.PropTypes.func,
   },
@@ -47,7 +46,6 @@ export const LampViewBox = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    showSwitch: false,
     onSwitchClick: () => {},
     onCopySwitch: () => {},
   },
@@ -60,18 +58,21 @@ export const LampViewBox = createVisualComponent({
 
     const actionList = [
       {
+        content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
+        active: true,
+        onClick: props.onSwitchClick,
+      },
+      {
+        content: <UU5.Bricks.Icon icon="mdi-reload" />,
+        active: true,
+        onClick: props.lampDataObject.handlerMap.get,
+        bgStyle: "outline",
+      },
+      {
         content: <UU5.Bricks.Lsi lsi={Lsi.copySwitch} />,
         onClick: props.onCopySwitch,
       },
     ];
-
-    if (props.showSwitch) {
-      actionList.push({
-        content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
-        active: true,
-        onClick: props.onSwitchClick,
-      });
-    }
 
     return (
       <UuP.Bricks.ComponentWrapper
