@@ -20,6 +20,7 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
+  header: undefined,
   on: false,
   bulbStyle: "filled",
   bulbSize: "xl",

@@ -1,19 +1,35 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useEffect } from "uu5g04-hooks";
+import { createVisualComponent, useSession } from "uu5g04-hooks";
 import Core from "../../core/core";
-import useRoom from "../room/use-room";
 import Config from "./config/config";
-import Lsi from "./switch-core-lsi";
+import Lsi from "./lamp-core-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "SwitchCore",
+  displayName: Config.TAG + "LampCore",
+  nestingLevel: ["box", "smallBox", "inline"],
+  editMode: {
+    displayType: "block",
+    startMode: "button",
+  },
   //@@viewOff:statics
 };
 
-export const SwitchCore = createVisualComponent({
+const DEFAULT_PROPS = {
+  on: false,
+  header: undefined,
+  bulbStyle: "filled",
+  bulbSize: "xl",
+  bgStyle: "transparent",
+  cardView: "full",
+  colorSchema: "amber",
+  elevation: 1,
+  borderRadius: 0,
+};
+
+export const LampCore = createVisualComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
@@ -21,6 +37,9 @@ export const SwitchCore = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     header: UU5.PropTypes.node,
+    on: UU5.PropTypes.bool,
+    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -30,76 +49,55 @@ export const SwitchCore = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
-  },
+  defaultProps: DEFAULT_PROPS,
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:private
-    const room = useRoom();
-
-    useEffect(() => {
-      if (!room.registerSwitch || !room.unregisterSwitch) {
-        return;
-      }
-
-      room.registerSwitch(props.id);
-
-      return () => room.unregisterSwitch(props.id);
-    }, []);
-
-    function handleSwitchClick() {
-      room.light.setOn(!room.light.on);
-    }
+    const { sessionState } = useSession();
     //@@viewOff:private
 
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
-    const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
-    const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-    if (room.light) {
+    if (sessionState === "authenticated") {
       return (
-        <Core.SwitchView
-          header={header}
-          help={help}
+        <Core.LampView
+          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
           copyTagFunc={props.copyTagFunc}
-          on={room.light && room.light.on}
+          on={props.on}
+          bulbStyle={props.bulbStyle}
+          bulbSize={props.bulbSize}
           bgStyle={props.bgStyle}
           cardView={props.cardView}
           colorSchema={props.colorSchema}
           elevation={props.elevation}
           borderRadius={props.borderRadius}
-          nestingLevel={props.nestingLevel}
-          onSwitchClick={handleSwitchClick}
+          nestingLevel={currentNestingLevel}
           {...attrs}
         />
       );
     } else {
       return (
         <Core.PackageView
-          header={header}
-          help={help}
-          info={<UU5.Bricks.Lsi lsi={Lsi.noRoom} />}
-          icon="mdi-home-alert"
+          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+          info={<UU5.Bricks.Lsi lsi={Lsi.hiddenInfo} />}
           cardView={props.cardView}
           copyTagFunc={props.copyTagFunc}
           elevation={props.elevation}
           borderRadius={props.borderRadius}
           bgStyle={props.bgStyle}
           colorSchema={props.colorSchema}
-          nestingLevel={props.nestingLevel}
+          nestingLevel={currentNestingLevel}
           {...attrs}
         />
       );
     }
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
-export default Core.withAuthentication(SwitchCore, STATICS.displayName);
+export default LampCore;
