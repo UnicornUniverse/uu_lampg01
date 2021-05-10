@@ -52,7 +52,12 @@ export const SwitchViewInline = createVisualComponent({
         passErrorNoData
       >
         <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
-          <UU5.Bricks.Text colorSchema={colorSchema} nestingLevel="inline" {...attrs}>
+          <UU5.Bricks.Text
+            colorSchema={colorSchema}
+            nestingLevel="inline"
+            disabled={props.lampDataObject.state !== "ready"}
+            {...attrs}
+          >
             <span onClick={props.onSwitchClick} className={switchCss}>
               <UU5.Bricks.Icon icon={switchIcon} />
             </span>

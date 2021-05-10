@@ -30,6 +30,7 @@ export const SwitchViewBox = createVisualComponent({
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     onSwitchClick: UU5.PropTypes.func,
+    onCopyLamp: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -44,6 +45,7 @@ export const SwitchViewBox = createVisualComponent({
     elevation: 1,
     borderRadius: "0",
     onSwitchClick: () => {},
+    onCopyLamp: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -54,12 +56,24 @@ export const SwitchViewBox = createVisualComponent({
 
     const actionList = [
       {
+        content: <UU5.Bricks.Lsi lsi={Lsi.copyLamp} />,
+        onClick: props.onCopyLamp,
+      },
+    ];
+
+    if (
+      props.lampDataObject.state === "ready" ||
+      props.lampDataObject.state === "pending" ||
+      props.lampDataObject.state === "error"
+    ) {
+      actionList.push({
         content: <UU5.Bricks.Icon icon="mdi-reload" />,
         active: true,
         onClick: props.lampDataObject.handlerMap.get,
         bgStyle: "outline",
-      },
-    ];
+        disabled: props.lampDataObject.state === "pending",
+      });
+    }
 
     const switchItems = [
       {
@@ -103,6 +117,7 @@ export const SwitchViewBox = createVisualComponent({
                 value={props.lampDataObject.data?.on}
                 size="xl"
                 className={switchCss()}
+                disabled={props.lampDataObject.state !== "ready"}
               />
             </LampErrorResolver>
           </Core.DataObjectStateResolver>

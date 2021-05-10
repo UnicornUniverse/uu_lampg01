@@ -21,7 +21,7 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
-  baseUri: Config.DEFAULT_LAMP_BASE_URI,
+  baseUri: undefined,
   code: undefined,
   bgStyle: "transparent",
   cardView: "full",

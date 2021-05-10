@@ -2,6 +2,7 @@
 import UU5 from "uu5g04";
 import { createComponent } from "uu5g04-hooks";
 import "uu_plus4u5g01-bricks";
+
 import Core from "../core/core";
 import Config from "./config/config";
 import Lsi from "./lamp-error-resolver-lsi";
@@ -11,7 +12,6 @@ import PropertyError from "./lamp-error-resolver/property-error";
 const STATICS = {
   //@@viewOn:statics
   displayName: Config.TAG + "LampErrorResolver",
-  nestingLevel: ["box", "inline"],
   //@@viewOff:statics
 };
 
@@ -48,21 +48,28 @@ export const LampErrorResolver = createComponent({
 function renderError(dataObject, height, currentNestingLevel, attrs) {
   const errorCode = dataObject.errorData?.error?.code;
 
-  if (errorCode === Config.Error.NO_CODE) {
-    return (
-      <PropertyError message={<UU5.Bricks.Lsi lsi={Lsi[errorCode]} />} nestingLevel={currentNestingLevel} {...attrs} />
-    );
-  } else {
-    return (
-      <Core.Error
-        height={height}
-        moreInfo
-        errorData={dataObject.errorData}
-        customErrorLsi={Lsi}
-        nestingLevel={currentNestingLevel}
-        {...attrs}
-      />
-    );
+  switch (errorCode) {
+    case Config.Error.NO_BASE_URI:
+    case Config.Error.NO_CODE:
+    case Config.Error.CODE_INVALID_FORMAT:
+      return (
+        <PropertyError
+          message={<UU5.Bricks.Lsi lsi={Lsi[errorCode]} />}
+          nestingLevel={currentNestingLevel}
+          {...attrs}
+        />
+      );
+    default:
+      return (
+        <Core.Error
+          height={height}
+          moreInfo
+          errorData={dataObject.errorData}
+          customErrorLsi={Lsi}
+          nestingLevel={currentNestingLevel}
+          {...attrs}
+        />
+      );
   }
 }
 

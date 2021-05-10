@@ -59,16 +59,24 @@ export const LampViewBox = createVisualComponent({
 
     const actionList = [
       {
-        content: <UU5.Bricks.Icon icon="mdi-reload" />,
-        active: true,
-        onClick: props.lampDataObject.handlerMap.get,
-        bgStyle: "outline",
-      },
-      {
         content: <UU5.Bricks.Lsi lsi={Lsi.copySwitch} />,
         onClick: props.onCopySwitch,
       },
     ];
+
+    if (
+      props.lampDataObject.state === "ready" ||
+      props.lampDataObject.state === "pending" ||
+      props.lampDataObject.state === "error"
+    ) {
+      actionList.push({
+        content: <UU5.Bricks.Icon icon="mdi-reload" />,
+        active: true,
+        onClick: props.lampDataObject.handlerMap.get,
+        bgStyle: "outline",
+        disabled: props.lampDataObject.state === "pending",
+      });
+    }
 
     return (
       <UuP.Bricks.ComponentWrapper

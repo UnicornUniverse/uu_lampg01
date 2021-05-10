@@ -1,7 +1,7 @@
 const Lsi = {
   copySwitch: {
-    en: "Copy only switch",
-    cs: "Zkopíruj pouze vypínač",
+    en: "Copy switch",
+    cs: "Zkopíruj vypínač",
   },
 };
 

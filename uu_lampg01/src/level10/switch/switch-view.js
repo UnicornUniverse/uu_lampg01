@@ -28,6 +28,7 @@ export const Switch = createVisualComponent({
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     onSwitchClick: UU5.PropTypes.func,
+    onCopyLamp: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -42,6 +43,7 @@ export const Switch = createVisualComponent({
     elevation: 1,
     borderRadius: "0",
     onSwitchClick: () => {},
+    onCopyLamp: () => {},
   },
   //@@viewOff:defaultProps
 

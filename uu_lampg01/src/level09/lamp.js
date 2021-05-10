@@ -43,7 +43,7 @@ export const Lamp = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
-    code: undefined,
+    code: UU5.PropTypes.string,
     on: UU5.PropTypes.bool,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),

@@ -9,7 +9,7 @@ export const Lsi = {
   },
   code: {
     cs: "Identifikační kód",
-    en: "Identification code",
+    en: "Identification Code",
   },
   codePatternMessage: {
     cs: "Kód může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",

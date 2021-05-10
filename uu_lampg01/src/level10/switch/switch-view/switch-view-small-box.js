@@ -65,11 +65,12 @@ export const SwitchViewSmallBox = createVisualComponent({
         >
           <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
             <UU5.Bricks.Switch
-              switchedOn={props.on}
+              switchedOn={props.lampDataObject?.data?.on}
               onChange={props.onSwitchClick}
               onIcon="mdi-power-plug"
               offIcon="mdi-power-plug-off"
               size="m"
+              disabled={props.lampDataObject.state !== "ready"}
             />
           </LampErrorResolver>
         </Core.DataObjectStateResolver>

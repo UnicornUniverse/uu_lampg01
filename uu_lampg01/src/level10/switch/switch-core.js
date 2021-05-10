@@ -59,6 +59,11 @@ export const SwitchCore = createVisualComponent({
                   lampDataObject.handlerMap.setOn(!lampDataObject.data.on);
                 }
 
+                function handleCopyLamp() {
+                  const component = `<UuLamp.Level10.Lamp baseUri="${props.baseUri}" code="${props.code}" />`;
+                  UU5.Utils.Clipboard.write(component);
+                }
+
                 return (
                   <SwitchView
                     lampDataObject={lampDataObject}
@@ -72,6 +77,7 @@ export const SwitchCore = createVisualComponent({
                     borderRadius={props.borderRadius}
                     nestingLevel={props.nestingLevel}
                     onSwitchClick={handleSwitchClick}
+                    onCopyLamp={handleCopyLamp}
                     {...attrs}
                   />
                 );

@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
+import { createComponent, useDataObject, useEffect, useState } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports
@@ -10,8 +10,6 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-const ERROR_PREFIX = STATICS.displayName.toLowerCase().replaceAll(".", "-") + "/";
-const NO_CODE_ERROR = ERROR_PREFIX + "no-code";
 const PROPERTY_CODE = STATICS.displayName.replaceAll(".", "");
 const PROPERTY_SCOPE = "uuAppWorkspace";
 
@@ -48,10 +46,23 @@ export const LampProvider = createComponent({
     async function handleGet() {
       let lamp = { on: false }; // default lamp
 
+      // TODO MFA Move errors to own classes
+      if (!props.baseUri) {
+        const error = new Error("The required property baseUri is not defined!");
+        error.code = Config.Error.NO_BASE_URI;
+        throw error;
+      }
+
       if (!props.code) {
-        return Promise.reject({ code: Config.Error.NO_CODE });
-        // TODO MFA Try to do it by standard error throwing
-        // throw new Error(Config.Error.NO_CODE);
+        const error = new Error("The required property code is not defined!");
+        error.code = Config.Error.NO_CODE;
+        throw error;
+      }
+
+      if (props.code && typeof props.code === "string" && !props.code.match("^\\w{3,32}$")) {
+        const error = new Error("The required property code has invalid format!");
+        error.code = Config.Error.CODE_INVALID_FORMAT;
+        throw error;
       }
 
       const dtoIn = {
@@ -72,21 +83,16 @@ export const LampProvider = createComponent({
     }
 
     async function handleSetOn(on) {
-      const lamp = { on };
-
       const dtoIn = {
         mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
         code: getPropertyCode(props.code),
         scope: PROPERTY_SCOPE,
-        data: lamp,
+        data: { on },
       };
 
-      Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn).catch((error) => {
-        console.error(error);
-        console.warn(`The user property ${PROPERTY_CODE} can't be created or updated due to error above!`);
-      });
+      const lampProperty = await Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn);
 
-      return lamp;
+      return lampProperty.data.data;
     }
 
     useEffect(() => {
@@ -94,6 +100,24 @@ export const LampProvider = createComponent({
         lampDataObject.handlerMap.get().catch((error) => console.error(error));
       }
     }, [props.personDataObject]);
+
+    // MFA TODO Finish auto reload of the lamp
+    // useEffect(() => {
+    //   if (lampDataObject.state !== "ready") {
+    //     return;
+    //   }
+
+    //   const intervalId = setInterval(() => {
+    //     if (reloadCounter < 10) {
+    //       setReloadCounter((prevCounter) => prevCounter + 1);
+    //     } else {
+    //       setReloadCounter(0);
+    //       lampDataObject.handlerMap.get();
+    //     }
+    //   }, 1000);
+
+    //   return () => clearInterval(intervalId);
+    // }, [lampDataObject.state]);
     //@@viewOff:private
 
     //@@viewOn:render

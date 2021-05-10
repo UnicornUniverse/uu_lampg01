@@ -7,6 +7,10 @@ const Lsi = {
     en: "OFF",
     cs: "Vypnuto",
   },
+  copyLamp: {
+    en: "Copy lamp",
+    cs: "Zkopíruj lampu",
+  },
 };
 
 export default Lsi;

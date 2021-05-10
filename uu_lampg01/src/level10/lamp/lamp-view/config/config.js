@@ -1,7 +1,7 @@
 import UU5 from "uu5g04";
 import Config from "../../../config/config";
 
-const TAG = Config.TAG + "Lamp.";
+const TAG = Config.TAG + "LampView.";
 
 export default {
   ...Config,

@@ -138,6 +138,20 @@
                   `}
                   />
                 </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="No Code">
+                  <DccComponent
+                    dccData={`<uu5string/>
+                    <UuLamp.Level10.Lamp baseUri="${baseUri}" />
+                  `}
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Invalid Code">
+                  <DccComponent
+                    dccData={`<uu5string/>
+                    <UuLamp.Level10.Lamp baseUri="${baseUri}" code="###" />
+                  `}
+                  />
+                </UU5.Bricks.Section>
                 <UU5.Bricks.Section header="Code = 123">
                   <DccComponent
                     dccData={`<uu5string/>

@@ -21,7 +21,7 @@ const STATICS = {
 };
 
 const DEFAULT_PROPS = {
-  baseUri: Config.DEFAULT_LAMP_BASE_URI,
+  baseUri: undefined,
   code: undefined,
   bulbStyle: "filled",
   bulbSize: "xl",
@@ -69,10 +69,12 @@ export const Lamp = createVisualComponent({
 
   // We need to copy baseUri even they are same as default value.
   _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["on", "baseUri", "bulbStyle", "bulbSize", "header", "code"], {
-      ...DEFAULT_PROPS,
-      baseUri: undefined,
-    });
+    return createCopyTag(
+      STATICS.tagName,
+      this.props,
+      ["baseUri", "bulbStyle", "bulbSize", "header", "code"],
+      DEFAULT_PROPS
+    );
   },
   //@@viewOff:private
 
@@ -98,7 +100,6 @@ export const Lamp = createVisualComponent({
         <LampCore
           code={this.props.code}
           baseUri={this.props.baseUri}
-          on={this.props.on}
           bulbStyle={this.props.bulbStyle}
           bulbSize={this.props.bulbSize}
           bgStyle={this.props.bgStyle}

@@ -18,5 +18,7 @@ export default {
 
   Error: {
     NO_CODE: ERROR_PREFIX + "no-code",
+    NO_BASE_URI: ERROR_PREFIX + "no-base-uri",
+    CODE_INVALID_FORMAT: ERROR_PREFIX + "code-invalid-format",
   },
 };
