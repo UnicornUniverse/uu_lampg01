@@ -1,7 +1,7 @@
 const Lsi = {
   header: {
-    en: "uuLamp Level 10 - Server Lamp",
-    cs: "uuLamp Level 10 - Lampa se serverem",
+    en: "uuLamp Level 10 - uuCloud Lamp",
+    cs: "uuLamp Level 10 - Lampa s uuCloud",
   },
   help: {
     en:

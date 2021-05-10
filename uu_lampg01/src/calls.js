@@ -33,6 +33,11 @@ let Calls = {
     return Calls.call("get", commandUri, dtoIn);
   },
 
+  loadFirstUserPreferenceProperty(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("userPreferenceProperty/loadFirst", baseUri);
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
   getCommandUri(aUseCase, baseUri) {
     // useCase <=> e.g. "getSomething" or "sys/getSomething"
     // add useCase to the application base URI

@@ -3,6 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
 import Config from "./config/config";
+import LampErrorResolver from "../../lamp-error-resolver";
 //@@viewOff:imports
 
 const STATICS = {
@@ -39,15 +40,16 @@ export const LampViewInline = createVisualComponent({
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
-        <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
-          <Core.Bulb on={props.lampDataObject.data?.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
-          <Core.LampSwitch
-            on={props.lampDataObject.data?.on}
-            colorSchema={props.colorSchema}
-            onClick={props.onSwitchClick}
-          />
-        </UU5.Bricks.Text>
+      <Core.DataObjectStateResolver
+        dataObject={props.lampDataObject}
+        nestingLevel={currentNestingLevel}
+        passErrorNoData
+      >
+        <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
+          <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
+            <Core.Bulb on={props.lampDataObject.data?.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
+          </UU5.Bricks.Text>
+        </LampErrorResolver>
       </Core.DataObjectStateResolver>
     );
     //@@viewOff:render

@@ -4,7 +4,6 @@ import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../core/core";
 import Config from "./config/config";
 import LampView from "./lamp-view";
-import PersonProvider from "./person-provider";
 import LampProvider from "./lamp-provider";
 import Lsi from "./lamp-core-lsi";
 //@@viewOff:imports
@@ -61,7 +60,7 @@ export const LampCore = createVisualComponent({
     const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
 
     return (
-      <PersonProvider>
+      <Core.PersonProvider>
         {(personDataObject) => {
           return (
             <LampProvider baseUri={props.baseUri} on={props.on} personDataObject={personDataObject} code={props.code}>
@@ -84,7 +83,6 @@ export const LampCore = createVisualComponent({
                     elevation={props.elevation}
                     borderRadius={props.borderRadius}
                     nestingLevel={currentNestingLevel}
-                    showSwitch={true}
                     onSwitchClick={handleSwitchClick}
                     {...attrs}
                   />
@@ -93,7 +91,7 @@ export const LampCore = createVisualComponent({
             </LampProvider>
           );
         }}
-      </PersonProvider>
+      </Core.PersonProvider>
     );
   },
   //@@viewOff:render

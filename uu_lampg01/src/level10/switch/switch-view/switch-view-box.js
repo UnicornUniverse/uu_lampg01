@@ -2,6 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
+import LampErrorResolver from "../../lamp-error-resolver";
 import Config from "./config/config";
 import Lsi from "./switch-view-box-lsi";
 //@@viewOff:imports
@@ -93,14 +94,17 @@ export const SwitchViewBox = createVisualComponent({
             dataObject={props.lampDataObject}
             height={120}
             nestingLevel={currentNestingLevel}
+            passErrorNoData
           >
-            <UU5.Bricks.SwitchSelector
-              items={switchItems}
-              onChange={props.onSwitchClick}
-              value={props.lampDataObject.data?.on}
-              size="xl"
-              className={switchCss()}
-            />
+            <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
+              <UU5.Bricks.SwitchSelector
+                items={switchItems}
+                onChange={props.onSwitchClick}
+                value={props.lampDataObject.data?.on}
+                size="xl"
+                className={switchCss()}
+              />
+            </LampErrorResolver>
           </Core.DataObjectStateResolver>
         </UU5.Bricks.Card>
       </UuP.Bricks.ComponentWrapper>

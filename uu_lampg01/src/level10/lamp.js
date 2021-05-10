@@ -22,7 +22,7 @@ const STATICS = {
 
 const DEFAULT_PROPS = {
   baseUri: Config.DEFAULT_LAMP_BASE_URI,
-  code: UU5.Common.Tools.generateUUID(),
+  code: undefined,
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
@@ -67,12 +67,11 @@ export const Lamp = createVisualComponent({
   //@@viewOn:private
   _editRef: UU5.Common.Reference.create(),
 
-  // We need to copy baseUri and code even they are same as default value.
+  // We need to copy baseUri even they are same as default value.
   _handleCopyTag() {
     return createCopyTag(STATICS.tagName, this.props, ["on", "baseUri", "bulbStyle", "bulbSize", "header", "code"], {
       ...DEFAULT_PROPS,
       baseUri: undefined,
-      code: undefined,
     });
   },
   //@@viewOff:private

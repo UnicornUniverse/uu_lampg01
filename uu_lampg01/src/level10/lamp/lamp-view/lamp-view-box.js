@@ -2,8 +2,9 @@
 import UU5 from "uu5g04";
 import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
-import Config from "./config/config";
 import Core from "../../../core/core";
+import LampErrorResolver from "../../lamp-error-resolver";
+import Config from "./config/config";
 import Lsi from "./lamp-view-box-lsi";
 //@@viewOff:imports
 
@@ -58,11 +59,6 @@ export const LampViewBox = createVisualComponent({
 
     const actionList = [
       {
-        content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
-        active: true,
-        onClick: props.onSwitchClick,
-      },
-      {
         content: <UU5.Bricks.Icon icon="mdi-reload" />,
         active: true,
         onClick: props.lampDataObject.handlerMap.get,
@@ -85,22 +81,29 @@ export const LampViewBox = createVisualComponent({
         actionList={actionList}
         {...attrs}
       >
-        <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel} height={120}>
-          <UU5.Bricks.Card
-            bgStyle={props.bgStyle}
-            colorSchema={props.colorSchema}
-            className="center"
-            elevation={0}
-            elevationHover={0}
-          >
-            <Core.Bulb
-              on={props.lampDataObject.data?.on}
-              bulbSize={props.bulbSize}
-              bulbStyle={props.bulbStyle}
+        <Core.DataObjectStateResolver
+          dataObject={props.lampDataObject}
+          nestingLevel={currentNestingLevel}
+          height={120}
+          passErrorNoData
+        >
+          <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
+            <UU5.Bricks.Card
+              bgStyle={props.bgStyle}
               colorSchema={props.colorSchema}
-              nestingLevel={currentNestingLevel}
-            />
-          </UU5.Bricks.Card>
+              className="center"
+              elevation={0}
+              elevationHover={0}
+            >
+              <Core.Bulb
+                on={props.lampDataObject.data?.on}
+                bulbSize={props.bulbSize}
+                bulbStyle={props.bulbStyle}
+                colorSchema={props.colorSchema}
+                nestingLevel={currentNestingLevel}
+              />
+            </UU5.Bricks.Card>
+          </LampErrorResolver>
         </Core.DataObjectStateResolver>
       </UuP.Bricks.ComponentWrapper>
     );

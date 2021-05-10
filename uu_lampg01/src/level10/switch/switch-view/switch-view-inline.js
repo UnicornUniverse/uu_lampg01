@@ -2,6 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
+import LampErrorResolver from "../../lamp-error-resolver";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -45,12 +46,18 @@ export const SwitchViewInline = createVisualComponent({
     const colorSchema = on ? props.colorSchema : "black";
 
     return (
-      <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
-        <UU5.Bricks.Text colorSchema={colorSchema} nestingLevel="inline" {...attrs}>
-          <span onClick={props.onSwitchClick} className={switchCss}>
-            <UU5.Bricks.Icon icon={switchIcon} />
-          </span>
-        </UU5.Bricks.Text>
+      <Core.DataObjectStateResolver
+        dataObject={props.lampDataObject}
+        nestingLevel={currentNestingLevel}
+        passErrorNoData
+      >
+        <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
+          <UU5.Bricks.Text colorSchema={colorSchema} nestingLevel="inline" {...attrs}>
+            <span onClick={props.onSwitchClick} className={switchCss}>
+              <UU5.Bricks.Icon icon={switchIcon} />
+            </span>
+          </UU5.Bricks.Text>
+        </LampErrorResolver>
       </Core.DataObjectStateResolver>
     );
     //@@viewOff:render

@@ -6,7 +6,6 @@ import "uu_plus4u5g01-bricks";
 import Config from "./config/config";
 import Error from "./error";
 import DataObjectPending from "./data-object-state-resolver/data-object-pending";
-import Lsi from "./data-object-state-resolver-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -24,6 +23,7 @@ export const DataObjectStateResolver = createComponent({
     dataObject: UU5.PropTypes.object,
     height: UU5.PropTypes.number,
     customErrorLsi: UU5.PropTypes.object,
+    passErrorNoData: UU5.PropTypes.bool,
   },
   //@@viewOff:propTypes
 
@@ -32,6 +32,7 @@ export const DataObjectStateResolver = createComponent({
     dataObject: {},
     height: undefined,
     customErrorLsi: undefined,
+    passErrorNoData: false,
   },
   //@@viewOff:defaultProps
 
@@ -46,7 +47,9 @@ export const DataObjectStateResolver = createComponent({
       case "pending":
         return props.children;
       case "errorNoData":
-        return (
+        return props.passErrorNoData ? (
+          props.children
+        ) : (
           <Error
             height={props.height}
             moreInfo

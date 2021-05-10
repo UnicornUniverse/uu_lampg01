@@ -22,7 +22,7 @@ const STATICS = {
 
 const DEFAULT_PROPS = {
   baseUri: Config.DEFAULT_LAMP_BASE_URI,
-  code: UU5.Common.Tools.generateUUID(),
+  code: undefined,
   bgStyle: "transparent",
   cardView: "full",
   colorSchema: "amber",
@@ -40,7 +40,7 @@ export const Switch = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
-    code: UU5.PropTypes.string,
+    code: UU5.PropTypes.string.isRequired,
     header: UU5.PropTypes.node,
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
@@ -63,12 +63,11 @@ export const Switch = createVisualComponent({
   //@@viewOn:private
   _editRef: UU5.Common.Reference.create(),
 
-  // We need to copy baseUri and code even they are same as default value.
+  // We need to copy baseUri even they are same as default value.
   _handleCopyTag() {
     return createCopyTag(STATICS.tagName, this.props, ["on", "header", "baseUri", "code"], {
       ...DEFAULT_PROPS,
       baseUri: undefined,
-      code: undefined,
     });
   },
   //@@viewOff:private

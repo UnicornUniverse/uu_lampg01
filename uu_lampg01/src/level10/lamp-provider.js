@@ -10,6 +10,8 @@ const STATICS = {
   //@@viewOff:statics
 };
 
+const ERROR_PREFIX = STATICS.displayName.toLowerCase().replaceAll(".", "-") + "/";
+const NO_CODE_ERROR = ERROR_PREFIX + "no-code";
 const PROPERTY_CODE = STATICS.displayName.replaceAll(".", "");
 const PROPERTY_SCOPE = "uuAppWorkspace";
 
@@ -30,7 +32,7 @@ export const LampProvider = createComponent({
   defaultProps: {
     personDataObject: undefined,
     baseUri: undefined,
-    code: UU5.Common.Tools.generateUUID(),
+    code: undefined,
   },
   //@@viewOff:defaultProps
 
@@ -46,23 +48,24 @@ export const LampProvider = createComponent({
     async function handleGet() {
       let lamp = { on: false }; // default lamp
 
+      if (!props.code) {
+        return Promise.reject({ code: Config.Error.NO_CODE });
+        // TODO MFA Try to do it by standard error throwing
+        // throw new Error(Config.Error.NO_CODE);
+      }
+
       const dtoIn = {
         mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
         code: getPropertyCode(props.code),
         scope: PROPERTY_SCOPE,
       };
 
-      try {
-        const lampProperty = await Calls.getUserPreferenceProperty(props.baseUri, dtoIn);
+      const lampProperty = await Calls.getUserPreferenceProperty(props.baseUri, dtoIn);
 
-        let data = lampProperty.data?.data;
+      let data = lampProperty.data?.data;
 
-        if (data && data.hasOwnProperty("on")) {
-          lamp.on = data.on;
-        }
-      } catch (error) {
-        console.error(error);
-        console.warn(`The user property ${PROPERTY_CODE} can't be loaded due to error above!`);
+      if (data && data.hasOwnProperty("on")) {
+        lamp.on = data.on;
       }
 
       return lamp;
@@ -88,7 +91,7 @@ export const LampProvider = createComponent({
 
     useEffect(() => {
       if (lampDataObject.state === "readyNoData" && props.personDataObject.state === "ready") {
-        lampDataObject.handlerMap.get();
+        lampDataObject.handlerMap.get().catch((error) => console.error(error));
       }
     }, [props.personDataObject]);
     //@@viewOff:private

@@ -2,6 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
+import LampErrorResolver from "../../lamp-error-resolver";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -56,14 +57,21 @@ export const SwitchViewSmallBox = createVisualComponent({
         className="center padding-s"
         {...attrs}
       >
-        <Core.DataObjectStateResolver dataObject={props.lampDataObject} height={120} nestingLevel={currentNestingLevel}>
-          <UU5.Bricks.Switch
-            switchedOn={props.on}
-            onChange={props.onSwitchClick}
-            onIcon="mdi-power-plug"
-            offIcon="mdi-power-plug-off"
-            size="m"
-          />
+        <Core.DataObjectStateResolver
+          dataObject={props.lampDataObject}
+          height={120}
+          nestingLevel={currentNestingLevel}
+          passErrorNoData
+        >
+          <LampErrorResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
+            <UU5.Bricks.Switch
+              switchedOn={props.on}
+              onChange={props.onSwitchClick}
+              onIcon="mdi-power-plug"
+              offIcon="mdi-power-plug-off"
+              size="m"
+            />
+          </LampErrorResolver>
         </Core.DataObjectStateResolver>
       </UU5.Bricks.Card>
     );
