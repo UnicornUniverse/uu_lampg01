@@ -39,7 +39,7 @@ export const LampViewInline = createVisualComponent({
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
     return (
-      <Core.DataObjectStateResolver dataObject={props.documentDataObject} nestingLevel={currentNestingLevel}>
+      <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel={currentNestingLevel}>
         <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
           <Core.Bulb on={props.lampDataObject.data?.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
           <Core.LampSwitch

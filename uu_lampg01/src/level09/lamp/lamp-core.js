@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Core from "../../core/core";
 import Config from "./config/config";
 import LampView from "./lamp-view";
@@ -21,7 +21,8 @@ export const LampCore = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: UU5.PropTypes.string.isRequired,
+    baseUri: UU5.PropTypes.string,
+    code: UU5.PropTypes.string,
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
     on: UU5.PropTypes.bool,
@@ -53,6 +54,10 @@ export const LampCore = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const alertBusRef = useRef();
+    //@@viewOff:private
+
     //@@viewOn:render
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
@@ -63,29 +68,60 @@ export const LampCore = createVisualComponent({
       <Core.PersonProvider>
         {(personDataObject) => {
           return (
-            <LampProvider baseUri={props.baseUri} on={props.on} personDataObject={personDataObject} code={props.code}>
+            <LampProvider
+              baseUri={props.baseUri}
+              code={props.code}
+              on={props.on}
+              bulbSize={props.bulbSize}
+              personDataObject={personDataObject}
+            >
               {(lampDataObject) => {
                 function handleSwitchClick() {
                   lampDataObject.handlerMap.setOn(!lampDataObject.data.on);
                 }
 
+                function handleBulbSizeChange(bulbSize) {
+                  lampDataObject.handlerMap.setBulbSize(bulbSize);
+                }
+
+                async function handleSavePreference(preferenceType) {
+                  try {
+                    await lampDataObject.handlerMap.savePreference(preferenceType);
+                    alertBusRef.current.addAlert({
+                      content: <UU5.Bricks.Lsi lsi={Lsi.preferenceSuccess} />,
+                      closeTimer: 2000,
+                      colorSchema: "success",
+                    });
+                  } catch (error) {
+                    alertBusRef.current.addAlert({
+                      content: <UU5.Bricks.Lsi lsi={Lsi.preferenceError} />,
+                      closeTimer: 5000,
+                      colorSchema: "danger",
+                    });
+                  }
+                }
+
                 return (
-                  <LampView
-                    lampDataObject={lampDataObject}
-                    header={header}
-                    help={help}
-                    copyTagFunc={props.copyTagFunc}
-                    bulbStyle={props.bulbStyle}
-                    bulbSize={props.bulbSize}
-                    bgStyle={props.bgStyle}
-                    cardView={props.cardView}
-                    colorSchema={props.colorSchema}
-                    elevation={props.elevation}
-                    borderRadius={props.borderRadius}
-                    nestingLevel={currentNestingLevel}
-                    onSwitchClick={handleSwitchClick}
-                    {...attrs}
-                  />
+                  <>
+                    <LampView
+                      lampDataObject={lampDataObject}
+                      header={header}
+                      help={help}
+                      copyTagFunc={props.copyTagFunc}
+                      bulbStyle={props.bulbStyle}
+                      bgStyle={props.bgStyle}
+                      cardView={props.cardView}
+                      colorSchema={props.colorSchema}
+                      elevation={props.elevation}
+                      borderRadius={props.borderRadius}
+                      nestingLevel={currentNestingLevel}
+                      onSwitchClick={handleSwitchClick}
+                      onBulbSizeChange={handleBulbSizeChange}
+                      onSavePreference={handleSavePreference}
+                      {...attrs}
+                    />
+                    <UU5.Bricks.AlertBus ref_={alertBusRef} />
+                  </>
                 );
               }}
             </LampProvider>

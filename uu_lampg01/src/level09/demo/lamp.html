@@ -122,7 +122,11 @@
 
       const Page = createComponent({
         render() {
-          const baseUri = "http://localhost:8080/uu-lamp-maing01/22222222222222222222222222222222/";
+          // Localhost
+          // const baseUri = "http://localhost:8080/uu-lamp-maing01/22222222222222222222222222222222/";
+
+          // uuCloud - DEV
+          const baseUri = "https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/";
 
           return (
             <Plus4U5.App.Page>
@@ -130,7 +134,7 @@
                 <UU5.Bricks.Section header="Default Properties">
                   <DccComponent
                     dccData={`<uu5string/>
-                    <UuLamp.Level09.Lamp baseUri="${baseUri}"  />
+                    <UuLamp.Level09.Lamp baseUri="${baseUri}" code="123" />
                   `}
                   />
                 </UU5.Bricks.Section>

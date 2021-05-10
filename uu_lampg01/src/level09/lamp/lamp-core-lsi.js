@@ -9,6 +9,14 @@ const Lsi = {
     cs:
       '<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href="https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791" content="vzdělávacích materiálech uuLamp" target="_blank"/>.',
   },
+  preferenceSuccess: {
+    en: "User preference has been saved.",
+    cs: "Uživatelské nastavení bylo uloženo.",
+  },
+  preferenceError: {
+    en: "User preference has not been saved due to error.",
+    cs: "Uživatelské nastavení nebylo uloženo kvůli chybě.",
+  },
 };
 
 export default Lsi;

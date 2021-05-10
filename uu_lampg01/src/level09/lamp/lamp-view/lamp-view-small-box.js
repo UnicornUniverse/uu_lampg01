@@ -20,7 +20,6 @@ export const LampViewSmallBox = createVisualComponent({
     lampDataObject: UU5.PropTypes.object.isRequired,
     header: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -35,7 +34,6 @@ export const LampViewSmallBox = createVisualComponent({
     lampDataObject: undefined,
     header: "",
     bulbStyle: "filled",
-    bulbSize: "xl",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
@@ -63,14 +61,14 @@ export const LampViewSmallBox = createVisualComponent({
         <Core.DataObjectStateResolver dataObject={props.lampDataObject} height={120} nestingLevel={currentNestingLevel}>
           <Core.Bulb
             on={props.lampDataObject.data?.on}
-            bulbSize={props.bulbSize}
+            bulbSize={props.lampDataObject.data?.bulbSize}
             bulbStyle={props.bulbStyle}
             colorSchema={props.colorSchema}
             nestingLevel={currentNestingLevel}
           />
           <Core.LampSwitch
             on={props.lampDataObject.data?.on}
-            bulbSize={props.bulbSize}
+            bulbSize={props.lampDataObject.data?.bulbSize}
             colorSchema={props.colorSchema}
             onClick={props.onSwitchClick}
             nestingLevel={currentNestingLevel}

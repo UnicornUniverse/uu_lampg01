@@ -7,15 +7,15 @@ const Lsi = {
     en: "Turn on",
     cs: "Rozsvítit",
   },
-  settings: {
-    en: "Save settings",
+  preference: {
+    en: "Save preference",
     cs: "Uložit nastavení",
   },
-  settingsDefault: {
+  preferenceDefault: {
     en: "As default",
     cs: "Jako výchozí",
   },
-  settingsSpecific: {
+  preferenceSpecific: {
     en: "Only for this lamp",
     cs: "Pouze pro tuto lampu",
   },

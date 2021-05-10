@@ -2,7 +2,6 @@
 import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "calls";
-import DataObjectPending from "../../core/data-object-state-resolver/data-object-pending";
 //@@viewOff:imports
 
 const STATICS = {
@@ -42,12 +41,13 @@ export const LampProvider = createComponent({
       handlerMap: {
         get: handleGet,
         setOn: handleSetOn,
+        setBulbSize: handleSetBulbSize,
         savePreference: handleSavePreference,
       },
     });
 
     async function handleGet() {
-      let lamp = { on: props.on }; // default lamp
+      let lamp = { on: props.on, bulbSize: props.bulbSize }; // default lamp
 
       const codeList = [];
 
@@ -68,8 +68,14 @@ export const LampProvider = createComponent({
 
         let data = lampProperty.data?.data;
 
-        if (data && data.hasOwnProperty("on")) {
-          lamp.on = data.on;
+        if (data) {
+          if (data.hasOwnProperty("on")) {
+            lamp.on = data.on;
+          }
+
+          if (data.hasOwnProperty("bulbSize")) {
+            lamp.bulbSize = data.bulbSize;
+          }
         }
       } catch (error) {
         console.error(error);
@@ -83,6 +89,10 @@ export const LampProvider = createComponent({
       return { ...lampDataObject.data, on };
     }
 
+    async function handleSetBulbSize(bulbSize) {
+      return { ...lampDataObject.data, bulbSize };
+    }
+
     async function handleSavePreference(preferenceType) {
       const dtoIn = {
         mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
@@ -91,14 +101,9 @@ export const LampProvider = createComponent({
         data: lampDataObject.data,
       };
 
-      Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn).catch((error) => {
-        console.error(error);
-        console.warn(
-          `The user preference for component ${STATICS.displayName} can't be created or updated due to error above!`
-        );
-      });
+      const lampProperty = await Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn);
 
-      return lampDataObject.data;
+      return lampProperty.data.data;
     }
 
     useEffect(() => {

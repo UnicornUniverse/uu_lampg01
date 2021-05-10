@@ -23,12 +23,14 @@ export const LampView = createVisualComponent({
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    onSwitchClick: UU5.PropTypes.func,
+    onBulbSizeChange: UU5.PropTypes.func,
+    onSavePreference: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -38,12 +40,14 @@ export const LampView = createVisualComponent({
     header: "",
     help: "",
     bulbStyle: "filled",
-    bulbSize: "xl",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
+    onSwitchClick: () => {},
+    onBulbSizeChange: () => {},
+    onSavePreference: () => {},
   },
   //@@viewOff:defaultProps
 

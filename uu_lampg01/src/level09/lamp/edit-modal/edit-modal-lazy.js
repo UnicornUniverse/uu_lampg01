@@ -59,14 +59,13 @@ const EditModalLazy = createComponentWithRef({
                 name: "baseUri",
                 type: "text",
                 label: Lsi.baseUri,
-                required: true,
               },
               {
                 name: "code",
                 type: "text",
                 label: Lsi.code,
                 getProps: () => {
-                  return { pattern: "^\\w{0,32}$", patternMessage: lsiValues.codePatternMessage };
+                  return { pattern: "^\\w{3,32}$", patternMessage: lsiValues.codePatternMessage };
                 },
               },
               {

@@ -1,6 +1,6 @@
 {
   "name": "uu_lampg01",
-  "version": "0.7.0-beta.2",
+  "version": "0.7.0-beta.3",
   "description": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
   "license": "License Commercial",
   "namespace": "UuLamp",
