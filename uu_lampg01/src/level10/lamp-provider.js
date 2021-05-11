@@ -1,5 +1,6 @@
 //@@viewOn:imports
-import { createComponent, useDataObject, useEffect, useState } from "uu5g04-hooks";
+import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
+import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports
@@ -44,7 +45,7 @@ export const LampProvider = createComponent({
     });
 
     async function handleGet() {
-      let lamp = { on: false }; // default lamp
+      let lamp = { on: false, nextUpdateAt: getNextUpdateAt() }; // default lamp
 
       // TODO MFA Move errors to own classes
       if (!props.baseUri) {
@@ -92,32 +93,37 @@ export const LampProvider = createComponent({
 
       const lampProperty = await Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn);
 
-      return lampProperty.data.data;
+      return { ...lampProperty.data.data, nextUpdateAt: getNextUpdateAt() };
     }
 
+    // Initial load of the lamp after the provide has all necessary properties
     useEffect(() => {
       if (lampDataObject.state === "readyNoData" && props.personDataObject.state === "ready") {
         lampDataObject.handlerMap.get().catch((error) => console.error(error));
       }
     }, [props.personDataObject]);
 
-    // MFA TODO Finish auto reload of the lamp
-    // useEffect(() => {
-    //   if (lampDataObject.state !== "ready") {
-    //     return;
-    //   }
+    // Auto-reload of the lamp
+    useEffect(() => {
+      function checkAndReloadLamp() {
+        if (lampDataObject.state !== "ready") {
+          return;
+        }
 
-    //   const intervalId = setInterval(() => {
-    //     if (reloadCounter < 10) {
-    //       setReloadCounter((prevCounter) => prevCounter + 1);
-    //     } else {
-    //       setReloadCounter(0);
-    //       lampDataObject.handlerMap.get();
-    //     }
-    //   }, 1000);
+        if (!lampDataObject.data?.nextUpdateAt) {
+          return;
+        }
 
-    //   return () => clearInterval(intervalId);
-    // }, [lampDataObject.state]);
+        const now = UuDateTime.utc();
+
+        if (now.toIsoString() > lampDataObject.data.nextUpdateAt.toIsoString()) {
+          lampDataObject.handlerMap.get().catch((error) => console.error(error));
+        }
+      }
+
+      const intervalId = setInterval(checkAndReloadLamp, 500);
+      return () => clearInterval(intervalId);
+    }, [lampDataObject.state, lampDataObject.data?.nextUpdateAt]);
     //@@viewOff:private
 
     //@@viewOn:render
@@ -129,6 +135,10 @@ export const LampProvider = createComponent({
 //@@viewOn:helpers
 function getPropertyCode(code) {
   return `${PROPERTY_CODE}_${code}`;
+}
+
+function getNextUpdateAt() {
+  return UuDateTime.utc().shiftTime(10000);
 }
 //@@viewOff:helpers
 
