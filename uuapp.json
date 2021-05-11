@@ -3,7 +3,7 @@
   "version": "0.8.0-beta.1",
   "license": "License Commercial",
   "description": {
-    "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
+    "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>."
   },
   "docUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/473f29c1997149ba9d3007f756fd4a02/book",
   "flsUri": "https://uuapp.plus4u.net/uu-flsg01-main/ee611766e9894794bc5f7bc81e2396f5",
@@ -25,8 +25,8 @@
         "tagList": ["UuLamp", "Level01", "Lamp"],
         "docCode": "UuLampLevel01Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -39,8 +39,8 @@
         "tagList": ["UuLamp", "Level02", "Lamp"],
         "docCode": "UuLampLevel02Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -53,8 +53,8 @@
         "tagList": ["UuLamp", "Level03", "Lamp"],
         "docCode": "UuLampLevel03Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -67,8 +67,8 @@
         "tagList": ["UuLamp", "Level04", "Lamp"],
         "docCode": "UuLampLevel04Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -81,8 +81,8 @@
         "tagList": ["UuLamp", "Level05", "Lamp"],
         "docCode": "UuLampLevel05Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -95,8 +95,8 @@
         "tagList": ["UuLamp", "Level06", "Lamp"],
         "docCode": "UuLampLevel06Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -109,8 +109,8 @@
         "tagList": ["UuLamp", "Level06", "Swith"],
         "docCode": "UuLampLevel06Switch",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-toggle-switch-outline",
         "imageUri": "",
@@ -123,8 +123,8 @@
         "tagList": ["UuLamp", "Level06", "Room"],
         "docCode": "UuLampLevel06Room",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-home-variant-outline",
         "imageUri": "",
@@ -137,8 +137,8 @@
         "tagList": ["UuLamp", "Level07", "Lamp"],
         "docCode": "UuLampLevel07Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -151,8 +151,8 @@
         "tagList": ["UuLamp", "Level08", "Lamp"],
         "docCode": "UuLampLevel08Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -165,8 +165,8 @@
         "tagList": ["UuLamp", "Level09", "Lamp"],
         "docCode": "UuLampLevel09Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -179,8 +179,8 @@
         "tagList": ["UuLamp", "Level10", "Lamp"],
         "docCode": "UuLampLevel10Lamp",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
         "imageUri": "",
@@ -193,8 +193,8 @@
         "tagList": ["UuLamp", "Level10", "Switch"],
         "docCode": "UuLampLevel10Switch",
         "desc": {
-          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
-          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
+          "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
+          "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-toggle-switch-outline",
         "imageUri": "",
