@@ -1,0 +1,12 @@
+{
+  "itemList": [
+    {
+      "name": "Bart Simson",
+      "uuIdentity": "1234-1",
+      "p4u_id": "1234-1",
+      "mtMainBaseUri": "https://uuapp.plus4u.net/uu-myterritory-maing01/840ea668bdde4e7694edd7752a632a70/",
+      "mtDwBaseUri": "https://uuapp.plus4u.net/uu-myterritory-dwg01/00b682ae53bc4fe786fbf50b404ea43f/"
+    }
+  ],
+  "uuAppErrorMap": {}
+}

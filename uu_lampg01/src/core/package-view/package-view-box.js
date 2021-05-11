@@ -14,6 +14,7 @@ export const PackageViewBox = createVisualComponent({
     header: UU5.PropTypes.node,
     help: UU5.PropTypes.node,
     info: UU5.PropTypes.node,
+    icon: UU5.PropTypes.string,
     bgStyle: UU5.PropTypes.string,
     cardView: UU5.PropTypes.string,
     colorSchema: UU5.PropTypes.string,
@@ -27,6 +28,7 @@ export const PackageViewBox = createVisualComponent({
     header: "",
     help: "",
     info: null,
+    icon: "mdi-gift",
     bgStyle: "transparent",
     cardView: "full",
     colorSchema: "amber",
@@ -55,7 +57,7 @@ export const PackageViewBox = createVisualComponent({
         >
           {props.info}
           <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={props.colorSchema}>
-            <UU5.Bricks.Icon icon="mdi-gift" />
+            <UU5.Bricks.Icon icon={props.icon} />
           </UU5.Bricks.Text>
         </UU5.Bricks.Card>
       </UuP.Bricks.ComponentWrapper>

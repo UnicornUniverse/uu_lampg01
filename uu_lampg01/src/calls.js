@@ -18,6 +18,26 @@ let Calls = {
     return Calls.call("get", commandUri, dtoIn);
   },
 
+  findPerson(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("findPerson", baseUri);
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
+  createOrUpdateUserPreferenceProperty(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("userPreferenceProperty/createOrUpdate", baseUri);
+    return Calls.call("post", commandUri, dtoIn);
+  },
+
+  getUserPreferenceProperty(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("userPreferenceProperty/get", baseUri);
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
+  loadFirstUserPreferenceProperty(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("userPreferenceProperty/loadFirst", baseUri);
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
   getCommandUri(aUseCase, baseUri) {
     // useCase <=> e.g. "getSomething" or "sys/getSomething"
     // add useCase to the application base URI

@@ -40,6 +40,12 @@ const ErrorBoundary = createComponent({
   },
   //@@viewOff:getInitialState
 
+  //@@viewOn:reactLifeCycle
+  // componentDidCatch(error, info) {
+  //   // HERE you can log error to external service
+  // },
+  //@@viewOff:reactLifeCycle
+
   //@@viewOn:render
   render() {
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);

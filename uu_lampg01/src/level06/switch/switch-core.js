@@ -61,12 +61,13 @@ export const SwitchCore = createVisualComponent({
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
     const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
+    const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
 
     if (room.light) {
       return (
         <Core.SwitchView
           header={header}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+          help={help}
           copyTagFunc={props.copyTagFunc}
           on={room.light && room.light.on}
           bgStyle={props.bgStyle}
@@ -82,9 +83,10 @@ export const SwitchCore = createVisualComponent({
     } else {
       return (
         <Core.PackageView
-          header={props.header}
-          help={props.help}
+          header={header}
+          help={help}
           info={<UU5.Bricks.Lsi lsi={Lsi.noRoom} />}
+          icon="mdi-home-alert"
           cardView={props.cardView}
           copyTagFunc={props.copyTagFunc}
           elevation={props.elevation}

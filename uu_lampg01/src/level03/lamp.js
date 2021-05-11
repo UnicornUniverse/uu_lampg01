@@ -1,35 +1,40 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent, useSession } from "uu5g04-hooks";
+import UU5, { createVisualComponent } from "uu5g04";
 import { createCopyTag } from "../utils/utils";
-import Core from "../core/core";
 import Config from "./config/config";
-import Lsi from "./lamp-lsi";
+import LampCore from "./lamp/lamp-core";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Lamp",
-  nestingLevel: ["box", "smallBox", "inline"],
+  tagName: Config.TAG + "Lamp",
+  nestingLevelList: ["box", "smallBox", "inline"],
+  editMode: {
+    displayType: "block",
+    startMode: "button",
+    customEdit: false,
+  },
   //@@viewOff:statics
 };
 
 const DEFAULT_PROPS = {
-  on: false,
   header: undefined,
+  on: false,
   bulbStyle: "filled",
   bulbSize: "xl",
   bgStyle: "transparent",
   cardView: "full",
   colorSchema: "amber",
   elevation: 1,
-  borderRadius: 0,
+  borderRadius: "0",
 };
 
 export const Lamp = createVisualComponent({
-  //@@viewOn:statics
-  ...STATICS,
-  //@@viewOff:statics
+  statics: STATICS,
+
+  //@@viewOn:mixins
+  mixins: [UU5.Common.BaseMixin],
+  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
@@ -49,56 +54,23 @@ export const Lamp = createVisualComponent({
   defaultProps: DEFAULT_PROPS,
   //@@viewOff:defaultProps
 
-  render(props) {
-    //@@viewOn:private
-    const { sessionState } = useSession();
-
-    function _handleCopyTag() {
-      return createCopyTag(STATICS.displayName, props, ["on", "bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
-    }
-    //@@viewOff:private
-
-    //@@viewOn:render
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-
-    if (sessionState === "authenticated") {
-      return (
-        <Core.LampView
-          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          copyTagFunc={_handleCopyTag}
-          on={props.on}
-          bulbStyle={props.bulbStyle}
-          bulbSize={props.bulbSize}
-          bgStyle={props.bgStyle}
-          cardView={props.cardView}
-          colorSchema={props.colorSchema}
-          elevation={props.elevation}
-          borderRadius={props.borderRadius}
-          nestingLevel={currentNestingLevel}
-          {...attrs}
-        />
-      );
-    } else {
-      return (
-        <Core.PackageView
-          header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-          help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-          info={<UU5.Bricks.Lsi lsi={Lsi.hiddenInfo} />}
-          cardView={props.cardView}
-          copyTagFunc={_handleCopyTag}
-          elevation={props.elevation}
-          borderRadius={props.borderRadius}
-          bgStyle={props.bgStyle}
-          colorSchema={props.colorSchema}
-          nestingLevel={currentNestingLevel}
-          {...attrs}
-        />
-      );
-    }
-    //@@viewOff:render
+  //@@viewOn:private
+  _handleCopyTag() {
+    return createCopyTag(STATICS.tagName, this.props, ["on", "bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
   },
+  //@@viewOff:private
+
+  //@@viewOn:interface
+  //@@viewOff:interface
+
+  //@@viewOn:render
+  render() {
+    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
+    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
+
+    return <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />;
+  },
+  //@@viewOff:render
 });
 
 export default Lamp;

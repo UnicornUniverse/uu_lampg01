@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "license": "License Commercial",
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/9b6a0ff8f69f47698a96f263220a4791\" content=\"uuLamp educational material\" target=\"_blank\"/>."
@@ -120,14 +120,47 @@
       },
       {
         "code": "UuLamp.Level08.Lamp",
-        "name": "Lamp",
+        "name": "Level08.Lamp",
         "tagList": ["UuLamp", "Level08", "Lamp"],
         "docCode": "UuLampLevel08Lamp",
         "desc": "",
         "icon": "",
         "imageUri": "",
-        "uuEccReady": false,
+        "uuEccReady": true,
         "template": "<UuLamp.Level08.Lamp />"
+      },
+      {
+        "code": "UuLamp.Level09.Lamp",
+        "name": "Level09.Lamp",
+        "tagList": ["UuLamp", "Level09", "Lamp"],
+        "docCode": "UuLampLevel09Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level09.Lamp baseUri=\"https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
+      },
+      {
+        "code": "UuLamp.Level10.Lamp",
+        "name": "Level10.Lamp",
+        "tagList": ["UuLamp", "Level10", "Lamp"],
+        "docCode": "UuLampLevel10Lamp",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level10.Lamp baseUri=\"https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
+      },
+      {
+        "code": "UuLamp.Level10.Switch",
+        "name": "Level10.Switch",
+        "tagList": ["UuLamp", "Level10", "Switch"],
+        "docCode": "UuLampLevel10Switch",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": true,
+        "template": "<UuLamp.Level10.Switch baseUri=\"https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
       }
     ]
   }

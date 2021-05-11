@@ -9,6 +9,7 @@ import Error from "./error";
 import ErrorBoundary from "./error-boundary";
 import DataObjectStateResolver from "./data-object-state-resolver";
 import LampSwitch from "./lamp-switch";
+import PersonProvider from "./person-provider";
 //@@viewOff:imports
 
 const Core = {
@@ -22,6 +23,7 @@ const Core = {
   ErrorBoundary,
   DataObjectStateResolver,
   LampSwitch,
+  PersonProvider,
 };
 
 export {
@@ -35,6 +37,7 @@ export {
   ErrorBoundary,
   DataObjectStateResolver,
   LampSwitch,
+  PersonProvider,
 };
 
 export default Core;
