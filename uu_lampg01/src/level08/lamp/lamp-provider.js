@@ -43,7 +43,7 @@ export const LampProvider = createComponent({
 
     async function handleLoad() {
       const dtoIn = { id: props.documentId };
-      return await Calls.documentLoad(props.uuDocKitUri, dtoIn);
+      return await Calls.loadDocument(props.uuDocKitUri, dtoIn);
     }
 
     // *** ON ***

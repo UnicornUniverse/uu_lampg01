@@ -13,14 +13,14 @@ let Calls = {
     return response.data;
   },
 
-  documentLoad(baseUri, dtoIn) {
+  loadDocument(baseUri, dtoIn) {
     let commandUri = Calls.getCommandUri("document/load", baseUri);
-    return Calls.call("get", commandUri, dtoIn);
+    return UU5.Common.Tools.groupCall(commandUri, dtoIn, () => Calls.call("get", commandUri, dtoIn));
   },
 
   findPerson(baseUri, dtoIn) {
     let commandUri = Calls.getCommandUri("findPerson", baseUri);
-    return Calls.call("get", commandUri, dtoIn);
+    return UU5.Common.Tools.groupCall(commandUri, dtoIn, () => Calls.call("get", commandUri, dtoIn));
   },
 
   createOrUpdateUserPreferenceProperty(baseUri, dtoIn) {
@@ -30,12 +30,12 @@ let Calls = {
 
   getUserPreferenceProperty(baseUri, dtoIn) {
     let commandUri = Calls.getCommandUri("userPreferenceProperty/get", baseUri);
-    return Calls.call("get", commandUri, dtoIn);
+    return UU5.Common.Tools.groupCall(commandUri, dtoIn, () => Calls.call("get", commandUri, dtoIn));
   },
 
   loadFirstUserPreferenceProperty(baseUri, dtoIn) {
     let commandUri = Calls.getCommandUri("userPreferenceProperty/loadFirst", baseUri);
-    return Calls.call("get", commandUri, dtoIn);
+    return UU5.Common.Tools.groupCall(commandUri, dtoIn, () => Calls.call("get", commandUri, dtoIn));
   },
 
   getCommandUri(aUseCase, baseUri) {

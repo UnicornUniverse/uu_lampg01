@@ -4,6 +4,7 @@ import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
 import LampErrorResolver from "../../lamp-error-resolver";
+import LampReloadInfo from "../../lamp-reload-info";
 import Config from "./config/config";
 import Lsi from "./lamp-view-box-lsi";
 //@@viewOff:imports
@@ -14,6 +15,10 @@ const STATICS = {
   nestingLevel: "box",
   //@@viewOff:statics
 };
+
+const reloadInfoCss = () => Config.Css.css`
+  padding: 25px
+`;
 
 export const LampViewBox = createVisualComponent({
   ...STATICS,
@@ -110,6 +115,9 @@ export const LampViewBox = createVisualComponent({
                 colorSchema={props.colorSchema}
                 nestingLevel={currentNestingLevel}
               />
+              <div className={reloadInfoCss()}>
+                <LampReloadInfo lampDataObject={props.lampDataObject} />
+              </div>
             </UU5.Bricks.Card>
           </LampErrorResolver>
         </Core.DataObjectStateResolver>

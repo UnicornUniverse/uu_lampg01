@@ -3,6 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
 import LampErrorResolver from "../../lamp-error-resolver";
+import LampReloadInfo from "../../lamp-reload-info";
 import Config from "./config/config";
 import Lsi from "./switch-view-box-lsi";
 //@@viewOff:imports
@@ -13,6 +14,10 @@ const STATICS = {
   nestingLevel: "box",
   //@@viewOff:statics
 };
+
+const reloadInfoCss = () => Config.Css.css`
+  padding: 25px
+`;
 
 const switchCss = () => Config.Css.css`margin: 20px`;
 
@@ -119,6 +124,9 @@ export const SwitchViewBox = createVisualComponent({
                 className={switchCss()}
                 disabled={props.lampDataObject.state !== "ready"}
               />
+              <div className={reloadInfoCss()}>
+                <LampReloadInfo lampDataObject={props.lampDataObject} />
+              </div>
             </LampErrorResolver>
           </Core.DataObjectStateResolver>
         </UU5.Bricks.Card>
