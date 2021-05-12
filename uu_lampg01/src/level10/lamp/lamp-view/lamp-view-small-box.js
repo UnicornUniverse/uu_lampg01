@@ -27,7 +27,6 @@ export const LampViewSmallBox = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -42,7 +41,6 @@ export const LampViewSmallBox = createVisualComponent({
     colorSchema: "amber",
     elevation: 0,
     borderRadius: "0",
-    onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
 

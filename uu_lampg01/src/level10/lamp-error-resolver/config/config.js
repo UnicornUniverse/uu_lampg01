@@ -5,7 +5,6 @@ const TAG = Config.TAG + "LampErrorResolver.";
 
 export default {
   ...Config,
-
   TAG,
   Css: UU5.Common.Css.createCssModule(
     TAG.replace(/\.$/, "")

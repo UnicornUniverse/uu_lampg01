@@ -67,7 +67,6 @@ export const Lamp = createVisualComponent({
   //@@viewOn:private
   _editRef: UU5.Common.Reference.create(),
 
-  // We need to copy baseUri even they are same as default value.
   _handleCopyTag() {
     return createCopyTag(
       STATICS.tagName,
@@ -75,6 +74,11 @@ export const Lamp = createVisualComponent({
       ["baseUri", "bulbStyle", "bulbSize", "header", "code"],
       DEFAULT_PROPS
     );
+  },
+
+  _handleCopySwitch() {
+    const component = `<UuLamp.Level10.Switch baseUri="${this.props.baseUri}" code="${this.props.code}" />`;
+    UU5.Utils.Clipboard.write(component);
   },
   //@@viewOff:private
 
@@ -109,6 +113,7 @@ export const Lamp = createVisualComponent({
           borderRadius={this.props.borderRadius}
           nestingLevel={currentNestingLevel}
           copyTagFunc={this._handleCopyTag}
+          onCopySwitch={this._handleCopySwitch}
         />
       </Core.ErrorBoundary>
     );

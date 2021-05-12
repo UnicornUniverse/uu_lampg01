@@ -6,6 +6,7 @@ import Config from "../../config/config";
 const TAG = Config.TAG + "EditModal.";
 
 export default {
+  ...Config,
   TAG,
   Css: UU5.Common.Css.createCssModule(
     TAG.replace(/\.$/, "")

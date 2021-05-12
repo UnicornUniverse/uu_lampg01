@@ -27,6 +27,7 @@ export const SwitchCore = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    onCopyLamp: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -37,6 +38,7 @@ export const SwitchCore = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
+    onCopyLamp: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -55,15 +57,6 @@ export const SwitchCore = createVisualComponent({
           return (
             <LampProvider baseUri={props.baseUri} on={props.on} personDataObject={personDataObject} code={props.code}>
               {(lampDataObject) => {
-                function handleSwitchClick() {
-                  lampDataObject.handlerMap.setOn(!lampDataObject.data.on);
-                }
-
-                function handleCopyLamp() {
-                  const component = `<UuLamp.Level10.Lamp baseUri="${props.baseUri}" code="${props.code}" />`;
-                  UU5.Utils.Clipboard.write(component);
-                }
-
                 return (
                   <SwitchView
                     lampDataObject={lampDataObject}
@@ -76,8 +69,7 @@ export const SwitchCore = createVisualComponent({
                     elevation={props.elevation}
                     borderRadius={props.borderRadius}
                     nestingLevel={props.nestingLevel}
-                    onSwitchClick={handleSwitchClick}
-                    onCopyLamp={handleCopyLamp}
+                    onCopyLamp={props.onCopyLamp}
                     {...attrs}
                   />
                 );

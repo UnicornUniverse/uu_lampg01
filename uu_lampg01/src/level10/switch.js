@@ -70,6 +70,11 @@ export const Switch = createVisualComponent({
       baseUri: undefined,
     });
   },
+
+  _handleCopyLamp() {
+    const component = `<UuLamp.Level10.Lamp baseUri="${this.props.baseUri}" code="${this.props.code}" />`;
+    UU5.Utils.Clipboard.write(component);
+  },
   //@@viewOff:private
 
   //@@viewOn:interface
@@ -100,6 +105,7 @@ export const Switch = createVisualComponent({
           borderRadius={this.props.borderRadius}
           nestingLevel={currentNestingLevel}
           copyTagFunc={this._handleCopyTag}
+          onCopyLamp={this._handleCopyLamp}
         />
       </Core.ErrorBoundary>
     );

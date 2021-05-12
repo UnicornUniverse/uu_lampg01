@@ -56,7 +56,7 @@ export const LampProvider = createComponent({
         throw new Errors.NoCodeError();
       }
 
-      if (props.code && typeof props.code === "string" && !props.code.match("^\\w{3,32}$")) {
+      if (props.code && typeof props.code === "string" && !props.code.match(Config.CODE_REGEXP)) {
         throw new Errors.CodeFormatError();
       }
 
@@ -90,12 +90,18 @@ export const LampProvider = createComponent({
       return { ...lampProperty.data.data, nextUpdateAt: getNextUpdateAt() };
     }
 
-    // Initial load of the lamp after the provide has all necessary properties
+    // Trigger of the lamp synchronization everytime the dependencies changed
     useEffect(() => {
-      if (lampDataObject.state === "readyNoData" && props.personDataObject.state === "ready") {
-        lampDataObject.handlerMap.get().catch((error) => console.error(error));
+      if (
+        props.personDataObject.state !== "ready" ||
+        lampDataObject.state === "pendingNoData" ||
+        lampDataObject.state === "pending"
+      ) {
+        return;
       }
-    }, [props.personDataObject]);
+
+      lampDataObject.handlerMap.get().catch((error) => console.error(error));
+    }, [props.personDataObject.state, props.baseUri, props.code]);
 
     // Auto-reload of the lamp
     useEffect(() => {

@@ -16,10 +16,6 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-const reloadInfoCss = () => Config.Css.css`
-  padding: 25px
-`;
-
 export const LampViewBox = createVisualComponent({
   ...STATICS,
 
@@ -35,8 +31,8 @@ export const LampViewBox = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onSwitchClick: UU5.PropTypes.func,
     onCopySwitch: UU5.PropTypes.func,
+    onReload: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -52,8 +48,8 @@ export const LampViewBox = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    onSwitchClick: () => {},
     onCopySwitch: () => {},
+    onReload: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -77,7 +73,7 @@ export const LampViewBox = createVisualComponent({
       actionList.push({
         content: <UU5.Bricks.Icon icon="mdi-reload" />,
         active: true,
-        onClick: props.lampDataObject.handlerMap.get,
+        onClick: props.onReload,
         bgStyle: "outline",
         disabled: props.lampDataObject.state === "pending",
       });
@@ -115,9 +111,7 @@ export const LampViewBox = createVisualComponent({
                 colorSchema={props.colorSchema}
                 nestingLevel={currentNestingLevel}
               />
-              <div className={reloadInfoCss()}>
-                <LampReloadInfo lampDataObject={props.lampDataObject} />
-              </div>
+              <LampReloadInfo lampDataObject={props.lampDataObject} />
             </UU5.Bricks.Card>
           </LampErrorResolver>
         </Core.DataObjectStateResolver>
