@@ -107,10 +107,16 @@ export const LampProvider = createComponent({
     }
 
     useEffect(() => {
-      if (lampDataObject.state === "readyNoData" && props.personDataObject.state === "ready") {
-        lampDataObject.handlerMap.get();
+      if (
+        props.personDataObject.state !== "ready" ||
+        lampDataObject.state === "pendingNoData" ||
+        lampDataObject.state === "pending"
+      ) {
+        return;
       }
-    }, [props.personDataObject]);
+
+      lampDataObject.handlerMap.get().catch((error) => console.error(error));
+    }, [props.personDataObject, props.baseUri, props.code]);
     //@@viewOff:private
 
     //@@viewOn:render
