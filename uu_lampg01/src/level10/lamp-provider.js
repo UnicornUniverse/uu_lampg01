@@ -3,6 +3,7 @@ import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Calls from "calls";
+import Errors from "./lamp-provider-errors";
 //@@viewOff:imports
 
 const STATICS = {
@@ -47,23 +48,16 @@ export const LampProvider = createComponent({
     async function handleGet() {
       let lamp = { on: false, nextUpdateAt: getNextUpdateAt() }; // default lamp
 
-      // TODO MFA Move errors to own classes
       if (!props.baseUri) {
-        const error = new Error("The required property baseUri is not defined!");
-        error.code = Config.Error.NO_BASE_URI;
-        throw error;
+        throw new Errors.NoBaseUriError();
       }
 
       if (!props.code) {
-        const error = new Error("The required property code is not defined!");
-        error.code = Config.Error.NO_CODE;
-        throw error;
+        throw new Errors.NoCodeError();
       }
 
       if (props.code && typeof props.code === "string" && !props.code.match("^\\w{3,32}$")) {
-        const error = new Error("The required property code has invalid format!");
-        error.code = Config.Error.CODE_INVALID_FORMAT;
-        throw error;
+        throw new Errors.CodeFormatError();
       }
 
       const dtoIn = {

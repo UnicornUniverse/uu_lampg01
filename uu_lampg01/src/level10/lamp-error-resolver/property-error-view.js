@@ -6,12 +6,12 @@ import Config from "../lamp/lamp-view/config/config";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "PropertyError",
+  displayName: Config.TAG + "PropertyErrorView",
   nestingLevel: ["box", "inline"],
   //@@viewOff:statics
 };
 
-export const PropertyError = createVisualComponent({
+export const PropertyErrorView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -55,4 +55,4 @@ export const PropertyError = createVisualComponent({
   },
 });
 
-export default PropertyError;
+export default PropertyErrorView;
