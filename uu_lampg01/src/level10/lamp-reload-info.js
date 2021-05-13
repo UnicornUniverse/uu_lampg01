@@ -31,11 +31,11 @@ export const LampReloadInfo = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const [, setCounter] = useState(0);
+    const [, forceRender] = useState(0);
 
     useLayoutEffect(() => {
       const intervalId = setInterval(() => {
-        setCounter((prevCounter) => prevCounter + 1);
+        forceRender((prevCounter) => prevCounter + 1);
       }, 500);
 
       return () => clearInterval(intervalId);
