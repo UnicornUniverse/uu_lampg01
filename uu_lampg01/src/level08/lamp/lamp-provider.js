@@ -41,6 +41,7 @@ export const LampProvider = createComponent({
       },
     });
 
+    // TODO Smazat await a testnout
     async function handleLoad() {
       const dtoIn = { id: props.documentId };
       return await Calls.loadDocument(props.uuDocKitUri, dtoIn);

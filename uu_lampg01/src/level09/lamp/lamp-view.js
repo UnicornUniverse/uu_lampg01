@@ -67,6 +67,7 @@ export const LampView = createVisualComponent({
           colorSchema: "success",
         });
       } catch (error) {
+        // TODO Switch Lsi for Error component
         alertBusRef.current.addAlert({
           content: <UU5.Bricks.Lsi lsi={Lsi.preferenceError} />,
           closeTimer: 5000,

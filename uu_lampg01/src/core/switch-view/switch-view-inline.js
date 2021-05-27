@@ -34,18 +34,21 @@ export const SwitchViewInline = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const className = Config.Css.css`cursor: pointer`;
+    const attrs = UU5.Common.VisualComponent.getAttrs(props, className);
 
     const switchStateCode = props.on ? "-outline" : "-off";
     const switchIcon = `mdi-toggle-switch${switchStateCode}`;
-    const switchCss = Config.Css.css`cursor: pointer`;
     const colorSchema = props.on ? props.colorSchema : "black";
 
     return (
-      <UU5.Bricks.Text colorSchema={colorSchema} nestingLevel="inline" {...attrs}>
-        <span onClick={props.onSwitchClick} className={switchCss}>
-          <UU5.Bricks.Icon icon={switchIcon} />
-        </span>
+      <UU5.Bricks.Text
+        mainAttrs={{ onClick: props.onSwitchClick }}
+        colorSchema={colorSchema}
+        nestingLevel="inline"
+        {...attrs}
+      >
+        <UU5.Bricks.Icon icon={switchIcon} />
       </UU5.Bricks.Text>
     );
     //@@viewOff:render
