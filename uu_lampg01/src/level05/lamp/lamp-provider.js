@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createComponent, useMemo, useState, useEffect } from "uu5g04-hooks";
+import { createComponent, useMemo, useState, useEffect, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -28,29 +28,22 @@ export const LampProvider = createComponent({
 
   render(props) {
     //@@viewOn:private
-
-    // *** ON ***
-    const [on, setOn] = useState({ value: props.on, initValue: props.on });
+    const initOn = useRef(props.on);
+    const [on, setOn] = useState(props.on);
 
     useEffect(() => {
-      if (props.on !== on.initValue) {
-        setOn({ value: props.on, initValue: props.on });
+      if (props.on !== initOn) {
+        initOn.current = props.on;
+        setOn(props.on);
       }
     }, [props.on]);
 
-    // *** LAMP ***
-    function handleSetOn(on) {
-      setOn((prevOn) => {
-        return { value: on, initValue: prevOn.initValue };
-      });
-    }
-
     const lamp = useMemo(() => {
       return {
-        on: on.value,
-        setOn: handleSetOn,
+        on,
+        setOn,
       };
-    }, [on, handleSetOn]);
+    }, [on, setOn]);
     //@@viewOff:private
 
     //@@viewOn:render
