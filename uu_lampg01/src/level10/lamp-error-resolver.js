@@ -2,7 +2,6 @@
 import UU5 from "uu5g04";
 import { createComponent } from "uu5g04-hooks";
 import { PropertyError } from "./lamp-provider-errors";
-import "uu_plus4u5g01-bricks";
 
 import Core from "../core/core";
 import Config from "./config/config";

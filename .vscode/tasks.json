@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "eslint",
+      "type": "shell",
+      "command": "./node_modules/.bin/eslint",
+      "options": { "cwd": "${workspaceFolder}/uu_lampg01" },
+      "args": ["./src", "./test", "./mock"],
+      "problemMatcher": "$eslint-stylish",
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}

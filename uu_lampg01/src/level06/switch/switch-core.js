@@ -51,7 +51,7 @@ export const SwitchCore = createVisualComponent({
       room.registerSwitch(props.id);
 
       return () => room.unregisterSwitch(props.id);
-    }, []);
+    }, [room, props.id]);
 
     function handleSwitchClick() {
       room.light.setOn(!room.light.on);

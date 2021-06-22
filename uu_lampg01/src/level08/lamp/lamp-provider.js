@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import UU5 from "uu5g04";
 import { createComponent, useMemo, useState, useDataObject, useEffect } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "calls";
@@ -54,7 +55,7 @@ export const LampProvider = createComponent({
       if (props.on !== on.initValue) {
         setOn({ value: props.on, initValue: props.on });
       }
-    }, [props.on]);
+    }, [props.on, on.initValue]);
 
     // *** LAMP ***
     const canSwitch = useMemo(() => {
@@ -81,7 +82,7 @@ export const LampProvider = createComponent({
       }
 
       return result;
-    }, [on, setOn, canSwitch, documentDataObject]);
+    }, [on, canSwitch, documentDataObject]);
     //@@viewOff:private
 
     //@@viewOn:render

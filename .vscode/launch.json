@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug - Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4321/",
+      "webRoot": "${workspaceFolder}/uu_lampg01/"
+    },
+    {
+      "name": "Debug - Edge",
+      "type": "pwa-msedge",
+      "request": "launch",
+      "url": "http://localhost:4321/",
+      "webRoot": "${workspaceFolder}/uu_lampg01/"
+    },
+    {
+      "name": "Debug - Firefox",
+      "type": "firefox",
+      "request": "launch",
+      "url": "http://localhost:4321/",
+      "webRoot": "${workspaceFolder}/uu_lampg01/",
+      "reAttach": true,
+      "pathMappings": [
+        {
+          "url": "webpack:///",
+          "path": "${workspaceFolder}/uu_lampg01"
+        }
+      ]
+    }
+  ]
+}

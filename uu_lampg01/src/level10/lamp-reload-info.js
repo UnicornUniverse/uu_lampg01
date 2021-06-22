@@ -51,10 +51,11 @@ export const LampReloadInfo = createVisualComponent({
       case "pending":
         child = <SyncInfo />;
         break;
-      case "ready":
-        const seconds = getRemainingSeconds(props.lampDataObject.data.nextUpdateAt);
+      case "ready": {
+        let seconds = getRemainingSeconds(props.lampDataObject.data.nextUpdateAt);
         child = <ReloadInfo seconds={seconds} />;
         break;
+      }
       case "error":
         child = <Core.Error errorData={props.lampDataObject.errorData} />;
         break;

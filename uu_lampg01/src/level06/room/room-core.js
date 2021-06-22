@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useSession, useState } from "uu5g04-hooks";
+import { createVisualComponent } from "uu5g04-hooks";
 import "uu_pg01-bricks";
 import Core from "../../core/core";
 import Config from "./config/config";

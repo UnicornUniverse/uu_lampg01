@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import UU5 from "uu5g04";
 import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
@@ -70,7 +71,7 @@ export const LampProvider = createComponent({
 
       let data = lampProperty.data?.data;
 
-      if (data && data.hasOwnProperty("on")) {
+      if (data && Object.prototype.hasOwnProperty.call(data, "on")) {
         lamp.on = data.on;
       }
 
@@ -101,7 +102,7 @@ export const LampProvider = createComponent({
       }
 
       lampDataObject.handlerMap.get().catch((error) => console.error(error));
-    }, [props.personDataObject.state, props.baseUri, props.code]);
+    }, [props.personDataObject.state, props.baseUri, props.code, lampDataObject]);
 
     // Auto-reload of the lamp
     useEffect(() => {
@@ -123,7 +124,7 @@ export const LampProvider = createComponent({
 
       const intervalId = setInterval(checkAndReloadLamp, 500);
       return () => clearInterval(intervalId);
-    }, [lampDataObject.state, lampDataObject.data?.nextUpdateAt]);
+    }, [lampDataObject]);
     //@@viewOff:private
 
     //@@viewOn:render

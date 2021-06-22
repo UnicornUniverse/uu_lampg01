@@ -58,7 +58,7 @@ export const LampCore = createVisualComponent({
       room.registerLamp(props.id);
 
       return () => room.unregisterLamp(props.id);
-    }, []);
+    }, [room, props.id]);
     //@@viewOff:private
 
     //@@viewOn:render
