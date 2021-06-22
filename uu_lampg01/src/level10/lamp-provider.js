@@ -102,7 +102,7 @@ export const LampProvider = createComponent({
       }
 
       lampDataObject.handlerMap.get().catch((error) => console.error(error));
-    }, [props.personDataObject.state, props.baseUri, props.code, lampDataObject]);
+    }, [props.personDataObject.state, props.baseUri, props.code]);
 
     // Auto-reload of the lamp
     useEffect(() => {

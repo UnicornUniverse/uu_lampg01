@@ -55,7 +55,7 @@ export const LampProvider = createComponent({
       if (props.on !== on.initValue) {
         setOn({ value: props.on, initValue: props.on });
       }
-    }, [props.on, on.initValue]);
+    }, [props.on]);
 
     // *** LAMP ***
     const canSwitch = useMemo(() => {

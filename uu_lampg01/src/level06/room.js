@@ -54,7 +54,7 @@ export const Room = createVisualComponent({
 
   //@@viewOn:overriding
   onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.getPropsToSave() : undefined;
+    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
   },
   //@@viewOff:overriding
 

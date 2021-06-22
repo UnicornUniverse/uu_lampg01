@@ -117,7 +117,7 @@ export const LampProvider = createComponent({
       }
 
       lampDataObject.handlerMap.get().catch((error) => console.error(error));
-    }, [props.personDataObject, props.baseUri, props.code, lampDataObject]);
+    }, [props.personDataObject, props.baseUri, props.code]);
     //@@viewOff:private
 
     //@@viewOn:render

@@ -39,7 +39,7 @@ const EditModalLazy = createComponentWithRef({
 
     //@@viewOn:interface
     useImperativeHandle(ref, () => ({
-      getPropsToSave: modalRef.current.getPropsToSave,
+      getPropsToSave: () => modalRef.current.getPropsToSave(),
     }));
     //@@viewOff:interface
 
