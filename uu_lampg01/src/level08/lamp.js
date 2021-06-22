@@ -13,7 +13,6 @@ const STATICS = {
   nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
-    startMode: "button",
     customEdit: true,
     lazy: true,
   },
