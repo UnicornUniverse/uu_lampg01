@@ -4,8 +4,8 @@ import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import Core from "../../../core/core";
+import LampErrorResolver from "./lamp-error-resolver";
 import Lsi from "./lamp-view-box-lsi";
-import DocumentErrorLsi from "./document-error-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -84,23 +84,25 @@ export const LampViewBox = createVisualComponent({
           dataObject={props.documentDataObject}
           nestingLevel={currentNestingLevel}
           height={120}
-          customErrorLsi={DocumentErrorLsi}
+          passErrorNoData
         >
-          <UU5.Bricks.Card
-            bgStyle={props.bgStyle}
-            colorSchema={props.colorSchema}
-            className="center"
-            elevation={0}
-            elevationHover={0}
-          >
-            <Core.Bulb
-              on={props.on}
-              bulbSize={props.bulbSize}
-              bulbStyle={props.bulbStyle}
+          <LampErrorResolver dataObject={props.documentDataObject} nestingLevel={currentNestingLevel}>
+            <UU5.Bricks.Card
+              bgStyle={props.bgStyle}
               colorSchema={props.colorSchema}
-              nestingLevel={currentNestingLevel}
-            />
-          </UU5.Bricks.Card>
+              className="center"
+              elevation={0}
+              elevationHover={0}
+            >
+              <Core.Bulb
+                on={props.on}
+                bulbSize={props.bulbSize}
+                bulbStyle={props.bulbStyle}
+                colorSchema={props.colorSchema}
+                nestingLevel={currentNestingLevel}
+              />
+            </UU5.Bricks.Card>
+          </LampErrorResolver>
         </Core.DataObjectStateResolver>
       </UuP.Bricks.ComponentWrapper>
     );

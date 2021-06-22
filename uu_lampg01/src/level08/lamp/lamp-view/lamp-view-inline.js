@@ -1,9 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
-import Core from "../../../core/core";
 import Config from "./config/config";
-import DocumentErrorLsi from "./document-error-lsi";
+import Core from "../../../core/core";
+import LampErrorResolver from "./lamp-error-resolver";
 //@@viewOff:imports
 
 const STATICS = {
@@ -47,14 +47,16 @@ export const LampViewInline = createVisualComponent({
       <Core.DataObjectStateResolver
         dataObject={props.documentDataObject}
         nestingLevel={currentNestingLevel}
-        customErrorLsi={DocumentErrorLsi}
+        passErrorNoData
       >
-        <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
-          <Core.Bulb on={props.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
-          {props.showSwitch && (
-            <Core.LampSwitch on={props.on} colorSchema={props.colorSchema} onClick={props.onSwitchClick} />
-          )}
-        </UU5.Bricks.Text>
+        <LampErrorResolver dataObject={props.documentDataObject} nestingLevel={currentNestingLevel}>
+          <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
+            <Core.Bulb on={props.on} bulbStyle={props.bulbStyle} colorSchema={props.colorSchema} />
+            {props.showSwitch && (
+              <Core.LampSwitch on={props.on} colorSchema={props.colorSchema} onClick={props.onSwitchClick} />
+            )}
+          </UU5.Bricks.Text>
+        </LampErrorResolver>
       </Core.DataObjectStateResolver>
     );
     //@@viewOff:render
