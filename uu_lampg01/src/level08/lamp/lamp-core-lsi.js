@@ -1,6 +1,6 @@
 const Lsi = {
   header: {
-    en: "uuLamp Level 08 - Authorized Lamp",
+    en: "uuLamp Level 08 - Authorization Lamp",
     cs: "uuLamp Level 08 - Lampa s autorizací",
   },
   help: {
