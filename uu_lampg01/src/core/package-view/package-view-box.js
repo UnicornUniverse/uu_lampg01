@@ -57,7 +57,7 @@ export const PackageViewBox = createVisualComponent({
           elevationHover={0}
         >
           {props.info}
-          <UU5.Bricks.Icon className={Config.Css.css`font-size: 65px`} icon={props.icon} />
+          <UU5.Bricks.Icon className={Config.Css.css`font-size: 65px;display: block`} icon={props.icon} />
         </UU5.Bricks.Card>
       </UuP.Bricks.ComponentWrapper>
     );

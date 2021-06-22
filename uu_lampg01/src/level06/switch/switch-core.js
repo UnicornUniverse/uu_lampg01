@@ -44,7 +44,7 @@ export const SwitchCore = createVisualComponent({
     const room = useRoom();
 
     useEffect(() => {
-      if (!room.registerSwitch || !room.unregisterSwitch) {
+      if (!room) {
         return;
       }
 
@@ -63,7 +63,7 @@ export const SwitchCore = createVisualComponent({
     const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
     const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
 
-    if (room.light) {
+    if (room) {
       return (
         <Core.SwitchView
           header={header}
