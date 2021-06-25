@@ -1,5 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
+import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
 import Core from "../../../core/core";
 import LampErrorResolver from "../../lamp-error-resolver";
@@ -14,10 +15,6 @@ const STATICS = {
   nestingLevel: "box",
   //@@viewOff:statics
 };
-
-const reloadInfoCss = () => Config.Css.css`
-  padding: 25px
-`;
 
 const switchCss = () => Config.Css.css`margin: 20px`;
 
@@ -36,6 +33,7 @@ export const SwitchViewBox = createVisualComponent({
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     onSwitchClick: UU5.PropTypes.func,
     onCopyLamp: UU5.PropTypes.func,
+    onReload: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -51,6 +49,7 @@ export const SwitchViewBox = createVisualComponent({
     borderRadius: "0",
     onSwitchClick: () => {},
     onCopyLamp: () => {},
+    onReload: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -74,7 +73,7 @@ export const SwitchViewBox = createVisualComponent({
       actionList.push({
         content: <UU5.Bricks.Icon icon="mdi-reload" />,
         active: true,
-        onClick: props.lampDataObject.handlerMap.get,
+        onClick: props.onReload,
         bgStyle: "outline",
         disabled: props.lampDataObject.state === "pending",
       });
@@ -122,11 +121,9 @@ export const SwitchViewBox = createVisualComponent({
                 value={props.lampDataObject.data?.on}
                 size="xl"
                 className={switchCss()}
-                disabled={props.lampDataObject.state !== "ready"}
+                disabled={props.lampDataObject.state === "pending"}
               />
-              <div className={reloadInfoCss()}>
-                <LampReloadInfo lampDataObject={props.lampDataObject} />
-              </div>
+              <LampReloadInfo lampDataObject={props.lampDataObject} />
             </LampErrorResolver>
           </Core.DataObjectStateResolver>
         </UU5.Bricks.Card>

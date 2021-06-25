@@ -44,14 +44,14 @@ export const SwitchCore = createVisualComponent({
     const room = useRoom();
 
     useEffect(() => {
-      if (!room.registerSwitch || !room.unregisterSwitch) {
+      if (!room) {
         return;
       }
 
       room.registerSwitch(props.id);
 
       return () => room.unregisterSwitch(props.id);
-    }, []);
+    }, [room, props.id]);
 
     function handleSwitchClick() {
       room.light.setOn(!room.light.on);
@@ -63,7 +63,7 @@ export const SwitchCore = createVisualComponent({
     const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
     const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
 
-    if (room.light) {
+    if (room) {
       return (
         <Core.SwitchView
           header={header}

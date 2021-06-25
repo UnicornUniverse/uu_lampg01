@@ -51,14 +51,14 @@ export const LampCore = createVisualComponent({
     const room = useRoom();
 
     useEffect(() => {
-      if (!room.registerLamp || !room.unregisterLamp) {
+      if (!room) {
         return;
       }
 
       room.registerLamp(props.id);
 
       return () => room.unregisterLamp(props.id);
-    }, []);
+    }, [room, props.id]);
     //@@viewOff:private
 
     //@@viewOn:render
@@ -66,7 +66,7 @@ export const LampCore = createVisualComponent({
     const header = props.header || <UU5.Bricks.Lsi lsi={Lsi.header} />;
     const help = <UU5.Bricks.Lsi lsi={Lsi.help} />;
 
-    if (room.light) {
+    if (room) {
       return (
         <Core.LampView
           header={header}

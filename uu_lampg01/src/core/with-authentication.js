@@ -8,7 +8,7 @@ import Lsi from "./with-authentication-lsi";
 function withAuthentication(Component, displayName, header, help) {
   return createComponent({
     //@@viewOn:statics
-    displayName,
+    displayName: `withAuthentication(${displayName})`,
     //@@viewOff:statics
 
     //@@viewOn:propTypes

@@ -1,8 +1,10 @@
 //@@viewOn:imports
+import UU5 from "uu5g04";
 import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Calls from "calls";
+import Errors from "./lamp-provider-errors";
 //@@viewOff:imports
 
 const STATICS = {
@@ -47,23 +49,16 @@ export const LampProvider = createComponent({
     async function handleGet() {
       let lamp = { on: false, nextUpdateAt: getNextUpdateAt() }; // default lamp
 
-      // TODO MFA Move errors to own classes
       if (!props.baseUri) {
-        const error = new Error("The required property baseUri is not defined!");
-        error.code = Config.Error.NO_BASE_URI;
-        throw error;
+        throw new Errors.NoBaseUriError();
       }
 
       if (!props.code) {
-        const error = new Error("The required property code is not defined!");
-        error.code = Config.Error.NO_CODE;
-        throw error;
+        throw new Errors.NoCodeError();
       }
 
-      if (props.code && typeof props.code === "string" && !props.code.match("^\\w{3,32}$")) {
-        const error = new Error("The required property code has invalid format!");
-        error.code = Config.Error.CODE_INVALID_FORMAT;
-        throw error;
+      if (props.code && typeof props.code === "string" && !props.code.match(Config.CODE_REGEXP)) {
+        throw new Errors.CodeFormatError();
       }
 
       const dtoIn = {
@@ -76,7 +71,7 @@ export const LampProvider = createComponent({
 
       let data = lampProperty.data?.data;
 
-      if (data && data.hasOwnProperty("on")) {
+      if (data && Object.prototype.hasOwnProperty.call(data, "on")) {
         lamp.on = data.on;
       }
 
@@ -96,12 +91,18 @@ export const LampProvider = createComponent({
       return { ...lampProperty.data.data, nextUpdateAt: getNextUpdateAt() };
     }
 
-    // Initial load of the lamp after the provide has all necessary properties
+    // Trigger of the lamp synchronization everytime the dependencies changed
     useEffect(() => {
-      if (lampDataObject.state === "readyNoData" && props.personDataObject.state === "ready") {
-        lampDataObject.handlerMap.get().catch((error) => console.error(error));
+      if (
+        props.personDataObject.state !== "ready" ||
+        lampDataObject.state === "pendingNoData" ||
+        lampDataObject.state === "pending"
+      ) {
+        return;
       }
-    }, [props.personDataObject]);
+
+      lampDataObject.handlerMap.get().catch((error) => console.error(error));
+    }, [props.personDataObject.state, props.baseUri, props.code]);
 
     // Auto-reload of the lamp
     useEffect(() => {
@@ -123,7 +124,7 @@ export const LampProvider = createComponent({
 
       const intervalId = setInterval(checkAndReloadLamp, 500);
       return () => clearInterval(intervalId);
-    }, [lampDataObject.state, lampDataObject.data?.nextUpdateAt]);
+    }, [lampDataObject]);
     //@@viewOff:private
 
     //@@viewOn:render

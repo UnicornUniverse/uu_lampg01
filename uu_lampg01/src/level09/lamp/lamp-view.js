@@ -1,10 +1,11 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import LampViewInline from "./lamp-view/lamp-view-inline";
 import LampViewSmallBox from "./lamp-view/lamp-view-small-box";
 import LampViewBox from "./lamp-view/lamp-view-box";
+import Lsi from "./lamp-view-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -28,9 +29,6 @@ export const LampView = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onSwitchClick: UU5.PropTypes.func,
-    onBulbSizeChange: UU5.PropTypes.func,
-    onSavePreference: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -45,26 +43,82 @@ export const LampView = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
-    onSwitchClick: () => {},
-    onBulbSizeChange: () => {},
-    onSavePreference: () => {},
   },
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const alertBusRef = useRef();
+
+    function handleSwitchClick() {
+      props.lampDataObject.handlerMap.setOn(!props.lampDataObject.data.on);
+    }
+
+    function handleBulbSizeChange(bulbSize) {
+      props.lampDataObject.handlerMap.setBulbSize(bulbSize);
+    }
+
+    async function handleSavePreference(preferenceType) {
+      try {
+        await props.lampDataObject.handlerMap.savePreference(preferenceType);
+        alertBusRef.current.addAlert({
+          content: <UU5.Bricks.Lsi lsi={Lsi.preferenceSuccess} />,
+          closeTimer: 2000,
+          colorSchema: "success",
+        });
+      } catch (error) {
+        // TODO Switch Lsi for Error component
+        alertBusRef.current.addAlert({
+          content: <UU5.Bricks.Lsi lsi={Lsi.preferenceError} />,
+          closeTimer: 5000,
+          colorSchema: "danger",
+        });
+      }
+    }
+    //@@viewOff:private
+
     //@@viewOn:render
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
+    let child;
+
     switch (currentNestingLevel) {
       case "box":
-        return <LampViewBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        child = (
+          <LampViewBox
+            {...props}
+            {...attrs}
+            nestingLevel={currentNestingLevel}
+            onSwitchClick={handleSwitchClick}
+            onBulbSizeChange={handleBulbSizeChange}
+            onSavePreference={handleSavePreference}
+          />
+        );
+        break;
       case "smallBox":
-        return <LampViewSmallBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        child = (
+          <LampViewSmallBox
+            {...props}
+            {...attrs}
+            nestingLevel={currentNestingLevel}
+            onSwitchClick={handleSwitchClick}
+          />
+        );
+        break;
       case "inline":
       default:
-        return <LampViewInline {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        child = (
+          <LampViewInline {...props} {...attrs} nestingLevel={currentNestingLevel} onSwitchClick={handleSwitchClick} />
+        );
     }
+
+    return (
+      <>
+        {child}
+        <UU5.Bricks.AlertBus ref_={alertBusRef} />
+      </>
+    );
     //@@viewOff:render
   },
 });

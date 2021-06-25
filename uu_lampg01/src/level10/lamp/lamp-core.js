@@ -32,6 +32,7 @@ export const LampCore = createVisualComponent({
     colorSchema: UU5.PropTypes.string,
     elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
     borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    onCopySwitch: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -48,6 +49,7 @@ export const LampCore = createVisualComponent({
     colorSchema: "amber",
     elevation: 1,
     borderRadius: "0",
+    onCopySwitch: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -64,15 +66,6 @@ export const LampCore = createVisualComponent({
           return (
             <LampProvider personDataObject={personDataObject} baseUri={props.baseUri} code={props.code}>
               {(lampDataObject) => {
-                function handleSwitchClick() {
-                  lampDataObject.handlerMap.setOn(!lampDataObject.data.on);
-                }
-
-                function handleCopySwitch() {
-                  const component = `<UuLamp.Level10.Switch baseUri="${props.baseUri}" code="${props.code}" />`;
-                  UU5.Utils.Clipboard.write(component);
-                }
-
                 return (
                   <LampView
                     lampDataObject={lampDataObject}
@@ -87,8 +80,7 @@ export const LampCore = createVisualComponent({
                     elevation={props.elevation}
                     borderRadius={props.borderRadius}
                     nestingLevel={currentNestingLevel}
-                    onSwitchClick={handleSwitchClick}
-                    onCopySwitch={handleCopySwitch}
+                    onCopySwitch={props.onCopySwitch}
                     {...attrs}
                   />
                 );

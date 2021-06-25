@@ -3,8 +3,8 @@ import * as UU5 from "uu5g04";
 import { createComponentWithRef, useRef, useImperativeHandle } from "uu5g04-hooks";
 import "uu5g04-bricks";
 import Config from "./config/config";
-import Lsi from "./edit-modal-lazy-lsi";
 import TimeZone from "../utils/time-zone";
+import Lsi from "./edit-modal-lazy-lsi";
 //@@viewOff:imports
 
 //TODO MFA - Add documentation link to info header
@@ -39,7 +39,7 @@ const EditModalLazy = createComponentWithRef({
 
     //@@viewOn:interface
     useImperativeHandle(ref, () => ({
-      getPropsToSave: modalRef.current.getPropsToSave,
+      getPropsToSave: () => modalRef.current.getPropsToSave(),
     }));
     //@@viewOff:interface
 

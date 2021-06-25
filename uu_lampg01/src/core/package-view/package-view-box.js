@@ -1,5 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
+import UuP from "uu_pg01";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -56,9 +57,7 @@ export const PackageViewBox = createVisualComponent({
           elevationHover={0}
         >
           {props.info}
-          <UU5.Bricks.Text className={Config.Css.css`font-size: 65px`} colorSchema={props.colorSchema}>
-            <UU5.Bricks.Icon icon={props.icon} />
-          </UU5.Bricks.Text>
+          <UU5.Bricks.Icon className={Config.Css.css`font-size: 65px;display: block`} icon={props.icon} />
         </UU5.Bricks.Card>
       </UuP.Bricks.ComponentWrapper>
     );

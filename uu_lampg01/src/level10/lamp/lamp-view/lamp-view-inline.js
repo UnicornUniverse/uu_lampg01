@@ -21,7 +21,6 @@ export const LampViewInline = createVisualComponent({
     lampDataObject: UU5.PropTypes.object.isRequired,
     bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
     colorSchema: UU5.PropTypes.string,
-    onSwitchClick: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -30,7 +29,6 @@ export const LampViewInline = createVisualComponent({
     lampDataObject: undefined,
     bulbStyle: "filled",
     colorSchema: "amber",
-    onSwitchClick: () => {},
   },
   //@@viewOff:defaultProps
 

@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import UU5 from "uu5g04";
 import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "calls";
@@ -69,11 +70,11 @@ export const LampProvider = createComponent({
         let data = lampProperty.data?.data;
 
         if (data) {
-          if (data.hasOwnProperty("on")) {
+          if (Object.prototype.hasOwnProperty.call(data, "on")) {
             lamp.on = data.on;
           }
 
-          if (data.hasOwnProperty("bulbSize")) {
+          if (Object.prototype.hasOwnProperty.call(data, "bulbSize")) {
             lamp.bulbSize = data.bulbSize;
           }
         }
@@ -107,10 +108,16 @@ export const LampProvider = createComponent({
     }
 
     useEffect(() => {
-      if (lampDataObject.state === "readyNoData" && props.personDataObject.state === "ready") {
-        lampDataObject.handlerMap.get();
+      if (
+        props.personDataObject.state !== "ready" ||
+        lampDataObject.state === "pendingNoData" ||
+        lampDataObject.state === "pending"
+      ) {
+        return;
       }
-    }, [props.personDataObject]);
+
+      lampDataObject.handlerMap.get().catch((error) => console.error(error));
+    }, [props.personDataObject, props.baseUri, props.code]);
     //@@viewOff:private
 
     //@@viewOn:render

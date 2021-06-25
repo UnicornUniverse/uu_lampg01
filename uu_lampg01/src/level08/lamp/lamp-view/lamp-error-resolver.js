@@ -1,11 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createComponent } from "uu5g04-hooks";
-import { PropertyError } from "./lamp-provider-errors";
 
-import Core from "../core/core";
+import Core from "../../../core/core";
 import Config from "./config/config";
-import PropertyErrorView from "./lamp-error-resolver/property-error-view";
 import Lsi from "./lamp-error-resolver-lsi";
 //@@viewOff:imports
 
@@ -48,13 +46,13 @@ export const LampErrorResolver = createComponent({
 function renderError(errorData, height, currentNestingLevel, attrs) {
   const errorCode = errorData.error?.code;
 
-  if (errorData.error instanceof PropertyError) {
+  // TODO - UU5.Bricks.Unauthorized - Does not support inline nesting level properly
+  // https://uuapp.plus4u.net/uu-sls-maing01/e80acdfaeb5d46748a04cfc7c10fdf4e/issueDetail?id=60d1c0b35f94de002989fb28
+  if (errorCode === "uu-dockit-main/document/load/userHasNotRightsToLoadDocument") {
     return (
-      <PropertyErrorView
-        message={<UU5.Bricks.Lsi lsi={Lsi[errorCode]} />}
-        nestingLevel={currentNestingLevel}
-        {...attrs}
-      />
+      <UU5.Bricks.Unauthorized nestingLevel={currentNestingLevel}>
+        <UU5.Bricks.Lsi lsi={Lsi[errorCode]} />
+      </UU5.Bricks.Unauthorized>
     );
   }
 

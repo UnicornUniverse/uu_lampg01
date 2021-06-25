@@ -11,7 +11,6 @@ const STATICS = {
   nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
-    startMode: "button",
     customEdit: false,
   },
   //@@viewOff:statics

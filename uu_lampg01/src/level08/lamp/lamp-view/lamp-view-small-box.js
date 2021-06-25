@@ -2,8 +2,8 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
+import LampErrorResolver from "./lamp-error-resolver";
 import Core from "../../../core/core";
-import DocumentErrorLsi from "./document-error-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -69,24 +69,26 @@ export const LampViewSmallBox = createVisualComponent({
           dataObject={props.documentDataObject}
           height={120}
           nestingLevel={currentNestingLevel}
-          customErrorLsi={DocumentErrorLsi}
+          passErrorNoData
         >
-          <Core.Bulb
-            on={props.on}
-            bulbSize={props.bulbSize}
-            bulbStyle={props.bulbStyle}
-            colorSchema={props.colorSchema}
-            nestingLevel={currentNestingLevel}
-          />
-          {props.showSwitch && (
-            <Core.LampSwitch
+          <LampErrorResolver dataObject={props.documentDataObject} nestingLevel={currentNestingLevel}>
+            <Core.Bulb
               on={props.on}
               bulbSize={props.bulbSize}
+              bulbStyle={props.bulbStyle}
               colorSchema={props.colorSchema}
-              onClick={props.onSwitchClick}
               nestingLevel={currentNestingLevel}
             />
-          )}
+            {props.showSwitch && (
+              <Core.LampSwitch
+                on={props.on}
+                bulbSize={props.bulbSize}
+                colorSchema={props.colorSchema}
+                onClick={props.onSwitchClick}
+                nestingLevel={currentNestingLevel}
+              />
+            )}
+          </LampErrorResolver>
         </Core.DataObjectStateResolver>
       </UU5.Bricks.Card>
     );

@@ -12,7 +12,6 @@ const STATICS = {
   nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
-    startMode: "button",
     customEdit: true,
     lazy: true,
   },
@@ -58,7 +57,7 @@ export const Lamp = createVisualComponent({
 
   //@@viewOn:overriding
   onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.getPropsToSave() : undefined;
+    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
   },
   //@@viewOff:overriding
 

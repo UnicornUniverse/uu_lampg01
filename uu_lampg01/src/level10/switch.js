@@ -13,7 +13,6 @@ const STATICS = {
   nestingLevelList: ["box", "smallBox", "inline"],
   editMode: {
     displayType: "block",
-    startMode: "button",
     customEdit: true,
     lazy: true,
   },
@@ -56,7 +55,7 @@ export const Switch = createVisualComponent({
 
   //@@viewOn:overriding
   onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.getPropsToSave() : undefined;
+    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
   },
   //@@viewOff:overriding
 
@@ -69,6 +68,11 @@ export const Switch = createVisualComponent({
       ...DEFAULT_PROPS,
       baseUri: undefined,
     });
+  },
+
+  _handleCopyLamp() {
+    const component = `<UuLamp.Level10.Lamp baseUri="${this.props.baseUri}" code="${this.props.code}" />`;
+    UU5.Utils.Clipboard.write(component);
   },
   //@@viewOff:private
 
@@ -100,6 +104,7 @@ export const Switch = createVisualComponent({
           borderRadius={this.props.borderRadius}
           nestingLevel={currentNestingLevel}
           copyTagFunc={this._handleCopyTag}
+          onCopyLamp={this._handleCopyLamp}
         />
       </Core.ErrorBoundary>
     );

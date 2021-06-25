@@ -1,10 +1,11 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import SwitchViewInline from "./switch-view/switch-view-inline";
 import SwitchViewSmallBox from "./switch-view/switch-view-small-box";
 import SwitchViewBox from "./switch-view/switch-view-box";
+import Lsi from "./switch-view-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -48,19 +49,60 @@ export const Switch = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const alertBusRef = useRef();
+
+    async function handleSwitchClick() {
+      try {
+        await props.lampDataObject.handlerMap.setOn(!props.lampDataObject.data.on);
+      } catch (error) {
+        console.error(error);
+        alertBusRef.current.addAlert({
+          content: <UU5.Bricks.Lsi lsi={Lsi.setOnError} />,
+          colorSchema: "danger",
+          closeTimer: 3000,
+        });
+      }
+    }
+
+    async function handleReload() {
+      try {
+        await props.lampDataObject.handlerMap.get();
+      } catch (error) {
+        console.error(error);
+        alertBusRef.current.addAlert({
+          content: <UU5.Bricks.Lsi lsi={Lsi.reloadError} />,
+          colorSchema: "danger",
+          closeTimer: 3000,
+        });
+      }
+    }
+    //@@viewOff:private
+
     //@@viewOn:render
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
+    let child;
+
     switch (currentNestingLevel) {
       case "box":
-        return <SwitchViewBox {...props} {...attrs} />;
+        child = <SwitchViewBox {...props} {...attrs} onSwitchClick={handleSwitchClick} onReload={handleReload} />;
+        break;
       case "smallBox":
-        return <SwitchViewSmallBox {...props} {...attrs} />;
+        child = <SwitchViewSmallBox {...props} {...attrs} onSwitchClick={handleSwitchClick} />;
+        break;
       case "inline":
       default:
-        return <SwitchViewInline {...props} {...attrs} />;
+        child = <SwitchViewInline {...props} {...attrs} onSwitchClick={handleSwitchClick} />;
     }
+
+    return (
+      <>
+        {child}
+        <UU5.Bricks.AlertBus ref_={alertBusRef} />
+      </>
+    );
     //@@viewOff:render
   },
 });

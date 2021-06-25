@@ -39,7 +39,7 @@ const EditModalLazy = createComponentWithRef({
 
     //@@viewOn:interface
     useImperativeHandle(ref, () => ({
-      getPropsToSave: modalRef.current.getPropsToSave,
+      getPropsToSave: () => modalRef.current.getPropsToSave(),
     }));
     //@@viewOff:interface
 
@@ -67,7 +67,7 @@ const EditModalLazy = createComponentWithRef({
                 label: Lsi.code,
                 required: true,
                 getProps: () => {
-                  return { pattern: "^\\w{3,32}$", patternMessage: lsiValues.codePatternMessage };
+                  return { pattern: Config.CODE_REGEXP, patternMessage: lsiValues.codePatternMessage };
                 },
               },
               {

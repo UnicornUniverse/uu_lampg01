@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import UU5 from "uu5g04";
 import { createComponent, useMemo, useState, useDataObject, useEffect } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "calls";
@@ -41,6 +42,7 @@ export const LampProvider = createComponent({
       },
     });
 
+    // TODO Smazat await a testnout
     async function handleLoad() {
       const dtoIn = { id: props.documentId };
       return await Calls.loadDocument(props.uuDocKitUri, dtoIn);
@@ -80,7 +82,7 @@ export const LampProvider = createComponent({
       }
 
       return result;
-    }, [on, setOn, canSwitch, documentDataObject]);
+    }, [on, canSwitch, documentDataObject]);
     //@@viewOff:private
 
     //@@viewOn:render
