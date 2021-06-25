@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.9.0-beta.3",
+  "version": "0.9.0-beta.4",
   "license": "License Commercial",
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>."
@@ -22,11 +22,7 @@
       {
         "code": "UuLamp.Level01.Lamp",
         "name": "Level01.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level01",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level01", "Lamp"],
         "docCode": "UuLampLevel01Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -40,11 +36,7 @@
       {
         "code": "UuLamp.Level02.Lamp",
         "name": "Level02.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level02",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level02", "Lamp"],
         "docCode": "UuLampLevel02Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -58,11 +50,7 @@
       {
         "code": "UuLamp.Level03.Lamp",
         "name": "Level03.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level03",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level03", "Lamp"],
         "docCode": "UuLampLevel03Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -76,11 +64,7 @@
       {
         "code": "UuLamp.Level04.Lamp",
         "name": "Level04.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level04",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level04", "Lamp"],
         "docCode": "UuLampLevel04Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -94,11 +78,7 @@
       {
         "code": "UuLamp.Level05.Lamp",
         "name": "Level05.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level05",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level05", "Lamp"],
         "docCode": "UuLampLevel05Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -112,11 +92,7 @@
       {
         "code": "UuLamp.Level06.Lamp",
         "name": "Level06.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level06",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level06", "Lamp"],
         "docCode": "UuLampLevel06Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -130,11 +106,7 @@
       {
         "code": "UuLamp.Level06.Switch",
         "name": "Level06.Switch",
-        "tagList": [
-          "UuLamp",
-          "Level06",
-          "Swith"
-        ],
+        "tagList": ["UuLamp", "Level06", "Swith"],
         "docCode": "UuLampLevel06Switch",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -148,11 +120,7 @@
       {
         "code": "UuLamp.Level06.Room",
         "name": "Level06.Room",
-        "tagList": [
-          "UuLamp",
-          "Level06",
-          "Room"
-        ],
+        "tagList": ["UuLamp", "Level06", "Room"],
         "docCode": "UuLampLevel06Room",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -166,11 +134,7 @@
       {
         "code": "UuLamp.Level07.Lamp",
         "name": "Level07.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level07",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level07", "Lamp"],
         "docCode": "UuLampLevel07Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -184,11 +148,7 @@
       {
         "code": "UuLamp.Level08.Lamp",
         "name": "Level08.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level08",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level08", "Lamp"],
         "docCode": "UuLampLevel08Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -202,11 +162,7 @@
       {
         "code": "UuLamp.Level09.Lamp",
         "name": "Level09.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level09",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level09", "Lamp"],
         "docCode": "UuLampLevel09Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -220,11 +176,7 @@
       {
         "code": "UuLamp.Level10.Lamp",
         "name": "Level10.Lamp",
-        "tagList": [
-          "UuLamp",
-          "Level10",
-          "Lamp"
-        ],
+        "tagList": ["UuLamp", "Level10", "Lamp"],
         "docCode": "UuLampLevel10Lamp",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
@@ -238,11 +190,7 @@
       {
         "code": "UuLamp.Level10.Switch",
         "name": "Level10.Switch",
-        "tagList": [
-          "UuLamp",
-          "Level10",
-          "Switch"
-        ],
+        "tagList": ["UuLamp", "Level10", "Switch"],
         "docCode": "UuLampLevel10Switch",
         "desc": {
           "en": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",

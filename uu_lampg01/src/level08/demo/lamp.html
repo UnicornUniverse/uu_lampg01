@@ -121,11 +121,11 @@
       const Page = createComponent({
         render() {
           // uuLamp TextBook
-          // const documentUri =
-          //  "https://uuapp.plus4u.net/uu-dockit-maing02/d112828dcd1445e2a916cdd59331a359/document?documentId=6023ba26cdc1ea0025011e52";
+          const documentUri =
+            "https://uuapp.plus4u.net/uu-dockit-maing02/d112828dcd1445e2a916cdd59331a359/document?documentId=6023ba26cdc1ea0025011e52";
 
           // Secret Document - No access rights
-          const documentUri =
+          const noAccessUri =
             "https://uuapp.plus4u.net/uu-dockit-maing02/d112828dcd1445e2a916cdd59331a359/document?documentId=601a99fbcc135d00250764c1";
 
           return (
@@ -135,6 +135,13 @@
                   <DccComponent
                     dccData={`<uu5string/>
                     <UuLamp.Level08.Lamp documentUri="${documentUri}"  />
+                  `}
+                  />
+                </UU5.Bricks.Section>
+                <UU5.Bricks.Section header="Not-authorized">
+                  <DccComponent
+                    dccData={`<uu5string/>
+                    <UuLamp.Level08.Lamp documentUri="${noAccessUri}"  />
                   `}
                   />
                 </UU5.Bricks.Section>
