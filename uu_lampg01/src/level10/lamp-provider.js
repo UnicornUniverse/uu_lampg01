@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
+import { createComponent, useDataObject, useEffect, useRef } from "uu5g04-hooks";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Calls from "calls";
@@ -45,6 +45,8 @@ export const LampProvider = createComponent({
         setOn: handleSetOn,
       },
     });
+
+    const prevPropsRef = useRef(props);
 
     async function handleGet() {
       let lamp = { on: false, nextUpdateAt: getNextUpdateAt() }; // default lamp
@@ -93,16 +95,37 @@ export const LampProvider = createComponent({
 
     // Trigger of the lamp synchronization everytime the dependencies changed
     useEffect(() => {
-      if (
-        props.personDataObject.state !== "ready" ||
-        lampDataObject.state === "pendingNoData" ||
-        lampDataObject.state === "pending"
-      ) {
-        return;
+      async function checkPropsAndReload() {
+        const prevProps = prevPropsRef.current;
+
+        // No change = no reload is required
+        if (
+          prevProps.baseUri === props.baseUri &&
+          prevProps.code === props.code &&
+          prevProps.personDataObject === props.personDataObject
+        ) {
+          return;
+        }
+
+        // Are we ready to start reload?
+        if (
+          props.personDataObject.state !== "ready" ||
+          lampDataObject.state === "pendingNoData" ||
+          lampDataObject.state === "pending"
+        ) {
+          return;
+        }
+
+        try {
+          prevPropsRef.current = props;
+          await lampDataObject.handlerMap.get();
+        } catch (error) {
+          console.error(error);
+        }
       }
 
-      lampDataObject.handlerMap.get().catch((error) => console.error(error));
-    }, [props.personDataObject.state, props.baseUri, props.code]);
+      checkPropsAndReload();
+    }, [lampDataObject, props]);
 
     // Auto-reload of the lamp
     useEffect(() => {
