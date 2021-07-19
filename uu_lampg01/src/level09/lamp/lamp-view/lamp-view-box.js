@@ -59,13 +59,16 @@ export const LampViewBox = createVisualComponent({
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
 
-    const actionList = [
-      {
-        content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data?.on ? Lsi.switchOn : Lsi.switchOff} />,
+    const actionList = [];
+
+    if (props.lampDataObject.data) {
+      actionList.push({
+        content: <UU5.Bricks.Lsi lsi={props.lampDataObject.data.on ? Lsi.switchOn : Lsi.switchOff} />,
         active: true,
         onClick: props.onSwitchClick,
-      },
-      {
+      });
+
+      actionList.push({
         content: <UU5.Bricks.Lsi lsi={Lsi.preference} />,
         items: [
           {
@@ -77,8 +80,8 @@ export const LampViewBox = createVisualComponent({
             onClick: () => props.onSavePreference("SPECIFIC"),
           },
         ],
-      },
-    ];
+      });
+    }
 
     return (
       <UuP.Bricks.ComponentWrapper
