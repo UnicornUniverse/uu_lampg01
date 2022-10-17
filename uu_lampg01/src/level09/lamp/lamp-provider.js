@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent, useDataObject, useEffect } from "uu5g04-hooks";
+import { createComponent, useDataObject, useEffect, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports
@@ -24,6 +24,7 @@ export const LampProvider = createComponent({
   propTypes: {
     baseUri: UU5.PropTypes.string.isRequired,
     personDataObject: UU5.PropTypes.object.isRequired,
+    code: UU5.PropTypes.string,
     on: UU5.PropTypes.bool,
   },
   //@@viewOff:propTypes
@@ -31,6 +32,7 @@ export const LampProvider = createComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     baseUri: undefined,
+    personDataObject: undefined,
     code: undefined,
     on: false,
   },
@@ -46,6 +48,8 @@ export const LampProvider = createComponent({
         savePreference: handleSavePreference,
       },
     });
+
+    const prevPropsRef = useRef(props);
 
     async function handleGet() {
       let lamp = { on: props.on, bulbSize: props.bulbSize }; // default lamp
@@ -108,16 +112,37 @@ export const LampProvider = createComponent({
     }
 
     useEffect(() => {
-      if (
-        props.personDataObject.state !== "ready" ||
-        lampDataObject.state === "pendingNoData" ||
-        lampDataObject.state === "pending"
-      ) {
-        return;
+      async function checkPropsAndReload() {
+        const prevProps = prevPropsRef.current;
+
+        // No change = no reload is required
+        if (
+          prevProps.baseUri === props.baseUri &&
+          prevProps.code === props.code &&
+          prevProps.personDataObject === props.personDataObject
+        ) {
+          return;
+        }
+
+        // Are we ready to start reload?
+        if (
+          props.personDataObject.state !== "ready" ||
+          lampDataObject.state === "pendingNoData" ||
+          lampDataObject.state === "pending"
+        ) {
+          return;
+        }
+
+        try {
+          prevPropsRef.current = props;
+          await lampDataObject.handlerMap.get();
+        } catch (error) {
+          console.error(error);
+        }
       }
 
-      lampDataObject.handlerMap.get().catch((error) => console.error(error));
-    }, [props.personDataObject, props.baseUri, props.code]);
+      checkPropsAndReload();
+    }, [lampDataObject, props]);
     //@@viewOff:private
 
     //@@viewOn:render
