@@ -1,0 +1,66 @@
+//@@viewOn:imports
+import { PropTypes, createVisualComponent } from "uu5g05";
+import { Box, Icon, UuGds } from "uu5g05-elements";
+import Config from "./config/config";
+//@@viewOff:imports
+
+//@@viewOn:css
+const Css = {
+  box: () =>
+    Config.Css.css({
+      textAlign: "center",
+      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+    }),
+  icon: () =>
+    Config.Css.css({
+      fontSize: "65px",
+    }),
+};
+//@@viewOff:css
+
+const BoxView = createVisualComponent({
+  //@@viewOn:statics
+  uu5Tag: Config.TAG + "BoxView",
+  //@@viewOff:statics
+
+  //@@viewOn:propTypes
+  propTypes: {
+    icon: PropTypes.string,
+    colorScheme: PropTypes.colorScheme,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
+  },
+  //@@viewOff:propTypes
+
+  //@@viewOn:defaultProps
+  defaultProps: {
+    icon: "mdi-gift",
+    colorScheme: undefined,
+    width: undefined,
+    height: undefined,
+    significance: "common",
+    borderRadius: "none",
+    aspectRatio: undefined,
+  },
+  //@@viewOff:defaultProps
+
+  render(props) {
+    //@@viewOn:render
+    const { icon, ...otherProps } = props;
+
+    return (
+      <Box className={Css.box()} {...otherProps}>
+        <Icon className={Css.icon()} icon={icon} />
+      </Box>
+    );
+    //@@viewOff:render
+  },
+});
+
+//@@viewOn:exports
+export { BoxView };
+export default BoxView;
+//@@viewOff:exports

@@ -1,14 +1,14 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
+import Core from "../core/core";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevelList: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "Lamp",
+  nestingLevel: ["area", "box", "inline"],
   editMode: {
     displayType: "block",
     customEdit: false,
@@ -20,16 +20,12 @@ const DEFAULT_PROPS = {
   header: undefined,
 };
 
-export const Lamp = createVisualComponent({
+const Lamp = createVisualComponent({
   statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
+    header: PropTypes.node,
   },
   //@@viewOff:propTypes
 
@@ -37,23 +33,48 @@ export const Lamp = createVisualComponent({
   defaultProps: DEFAULT_PROPS,
   //@@viewOff:defaultProps
 
-  //@@viewOn:private
-  _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["header"], DEFAULT_PROPS);
-  },
-  //@@viewOff:private
+  render(props) {
+    //@@viewOn:private
+    const { sessionState } = useSession();
+    
+    function handleCopyTag() {
+      return createCopyTag(STATICS.uu5Tag, props, ["header"], DEFAULT_PROPS);
+    }
+    //@@viewOff:private
+    
+    //@@viewOn:render
+    const [elementProps] = Utils.VisualComponent.getAttrs(props);
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-
-    return <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />;
+    switch (sessionState) {
+      case "authenticated":
+        return (
+          <Core.LampView
+            header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+            help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+            copyTagFunc={handleCopyTag}
+            nestingLevel={currentNestingLevel}
+            on
+            {...elementProps}
+          />
+        );
+      default:
+        return (
+          <Core.PackageView
+            header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
+            help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+            info={<UU5.Bricks.Lsi lsi={Lsi.hiddenInfo} />}
+            copyTagFunc={handleCopyTag}
+            nestingLevel={currentNestingLevel}
+            {...elementProps}
+          />
+        );
+    }
   },
   //@@viewOff:render
 });
 
+//@@viewOn:exports
+export { Lamp };
 export default Lamp;
+//@@viewOff:exports

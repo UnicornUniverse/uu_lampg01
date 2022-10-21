@@ -1,14 +1,17 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { Utils, PropTypes, createVisualComponent, Lsi } from "uu5g05";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
+import Core from "../core/core";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevelList: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "Lamp",
+  nestingLevel: ["area", "box", "inline"],
   editMode: {
     displayType: "block",
     customEdit: false,
@@ -20,16 +23,12 @@ const DEFAULT_PROPS = {
   header: undefined,
 };
 
-export const Lamp = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin],
-  //@@viewOff:mixins
+let Lamp = createVisualComponent({
+  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
+    header: PropTypes.node,
   },
   //@@viewOff:propTypes
 
@@ -37,23 +36,37 @@ export const Lamp = createVisualComponent({
   defaultProps: DEFAULT_PROPS,
   //@@viewOff:defaultProps
 
-  //@@viewOn:private
-  _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["header"], DEFAULT_PROPS);
-  },
-  //@@viewOff:private
+  render(props) {
+    //@@viewOn:private
+    function handleOnCopyComponent() {
+      return createCopyTag(STATICS.uu5Tag, props, ["header"], DEFAULT_PROPS);
+    }
+    //@@viewOff:private
+    
+    //@@viewOn:render
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-
-    return <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />;
+    console.log(Lamp.uu5Tag);
+    return (
+      <Core.LampView
+        header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
+        info={<Lsi import={importLsi} path={[Lamp.uu5Tag, "info"]} />}
+        onCopyComponent={handleOnCopyComponent}
+        nestingLevel={currentNestingLevel}
+        on
+        {...elementProps}
+      />
+    );
   },
   //@@viewOff:render
 });
 
+// Lamp = withMargin(Lamp);
+// Lamp = withEditModal(Lamp, null);
+// Lamp = withErrorBoundary(Lamp);
+
+//@@viewOn:exports
+export { Lamp };
 export default Lamp;
+//@@viewOff:exports

@@ -1,16 +1,15 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import Config from "./config/config";
-import PackageViewInline from "./package-view/package-view-inline";
-import PackageViewSmallBox from "./package-view/package-view-small-box";
-import PackageViewBox from "./package-view/package-view-box";
+import InlineView from "./package-view/inline-view";
+import BoxView from "./package-view/box-view";
+import AreaView from "./package-view/area-view";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "PackageView",
-  nestingLevel: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "PackageView",
+  nestingLevel: ["area", "box", "inline"],
   //@@viewOff:statics
 };
 
@@ -19,15 +18,14 @@ export const PackageView = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
-    help: UU5.PropTypes.node,
-    info: UU5.PropTypes.node,
-    icon: UU5.PropTypes.string,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    header: PropTypes.node,
+    help: PropTypes.node,
+    info: PropTypes.node,
+    icon: PropTypes.string,
+    cardView: PropTypes.string,
+    colorScheme: PropTypes.colorScheme,
+    elevation: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   },
   //@@viewOff:propTypes
 
@@ -37,9 +35,8 @@ export const PackageView = createVisualComponent({
     help: "",
     info: null,
     icon: "mdi-gift",
-    bgStyle: "transparent",
     cardView: "full",
-    colorSchema: "amber",
+    colorScheme: "amber",
     elevation: 1,
     borderRadius: "0",
   },
@@ -50,13 +47,13 @@ export const PackageView = createVisualComponent({
     const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     switch (currentNestingLevel) {
+      case "area":
+        return <AreaView {...props} />;
       case "box":
-        return <PackageViewBox {...props} />;
-      case "smallBox":
-        return <PackageViewSmallBox {...props} />;
+        return <BoxView {...props} />;
       case "inline":
       default:
-        return <PackageViewInline icon={props.icon} colorSchema={props.colorSchema} />;
+        return <InlineView icon={props.icon} colorScheme={props.colorScheme} />;
     }
     //@@viewOff:render
   },

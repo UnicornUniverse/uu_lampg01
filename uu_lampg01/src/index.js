@@ -1,19 +1,9 @@
-import UU5 from "uu5g04";
-import * as Level01 from "./level01/level01.js";
-import * as Level02 from "./level02/level02.js";
-import * as Level03 from "./level03/level03.js";
-import * as Level04 from "./level04/level04.js";
-import * as Level05 from "./level05/level05.js";
-import * as Level06 from "./level06/level06.js";
-import * as Level07 from "./level07/level07.js";
-import * as Level08 from "./level08/level08.js";
-import * as Level09 from "./level09/level09.js";
-import * as Level10 from "./level10/level10.js";
+import { Utils } from "uu5g05";
+// import "./config/config.js";
 
-export { Level01, Level02, Level03, Level04, Level05, Level06, Level07, Level08, Level09, Level10 };
-
-const UuLamp = { Level01, Level02, Level03, Level04, Level05, Level06, Level07, Level08, Level09, Level10 };
-export default UuLamp;
+import * as Exports from "./exports.js";
+export * from "./exports.js";
+export default Exports;
 
 if (process.env.NODE_ENV !== "test") {
   console.log(
@@ -21,7 +11,7 @@ if (process.env.NODE_ENV !== "test") {
   );
 }
 
-UU5.Environment.addRuntimeLibrary({
+Utils.LibraryRegistry.registerLibrary({
   name: process.env.NAME,
   version: process.env.VERSION,
   namespace: process.env.NAMESPACE,
