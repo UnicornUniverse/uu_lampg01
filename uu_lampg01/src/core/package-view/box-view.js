@@ -53,7 +53,7 @@ const BoxView = createVisualComponent({
 
     return (
       <Box className={Css.box()} {...otherProps}>
-        <Icon className={Css.icon()} icon={icon} />
+        <Icon className={Css.icon()} icon={icon} colorScheme={props.colorScheme} />
       </Box>
     );
     //@@viewOff:render

@@ -38,7 +38,7 @@ let Lamp = createVisualComponent({
     //@@viewOn:private
     const session = useSession();
 
-    function handleCopyTag() {
+    function handleOnCopyComponent() {
       return createCopyTag(STATICS.uu5Tag, props, ["header"], DEFAULT_PROPS);
     }
     //@@viewOff:private
@@ -53,7 +53,7 @@ let Lamp = createVisualComponent({
           <Core.LampView
             header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
             help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
-            copyTagFunc={handleCopyTag}
+            onCopyComponent={handleOnCopyComponent}
             nestingLevel={currentNestingLevel}
             on
             {...elementProps}
@@ -65,7 +65,7 @@ let Lamp = createVisualComponent({
             header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
             help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
             info={<Lsi import={importLsi} path={[Lamp.uu5Tag, "hiddenInfo"]} />}
-            copyTagFunc={handleCopyTag}
+            onCopyComponent={handleOnCopyComponent}
             nestingLevel={currentNestingLevel}
             {...elementProps}
           />

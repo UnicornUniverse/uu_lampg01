@@ -69,13 +69,20 @@ const BoxView = createVisualComponent({
         aspectRatio={props.aspectRatio}
         {...elementProps}
       >
-        <Bulb on={props.on} bulbSize={props.bulbSize} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} />
+        <Bulb
+          on={props.on}
+          bulbSize={props.bulbSize}
+          bulbStyle={props.bulbStyle}
+          colorScheme={props.colorScheme}
+          nestingLevel="box"
+        />
         {props.showSwitch && (
           <LampSwitch
             on={props.on}
             bulbSize={props.bulbSize}
             colorScheme={props.colorScheme}
             onClick={props.onSwitchClick}
+            nestingLevel="box"
           />
         )}
       </Box>

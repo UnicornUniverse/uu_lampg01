@@ -68,7 +68,7 @@ const AreaView = createVisualComponent({
       >
         <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
           {props.info}
-          <Icon className={Css.icon()} icon={props.icon} />
+          <Icon className={Css.icon()} icon={props.icon} colorScheme={props.colorScheme} />
         </Box>
       </Block>
     );

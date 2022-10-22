@@ -40,7 +40,7 @@ const PackageView = createVisualComponent({
     icon: "mdi-gift",
     width: undefined,
     height: undefined,
-    card: "full",
+    card: "none",
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "none",
