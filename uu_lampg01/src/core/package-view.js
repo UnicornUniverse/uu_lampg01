@@ -13,7 +13,7 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const PackageView = createVisualComponent({
+const PackageView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -22,10 +22,13 @@ export const PackageView = createVisualComponent({
     help: PropTypes.node,
     info: PropTypes.node,
     icon: PropTypes.string,
-    cardView: PropTypes.string,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    card: PropTypes.oneOf(["none", "full", "content"]),
     colorScheme: PropTypes.colorScheme,
-    elevation: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
@@ -35,16 +38,19 @@ export const PackageView = createVisualComponent({
     help: "",
     info: null,
     icon: "mdi-gift",
-    cardView: "full",
-    colorScheme: "amber",
-    elevation: 1,
-    borderRadius: "0",
+    width: undefined,
+    height: undefined,
+    card: "full",
+    colorScheme: "yellow",
+    significance: "common",
+    borderRadius: "none",
+    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     switch (currentNestingLevel) {
       case "area":
@@ -59,7 +65,7 @@ export const PackageView = createVisualComponent({
   },
 });
 
-//@@viewOn:helpers
-//@@viewOff:helpers
-
+//@@viewOn:exports
+export { PackageView };
 export default PackageView;
+//@@viewOff:exports

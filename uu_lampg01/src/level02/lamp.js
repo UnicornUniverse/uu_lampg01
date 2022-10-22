@@ -1,8 +1,9 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent } from "uu5g05";
+import { Utils, PropTypes, Lsi, createVisualComponent, useSession } from "uu5g05";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
 import Core from "../core/core";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -20,8 +21,8 @@ const DEFAULT_PROPS = {
   header: undefined,
 };
 
-const Lamp = createVisualComponent({
-  statics: STATICS,
+let Lamp = createVisualComponent({
+  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -35,23 +36,23 @@ const Lamp = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const { sessionState } = useSession();
-    
+    const session = useSession();
+
     function handleCopyTag() {
       return createCopyTag(STATICS.uu5Tag, props, ["header"], DEFAULT_PROPS);
     }
     //@@viewOff:private
-    
+
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.getAttrs(props);
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-    switch (sessionState) {
+    switch (session.state) {
       case "authenticated":
         return (
           <Core.LampView
-            header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-            help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
+            header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
+            help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
             copyTagFunc={handleCopyTag}
             nestingLevel={currentNestingLevel}
             on
@@ -61,17 +62,17 @@ const Lamp = createVisualComponent({
       default:
         return (
           <Core.PackageView
-            header={props.header ?? <UU5.Bricks.Lsi lsi={Lsi.header} />}
-            help={<UU5.Bricks.Lsi lsi={Lsi.help} />}
-            info={<UU5.Bricks.Lsi lsi={Lsi.hiddenInfo} />}
+            header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
+            help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
+            info={<Lsi import={importLsi} path={[Lamp.uu5Tag, "hiddenInfo"]} />}
             copyTagFunc={handleCopyTag}
             nestingLevel={currentNestingLevel}
             {...elementProps}
           />
         );
     }
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
 //@@viewOn:exports

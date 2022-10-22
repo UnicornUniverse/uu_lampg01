@@ -1,7 +1,6 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
-import { Block, Box, Icon } from "uu5g05-elements";
-import UuP from "uu_pg01";
+import { Block, Box, Icon, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -61,7 +60,7 @@ const AreaView = createVisualComponent({
     return (
       <Block
         header={props.header}
-        info={props.info}
+        info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
         actionList={actionList}

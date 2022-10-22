@@ -21,7 +21,7 @@ const LampView = createVisualComponent({
   propTypes: {
     on: PropTypes.bool,
     header: PropTypes.node,
-    info: PropTypes.node,
+    help: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
     bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
     colorScheme: PropTypes.colorScheme,
@@ -41,7 +41,7 @@ const LampView = createVisualComponent({
   defaultProps: {
     on: false,
     header: "",
-    info: "",
+    help: "",
     bulbStyle: "filled",
     bulbSize: "xl",
     colorScheme: "yellow",

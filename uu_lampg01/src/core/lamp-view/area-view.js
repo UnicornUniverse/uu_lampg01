@@ -24,7 +24,7 @@ const AreaView = createVisualComponent({
   propTypes: {
     on: PropTypes.bool,
     header: PropTypes.node,
-    info: PropTypes.node,
+    help: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
     bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
     colorScheme: PropTypes.colorScheme,
@@ -44,7 +44,7 @@ const AreaView = createVisualComponent({
   defaultProps: {
     on: false,
     header: "",
-    info: "",
+    help: "",
     bulbStyle: "filled",
     bulbSize: "xl",
     colorScheme: "yellow",
@@ -80,7 +80,7 @@ const AreaView = createVisualComponent({
     return (
       <Block
         header={props.header}
-        info={props.info}
+        info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
         actionList={actionList}

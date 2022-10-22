@@ -1,7 +1,12 @@
 {
   "UuLamp.Level01.Lamp": {
     "header": "uuLamp Level 01 - Dynamic Rendering",
-    "info": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
+  },
+  "UuLamp.Level02.Lamp": {
+    "header": "uuLamp Level 02 - Identity Lamp",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
+    "hiddenInfo": ""
   },
   "UuLamp.Core.Lamp.AreaView": {
     "switchOn": "Turn on",

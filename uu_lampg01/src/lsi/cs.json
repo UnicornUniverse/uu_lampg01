@@ -1,7 +1,12 @@
 {
   "UuLamp.Level01.Lamp": {
     "header": "uuLamp Level 01 - Dynamické vykreslování",
-    "info": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
+  },
+  "UuLamp.Level02.Lamp": {
+    "header": "uuLamp Level 02 - Lampa s identitou",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
+    "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy nevíte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
   },
   "UuLamp.Core.Lamp.AreaView": {
     "switchOn": "Rozsvítit",

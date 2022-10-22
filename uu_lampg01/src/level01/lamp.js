@@ -47,11 +47,10 @@ let Lamp = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
-    console.log(Lamp.uu5Tag);
     return (
       <Core.LampView
         header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
-        info={<Lsi import={importLsi} path={[Lamp.uu5Tag, "info"]} />}
+        help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
         onCopyComponent={handleOnCopyComponent}
         nestingLevel={currentNestingLevel}
         on
