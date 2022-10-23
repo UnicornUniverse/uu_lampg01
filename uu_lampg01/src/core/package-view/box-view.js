@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { PropTypes, createVisualComponent } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Box, Icon, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -49,10 +49,10 @@ const BoxView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const { icon, ...otherProps } = props;
+    const [elementProps, { icon, ...otherProps }] = Utils.VisualComponent.splitProps(props, Css.box());
 
     return (
-      <Box className={Css.box()} {...otherProps}>
+      <Box {...elementProps} {...otherProps}>
         <Icon className={Css.icon()} icon={icon} colorScheme={props.colorScheme} />
       </Box>
     );
