@@ -1,7 +1,10 @@
-//@@viewOn:imports
-import Lamp from "./lamp.js";
-//@@viewOff:imports
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
+import Lamp from "./lamp";
 
-const Level03 = { Lamp };
+// Lamp = withMargin(Lamp);
+// Lamp = withEditModal(Lamp, null);
+// Lamp = withErrorBoundary(Lamp);
+
 export { Lamp };
-export default Level03;
+

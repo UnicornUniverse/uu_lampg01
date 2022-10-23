@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UuLamp.Level03.Lamp Demo</title>
+    <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.plus4u.net/uu-lampg01/0.0.0/assets/example-config.js" crossorigin="anonymous"></script>
+
+    <script>
+      var uu5Environment = {
+        uu5g05_componentUveUri:
+          "https://uuapp.plus4u.net/uu-plus4ugo-maing01/f34b62a867db4bd89490534bb26451ad/component/render",
+      };
+    </script>
+  </head>
+  <body>
+    <div id="renderHere"></div>
+
+    <script type="text/babel">
+      import { createVisualComponent, Utils, Lsi, useRef } from "uu5g05";
+      import { SpaProvider } from "uu_plus4u5g02";
+      import { Spa, RouteBar, RouteHeader } from "uu_plus4u5g02-app";
+      import { UuGds } from "uu5g05-elements";
+      import { Config } from "uu5g05-dev";
+      import UuEcc from "uu_editablecomponentcontentg03";
+
+      //@@viewOn:constants
+      const section = {
+        oid: "section-1",
+        bid: "branch-1",
+        awid: "awid-1",
+        content: [
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Default Properties",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "on = True",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  on: true,
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "on = True and colorSchema = Green",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  on: true,
+                  colorScheme: "green",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "bulbStyle = outline",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  bulbStyle: "outline",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "on = True and bulbSize = S",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  on: true,
+                  bulbSize: "s",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "on = True and bgStyle = Filled and colorSchema = Blue",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  on: true,
+                  colorScheme: "blue",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "bgStyle = Filled and colorSchema = Blue",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  colorScheme: "blue",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Custom Header (string)",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  header: "Lamp 3",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Custom Header (LSI)",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  header: <Lsi lsi={{ en: "Lamp 3", cs: "Lampa 3" }} />,
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Nesting Level = Inline",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  nestingLevel: "inline",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Nesting Level = Box",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  nestingLevel: "box",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Nesting Level = Area",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  nestingLevel: "area",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Not-authenticated",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  session: {},
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Not-authenticated and colorSchema = Blue",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  session: {},
+                  colorScheme: "blue",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Not-authenticated and bgStyle = Filled",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  session: {},
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Not-authenticated and Nesting Level = Inline",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  nestingLevel: "inline",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Not-authenticated and Nesting Level = Box",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  nestingLevel: "box",
+                },
+              },
+            ],
+          },
+          {
+            tag: "UU5.Bricks.Section",
+            props: {
+              header: "Not-authenticated and Nesting Level = Area",
+            },
+            children: [
+              {
+                tag: "UuLamp.Level03.Lamp",
+                props: {
+                  nestingLevel: "area",
+                },
+              },
+            ],
+          },
+        ],
+        readOnly: false,
+        authorUuIdentity: "6565-1",
+        authorName: "Martin Farkaš",
+        commitTs: Date.now(),
+        deleted: false,
+      };
+      //@@viewOff:constants
+
+      //@@viewOn:css
+      const Css = {
+        route: () =>
+          Config.Css.css({
+            padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
+          }),
+        section: () =>
+          Config.Css.css({
+            margin: "0 auto",
+            maxWidth: 1000,
+          }),
+      };
+      //@@viewOff:css
+
+      const Page = createVisualComponent({
+        render() {
+          //@@viewOn:private
+          const sectionRef = useRef(section);
+
+          const handlerMap = {
+            sectionGet: () => sectionRef.current,
+            sectionLock: () => sectionRef.current,
+            sectionUpdate: (dtoIn) => (sectionRef.current = dtoIn),
+          };
+
+          const sectionDto = UuEcc.useSection({ cmdInfo: { handlerMap } });
+          //@@viewOff:private
+
+          return (
+            //@@viewOn:render
+            <SpaProvider skipAppWorkspaceProvider>
+              <Spa>
+                <UuEcc.PageEditProvider>
+                  <RouteBar appActionList={[{ component: <UuEcc.PageEditButton /> }]}>
+                    <RouteHeader title="UuLamp.Level03.Lamp Demo" />
+                  </RouteBar>
+                  <div className={Css.route()}>
+                    <div className={Css.section()}>
+                      <UuEcc.Section {...sectionDto} />
+                    </div>
+                  </div>
+                </UuEcc.PageEditProvider>
+              </Spa>
+            </SpaProvider>
+            //@@viewOff:render
+          );
+        },
+      });
+
+      Utils.Dom.render(<Page />, document.getElementById("renderHere"));
+    </script>
+  </body>
+</html>
