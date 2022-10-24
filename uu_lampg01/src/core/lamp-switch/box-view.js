@@ -14,14 +14,10 @@ const Css = {
 };
 //@@viewOff:css
 
-const STATICS = {
+const BoxView = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "BoxView",
   //@@viewOff:statics
-};
-
-const BoxView = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -37,15 +33,14 @@ const BoxView = createVisualComponent({
     on: false,
     bulbSize: "xl",
     colorScheme: "yellow",
-    onClick: () => {},
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    return (
-      <SwitchSelect value={props.on} itemList={getItemList(props)} />
-    );
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
+
+    return <SwitchSelect {...elementProps} value={props.on} onChange={props.onClick} itemList={getItemList(props)} />;
     //@@viewOff:render
   },
 });
@@ -72,7 +67,16 @@ function getItemList(props) {
           className={Css.switchIcon(props.bulbSize)}
           colorScheme={props.colorScheme}
           icon="mdi-power-plug"
-          onClick={props.onClick}
+        />
+      ),
+    },
+    {
+      value: true,
+      children: (
+        <Icon
+          className={Css.switchIcon(props.bulbSize)}
+          colorScheme={props.colorScheme}
+          icon="mdi-power-plug"
         />
       ),
     },

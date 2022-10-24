@@ -83,11 +83,18 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        significance={props.significance}
         actionList={actionList}
         {...elementProps}
       >
         <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
-          <Bulb on={props.on} bulbSize={props.bulbSize} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} />
+          <Bulb
+            on={props.on}
+            bulbSize={props.bulbSize}
+            bulbStyle={props.bulbStyle}
+            colorScheme={props.colorScheme}
+            nestingLevel="area"
+          />
         </Box>
       </Block>
     );

@@ -4,14 +4,10 @@ import { Text, Icon } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
 
-const STATICS = {
+const InlineView = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "InlineView",
   //@@viewOff:statics
-};
-
-const InlineView = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -25,7 +21,6 @@ const InlineView = createVisualComponent({
   defaultProps: {
     on: false,
     colorScheme: "yellow",
-    onClick: () => {},
   },
   //@@viewOff:defaultProps
 
@@ -40,10 +35,12 @@ const InlineView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props, switchCss);
 
     return (
-      <Text nestingLevel={"inline"} colorScheme={colorScheme} {...elementProps}>
-        <span onClick={props.onClick}>
-          <Icon icon={switchIcon} />
-        </span>
+      <Text
+        elementAttrs={{ onClick: props.onClick }}
+        colorScheme={colorScheme}
+        {...elementProps}
+      >
+        <Icon icon={switchIcon} />
       </Text>
     );
     //@@viewOff:render

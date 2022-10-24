@@ -1,28 +1,17 @@
 //@@viewOn:imports
-import { Utils, PropTypes, Lsi, createVisualComponent, useSession } from "uu5g05";
+import { PropTypes, Lsi, createVisualComponent, useSession, useLsi } from "uu5g05";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
 import Core from "../core/core";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+let Lamp = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "Lamp",
-  nestingLevel: ["area", "box", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: false,
-  },
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  header: undefined,
-};
-
-let Lamp = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -31,43 +20,41 @@ let Lamp = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {
+    header: undefined,
+  },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:private
+    const lsi = useLsi(importLsi, [Lamp.uu5Tag]);
     const session = useSession();
 
     function handleOnCopyComponent() {
-      return createCopyTag(STATICS.uu5Tag, props, ["header"], DEFAULT_PROPS);
+      return createCopyTag(Lamp.uu5Tag, props, ["header"], Lamp.DEFAULT_PROPS);
     }
     //@@viewOff:private
 
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
-    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
-
     switch (session.state) {
       case "authenticated":
         return (
           <Core.LampView
-            header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
+            {...props}
+            header={props.header ?? lsi.header}
             help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
             onCopyComponent={handleOnCopyComponent}
-            nestingLevel={currentNestingLevel}
             on
-            {...elementProps}
           />
         );
       default:
         return (
           <Core.PackageView
-            header={props.header ?? <Lsi import={importLsi} path={[Lamp.uu5Tag, "header"]} />}
+            {...props}
+            header={props.header ?? lsi.header}
             help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
             info={<Lsi import={importLsi} path={[Lamp.uu5Tag, "hiddenInfo"]} />}
             onCopyComponent={handleOnCopyComponent}
-            nestingLevel={currentNestingLevel}
-            {...elementProps}
           />
         );
     }
@@ -75,7 +62,11 @@ let Lamp = createVisualComponent({
   },
 });
 
+let BrickLamp = withMargin(Lamp);
+BrickLamp = withEditModal(BrickLamp, null, { editMode: { customEdit: false }});
+BrickLamp = withErrorBoundary(BrickLamp);
+
 //@@viewOn:exports
-export { Lamp };
-export default Lamp;
+export { BrickLamp as Lamp };
+export default BrickLamp;
 //@@viewOff:exports

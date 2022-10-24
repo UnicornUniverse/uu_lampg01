@@ -18,11 +18,14 @@
     <div id="renderHere"></div>
 
     <script type="text/babel">
-      import { createVisualComponent, Utils, Lsi, useRef } from "uu5g05";
+      import UU5 from "uu5g04";
+      import { createVisualComponent, Utils, Lsi, SessionProvider, useRef } from "uu5g05";
       import { SpaProvider } from "uu_plus4u5g02";
       import { Spa, RouteBar, RouteHeader } from "uu_plus4u5g02-app";
+      import { AuthenticationService } from "uu_appg01_oidc";
       import { UuGds } from "uu5g05-elements";
       import { Config } from "uu5g05-dev";
+      import UuLamp from "uu_lampg01";
       import UuEcc from "uu_editablecomponentcontentg03";
 
       //@@viewOn:constants
@@ -103,7 +106,7 @@
           {
             tag: "UU5.Bricks.Section",
             props: {
-              header: "on = True and bgStyle = Filled and colorScheme = Blue",
+              header: "on = True and significance = Highlighted and colorScheme = Blue",
             },
             children: [
               {
@@ -118,7 +121,7 @@
           {
             tag: "UU5.Bricks.Section",
             props: {
-              header: "bgStyle = Filled and colorScheme = Blue",
+              header: "significance = Highlighted and colorScheme = Blue",
             },
             children: [
               {
@@ -198,92 +201,7 @@
                 },
               },
             ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level03.Lamp",
-                props: {
-                  session: {},
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and colorScheme = Blue",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level03.Lamp",
-                props: {
-                  session: {},
-                  colorScheme: "blue",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and bgStyle = Filled",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level03.Lamp",
-                props: {
-                  session: {},
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and Nesting Level = Inline",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level03.Lamp",
-                props: {
-                  nestingLevel: "inline",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and Nesting Level = Box",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level03.Lamp",
-                props: {
-                  nestingLevel: "box",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and Nesting Level = Area",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level03.Lamp",
-                props: {
-                  nestingLevel: "area",
-                },
-              },
-            ],
-          },
+          }
         ],
         readOnly: false,
         authorUuIdentity: "6565-1",
@@ -332,6 +250,26 @@
                   <div className={Css.route()}>
                     <div className={Css.section()}>
                       <UuEcc.Section {...sectionDto} />
+                      <SessionProvider authenticationService={AuthenticationService}>
+                        <UU5.Bricks.Section header="Not-authenticated">
+                          <UuLamp.Level03.Lamp />
+                        </UU5.Bricks.Section>
+                        <UU5.Bricks.Section header="Not-authenticated and colorScheme = Blue">
+                          <UuLamp.Level03.Lamp colorScheme="blue" />
+                        </UU5.Bricks.Section>
+                        <UU5.Bricks.Section header="Not-authenticated and significance = Highlighted">
+                          <UuLamp.Level03.Lamp significance="highlighted" />
+                        </UU5.Bricks.Section>
+                        <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Inline">
+                          <UuLamp.Level03.Lamp nestingLevel="inline" />
+                        </UU5.Bricks.Section>
+                        <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Box">
+                          <UuLamp.Level03.Lamp nestingLevel="box" />
+                        </UU5.Bricks.Section>
+                        <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Area">
+                          <UuLamp.Level03.Lamp nestingLevel="area" />
+                        </UU5.Bricks.Section>
+                      </SessionProvider>
                     </div>
                   </div>
                 </UuEcc.PageEditProvider>

@@ -33,17 +33,19 @@ const LampSwitch = createVisualComponent({
   render(props) {
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const { colorScheme } = props;
 
     switch (currentNestingLevel) {
       case "box":
-        return <BoxView colorScheme={colorScheme} onSwitch />;
+        return <BoxView {...props} />;
       case "inline":
       default:
-        return <InlineView colorScheme={colorScheme} />;
+        return <InlineView {...props} />;
     }
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { LampSwitch };
 export default LampSwitch;
+//@@viewOff:exports

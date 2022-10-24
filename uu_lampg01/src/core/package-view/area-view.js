@@ -63,8 +63,9 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        significance={props.significance}
         actionList={actionList}
-        {...elementProps}
+        {...elementProps}s
       >
         <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
           {props.info}

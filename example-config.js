@@ -25,6 +25,9 @@
     "https://cdn.plus4u.net/uu-applibraryregistryg01/1.0.0/uu_applibraryregistryg01-bricks.min.js";
   imports["uu5tilesg02"] =
     "https://cdn.plus4u.net/uu-uu5tilesg02/1.0.0/uu5tilesg02.min.js";
+  imports["uu5codekitg01"] =
+    "https://cdn.plus4u.net/uu-uu5codekitg01/1.0.0/uu5codekitg01.min.js";
+  imports["uu_lampg01"] = "/uu_lampg01.js";
 
   window.Uu5Loader.config({ imports: imports });
 })();

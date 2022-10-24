@@ -28,7 +28,7 @@ const InlineView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      <Text colorScheme={props.colorScheme} nestingLevel="inline" {...elementProps}>
+      <Text colorScheme={props.colorScheme} {...elementProps}>
         <Icon icon={props.icon} />
       </Text>
     );

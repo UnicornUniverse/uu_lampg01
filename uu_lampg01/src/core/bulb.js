@@ -69,7 +69,7 @@ const Bulb = createVisualComponent({
     const colorScheme = props.on ? props.colorScheme : "grey";
 
     return (
-      <Text nestingLevel={currentNestingLevel} colorScheme={colorScheme} {...elementProps}>
+      <Text colorScheme={colorScheme} {...elementProps}>
         <Icon icon={icon} />
       </Text>
     );
