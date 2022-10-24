@@ -24,8 +24,8 @@ let Lamp = createVisualComponent({
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     colorScheme: PropTypes.colorScheme,
-    elevation: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
@@ -41,6 +41,7 @@ let Lamp = createVisualComponent({
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "none",
+    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 
