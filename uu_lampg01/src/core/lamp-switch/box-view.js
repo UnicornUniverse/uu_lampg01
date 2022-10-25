@@ -66,7 +66,7 @@ function getItemList(props) {
         <Icon
           className={Css.switchIcon(props.bulbSize)}
           colorScheme={props.colorScheme}
-          icon="mdi-power-plug"
+          icon="mdi-power-plug-off"
         />
       ),
     },

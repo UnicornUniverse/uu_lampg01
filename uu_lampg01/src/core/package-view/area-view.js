@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
-import { Block, Box, Icon, UuGds } from "uu5g05-elements";
+import { Block, Text, Box, Icon, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
 
@@ -13,7 +13,7 @@ const Css = {
     }),
   icon: () =>
     Config.Css.css({
-      fontSize: "65px",
+      ...UuGds.Typography.getValue(["interface", "title", "main"]),
       display: "block",
     }),
 };
@@ -49,7 +49,7 @@ const AreaView = createVisualComponent({
     significance: "common",
     borderRadius: "none",
     aspectRatio: undefined,
-    level: ""
+    level: "",
   },
   //@@viewOff:defaultProps
 
@@ -69,7 +69,7 @@ const AreaView = createVisualComponent({
         {...elementProps}
       >
         <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
-          {props.info}
+          <Text>{props.info}</Text>
           <Icon className={Css.icon()} icon={props.icon} colorScheme={props.colorScheme} />
         </Box>
       </Block>

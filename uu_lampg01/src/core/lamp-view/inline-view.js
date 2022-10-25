@@ -35,7 +35,7 @@ const InlineView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      <Text {...elementProps}>
+      <Text nestingLevel="inline" {...elementProps}>
         <Bulb on={props.on} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} nestingLevel="inline" />
         {props.showSwitch && (
           <LampSwitch

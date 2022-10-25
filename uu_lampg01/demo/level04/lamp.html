@@ -22,8 +22,7 @@
       import { createVisualComponent, Utils, Lsi, SessionProvider, useRef } from "uu5g05";
       import { SpaProvider } from "uu_plus4u5g02";
       import { Spa, RouteBar, RouteHeader } from "uu_plus4u5g02-app";
-      import { AuthenticationService } from "uu_appg01_oidc";
-      import { UuGds } from "uu5g05-elements";
+      import { Block, UuGds } from "uu5g05-elements";
       import { Config } from "uu5g05-dev";
       import UuLamp from "uu_lampg01";
       import UuEcc from "uu_editablecomponentcontentg03";
@@ -33,89 +32,46 @@
         oid: "section-1",
         bid: "branch-1",
         awid: "awid-1",
-        content: [
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Default Properties",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level04.Lamp",
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Custom Header (string)",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level04.Lamp",
-                props: {
-                  header: "Lamp 4",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Custom Header (LSI)",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level04.Lamp",
-                props: {
-                  header: <Lsi lsi={{ en: "Lamp 4", cs: "Lampa 4" }} />,
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Nesting Level = Inline",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level04.Lamp",
-                props: {
-                  nestingLevel: "inline",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Nesting Level = Box",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level04.Lamp",
-                props: {
-                  nestingLevel: "box",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Nesting Level = Area",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level04.Lamp",
-                props: {
-                  nestingLevel: "area",
-                },
-              },
-            ],
-          }
-        ],
+        content: `<uu5string/>
+          <Uu5Elements.Block header="Default Properties" headerType="heading">
+            <UuLamp.Level04.Lamp />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Custom Header (string)" headerType="heading">
+            <UuLamp.Level04.Lamp header="Lamp 4" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
+            <UuLamp.Level04.Lamp header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 4\\\", \\\"cs\\\": \\\"Lampa 4\\\"}"/>' />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
+            <UuLamp.Level04.Lamp nestingLevel="inline" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box" headerType="heading">
+            <UuLamp.Level04.Lamp nestingLevel="box" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Area" headerType="heading">
+            <UuLamp.Level04.Lamp nestingLevel="area" />
+          </Uu5Elements.Block>
+          <Uu5g05.SessionProvider authenticationService={undefined}>
+            <Uu5Elements.Block header="Not-authenticated" headerType="heading">
+              <UuLamp.Level04.Lamp />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and colorScheme = Blue" headerType="heading">
+              <UuLamp.Level04.Lamp colorScheme="blue" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and significance = Highlighted" headerType="heading">
+              <UuLamp.Level04.Lamp significance="highlighted" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
+              <UuLamp.Level04.Lamp nestingLevel="inline" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
+              <UuLamp.Level04.Lamp nestingLevel="box" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
+              <UuLamp.Level04.Lamp nestingLevel="area" />
+            </Uu5Elements.Block>
+          </Uu5g05.SessionProvider>
+        `,
         readOnly: false,
         authorUuIdentity: "6565-1",
         authorName: "Martin Farkaš",
@@ -154,7 +110,7 @@
 
           return (
             //@@viewOn:render
-            <SpaProvider skipAppWorkspaceProvider>
+            <SpaProvider skipAppWorkspaceProvider initialLanguageList={["en", "cs"]}>
               <Spa>
                 <UuEcc.PageEditProvider>
                   <RouteBar appActionList={[{ component: <UuEcc.PageEditButton /> }]}>
@@ -163,26 +119,6 @@
                   <div className={Css.route()}>
                     <div className={Css.section()}>
                       <UuEcc.Section {...sectionDto} />
-                      <SessionProvider authenticationService={AuthenticationService}>
-                        <UU5.Bricks.Section header="Not-authenticated">
-                          <UuLamp.Level04.Lamp />
-                        </UU5.Bricks.Section>
-                        <UU5.Bricks.Section header="Not-authenticated and colorScheme = Blue">
-                          <UuLamp.Level04.Lamp colorScheme="blue" />
-                        </UU5.Bricks.Section>
-                        <UU5.Bricks.Section header="Not-authenticated and significance = Highlighted">
-                          <UuLamp.Level04.Lamp significance="highlighted" />
-                        </UU5.Bricks.Section>
-                        <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Inline">
-                          <UuLamp.Level04.Lamp nestingLevel="inline" />
-                        </UU5.Bricks.Section>
-                        <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Box">
-                          <UuLamp.Level04.Lamp nestingLevel="box" />
-                        </UU5.Bricks.Section>
-                        <UU5.Bricks.Section header="Not-authenticated and Nesting Level = Area">
-                          <UuLamp.Level04.Lamp nestingLevel="area" />
-                        </UU5.Bricks.Section>
-                      </SessionProvider>
                     </div>
                   </div>
                 </UuEcc.PageEditProvider>

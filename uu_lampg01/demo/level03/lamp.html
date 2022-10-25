@@ -18,11 +18,9 @@
     <div id="renderHere"></div>
 
     <script type="text/babel">
-      import UU5 from "uu5g04";
       import { createVisualComponent, Utils, Lsi, SessionProvider, useRef } from "uu5g05";
       import { SpaProvider } from "uu_plus4u5g02";
       import { Spa, RouteBar, RouteHeader } from "uu_plus4u5g02-app";
-      import { AuthenticationService } from "uu_appg01_oidc";
       import { Block, UuGds } from "uu5g05-elements";
       import { Config } from "uu5g05-dev";
       import UuLamp from "uu_lampg01";
@@ -59,7 +57,7 @@
             <UuLamp.Level03.Lamp header="Lamp 3" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
-            <UuLamp.Level03.Lamp header="<uu5string/><Uu5g05.Lsi lsi={\"<uu5json/>{ \"en\": \"Lamp 3\", \"cs\": \"Lampa 3\" }\"} />" />
+            <UuLamp.Level03.Lamp header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 3\\\", \\\"cs\\\": \\\"Lampa 3\\\"}"/>' />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
             <UuLamp.Level03.Lamp nestingLevel="inline" />
@@ -70,7 +68,7 @@
           <Uu5Elements.Block header="Nesting Level = Area" headerType="heading">
             <UuLamp.Level03.Lamp nestingLevel="area" />
           </Uu5Elements.Block>
-          <SessionProvider authenticationService={undefined}>
+          <Uu5g05.SessionProvider authenticationService={undefined}>
             <Uu5Elements.Block header="Not-authenticated" headerType="heading">
               <UuLamp.Level03.Lamp />
             </Uu5Elements.Block>
@@ -89,7 +87,7 @@
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
               <UuLamp.Level03.Lamp nestingLevel="area" />
             </Uu5Elements.Block>
-          </SessionProvider>
+          </Uu5g05.SessionProvider>
         `,
         readOnly: false,
         authorUuIdentity: "6565-1",
@@ -138,26 +136,6 @@
                   <div className={Css.route()}>
                     <div className={Css.section()}>
                       <UuEcc.Section {...sectionDto} />
-                      <SessionProvider authenticationService={undefined}>
-                        <Block header="Not-authenticated" headerType="heading">
-                          <UuLamp.Level03.Lamp />
-                        </Block>
-                        <Block header="Not-authenticated and colorScheme = Blue" headerType="heading">
-                          <UuLamp.Level03.Lamp colorScheme="blue" />
-                        </Block>
-                        <Block header="Not-authenticated and significance = Highlighted" headerType="heading">
-                          <UuLamp.Level03.Lamp significance="highlighted" />
-                        </Block>
-                        <Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
-                          <UuLamp.Level03.Lamp nestingLevel="inline" />
-                        </Block>
-                        <Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
-                          <UuLamp.Level03.Lamp nestingLevel="box" />
-                        </Block>
-                        <Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
-                          <UuLamp.Level03.Lamp nestingLevel="area" />
-                        </Block>
-                      </SessionProvider>
                     </div>
                   </div>
                 </UuEcc.PageEditProvider>
