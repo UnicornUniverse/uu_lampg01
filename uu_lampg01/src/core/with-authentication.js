@@ -1,14 +1,13 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useSession } from "uu5g04-hooks";
+import { Lsi, createComponent, useSession } from "uu5g05";
 import PackageView from "./package-view";
-import Lsi from "./with-authentication-lsi";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-function withAuthentication(Component, displayName, header, help) {
+function withAuthentication(Component, uu5Tag, header, help) {
   return createComponent({
     //@@viewOn:statics
-    displayName: `withAuthentication(${displayName})`,
+    uu5Tag: `withAuthentication(${uu5Tag})`,
     //@@viewOff:statics
 
     //@@viewOn:propTypes
@@ -20,17 +19,23 @@ function withAuthentication(Component, displayName, header, help) {
     //@@viewOff:defaultProps
 
     render(props) {
-      //@@viewOn:render
-      const { sessionState } = useSession();
+      //@@viewOn:private
+      const session = useSession();
+      //@@viewOff:private
 
-      if (sessionState === "authenticated") {
-        return <Component {...props} />;
-      } else {
-        return <PackageView info={<UU5.Bricks.Lsi lsi={Lsi.notAuthenticated} />} {...props} />;
+      //@@viewOn:render
+      switch (session.state) {
+        case "authenticated":
+          return <Component {...props} />;
+        default:
+          return <PackageView info={<Lsi import={importLsi} path={[uu5Tag, "notAuthenticated"]} />} {...props} />;
       }
       //@@viewOff:render
     },
   });
 }
 
+//@@viewOn:exports
+export { withAuthentication };
 export default withAuthentication;
+//@@viewOff:exports

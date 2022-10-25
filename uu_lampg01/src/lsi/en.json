@@ -13,6 +13,56 @@
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
     "hiddenInfo": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! Thats why we hid lamp in the box and now you can't tell its state.</UU5.Bricks.P><UU5.Bricks.P>It can be off, it can be on or it can be both - wink - who can tell.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log-in and see for yourself!</UU5.Bricks.P>"
   },
+  "UuLamp.Level04.Lamp": {
+    "header": "uuLamp Level 04 - Editable Lamp",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+  },
+  "UuLamp.Level04.Lamp.EditModalLazy": {
+    "properties": "Lamp",
+    "state": "State",
+    "on": "on",
+    "off": "off",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorSchema": "Color Schema",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level05.Lamp": {
+    "header": "uuLamp Level 05 - Lamp With State",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+  },
+  "UuLamp.Level05.Lamp.EditModalLazy": {
+    "properties": "Lamp",
+    "state": "State",
+    "on": "on",
+    "off": "off",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorSchema": "Color Schema",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
   "UuLamp.Core.Lamp.AreaView": {
     "switchOn": "Turn on",
     "switchOff": "Turn off",

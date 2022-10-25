@@ -13,6 +13,56 @@
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
     "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy nevíte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
   },
+  "UuLamp.Level04.Lamp": {
+    "header": "uuLamp Level 04 - Lampa s editací",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+  },
+  "UuLamp.Level04.Lamp.EditModalLazy": {
+    "properties": "Lampa",
+    "state": "Stav",
+    "on": "zapnuto",
+    "off": "vypnuto",
+    "bulbStyle": "Styl žárovky",
+    "bulbSize": "Velikost žárovky",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorSchema": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Level05.Lamp": {
+    "header": "uuLamp Level 05 - Lampa se stavem",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+  },
+  "UuLamp.Level05.Lamp.EditModalLazy": {
+    "properties": "Lampa",
+    "state": "Stav",
+    "on": "zapnuto",
+    "off": "vypnuto",
+    "bulbStyle": "Styl žárovky",
+    "bulbSize": "Velikost žárovky",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorSchema": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
   "UuLamp.Core.Lamp.AreaView": {
     "switchOn": "Rozsvítit",
     "switchOff": "Zhasnout",

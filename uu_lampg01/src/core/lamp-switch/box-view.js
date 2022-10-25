@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { PropTypes, createVisualComponent } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Icon, UuGds } from "uu5g05-elements";
 import { SwitchSelect } from "uu5g05-forms";
 import Config from "../lamp-view/config/config";

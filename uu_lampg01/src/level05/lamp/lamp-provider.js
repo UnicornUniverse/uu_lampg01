@@ -1,23 +1,16 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useMemo, useState, useEffect, useRef } from "uu5g04-hooks";
+import { PropTypes, createComponent, useMemo, useState, useEffect, useRef } from "uu5g05";
 import Config from "./config/config";
 //@@viewOff:imports
 
-const STATICS = {
+const LampProvider = createComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "LampProvider",
-  //@@viewOff:statics
-};
-
-export const LampProvider = createComponent({
-  //@@viewOn:statics
-  ...STATICS,
+  uu5Tag: Config.TAG + "LampProvider",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
+    on: PropTypes.bool,
   },
   //@@viewOff:propTypes
 
@@ -53,4 +46,7 @@ export const LampProvider = createComponent({
   },
 });
 
+//@@viewOn:exports
+export { LampProvider };
 export default LampProvider;
+//@@viewOff:exports
