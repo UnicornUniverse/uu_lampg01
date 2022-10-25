@@ -30,131 +30,35 @@
         oid: "section-1",
         bid: "branch-1",
         awid: "awid-1",
-        content: [
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Default Properties",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Custom Header (string)",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  header: "Lamp 02",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Custom Header (LSI)",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  header: <Lsi lsi={{ en: "Lamp 2", cs: "Lampa 2" }} />,
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Nesting Level = Inline",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  nestingLevel: "inline",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Nesting Level = Box",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  nestingLevel: "box",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Nesting Level = Area",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  nestingLevel: "area",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and Nesting Level = Inline",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  nestingLevel: "inline",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and Nesting Level = Box",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  nestingLevel: "box",
-                },
-              },
-            ],
-          },
-          {
-            tag: "UU5.Bricks.Section",
-            props: {
-              header: "Not-authenticated and Nesting Level = Area",
-            },
-            children: [
-              {
-                tag: "UuLamp.Level02.Lamp",
-                props: {
-                  nestingLevel: "area",
-                },
-              },
-            ],
-          },
-        ],
+        content: `<uu5string/>
+          <Uu5Elements.Block header="Default Properties" headerType="heading">
+            <UuLamp.Level02.Lamp />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Custom Header (string)" headerType="heading">
+            <UuLamp.Level02.Lamp header="Lamp 02" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
+            <UuLamp.Level02.Lamp header="<uu5string/><Uu5g05.Lsi lsi={\"<uu5json/>{ \"en\": \"Lamp 2\", \"cs\": \"Lampa 2\" }\"} />" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
+            <UuLamp.Level02.Lamp nestingLevel="inline" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box" headerType="heading">
+            <UuLamp.Level02.Lamp nestingLevel="box" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Area" headerType="heading">
+            <UuLamp.Level02.Lamp nestingLevel="area" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
+            <UuLamp.Level02.Lamp nestingLevel="inline" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
+            <UuLamp.Level02.Lamp nestingLevel="box" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
+            <UuLamp.Level02.Lamp nestingLevel="area" />
+          </Uu5Elements.Block>
+        `,
         readOnly: false,
         authorUuIdentity: "6565-1",
         authorName: "Martin Farkaš",
@@ -193,7 +97,7 @@
 
           return (
             //@@viewOn:render
-            <SpaProvider skipAppWorkspaceProvider>
+            <SpaProvider skipAppWorkspaceProvider initialLanguageList={["en", "cs"]}>
               <Spa>
                 <UuEcc.PageEditProvider>
                   <RouteBar appActionList={[{ component: <UuEcc.PageEditButton /> }]}>

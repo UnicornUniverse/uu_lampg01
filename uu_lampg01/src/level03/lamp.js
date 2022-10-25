@@ -51,7 +51,7 @@ let Lamp = createVisualComponent({
     const session = useSession();
 
     function handleOnCopyComponent() {
-      return createCopyTag(Lamp.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], Lamp.DEFAULT_PROPS);
+      return createCopyTag(Lamp.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], Lamp.defaultProps);
     }
     //@@viewOff:private
 
