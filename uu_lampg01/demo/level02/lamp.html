@@ -49,15 +49,17 @@
           <Uu5Elements.Block header="Nesting Level = Area" headerType="heading">
             <UuLamp.Level02.Lamp nestingLevel="area" />
           </Uu5Elements.Block>
-          <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
-            <UuLamp.Level02.Lamp nestingLevel="inline" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
-            <UuLamp.Level02.Lamp nestingLevel="box" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
-            <UuLamp.Level02.Lamp nestingLevel="area" />
-          </Uu5Elements.Block>
+          <Uu5g05.SessionProvider authenticationService={undefined}>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
+              <UuLamp.Level02.Lamp nestingLevel="inline" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
+              <UuLamp.Level02.Lamp nestingLevel="box" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
+              <UuLamp.Level02.Lamp nestingLevel="area" />
+            </Uu5Elements.Block>
+          </Uu5g05.SessionProvider>
         `,
         readOnly: false,
         authorUuIdentity: "6565-1",
