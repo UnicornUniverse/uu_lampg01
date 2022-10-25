@@ -82,7 +82,8 @@ const Lamp = createVisualComponent({
   },
 });
 
-let BrickLamp = Core.withAuthentication(Lamp, Lamp.uu5Tag);
+// MKA TODO Remove second parameter, move lsi to HoC
+let BrickLamp = Core.withAuthentication(Lamp);
 BrickLamp = withMargin(BrickLamp);
 BrickLamp = withEditModal(BrickLamp, EditModal);
 BrickLamp = withErrorBoundary(BrickLamp);

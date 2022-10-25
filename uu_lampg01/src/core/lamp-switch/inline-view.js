@@ -33,13 +33,9 @@ const InlineView = createVisualComponent({
     const colorScheme = props.on ? props.colorScheme : "grey";
 
     const [elementProps] = Utils.VisualComponent.splitProps(props, switchCss);
-
+    // MKA TODO Set nestingLevel inline
     return (
-      <Text
-        elementAttrs={{ onClick: props.onClick }}
-        colorScheme={colorScheme}
-        {...elementProps}
-      >
+      <Text elementAttrs={{ onClick: props.onClick }} colorScheme={colorScheme} {...elementProps}>
         <Icon icon={switchIcon} />
       </Text>
     );

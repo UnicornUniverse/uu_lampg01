@@ -1,21 +1,24 @@
 //@@viewOn:imports
 import { Lsi, createComponent, useSession } from "uu5g05";
 import PackageView from "./package-view";
+import Config from "./config/config";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-function withAuthentication(Component, uu5Tag, header, help) {
+function withAuthentication(Component) {
   return createComponent({
     //@@viewOn:statics
-    uu5Tag: `withAuthentication(${uu5Tag})`,
+    uu5Tag: Config.TAG + `withAuthentication(${Component.uu5Tag})`,
     //@@viewOff:statics
 
     //@@viewOn:propTypes
-    propTypes: {},
+    propTypes: { ...Component.propTypes },
     //@@viewOff:propTypes
 
     //@@viewOn:defaultProps
-    defaultProps: {},
+    defaultProps: {
+      ...Component.defaultProps,
+    },
     //@@viewOff:defaultProps
 
     render(props) {
@@ -28,7 +31,9 @@ function withAuthentication(Component, uu5Tag, header, help) {
         case "authenticated":
           return <Component {...props} />;
         default:
-          return <PackageView info={<Lsi import={importLsi} path={[uu5Tag, "notAuthenticated"]} />} {...props} />;
+          return (
+            <PackageView info={<Lsi import={importLsi} path={[Component.uu5Tag, "notAuthenticated"]} />} {...props} />
+          );
       }
       //@@viewOff:render
     },

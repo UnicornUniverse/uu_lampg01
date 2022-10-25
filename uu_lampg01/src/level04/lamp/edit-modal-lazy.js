@@ -53,6 +53,7 @@ const EditModalLazy = createVisualComponent({
         props: {
           label: lsi.on,
           itemList: [
+            // MKA TODO - Move to lsi
             { value: true, children: "on" },
             { value: false, children: "off" },
           ],

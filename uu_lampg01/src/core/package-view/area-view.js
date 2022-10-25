@@ -65,7 +65,7 @@ const AreaView = createVisualComponent({
         borderRadius={props.borderRadius}
         significance={props.significance}
         actionList={actionList}
-        {...elementProps}s
+        {...elementProps}
       >
         <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
           {props.info}
@@ -75,7 +75,7 @@ const AreaView = createVisualComponent({
     );
     //@@viewOff:render
   },
-})
+});
 
 //@@viewOn:exports
 export { AreaView };

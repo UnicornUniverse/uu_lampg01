@@ -27,6 +27,7 @@ const InlineView = createVisualComponent({
     //@@viewOn:render
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
+    // MKA TODO Set nestingLevel inline
     return (
       <Text colorScheme={props.colorScheme} {...elementProps}>
         <Icon icon={props.icon} />
