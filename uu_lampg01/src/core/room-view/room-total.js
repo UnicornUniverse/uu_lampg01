@@ -1,22 +1,17 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
+import { Text, Icon } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
 
-const STATICS = {
+const RoomTotal = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "RoomTotal",
-  nestingLevel: "inline",
+  uu5Tag: Config.TAG + "RoomTotal",
   //@@viewOff:statics
-};
-
-export const RoomTotal = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    room: UU5.PropTypes.object.isRequired,
+    room: PropTypes.object.isRequired,
   },
   //@@viewOff:propTypes
 
@@ -28,20 +23,22 @@ export const RoomTotal = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      <UU5.Bricks.Text nestingLevel={currentNestingLevel} {...attrs}>
+      <Text nestingLevel="inline" {...elementProps}>
         {`[ ${props.room.lampTotal} `}
-        <UU5.Bricks.Icon icon="mdi-lightbulb-on" />
+        <Icon icon="mdi-lightbulb-on" />
         {` ${props.room.switchTotal} `}
-        <UU5.Bricks.Icon icon="mdi-toggle-switch" />
+        <Icon icon="mdi-toggle-switch" />
         {` ]`}
-      </UU5.Bricks.Text>
+      </Text>
     );
   },
   //@@viewOff:render
 });
 
+//@@viewOn:exports
+export { RoomTotal };
 export default RoomTotal;
+//@@viewOff:exports

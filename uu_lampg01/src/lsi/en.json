@@ -52,7 +52,7 @@
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
-    "colorSchema": "Color Schema",
+    "colorScheme": "Color Schema",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -62,7 +62,81 @@
     "level": "Heading size",
     "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
-  "UuLamp.Core.Lamp.AreaView": {
+  "UuLamp.Level06.Lamp": {
+    "header": "uuLamp Level 06 - Lamp With Context",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
+    "noRoom": "The Lamp component is not placed in room! Thats why we hide lamp in the box because we don't know state of light in the room. Maybe it's time to place Lamp into component Room."
+  },
+  "UuLamp.Level06.Lamp.EditModalLazy": {
+    "properties": "Lamp",
+    "header": "Header",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Schema",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level06.Switch": {
+    "header": "uuLamp Level 06 - Switch With Context",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
+    "noRoom": "The Switch component is not placed in room! Thats why we hide switch in the box because we don't know state of light in the room. Maybe it's time to place Switch into component Room."
+  },
+  "UuLamp.Level06.Switch.EditModalLazy": {
+    "properties": "Switch",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Schema",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level06.Room": {
+    "header": "uuLamp Level 06 - Room With Context",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
+  },
+  "UuLamp.Level06.Room.EditModalLazy": {
+    "properties": "Room",
+    "state": "Light",
+    "on": "on",
+    "off": "off",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Schema",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Core.LampView.AreaView": {
+    "switchOn": "Turn on",
+    "switchOff": "Turn off",
+    "copyComponent": "Copy component",
+    "copyComponentSuccess": "The component copied to clipboard"
+  },
+  "UuLamp.Core.RoomView.AreaView": {
+    "copyComponent": "Copy component",
+    "copyComponentSuccess": "The component copied to clipboard"
+  },
+  "UuLamp.Core.SwitchView.AreaView": {
     "switchOn": "Turn on",
     "switchOff": "Turn off",
     "copyComponent": "Copy component",

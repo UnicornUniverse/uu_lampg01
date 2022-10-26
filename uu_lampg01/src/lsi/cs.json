@@ -52,7 +52,7 @@
     "header": "Záhlaví",
     "visual": "Vzhled",
     "card": "Zobrazit jako kartu",
-    "colorSchema": "Barevné schéma",
+    "colorScheme": "Barevné schéma",
     "borderRadius": "Zaoblení rohů",
     "width": "Šířka",
     "height": "Výška",
@@ -62,9 +62,83 @@
     "level": "Velikost nadpisu",
     "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
   },
-  "UuLamp.Core.Lamp.AreaView": {
+  "UuLamp.Level06.Lamp": {
+    "header": "uuLamp Level 06 - Lampa s kontextem",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
+    "noRoom": "Komponenta Lamp není umístěna v místnosti! Proto jsme schovali lampu do krabice, protože neznáme stav osvětlení v místnosti. Asi je na čase vložit komponentu Lamp do komponenty Room."
+  },
+  "UuLamp.Level06.Lamp.EditModalLazy": {
+    "properties": "Lampa",
+    "header": "Záhlaví",
+    "bulbStyle": "Styl žárovky",
+    "bulbSize": "Velikost žárovky",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorScheme": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Level06.Switch": {
+    "header": "uuLamp Level 06 - Vypínač s kontextem",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
+    "noRoom": "Komponenta Switch není umístěna v místnosti! Proto jsme schovali vypínač do krabice, protože neznáme stav osvětlení v místnosti. Asi je na čase vložit komponentu Switch do komponenty Room."
+  },
+  "UuLamp.Level06.Switch.EditModalLazy": {
+    "properties": "Vypínač",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorScheme": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."  
+  },
+  "UuLamp.Level06.Room": {
+    "header": "uuLamp Level 06 - Místnost s kontextem",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
+  },
+  "UuLamp.Level06.Room.EditModalLazy": {
+    "properties": "Místnost",
+    "state": "Světlo",
+    "on": "zapnuto",
+    "off": "vypnuto",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorScheme": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Core.LampView.AreaView": {
     "switchOn": "Rozsvítit",
     "switchOff": "Zhasnout",
+    "copyComponent": "Zkopírovat komponentu",
+    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+  },
+  "UuLamp.Core.SwitchView.AreaView": {
+    "switchOn": "Rozsvítit",
+    "switchOff": "Zhasnout",
+    "copyComponent": "Zkopírovat komponentu",
+    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+  },
+  "UuLamp.Core.RoomView.AreaView": {
     "copyComponent": "Zkopírovat komponentu",
     "copyComponentSuccess": "Komponenta zkopírována do schránky"
   },

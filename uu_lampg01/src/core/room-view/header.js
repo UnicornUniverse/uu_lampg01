@@ -1,25 +1,18 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { PropTypes, createVisualComponent } from "uu5g05";
 import Config from "./config/config";
 import RoomTotal from "./room-total";
 //@@viewOff:imports
 
-const STATICS = {
+const Header = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "RoomHeader",
-  //@@viewOff:statics
-};
-
-export const RoomHeader = createVisualComponent({
-  //@@viewOn:statics
-  ...STATICS,
+  uu5Tag: Config.TAG + "Header",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    room: UU5.PropTypes.object.isRequired,
-    header: UU5.PropTypes.node,
+    room: PropTypes.object.isRequired,
+    header: PropTypes.node,
   },
   //@@viewOff:propTypes
 
@@ -32,17 +25,18 @@ export const RoomHeader = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
-
     return (
-      <UU5.Bricks.Text {...attrs}>
+      <>
         {props.header}
         {` `}
         <RoomTotal room={props.room} />
-      </UU5.Bricks.Text>
+      </>
     );
   },
   //@@viewOff:render
 });
 
-export default RoomHeader;
+//@@viewOn:exports
+export { Header };
+export default Header;
+//@@viewOff:exports

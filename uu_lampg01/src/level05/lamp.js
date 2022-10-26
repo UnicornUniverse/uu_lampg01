@@ -7,7 +7,7 @@ import Config from "./config/config";
 import Core from "../core/core";
 import EditModal from "./lamp/edit-modal";
 import importLsi from "../lsi/import-lsi";
-import LampProvider from "./lamp/lamp-provider";
+import LampProvider from "./lamp/provider";
 //@@viewOff:imports
 
 const Lamp = createVisualComponent({

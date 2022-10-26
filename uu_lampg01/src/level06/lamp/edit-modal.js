@@ -1,54 +1,48 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponentWithRef } from "uu5g04-hooks";
-import "uu5g04-bricks";
-import Config from "./config/config";
+import { createVisualComponent, Utils, PropTypes, Suspense, Fragment } from "uu5g05";
+import Config from "../config/config";
 //@@viewOff:imports
 
-//@@viewOn:lazy
-const EditModalLazy = UU5.Common.Component.lazy(async () => {
-  // eslint-disable-next-line no-undef
-  await SystemJS.import("uu5g04-bricks-editable");
-  return import("./edit-modal/edit-modal-lazy.js");
+const EditModalLazy = Utils.Component.lazy(async () => {
+  await Promise.all([Utils.Uu5Loader.import("uu5g05-editing"), Utils.Uu5Loader.import("uu5g05-forms")]);
+  return import("./edit-modal-lazy.js");
 });
-//@@viewOff:lazy
 
-const EditModal = createComponentWithRef({
+const EditModal = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "EditModal",
+  uu5Tag: Config.TAG + "EditModal",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    props: UU5.PropTypes.object,
-    onClose: UU5.PropTypes.func,
+    componentType: PropTypes.elementType.isRequired,
+    componentProps: PropTypes.object.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onReady: PropTypes.func.isRequired,
+    fallback: PropTypes.element,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    props: undefined,
-    onClose: undefined,
+    fallback: <Fragment />,
   },
   //@@viewOff:defaultProps
 
-  render({ props, onClose, fallback }, ref) {
-    //@@viewOn:private
-    //@@viewOff:private
-
-    //@@viewOn:interface
-    //@@viewOff:interface
-
+  
+  render({ fallback, ...modalProps }) {
     //@@viewOn:render
     return (
-      <UU5.Common.Suspense fallback={fallback}>
-        <EditModalLazy props={props} onClose={onClose} ref={ref} />
-      </UU5.Common.Suspense>
+      <Suspense fallback={fallback}>
+        <EditModalLazy {...modalProps} />
+      </Suspense>
     );
     //@@viewOff:render
   },
 });
 
 //viewOn:exports
+export { EditModal };
 export default EditModal;
 //viewOff:exports

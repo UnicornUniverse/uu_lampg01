@@ -1,8 +1,8 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
-import { Block, Box, useAlertBus } from "uu5g05-elements";
+import { Icon, Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
+import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
-import Bulb from "../bulb";
 import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -25,13 +25,10 @@ const AreaView = createVisualComponent({
     on: PropTypes.bool,
     header: PropTypes.node,
     help: PropTypes.node,
-    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
     colorScheme: PropTypes.colorScheme,
     card: PropTypes.oneOf(["none", "full", "content"]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
-    showSwitch: PropTypes.bool,
     onSwitchClick: PropTypes.func,
     onCopyComponent: PropTypes.func,
   },
@@ -42,13 +39,10 @@ const AreaView = createVisualComponent({
     on: false,
     header: "",
     help: "",
-    bulbStyle: "filled",
-    bulbSize: "xl",
-    colorScheme: "yellow",
     card: "none",
     significance: "common",
+    colorScheme: "yellow",
     borderRadius: "none",
-    showSwitch: false,
   },
   //@@viewOff:defaultProps
 
@@ -85,12 +79,11 @@ const AreaView = createVisualComponent({
         {...elementProps}
       >
         <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
-          <Bulb
-            on={props.on}
-            bulbSize={props.bulbSize}
-            bulbStyle={props.bulbStyle}
-            colorScheme={props.colorScheme}
-            nestingLevel="area"
+          <SwitchSelect
+            {...elementProps}
+            value={props.on}
+            onChange={props.onSwitchClick}
+            itemList={getItemList(props)}
           />
         </Box>
       </Block>
@@ -120,6 +113,23 @@ function getActions(props, lsi, { handleCopyComponent }) {
   });
 
   return actionList;
+}
+
+function getItemList(props) {
+  return [
+    {
+      value: false,
+      children: (
+        <Icon colorScheme={props.colorScheme} icon="mdi-power-plug-off" />
+      ),
+    },
+    {
+      value: true,
+      children: (
+        <Icon colorScheme={props.colorScheme} icon="mdi-power-plug" />
+      ),
+    },
+  ];
 }
 //@@viewOff:helpers
 

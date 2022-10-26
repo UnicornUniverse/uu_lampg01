@@ -1,24 +1,17 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useState, useMemo } from "uu5g04-hooks";
+import { createComponent, PropTypes, useState, useMemo } from "uu5g05";
 import Config from "./config/config";
-import RoomContext from "./room-context";
+import RoomContext from "./context";
 //@@viewOff:imports
 
-const STATICS = {
+const RoomProvider = createComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "RoomProvider",
-  //@@viewOff:statics
-};
-
-export const RoomProvider = createComponent({
-  //@@viewOn:statics
-  ...STATICS,
+  uu5Tag: Config.TAG + "RoomProvider",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
+    on: PropTypes.bool,
   },
   //@@viewOff:propTypes
 
@@ -29,7 +22,7 @@ export const RoomProvider = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:render
+    //@@viewOn:private
     const [on, setOn] = useState(props.on);
     const [lampTotal, setLampTotal] = useState(0);
     const [switchTotal, setSwitchTotal] = useState(0);
@@ -61,7 +54,9 @@ export const RoomProvider = createComponent({
         unregisterSwitch,
       };
     }, [on, lampTotal, switchTotal]);
+    //@@viewOff:private
 
+    //@@viewOn:render
     return (
       <RoomContext.Provider value={room}>
         {typeof props.children === "function" ? props.children(room) : props.children}
@@ -71,4 +66,7 @@ export const RoomProvider = createComponent({
   },
 });
 
+//@@viewOn:exports
+export { RoomContext };
 export default RoomProvider;
+//@@viewOff:exports

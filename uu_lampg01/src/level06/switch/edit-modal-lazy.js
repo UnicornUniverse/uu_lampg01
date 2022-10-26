@@ -22,7 +22,7 @@ const EditModalLazy = createVisualComponent({
       {
         label: lsi.properties,
         layout: {
-          xs: "on, bulbStyle, bulbSize, header",
+          xs: "header",
         },
       },
       {
@@ -34,7 +34,8 @@ const EditModalLazy = createVisualComponent({
             significance significance,
             borderRadius borderRadius,
             aspectRatio aspectRatio,
-            width height
+            width height,
+            colorScheme colorScheme
           `,
         },
         columns: "1fr 1fr",
@@ -48,38 +49,6 @@ const EditModalLazy = createVisualComponent({
     ];
 
     const propInputMap = {
-      on: {
-        component: FormSwitchSelect,
-        props: {
-          label: lsi.state,
-          itemList: [
-            { value: true, children: lsi.on },
-            { value: false, children: lsi.off },
-          ],
-        },
-      },
-      bulbStyle: {
-        component: FormSwitchSelect,
-        props: {
-          label: lsi.bulbStyle,
-          itemList: [
-            { value: "filled", children: "filled" },
-            { value: "outline", children: "outline" },
-          ],
-        },
-      },
-      bulbSize: {
-        component: FormSwitchSelect,
-        props: {
-          label: lsi.bulbSize,
-          itemList: [
-            { value: "s", children: "s" },
-            { value: "m", children: "m" },
-            { value: "l", children: "l" },
-            { value: "xl", children: "xl" },
-          ],
-        },
-      },
       header: {
         component: FormText,
         props: {

@@ -1,90 +1,111 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { PropTypes, createVisualComponent, useLsi, Lsi, useEffect } from "uu5g05";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import SwitchCore from "./switch/switch-core";
+import Core from "../core/core";
 import EditModal from "./switch/edit-modal";
+import { useRoom } from "./room/context";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const Switch = createVisualComponent({
   //@@viewOn:statics
-  tagName: Config.TAG + "Switch",
-  nestingLevelList: ["box", "smallBox", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: true,
-    lazy: true,
-  },
+  uu5Tag: Config.TAG + "Switch",
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  bgStyle: "transparent",
-  cardView: "full",
-  colorSchema: "amber",
-  elevation: 1,
-  borderRadius: "0",
-};
-
-export const Switch = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    header: PropTypes.node,
+    card: PropTypes.string,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {
+    header: "",
+    card: "none",
+    width: undefined,
+    height: undefined,
+    colorScheme: "yellow",
+    significance: "common",
+    borderRadius: "none",
+    aspectRatio: undefined,
+  },
   //@@viewOff:defaultProps
 
-  //@@viewOn:overriding
-  onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
+  render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [Switch.uu5Tag]);
+    const room = useRoom();
+
+    useEffect(() => {
+      if (!room) {
+        return;
+      }
+
+      room.registerSwitch(props.id);
+
+      return () => room.unregisterSwitch(props.id);
+    }, [room, props.id]);
+
+    function handleSwitchClick() {
+      room.light.setOn(!room.light.on);
+    }
+
+    function handleCopyComponent() {
+      return createCopyTag(Switch.uu5Tag, props, ["header"], Switch.defaultProps);
+    }
+    //@@viewOff:private
+
+    //@@viewOn:render
+    const header = props.header || lsi.header;
+    const help = <Lsi import={importLsi} path={[Switch.uu5Tag, "help"]} />;
+    const info = <Lsi import={importLsi} path={[Switch.uu5Tag, "noRoom"]} />;
+
+    if (room) {
+      return (
+        <Core.SwitchView
+          {...props}
+          header={header}
+          help={help}
+          info={info}
+          on={room.light && room.light.on}
+          onCopyComponent={handleCopyComponent}
+          onSwitchClick={handleSwitchClick}
+          icon="mdi-home-alert"
+        />
+        // <></>
+      );
+    } else {
+      return (
+        <Core.PackageView
+          {...props}
+          header={header}
+          help={help}
+          info={info}
+          onCopyComponent={handleCopyComponent}
+          icon="mdi-home-alert"
+        />
+      );
+    }
+    //@@viewOff:render
   },
-  //@@viewOff:overriding
-
-  //@@viewOn:private
-  _editRef: UU5.Common.Reference.create(),
-
-  _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["on", "header"], DEFAULT_PROPS);
-  },
-  //@@viewOff:private
-
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-
-    return (
-      <>
-        {this.isInlineEdited() && (
-          <EditModal
-            props={this.props}
-            onClose={this.endEditation}
-            ref={this._editRef}
-            fallback={this.getEditingLoading()}
-          />
-        )}
-        <SwitchCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
-      </>
-    );
-  },
-  //@@viewOff:render
 });
 
-export default Switch;
+let BrickSwitch = Core.withAuthentication(Switch);
+BrickSwitch = withMargin(BrickSwitch);
+BrickSwitch = withEditModal(BrickSwitch, EditModal);
+BrickSwitch = withErrorBoundary(BrickSwitch);
+
+//@@viewOn:exports
+export { BrickSwitch as Switch };
+export default BrickSwitch;
+//@@viewOff:exports

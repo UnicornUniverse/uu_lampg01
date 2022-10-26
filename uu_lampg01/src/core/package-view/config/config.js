@@ -1,7 +1,7 @@
 import { Utils } from "uu5g05";
 import Config from "../../config/config";
 
-const TAG = Config.TAG + "Package.";
+const TAG = Config.TAG + "PackageView.";
 
 export default {
   ...Config,
