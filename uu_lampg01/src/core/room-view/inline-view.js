@@ -1,7 +1,8 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
+import { Text } from "uu5g05-elements";
 import Config from "./config/config";
-import Header from "./header";
+import RoomHeader from "./header";
 //@@viewOff:imports
 
 const InlineView = createVisualComponent({
@@ -40,7 +41,7 @@ const InlineView = createVisualComponent({
       //   {props.header}
       // </UU5.Bricks.LinkModal>
       <Text nestingLevel="inline" {...elementProps}>
-        <Header />
+        <RoomHeader room={props.room} header={props.header} />
       </Text>
     );
     //@@viewOff:render

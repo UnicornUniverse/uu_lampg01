@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { PropTypes, createVisualComponent } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Text, Icon } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -33,7 +33,7 @@ const InlineView = createVisualComponent({
 
     const switchStateCode = props.on ? "-outline" : "-off";
     const switchIcon = `mdi-toggle-switch${switchStateCode}`;
-    const colorScheme = props.on ? props.colorScheme : "black";
+    const colorScheme = props.on ? props.colorScheme : "grey";
 
     return (
       <Text
