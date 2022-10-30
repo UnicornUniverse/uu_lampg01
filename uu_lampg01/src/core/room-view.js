@@ -1,8 +1,9 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent, useState } from "uu5g05";
 import Config from "./config/config";
 import InlineView from "./room-view/inline-view";
 import AreaView from "./room-view/area-view";
+import DetailModal from "./room-view/detail-modal";
 //@@viewOff:imports
 
 const STATICS = {
@@ -46,26 +47,42 @@ const RoomView = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const [isDetailModal, setIsDetailModal] = useState(false);
+
+    function handleDetailOpen() {
+      setIsDetailModal(true);
+    }
+    function handleDetailClose() {
+      setIsDetailModal(false);
+    }
+    //@@viewOff:private
+
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
     const [elementProps, otherProps] = Utils.VisualComponent.splitProps(props);
 
-    switch (currentNestingLevel) {
-      case "area":
-        return <AreaView {...elementProps} {...otherProps} nestingLevel={currentNestingLevel} />;
-      case "inline":
-      default:
-        return (
+    return (
+      <>
+        {currentNestingLevel === "area" && <AreaView {...elementProps} {...otherProps} />}
+        {currentNestingLevel === "inline" && (
           <InlineView
-            header={props.header}
-            colorScheme={props.colorScheme}
-            nestingLevel={currentNestingLevel}
             {...elementProps}
+            header={props.header}
+            room={props.room}
+            onDetail={handleDetailOpen}
+            colorScheme={props.colorScheme}
           >
             {props.children}
           </InlineView>
-        );
-    }
+        )}
+        {isDetailModal && (
+          <DetailModal open onClose={handleDetailClose} room={props.room} header={props.header}>
+            {props.children}
+          </DetailModal>
+        )}
+      </>
+    );
     //@@viewOff:render
   },
 });
