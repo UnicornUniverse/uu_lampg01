@@ -29,6 +29,7 @@ const Header = createVisualComponent({
       <>
         {props.header}
         {` `}
+        <RoomTotal room={props.room} />
       </>
     );
   },
