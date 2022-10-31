@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
-import { Text } from "uu5g05-elements";
+import { Link } from "uu5g05-elements";
 import Config from "./config/config";
 import RoomHeader from "./header";
 //@@viewOff:imports
@@ -31,9 +31,9 @@ const InlineView = createVisualComponent({
       // TODO MFA Waiting for fix of LinkModal. Then portal configartion will be default value.
       // TODO MFA Waiting for fix of LinkModal re-render. Now it is not working with RoomProvider.
       //  https://uuapp.plus4u.net/uu-sls-maing01/d127521164ef4a689e37fe6968d1c7ab/issueDetail?id=607862914da80100293d9bbf
-      <Text {...elementProps} elementAttrs={{ onClick: props.onDetail }} nestingLevel="inline">
-        <RoomHeader room={props.room} header={props.header} />
-      </Text>
+      <Link {...elementProps} onClick={props.onDetail} nestingLevel="inline">
+        {props.header}
+      </Link>
     );
     //@@viewOff:render
   },

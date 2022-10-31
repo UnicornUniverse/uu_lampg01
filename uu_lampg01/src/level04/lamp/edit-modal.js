@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { createVisualComponent, Utils, PropTypes, Suspense, Fragment } from "uu5g05";
-import Config from "../config/config";
+import Config from "./config/config";
 //@@viewOff:imports
 
 const EditModalLazy = Utils.Component.lazy(async () => {

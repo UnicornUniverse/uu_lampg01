@@ -23,9 +23,9 @@ import importLsi from "../lsi/import-lsi";
 //   //@@viewOff:statics
 // };
 
-const Room = createVisualComponent({
+const RoomCore = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Room",
+  uu5Tag: Config.TAG + "RoomCore",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -62,10 +62,10 @@ const Room = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [Room.uu5Tag]);
+    const lsi = useLsi(importLsi, [RoomCore.uu5Tag]);
 
     function handleCopyComponent() {
-      return createCopyTag(Room.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], Room.defaultProps);
+      return createCopyTag(RoomCore.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], RoomCore.defaultProps);
     }
     //@@viewOff:private
 
@@ -76,7 +76,7 @@ const Room = createVisualComponent({
           <Core.RoomView
             {...props}
             header={props.header ?? lsi.header}
-            help={<Lsi import={importLsi} path={[Room.uu5Tag, "help"]} />}
+            help={<Lsi import={importLsi} path={[RoomCore.uu5Tag, "help"]} />}
             room={room}
             onCopyComponent={handleCopyComponent}
           >
@@ -89,12 +89,12 @@ const Room = createVisualComponent({
   },
 });
 
-let BrickRoom = Core.withAuthentication(Room);
-BrickRoom = withMargin(BrickRoom);
-BrickRoom = withEditModal(BrickRoom, EditModal);
-BrickRoom = withErrorBoundary(BrickRoom);
+let Room = Core.withAuthentication(RoomCore);
+Room = withMargin(Room);
+Room = withEditModal(Room, EditModal);
+Room = withErrorBoundary(Room);
 
 //@@viewOn:exports
-export { BrickRoom as Room };
-export default BrickRoom;
+export { Room };
+export default Room;
 //@@viewOff:exports

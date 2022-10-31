@@ -10,9 +10,9 @@ import { useRoom } from "./room/context";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const Switch = createVisualComponent({
+const SwitchCore = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Switch",
+  uu5Tag: Config.TAG + "SwitchCore",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -43,7 +43,7 @@ const Switch = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [Switch.uu5Tag]);
+    const lsi = useLsi(importLsi, [SwitchCore.uu5Tag]);
     const room = useRoom();
 
     useEffect(() => {
@@ -61,14 +61,14 @@ const Switch = createVisualComponent({
     }
 
     function handleCopyComponent() {
-      return createCopyTag(Switch.uu5Tag, props, ["header"], Switch.defaultProps);
+      return createCopyTag(SwitchCore.uu5Tag, props, ["header"], SwitchCore.defaultProps);
     }
     //@@viewOff:private
 
     //@@viewOn:render
     const header = props.header || lsi.header;
-    const help = <Lsi import={importLsi} path={[Switch.uu5Tag, "help"]} />;
-    const info = <Lsi import={importLsi} path={[Switch.uu5Tag, "noRoom"]} />;
+    const help = <Lsi import={importLsi} path={[SwitchCore.uu5Tag, "help"]} />;
+    const info = <Lsi import={importLsi} path={[SwitchCore.uu5Tag, "noRoom"]} />;
 
     if (room) {
       return (
@@ -100,12 +100,12 @@ const Switch = createVisualComponent({
   },
 });
 
-let BrickSwitch = Core.withAuthentication(Switch);
-BrickSwitch = withMargin(BrickSwitch);
-BrickSwitch = withEditModal(BrickSwitch, EditModal);
-BrickSwitch = withErrorBoundary(BrickSwitch);
+let Switch = Core.withAuthentication(SwitchCore);
+Switch = withMargin(Switch);
+Switch = withEditModal(Switch, EditModal);
+Switch = withErrorBoundary(Switch);
 
 //@@viewOn:exports
-export { BrickSwitch as Switch };
-export default BrickSwitch;
+export { Switch };
+export default Switch;
 //@@viewOff:exports

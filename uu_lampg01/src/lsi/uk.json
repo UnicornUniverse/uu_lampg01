@@ -1,6 +1,32 @@
 {
-    "UuLamp.Core.withAuthentication": {
-      "notAuthenticated": "<uu5string/><UU5.Bricks.P>Ви не авторизовні, і ми не знаємо, хто Ви! Саме тому вміст у вікні приховано, і Ви не знаєте його статус.</UU5.Bricks.P><UU5.Bricks.P>Але Ви можете увійти в систему і дізнатись його!</UU5.Bricks.P>"
-    }
+  "UuLamp.Level07.LampCore": {
+    "header": "uuLamp Level 07 - Часовий Пояс Lamp",
+    "help": "<uu5string/>Компонент <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> є частиною курсу uuLamp. Більше інформації можна знайти в <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='навчальному матеріалі uuLamp' target='_blank'/>."
+  },
+  "UuLamp.Level07.Lamp.EditModalLazy": {
+    "properties": "Лампа",
+    "timeZone": "Часовий пояс",
+    "header": "Заголовок",
+    "bulbStyle": "Стиль лампи",
+    "bulbSize": "Розмір лампи",
+    "visual": "Вид",
+    "card": "Вид картки",
+    "colorScheme": "Округлення меж",
+    "borderRadius": "",
+    "width": "",
+    "height": "",
+    "significance": "",
+    "aspectRatio": "",
+    "advancedConfiguration": "",
+    "level": "",
+    "info": "<uu5string/>Для отримання додаткової інформації дивись <UU5.Bricks.Link href='%s' target='_blank' content='документацію'/>."
+  },
+  "UuLamp.Level07.TimeZone": {
+    "Europe/Prague": "Прага",
+    "Asia/Tokyo": "Токіо",
+    "America/Los_Angeles": "Лос-Анджелес"
+  },
+  "UuLamp.Core.withAuthentication": {
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Ви не авторизовні, і ми не знаємо, хто Ви! Саме тому вміст у вікні приховано, і Ви не знаєте його статус.</UU5.Bricks.P><UU5.Bricks.P>Але Ви можете увійти в систему і дізнатись його!</UU5.Bricks.P>"
   }
-  
+}

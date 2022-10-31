@@ -6,13 +6,13 @@ import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
 import Core from "../core/core";
 import EditModal from "./lamp/edit-modal";
-import importLsi from "../lsi/import-lsi";
 import LampProvider from "./lamp/provider";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const Lamp = createVisualComponent({
+const LampCore = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Lamp",
+  uu5Tag: Config.TAG + "LampCore",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -49,10 +49,10 @@ const Lamp = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [Lamp.uu5Tag]);
+    const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
 
     function handleCopyComponent() {
-      return createCopyTag(Lamp.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], Lamp.defaultProps);
+      return createCopyTag(LampCore.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
     }
     //@@viewOff:private
 
@@ -68,7 +68,7 @@ const Lamp = createVisualComponent({
             <Core.LampView
               {...props}
               header={props.header ?? lsi.header}
-              help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
+              help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
               on={lamp.on}
               showSwitch
               onSwitchClick={handleSwitchClick}
@@ -82,13 +82,12 @@ const Lamp = createVisualComponent({
   },
 });
 
-// MKA TODO Remove second parameter, move lsi to HoC
-let BrickLamp = Core.withAuthentication(Lamp);
-BrickLamp = withMargin(BrickLamp);
-BrickLamp = withEditModal(BrickLamp, EditModal);
-BrickLamp = withErrorBoundary(BrickLamp);
+let Lamp = Core.withAuthentication(LampCore);
+Lamp = withMargin(Lamp);
+Lamp = withEditModal(Lamp, EditModal);
+Lamp = withErrorBoundary(Lamp);
 
 //@@viewOn:exports
-export { BrickLamp as Lamp };
-export default BrickLamp;
+export { Lamp };
+export default Lamp;
 //@@viewOff:exports

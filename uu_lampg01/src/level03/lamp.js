@@ -8,9 +8,9 @@ import Core from "../core/core";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-let Lamp = createVisualComponent({
+const LampCore = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "Lamp",
+  uu5Tag: Config.TAG + "LampCore",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -47,11 +47,11 @@ let Lamp = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [Lamp.uu5Tag]);
+    const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
     const session = useSession();
 
     function handleOnCopyComponent() {
-      return createCopyTag(Lamp.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], Lamp.defaultProps);
+      return createCopyTag(LampCore.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
     }
     //@@viewOff:private
 
@@ -62,7 +62,7 @@ let Lamp = createVisualComponent({
           <Core.LampView
             {...props}
             header={props.header ?? lsi.header}
-            help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
+            help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
             onCopyComponent={handleOnCopyComponent}
           />
         );
@@ -71,8 +71,8 @@ let Lamp = createVisualComponent({
           <Core.PackageView
             {...props}
             header={props.header ?? lsi.header}
-            help={<Lsi import={importLsi} path={[Lamp.uu5Tag, "help"]} />}
-            info={<Lsi import={importLsi} path={[Lamp.uu5Tag, "hiddenInfo"]} />}
+            help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+            info={<Lsi import={importLsi} path={[LampCore.uu5Tag, "hiddenInfo"]} />}
             onCopyComponent={handleOnCopyComponent}
           />
         );
@@ -81,11 +81,11 @@ let Lamp = createVisualComponent({
   },
 });
 
-let BrickLamp = withMargin(Lamp);
-BrickLamp = withEditModal(BrickLamp, null, { editMode: { customEdit: false } });
-BrickLamp = withErrorBoundary(BrickLamp);
+let Lamp = withMargin(LampCore);
+Lamp = withEditModal(Lamp, null, { editMode: { customEdit: false } });
+Lamp = withErrorBoundary(Lamp);
 
 //@@viewOn:exports
-export { BrickLamp as Lamp };
-export default BrickLamp;
+export { Lamp };
+export default Lamp;
 //@@viewOff:exports

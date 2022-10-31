@@ -1,19 +1,19 @@
 {
-  "UuLamp.Level01.Lamp": {
+  "UuLamp.Level01.LampCore": {
     "header": "uuLamp Level 01 - Dynamické vykreslování",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
   },
-  "UuLamp.Level02.Lamp": {
+  "UuLamp.Level02.LampCore": {
     "header": "uuLamp Level 02 - Lampa s identitou",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
     "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy nevíte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
   },
-  "UuLamp.Level03.Lamp": {
+  "UuLamp.Level03.LampCore": {
     "header": "uuLamp Level 03 - Lampa s vlastnostmi",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
     "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy nevíte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
   },
-  "UuLamp.Level04.Lamp": {
+  "UuLamp.Level04.LampCore": {
     "header": "uuLamp Level 04 - Lampa s editací",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
     "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
@@ -38,7 +38,7 @@
     "level": "Velikost nadpisu",
     "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
   },
-  "UuLamp.Level05.Lamp": {
+  "UuLamp.Level05.LampCore": {
     "header": "uuLamp Level 05 - Lampa se stavem",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
   },
@@ -62,7 +62,7 @@
     "level": "Velikost nadpisu",
     "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
   },
-  "UuLamp.Level06.Lamp": {
+  "UuLamp.Level06.LampCore": {
     "header": "uuLamp Level 06 - Lampa s kontextem",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
     "noRoom": "Komponenta Lamp není umístěna v místnosti! Proto jsme schovali lampu do krabice, protože neznáme stav osvětlení v místnosti. Asi je na čase vložit komponentu Lamp do komponenty Room."
@@ -84,7 +84,7 @@
     "level": "Velikost nadpisu",
     "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
   },
-  "UuLamp.Level06.Switch": {
+  "UuLamp.Level06.SwitchCore": {
     "header": "uuLamp Level 06 - Vypínač s kontextem",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
     "noRoom": "Komponenta Switch není umístěna v místnosti! Proto jsme schovali vypínač do krabice, protože neznáme stav osvětlení v místnosti. Asi je na čase vložit komponentu Switch do komponenty Room."
@@ -104,7 +104,7 @@
     "level": "Velikost nadpisu",
     "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."  
   },
-  "UuLamp.Level06.Room": {
+  "UuLamp.Level06.RoomCore": {
     "header": "uuLamp Level 06 - Místnost s kontextem",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
   },
@@ -125,6 +125,39 @@
     "advancedConfiguration": "Pokročilá nastavení",
     "level": "Velikost nadpisu",
     "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Level07.LampCore": {
+    "header": "uuLamp Level 07 - Lampa s časovým pásmem",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
+  },
+  "UuLamp.Level07.Lamp.EditModalLazy": {
+    "properties": "Lampa",
+    "timeZone": "Časové pásmo",
+    "bulbStyle": "Styl žárovky",
+    "bulbSize": "Velikost žárovky",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorScheme": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Level07.Lamp.LampView.AreaView": {
+    "switchOn": "Rozsvítit",
+    "switchOff": "Zhasnout",
+    "copyComponent": "Zkopírovat komponentu",
+    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+  },
+  "UuLamp.Level07.TimeZone": {
+    "Europe/Prague": "Praha",
+    "Asia/Tokyo": "Tokio",
+    "America/Los_Angeles": "Los Angeles"
   },
   "UuLamp.Core.LampView.AreaView": {
     "switchOn": "Rozsvítit",
