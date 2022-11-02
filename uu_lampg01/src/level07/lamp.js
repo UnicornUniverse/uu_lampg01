@@ -74,7 +74,7 @@ const LampCore = createVisualComponent({
 
     function handleCopyComponent() {
       return createCopyTag(
-        LampCore.uu5Tag,
+        Config.TAG + "Lamp",
         props,
         ["timeZone", "bulbStyle", "bulbSize", "header"],
         LampCore.defaultProps

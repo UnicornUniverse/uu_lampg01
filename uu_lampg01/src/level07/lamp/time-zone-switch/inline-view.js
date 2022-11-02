@@ -12,10 +12,12 @@ const InlineView = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     value: PropTypes.string,
-    items: PropTypes.arrayOf(PropTypes.shape({
-      value: PropTypes.string,
-      content: PropTypes.node,
-    })),
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.string,
+        content: PropTypes.node,
+      })
+    ),
     onChange: PropTypes.func,
   },
   //@@viewOff:propTypes
@@ -27,7 +29,7 @@ const InlineView = createVisualComponent({
       value: PropTypes.string,
       content: PropTypes.node,
     }),
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
   },
   //@@viewOff:defaultProps
 
@@ -39,7 +41,7 @@ const InlineView = createVisualComponent({
 
     function handleClick() {
       const newIndex = valueIndex + 1 < props.items.length ? valueIndex + 1 : 0;
-      props.onChange({data: props.items[newIndex]});
+      props.onChange({ data: props.items[newIndex] });
     }
     //@@viewOff:private
 

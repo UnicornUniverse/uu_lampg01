@@ -31,12 +31,12 @@ const SwitchCore = createVisualComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     header: "",
-    card: "none",
+    card: "full",
     width: undefined,
     height: undefined,
     colorScheme: "yellow",
     significance: "common",
-    borderRadius: "none",
+    borderRadius: "moderate",
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
@@ -61,7 +61,7 @@ const SwitchCore = createVisualComponent({
     }
 
     function handleCopyComponent() {
-      return createCopyTag(SwitchCore.uu5Tag, props, ["header"], SwitchCore.defaultProps);
+      return createCopyTag(Config.TAG + "Switch", props, ["header"], SwitchCore.defaultProps);
     }
     //@@viewOff:private
 

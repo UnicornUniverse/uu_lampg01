@@ -57,7 +57,7 @@ const LampCore = createVisualComponent({
 
     function handleCopyComponent() {
       return createCopyTag(
-        LampCore.uu5Tag,
+        Config.TAG + "Lamp",
         props,
         ["on", "baseUri", "bulbStyle", "bulbSize", "header", "code"],
         LampCore.defaultProps
@@ -66,13 +66,15 @@ const LampCore = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
+    const { baseUri, code, on, header, ...viewProps } = props;
+
     return (
-      <LampProvider baseUri={props.baseUri} code={props.code} on={props.on} bulbSize={props.bulbSize}>
+      <LampProvider baseUri={baseUri} code={code} on={on} bulbSize={props.bulbSize}>
         {(lampDataObject) => (
           <LampView
-            {...props}
+            {...viewProps}
             lampDataObject={lampDataObject}
-            header={props.header || lsi.header}
+            header={header || lsi.header}
             help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
             onCopyComponent={handleCopyComponent}
           />

@@ -73,12 +73,15 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
-        significance={props.significance}
         colorScheme={props.colorScheme}
         actionList={actionList}
         {...elementProps}
       >
-        <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
+        <Box
+          className={Css.box()}
+          colorScheme={props.colorScheme}
+          significance={props.significance === "common" ? "subdued" : "highlighted"}
+        >
           <SwitchSelect
             {...elementProps}
             value={props.on}
@@ -119,15 +122,11 @@ function getItemList(props) {
   return [
     {
       value: false,
-      children: (
-        <Icon colorScheme={props.colorScheme} icon="mdi-power-plug-off" />
-      ),
+      children: <Icon colorScheme="grey" icon="mdi-power-plug-off" />,
     },
     {
       value: true,
-      children: (
-        <Icon colorScheme={props.colorScheme} icon="mdi-power-plug" />
-      ),
+      children: <Icon colorScheme={props.colorScheme} icon="mdi-power-plug" />,
     },
   ];
 }

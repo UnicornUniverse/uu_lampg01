@@ -14,7 +14,7 @@ const Css = {
   icon: () =>
     Config.Css.css({
       ...UuGds.Typography.getValue(["interface", "title", "main"]),
-      display: "block"
+      display: "block",
     }),
 };
 //@@viewOff:css

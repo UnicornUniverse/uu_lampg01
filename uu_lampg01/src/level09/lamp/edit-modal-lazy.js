@@ -74,8 +74,8 @@ const EditModalLazy = createVisualComponent({
             pattern: {
               message: lsi.codePatternMessage,
               feedback: "error",
-            }
-          }
+            },
+          },
         },
       },
       bulbStyle: {

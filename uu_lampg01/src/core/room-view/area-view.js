@@ -63,12 +63,11 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
-        significance={props.significance}
         colorScheme={props.colorScheme}
         actionList={actionList}
         {...elementProps}
       >
-        {(block) => <Content nestingLevel="area">{props.children}</Content>}
+        {() => <Content nestingLevel="area">{props.children}</Content>}
       </Block>
     );
     //@@viewOff:render

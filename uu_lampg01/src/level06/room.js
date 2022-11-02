@@ -52,7 +52,7 @@ const RoomCore = createVisualComponent({
     const lsi = useLsi(importLsi, [RoomCore.uu5Tag]);
 
     function handleCopyComponent() {
-      return createCopyTag(RoomCore.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], RoomCore.defaultProps);
+      return createCopyTag(Config.TAG + "Room", props, ["on", "header"], RoomCore.defaultProps);
     }
     //@@viewOff:private
 

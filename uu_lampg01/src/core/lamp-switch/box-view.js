@@ -62,9 +62,7 @@ function getItemList(props) {
   return [
     {
       value: false,
-      children: (
-        <Icon className={Css.switchIcon(props.bulbSize)} colorScheme={props.colorScheme} icon="mdi-power-plug-off" />
-      ),
+      children: <Icon className={Css.switchIcon(props.bulbSize)} colorScheme="grey" icon="mdi-power-plug-off" />,
     },
     {
       value: true,

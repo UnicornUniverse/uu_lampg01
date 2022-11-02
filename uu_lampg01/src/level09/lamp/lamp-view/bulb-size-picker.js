@@ -4,8 +4,6 @@ import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
 //@@viewOff:imports
 
-const switchCss = () => Config.Css.css`margin: 20px`;
-
 const BulbSizePicker = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "BulbSizePicker",
@@ -49,7 +47,6 @@ const BulbSizePicker = createVisualComponent({
 
     return (
       <SwitchSelect
-        className={switchCss()}
         itemList={switchItems}
         onChange={(ev) => props.onChange(ev.data.value)}
         value={props.bulbSize}

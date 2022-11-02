@@ -88,8 +88,8 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
-        significance={props.significance}
         colorScheme={props.colorScheme}
+        headerSeparator={true}
         actionList={actionList}
         {...elementProps}
       >
@@ -99,7 +99,12 @@ const AreaView = createVisualComponent({
             height={PLACEHOLDER_HEIGHT}
             customErrorLsi={errorsLsi}
           >
-            <Box className={Css.box(block)} colorScheme={props.colorScheme} significance={props.significance}>
+            <Box
+              className={Css.box(block)}
+              colorScheme={props.colorScheme}
+              shape="interactiveElement"
+              significance={props.significance === "common" ? "subdued" : "highlighted"}
+            >
               <BulbSizePicker bulbSize={props.lampDataObject.data?.bulbSize} onChange={props.onBulbSizeChange} />
               <Core.Bulb
                 on={props.lampDataObject.data?.on}

@@ -52,7 +52,12 @@ const LampCore = createVisualComponent({
     const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
 
     function handleCopyComponent() {
-      return createCopyTag(LampCore.uu5Tag, props, ["on", "bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
+      return createCopyTag(
+        Config.TAG + "Lamp",
+        props,
+        ["on", "bulbStyle", "bulbSize", "header"],
+        LampCore.defaultProps
+      );
     }
     //@@viewOff:private
 

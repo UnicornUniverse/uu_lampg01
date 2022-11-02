@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { PropTypes, createVisualComponent, useLsi, Lsi } from "uu5g05";
+import { PropTypes, createVisualComponent, useLsi, Lsi, Utils } from "uu5g05";
 import { Uri } from "uu_appg01";
 import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
@@ -56,7 +56,7 @@ const LampCore = createVisualComponent({
 
     function handleCopyComponent() {
       return createCopyTag(
-        LampCore.uu5Tag,
+        Config.TAG + "Lamp",
         props,
         ["on", "documentUri", "bulbStyle", "bulbSize", "header"],
         LampCore.defaultProps
@@ -65,6 +65,7 @@ const LampCore = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
     const { baseUri, documentId } = parseBaseUriAndId(props.documentUri);
 
     return (
@@ -76,13 +77,24 @@ const LampCore = createVisualComponent({
 
           return (
             <LampView
-              {...props}
-              on={lamp.on}
+              {...elementProps}
               documentDataObject={lamp.documentDataObject}
+              on={lamp.on}
               header={props.header || lsi.header}
               help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+              bulbStyle={props.bulbStyle}
+              bulbSize={props.bulbSize}
+              colorScheme={props.colorScheme}
+              card={props.card}
+              width={props.width}
+              height={props.height}
+              significance={props.significance}
+              borderRadius={props.borderRadius}
+              aspectRatio={props.aspectRatio}
+              nestingLevel={props.nestingLevel}
               onCopyComponent={handleCopyComponent}
-              showSwitch={lamp.canSwitch}
+              showSwitch={lamp.documentDataObject.state === "ready"}
+              canSwitch={lamp.canSwitch}
               onSwitchClick={lamp.canSwitch ? handleSwitchClick : undefined}
             />
           );

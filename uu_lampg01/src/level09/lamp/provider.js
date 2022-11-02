@@ -99,7 +99,7 @@ const Provider = createComponent({
 
     async function handleSavePreference(preferenceType) {
       const dtoIn = {
-        mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
+        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
         code: getPropertyCode(props.code, preferenceType),
         scope: PROPERTY_SCOPE,
         data: lampDataObject.data,

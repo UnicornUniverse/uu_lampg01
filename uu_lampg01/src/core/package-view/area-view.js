@@ -1,7 +1,8 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent } from "uu5g05";
-import { Block, Text, Box, Icon, UuGds } from "uu5g05-elements";
+import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
+import { Block, Text, Box, Icon, UuGds, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
+import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -54,8 +55,24 @@ const AreaView = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [AreaView.uu5Tag]);
+    const { addAlert } = useAlertBus();
+
+    function handleCopyComponent() {
+      const uu5string = props.onCopyComponent();
+      Utils.Clipboard.write(uu5string);
+
+      addAlert({
+        message: lsi.copyComponentSuccess,
+        priority: "success",
+        durationMs: 2000,
+      });
+    }
+    //@@viewOff:private
+
     //@@viewOn:render
-    const actionList = [];
+    const actionList = getActions(props, lsi, { handleCopyComponent });
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
@@ -64,7 +81,6 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
-        significance={props.significance}
         headerSeparator={true}
         actionList={actionList}
         {...elementProps}
@@ -74,7 +90,7 @@ const AreaView = createVisualComponent({
             className={Css.box(block)}
             colorScheme={props.colorScheme}
             shape="interactiveElement"
-            significance="subdued"
+            significance={props.significance === "common" ? "subdued" : "highlighted"}
           >
             <Text>{props.info}</Text>
             <Icon className={Css.icon()} icon={props.icon} colorScheme={props.colorScheme} />
@@ -85,6 +101,22 @@ const AreaView = createVisualComponent({
     //@@viewOff:render
   },
 });
+
+//@@viewOn:helpers
+function getActions(props, lsi, { handleCopyComponent }) {
+  const actionList = [];
+
+  actionList.push({
+    icon: "mdi-content-copy",
+    children: lsi.copyComponent,
+    onClick: handleCopyComponent,
+    collapsed: true,
+    disabled: props.disabled,
+  });
+
+  return actionList;
+}
+//@@viewOff:helpers
 
 //@@viewOn:exports
 export { AreaView };

@@ -31,7 +31,7 @@ const LampCore = createVisualComponent({
     const session = useSession();
 
     function handleOnCopyComponent() {
-      return createCopyTag(LampCore.uu5Tag, props, ["header"], LampCore.defaultProps);
+      return createCopyTag(Config.TAG + "Lamp", props, ["header"], LampCore.defaultProps);
     }
     //@@viewOff:private
 

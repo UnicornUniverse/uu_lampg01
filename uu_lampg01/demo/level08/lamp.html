@@ -29,10 +29,12 @@
       // uuLamp TextBook
       const documentUri =
         "https://uuapp.plus4u.net/uu-dockit-maing02/d112828dcd1445e2a916cdd59331a359/document?documentId=6023ba26cdc1ea0025011e52";
-
       // Secret Document - No access rights
       const noAccessUri =
         "https://uuapp.plus4u.net/uu-dockit-maing02/d112828dcd1445e2a916cdd59331a359/document?documentId=601a99fbcc135d00250764c1";
+      // Secret Document - Read-only access rights
+      const readOnlyAccessUri =
+      "https://uuapp.plus4u.net/uu-dockit-maing02/4e68298f1658473e9bf5692272883290/document?documentId=60992f2cc3fb5400270bbb59";
 
       //@@viewOn:constants
       const section = {
@@ -42,6 +44,9 @@
         content: `<uu5string/>
           <Uu5Elements.Block header="Default Properties" headerType="heading">
             <UuLamp.Level08.Lamp documentUri="${documentUri}" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Read-only access" headerType="heading">
+            <UuLamp.Level08.Lamp documentUri="${readOnlyAccessUri}" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Not-authorized" headerType="heading">
             <UuLamp.Level08.Lamp documentUri="${noAccessUri}" />

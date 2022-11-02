@@ -30,7 +30,7 @@ const LampCore = createVisualComponent({
     const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
 
     function handleOnCopyComponent() {
-      return createCopyTag(LampCore.uu5Tag, props, ["header"], LampCore.defaultProps);
+      return createCopyTag(Config.TAG + "Lamp", props, ["header"], LampCore.defaultProps);
     }
     //@@viewOff:private
 

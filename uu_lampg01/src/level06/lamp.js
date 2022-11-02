@@ -35,12 +35,12 @@ const LampCore = createVisualComponent({
     header: undefined,
     bulbStyle: "filled",
     bulbSize: "xl",
-    card: "none",
+    card: "full",
     width: undefined,
     height: undefined,
     significance: "common",
     colorScheme: "yellow",
-    borderRadius: "none",
+    borderRadius: "moderate",
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
@@ -61,7 +61,7 @@ const LampCore = createVisualComponent({
     }, [room, props.id]);
 
     function handleCopyComponent() {
-      return createCopyTag(LampCore.uu5Tag, props, ["bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
+      return createCopyTag(Config.TAG + "Lamp", props, ["bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
     }
     //@@viewOff:private
 

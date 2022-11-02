@@ -262,6 +262,10 @@
     "copyComponent": "Zkopírovat komponentu",
     "copyComponentSuccess": "Komponenta zkopírována do schránky"
   },
+  "UuLamp.Core.PackageView.AreaView": {
+    "copyComponent": "Zkopírovat komponentu",
+    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+  },
   "UuLamp.Core.withAuthentication": {
     "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
   }

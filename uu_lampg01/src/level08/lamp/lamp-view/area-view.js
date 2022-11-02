@@ -38,6 +38,7 @@ const AreaView = createVisualComponent({
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     showSwitch: PropTypes.bool,
+    canSwitch: PropTypes.bool,
     onSwitchClick: PropTypes.func,
     onCopyComponent: PropTypes.func,
   },
@@ -101,8 +102,8 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
-        significance={props.significance}
         colorScheme={props.colorScheme}
+        headerSeparator={true}
         actionList={actionList}
         {...elementProps}
       >
@@ -112,7 +113,12 @@ const AreaView = createVisualComponent({
             height={PLACEHOLDER_HEIGHT}
             customErrorLsi={errorsLsi}
           >
-            <Box className={Css.box(block)} colorScheme={props.colorScheme} significance={props.significance}>
+            <Box
+              className={Css.box(block)}
+              colorScheme={props.colorScheme}
+              shape="interactiveElement"
+              significance={props.significance === "common" ? "subdued" : "highlighted"}
+            >
               <Core.Bulb
                 on={props.on}
                 bulbSize={props.bulbSize}
@@ -138,6 +144,7 @@ function getActions(props, lsi, { handleCopyComponent }) {
       children: props.on ? lsi.switchOff : lsi.switchOn,
       primary: true,
       onClick: props.onSwitchClick,
+      disabled: !props.canSwitch,
     });
   }
 

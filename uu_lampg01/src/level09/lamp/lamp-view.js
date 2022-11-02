@@ -68,19 +68,18 @@ const LampView = createVisualComponent({
 
     async function handleSavePreference(preferenceType) {
       try {
-        console.log("debug");
         await props.lampDataObject.handlerMap.savePreference(preferenceType);
         addAlert({
           message: lsi.preferenceSuccess,
           durationMs: 2000,
-          colorScheme: "success",
+          priority: "success",
         });
       } catch (error) {
         // TODO Switch Lsi for Error component
         addAlert({
           message: lsi.preferenceError,
           durationMs: 5000,
-          colorScheme: "danger",
+          priority: "error",
         });
       }
     }
@@ -100,10 +99,10 @@ const LampView = createVisualComponent({
           />
         );
       case "box":
-        return <BoxView {...props} onSwitchClick={handleSwitchClick} />;
+        return <BoxView {...props} onBulbSizeChange={handleBulbSizeChange} onSwitchClick={handleSwitchClick} />;
       case "inline":
       default:
-        return <InlineView {...props} onSwitchClick={handleSwitchClick} />;
+        return <InlineView {...props} onBulbSizeChange={handleBulbSizeChange} onSwitchClick={handleSwitchClick} />;
     }
     //@@viewOff:render
   },
