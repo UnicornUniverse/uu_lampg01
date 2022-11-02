@@ -10,19 +10,6 @@ import RoomProvider from "./room/provider";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-// const STATICS = {
-//   //@@viewOn:statics
-//   tagName: Config.TAG + "Room",
-//   nestingLevelList: ["box", "inline"],
-//   editMode: {
-//     displayType: "block",
-//     customEdit: true,
-//     lazy: true,
-//     enablePlaceholder: true,
-//   },
-//   //@@viewOff:statics
-// };
-
 const RoomCore = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "RoomCore",
@@ -50,12 +37,12 @@ const RoomCore = createVisualComponent({
     on: false,
     bulbStyle: "filled",
     bulbSize: "xl",
-    card: "none",
+    card: "full",
     width: undefined,
     height: undefined,
     significance: "common",
     colorScheme: "yellow",
-    borderRadius: "none",
+    borderRadius: "moderate",
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

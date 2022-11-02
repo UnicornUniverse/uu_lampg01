@@ -1,6 +1,6 @@
 //@@viewOn:imports
-import { PropTypes, createVisualComponent } from "uu5g05";
-import { Box, UuGds } from "uu5g05-elements";
+import { PropTypes, createVisualComponent, Utils } from "uu5g05";
+import { Box, Icon, UuGds } from "uu5g05-elements";
 import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -27,7 +27,7 @@ const BoxView = createVisualComponent({
     colorScheme: PropTypes.colorScheme,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["common", "highlighted"]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     aspectRatio: PropTypes.string,
     onSwitchClick: PropTypes.func,
@@ -52,23 +52,6 @@ const BoxView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      // <UU5.Bricks.Card
-      //   colorScheme={props.colorScheme}
-      //   bgStyle={props.bgStyle}
-      //   borderRadius={props.borderRadius}
-      //   elevation={props.elevation}
-      //   elevationHover={props.elevation}
-      //   className="center padding-s"
-      //   {...attrs}
-      // >
-      //   <UU5.Bricks.Switch
-      //     switchedOn={props.on}
-      //     onChange={props.onSwitchClick}
-      //     onIcon="mdi-power-plug"
-      //     offIcon="mdi-power-plug-off"
-      //     size="m"
-      //   />
-      // </UU5.Bricks.Card>
       <Box
         className={Css.box()}
         colorScheme={props.colorScheme}
@@ -91,15 +74,11 @@ function getItemList(props) {
   return [
     {
       value: false,
-      children: (
-        <Icon className={Css.switchIcon(props.bulbSize)} colorScheme={props.colorScheme} icon="mdi-power-plug-off" />
-      ),
+      children: <Icon colorScheme="grey" icon="mdi-power-plug-off" />,
     },
     {
       value: true,
-      children: (
-        <Icon className={Css.switchIcon(props.bulbSize)} colorScheme={props.colorScheme} icon="mdi-power-plug" />
-      ),
+      children: <Icon colorScheme={props.colorScheme} icon="mdi-power-plug" />,
     },
   ];
 }

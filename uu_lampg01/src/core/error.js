@@ -1,38 +1,36 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
-import Plus4U5 from "uu_plus4u5g01";
-import "uu_plus4u5g01-bricks";
+import { createVisualComponent, PropTypes, Utils, useSession, useLsi } from "uu5g05";
+import { PlaceholderBox } from "uu5g05-elements";
+import Plus4U5Elements, { Unauthenticated, Unauthorized } from "uu_plus4u5g02-elements";
+import { getErrorStatus, HttpStatus, getErrorLsi, PropertyError } from "../errors/errors";
 import Config from "./config/config";
-import Lsi from "./error-lsi";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
 //@@viewOn:css
 const Css = {
-  placeholder: (height) => Config.Css.css`
-    height: ${height}px;
-    overflow: scroll
-  `,
+  placeholder: (height) =>
+    Config.Css.css({
+      height,
+      display: "flex",
+      justifyContent: "center",
+    }),
 };
 //@@viewOff:css
 
-const STATICS = {
+const Error = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "Error",
+  uu5Tag: Config.TAG + "Error",
   nestingLevel: ["box", "inline"],
   //@@viewOff:statics
-};
-
-export const Error = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    moreInfo: UU5.PropTypes.bool,
-    errorData: UU5.PropTypes.object,
-    height: UU5.PropTypes.number,
-    customErrorLsi: UU5.PropTypes.object,
-    inline: UU5.PropTypes.bool,
+    moreInfo: PropTypes.bool,
+    inline: PropTypes.bool,
+    errorData: PropTypes.object,
+    customErrorLsi: PropTypes.object,
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   },
   //@@viewOff:propTypes
 
@@ -46,76 +44,42 @@ export const Error = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  //@@viewOn:private
-  //@@viewOff:private
-
-  //@@viewOn:render
   render(props) {
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const className = props.height ? Css.placeholder(props.height) : "";
-    const attrs = UU5.Common.VisualComponent.getAttrs(props, className);
+    //@@viewOn:private
+    const errorsLsi = useLsi(importLsi, ["Errors"]);
+    const { state } = useSession();
+    //@@viewOff:private
 
-    // note: there were cases when errorData without reparsing
-    // were not behaving like an object
-    let error = JSON.parse(JSON.stringify(props.errorData));
+    //@@viewOn:render
+    const className = props.height
+      ? Utils.Css.joinClassName(props.className, Css.placeholder(props.height))
+      : props.className;
 
-    let lsi = getErrorMessage(error, props.customErrorLsi);
-    if (!lsi) lsi = getErrorMessageByStatus(error, props.customErrorLsi);
+    const [elementProps] = Utils.VisualComponent.splitProps(props, className);
+    const errorStatus = getErrorStatus(props.errorData);
+
+    if (errorStatus === HttpStatus.Unauthorized || errorStatus === HttpStatus.Forbidden) {
+      if (state === "authenticated") {
+        return <Unauthorized {...elementProps} nestingLevel={props.nestingLevel} />;
+      } else {
+        return <Unauthenticated {...elementProps} nestingLevel={props.nestingLevel} />;
+      }
+    }
+
+    const lsi = getErrorLsi(props.errorData, { ...errorsLsi, ...props.customErrorLsi });
+
+    if (props.errorData.error instanceof PropertyError) {
+      return <PlaceholderBox {...elementProps} code="error" header={lsi} nestingLevel={props.nestingLevel} />;
+    }
 
     return (
-      <Plus4U5.Bricks.Error
-        moreInfo={props.moreInfo}
-        errorData={props.errorData}
-        inline={props.inline || currentNestingLevel === "inline"}
-        colorSchema="danger"
-        {...attrs}
-      >
-        <UU5.Bricks.Lsi lsi={lsi} />
-      </Plus4U5.Bricks.Error>
+      <Plus4U5Elements.Error {...elementProps} error={props.errorData} title={lsi} nestingLevel={props.nestingLevel} />
     );
     //@@viewOff:render
   },
 });
 
-//viewOn:helpers
-function getErrorMessageByStatus(errorData, customErrorLsi) {
-  let lsi;
-  switch (errorData?.error?.status) {
-    case 0:
-      lsi = customErrorLsi.baseNetworkError || Lsi.baseNetworkError;
-      break;
-    case 400:
-      lsi = customErrorLsi.badRequest || Lsi.badRequest;
-      break;
-    case 401:
-      lsi = customErrorLsi.unauthorized || Lsi.unauthorized;
-      break;
-    case 403:
-      lsi = customErrorLsi.forbidden || Lsi.forbidden;
-      break;
-    case 404:
-      lsi = customErrorLsi.notFound || Lsi.notFound;
-      break;
-    case 500:
-      lsi = customErrorLsi.internal || Lsi.internal;
-      break;
-    case 503:
-      lsi = customErrorLsi.serviceUnavailable || Lsi.serviceUnavailable;
-      break;
-    case 504:
-      lsi = customErrorLsi.requestTimeout || Lsi.requestTimeout;
-      break;
-    default:
-      lsi = customErrorLsi.defaultError || Lsi.defaultError;
-  }
-
-  return lsi;
-}
-
-function getErrorMessage(errorData, customErrorLsi) {
-  const code = errorData?.error?.code || errorData.code;
-  return customErrorLsi[code] || Lsi[code];
-}
-//viewOff:helpers
-
+//@@viewOn:exports
+export { Error };
 export default Error;
+//@@viewOff:exports

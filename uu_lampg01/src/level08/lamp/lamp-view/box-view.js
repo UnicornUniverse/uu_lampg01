@@ -1,10 +1,14 @@
 //@@viewOn:imports
-import { PropTypes, Utils, createVisualComponent } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
 import { Box, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import Bulb from "../bulb";
-import LampSwitch from "../lamp-switch";
+import Core from "../../../core/core";
+import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
+
+//@@viewOn:constants
+const PLACEHOLDER_HEIGHT = "100%";
+//@@viewOff:constants
 
 //@@viewOn:css
 const Css = {
@@ -23,6 +27,7 @@ const BoxView = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    documentDataObject: PropTypes.object.isRequired,
     on: PropTypes.bool,
     header: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
@@ -30,7 +35,7 @@ const BoxView = createVisualComponent({
     colorScheme: PropTypes.colorScheme,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     aspectRatio: PropTypes.string,
     showSwitch: PropTypes.bool,
@@ -40,6 +45,7 @@ const BoxView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    documentDataObject: undefined,
     on: false,
     header: "",
     bulbStyle: "filled",
@@ -55,6 +61,10 @@ const BoxView = createVisualComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const errorsLsi = useLsi(importLsi, ["Errors"]);
+    //@@viewOff:private
+
     //@@viewOn:render
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
@@ -69,22 +79,28 @@ const BoxView = createVisualComponent({
         aspectRatio={props.aspectRatio}
         {...elementProps}
       >
-        <Bulb
-          on={props.on}
-          bulbSize={props.bulbSize}
-          bulbStyle={props.bulbStyle}
-          colorScheme={props.colorScheme}
-          nestingLevel="box"
-        />
-        {props.showSwitch && (
-          <LampSwitch
+        <Core.DataObjectStateResolver
+          dataObject={props.documentDataObject}
+          height={PLACEHOLDER_HEIGHT}
+          customErrorLsi={errorsLsi}
+        >
+          <Core.Bulb
             on={props.on}
             bulbSize={props.bulbSize}
+            bulbStyle={props.bulbStyle}
             colorScheme={props.colorScheme}
-            onClick={props.onSwitchClick}
             nestingLevel="box"
           />
-        )}
+          {props.showSwitch && (
+            <Core.LampSwitch
+              on={props.on}
+              bulbSize={props.bulbSize}
+              colorScheme={props.colorScheme}
+              onClick={props.onSwitchClick}
+              nestingLevel="box"
+            />
+          )}
+        </Core.DataObjectStateResolver>
       </Box>
     );
     //@@viewOff:render

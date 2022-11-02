@@ -2,7 +2,6 @@
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Link } from "uu5g05-elements";
 import Config from "./config/config";
-import RoomHeader from "./header";
 //@@viewOff:imports
 
 const InlineView = createVisualComponent({

@@ -4,6 +4,16 @@ import { Text, Icon } from "uu5g05-elements";
 import Config from "./config/config";
 //@@viewOff:imports
 
+//@@viewOn:css
+const Css = {
+  text: () =>
+    Config.Css.css({
+      textAlign: "center",
+      cursor: "pointer",
+    }),
+};
+//@@viewOff:css
+
 const InlineView = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "InlineView",
@@ -28,8 +38,7 @@ const InlineView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const className = Config.Css.css`cursor: pointer`;
-    const [elementProps] = Utils.VisualComponent.splitProps(props, className);
+    const [elementProps] = Utils.VisualComponent.splitProps(props, Css.text());
 
     const switchStateCode = props.on ? "-outline" : "-off";
     const switchIcon = `mdi-toggle-switch${switchStateCode}`;
@@ -37,10 +46,10 @@ const InlineView = createVisualComponent({
 
     return (
       <Text
+        {...elementProps}
         elementAttrs={{ onClick: props.onSwitchClick }}
         colorScheme={colorScheme}
         nestingLevel="inline"
-        {...elementProps}
       >
         <Icon icon={switchIcon} />
       </Text>

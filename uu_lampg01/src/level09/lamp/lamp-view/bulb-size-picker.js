@@ -1,72 +1,66 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { PropTypes, createVisualComponent, Utils } from "uu5g05";
+import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
 //@@viewOff:imports
 
-const STATICS = {
-  //@@viewOn:statics
-  displayName: Config.TAG + "BulbSizePicker",
-  nestingLevel: "inline",
-  //@@viewOff:statics
-};
-
 const switchCss = () => Config.Css.css`margin: 20px`;
 
-export const BulbSizePicker = createVisualComponent({
-  ...STATICS,
+const BulbSizePicker = createVisualComponent({
+  //@@viewOn:statics
+  uu5Tag: Config.TAG + "BulbSizePicker",
+  //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
-    onChange: UU5.PropTypes.func,
+    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    onChange: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     bulbSize: undefined,
-    onChange: () => {},
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     const switchItems = [
       {
         value: "s",
-        content: "S",
+        children: "S",
       },
       {
         value: "m",
-        content: "M",
+        children: "M",
       },
       {
         value: "l",
-        content: "L",
+        children: "L",
       },
       {
         value: "xl",
-        content: "XL",
+        children: "XL",
       },
     ];
 
     return (
-      <UU5.Bricks.SwitchSelector
-        items={switchItems}
-        onChange={(opt) => props.onChange(opt.value)}
-        value={props.bulbSize}
-        size="xl"
+      <SwitchSelect
         className={switchCss()}
-        nestingLevel={currentNestingLevel}
-        {...attrs}
+        itemList={switchItems}
+        onChange={(ev) => props.onChange(ev.data.value)}
+        value={props.bulbSize}
+        {...elementProps}
       />
     );
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { BulbSizePicker };
 export default BulbSizePicker;
+//@@viewOff:exports

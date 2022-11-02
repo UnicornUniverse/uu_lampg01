@@ -6,6 +6,7 @@
   "namespace": "UuLamp",
   "spec": "uu5-lib; uu_appg01_devkit@5.5.0",
   "dependencies": {
+    "uu_appg01": "^5.14.1",
     "uu_i18ng01": "^1.1.0",
     "uu_pg01": "^3.7.1",
     "uu_plus4u5g01": "^4.19.2",

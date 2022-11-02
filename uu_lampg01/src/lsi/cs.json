@@ -1,4 +1,20 @@
 {
+  "Errors": {
+    "defaultError": "Omlouváme se, opravdu nevíme, co se stalo. Pokud problém přetrvává, nahlašte prosím chybu na helpdesk.",
+    "badRequest": "Omlouváme se, během zpracování požadavku nastala chyba.",
+    "unauthorized": "Nemáte přístupová práva. Pokud si myslíte, že jde o chybu, kontaktujte prosím kompetentní osobu nebo pošlete požadavek na helpdesk.",
+    "forbidden": "Nemáte přístupová práva. Pokud si myslíte, že jde o chybu, kontaktujte prosím kompetentní osobu nebo pošlete požadavek na helpdesk.",
+    "notFound": "Požadavek nemohl být zpracován. Zkontrolujte prosím zadané URL.",
+    "internal": "Nastala neočekávaná chyba. Opakujte požadavek a případně nahlašte problém na helpdesk.",
+    "serviceUnavailable": "Služba není momentálně dostupná, zkuste to prosím později.",
+    "requestTimeout": "Čas pro komunikaci se serverem vypršel. Zkuste to prosím později.",
+    "baseNetworkError": "Chyba sítě - požadovaný zdroj není k dispozici a nebo neexistuje.",
+    "uu-gateway-main/invalidRequest": "Požadavek nemohl být zpracován. Zkontrolujte prosím zadané URL.",
+    "uu-app-workspace/forbiddenAwidSysState": "Workspace aplikace není v aktivním stavu a pravděpodobně na něm probíhá údržba. Zkuste to prosím znovu později.",
+    "uu-app-workspace/forbiddenAsidSysState": "Instance aplikace není v aktivním stavu a pravděpodobně probíhá údržba. Zkuste to prosím znovu později.",
+    "uu-dockit-main/document/load/documentDoesNotExist": "Dokument neexistuje. Zkontrolujte prosím vlastnost URL dokumentu.",
+    "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "Nemáte přístupová práva k dokumentu. Lampa a vypínač jsou schované."
+  },
   "UuLamp.Level01.LampCore": {
     "header": "uuLamp Level 01 - Dynamické vykreslování",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
@@ -102,7 +118,7 @@
     "aspectRatio": "Poměr stran",
     "advancedConfiguration": "Pokročilá nastavení",
     "level": "Velikost nadpisu",
-    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."  
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
   },
   "UuLamp.Level06.RoomCore": {
     "header": "uuLamp Level 06 - Místnost s kontextem",
@@ -158,6 +174,77 @@
     "Europe/Prague": "Praha",
     "Asia/Tokyo": "Tokio",
     "America/Los_Angeles": "Los Angeles"
+  },
+  "UuLamp.Level08.Lamp.EditModalLazy": {
+    "properties": "Lampa",
+    "documentUri": "URL dokumentu",
+    "state": "Stav",
+    "on": "zapnuto",
+    "off": "vypnuto",
+    "bulbStyle": "Styl žárovky",
+    "bulbSize": "Velikost žárovky",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorScheme": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Level08.LampCore": {
+    "header": "uuLamp Level 08 - Lampa s autorizací",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
+  },
+  "UuLamp.Level08.Lamp.LampView.AreaView": {
+    "switchOn": "Rozsvítit",
+    "switchOff": "Zhasnout",
+    "copyComponent": "Zkopírovat komponentu",
+    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+  },
+  "UuLamp.Level09.Lamp.EditModalLazy": {
+    "properties": "Lampa",
+    "code": "Identifikační kód",
+    "codePatternMessage": "Kód může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",
+    "baseUri": "URL aplikace Lamp",
+    "state": "Stav",
+    "on": "zapnuto",
+    "off": "vypnuto",
+    "bulbStyle": "Styl žárovky",
+    "bulbSize": "Velikost žárovky",
+    "header": "Záhlaví",
+    "visual": "Vzhled",
+    "card": "Zobrazit jako kartu",
+    "colorScheme": "Barevné schéma",
+    "borderRadius": "Zaoblení rohů",
+    "width": "Šířka",
+    "height": "Výška",
+    "significance": "Signifikance",
+    "aspectRatio": "Poměr stran",
+    "advancedConfiguration": "Pokročilá nastavení",
+    "level": "Velikost nadpisu",
+    "info": "<uu5string/>Více informací viz <UU5.Bricks.Link href='%s' target='_blank' content='dokumentace'/>."
+  },
+  "UuLamp.Level09.LampCore": {
+    "header": "uuLamp Level 09 - Lampa s uživatelskou preferencí",
+    "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."
+  },
+  "UuLamp.Level09.Lamp.LampView": {
+    "preferenceSuccess": "Uživatelské nastavení bylo uloženo.",
+    "preferenceError": "Uživatelské nastavení nebylo uloženo kvůli chybě."
+  },
+  "UuLamp.Level09.Lamp.LampView.AreaView": {
+    "switchOn": "Rozsvítit",
+    "switchOff": "Zhasnout",
+    "preference": "Uložit nastavení",
+    "preferenceDefault": "Jako výchozí",
+    "preferenceSpecific": "Pouze pro tuto lampu",
+    "copyComponent": "Zkopírovat komponentu",
+    "copyComponentSuccess": "Komponenta zkopírována do schránky"
   },
   "UuLamp.Core.LampView.AreaView": {
     "switchOn": "Rozsvítit",

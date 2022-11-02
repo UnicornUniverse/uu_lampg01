@@ -1,120 +1,96 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { PropTypes, createVisualComponent, useLsi, Lsi } from "uu5g05";
+import { Uri } from "uu_appg01";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
-import Core from "../core/core";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
+import Core from "../core/core";
+import LampView from "./lamp/lamp-view";
+import LampProvider from "./lamp/provider";
 import EditModal from "./lamp/edit-modal";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const LampCore = createVisualComponent({
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevelList: ["box", "smallBox", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: true,
-    lazy: true,
-  },
+  uu5Tag: Config.TAG + "LampCore",
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  documentUri: undefined,
-  on: false,
-  bulbStyle: "filled",
-  bulbSize: "xl",
-  bgStyle: "transparent",
-  cardView: "full",
-  colorSchema: "amber",
-  elevation: 1,
-  borderRadius: "0",
-};
-
-export const Lamp = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    documentUri: UU5.PropTypes.string.isRequired,
-    on: UU5.PropTypes.bool,
-    header: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    documentUri: PropTypes.string.isRequired,
+    on: PropTypes.bool,
+    header: PropTypes.node,
+    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    card: PropTypes.string,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {
+    documentUri: undefined,
+    on: false,
+    bulbStyle: "filled",
+    bulbSize: "xl",
+    card: "full",
+    width: undefined,
+    height: undefined,
+    significance: "common",
+    colorScheme: "yellow",
+    borderRadius: "moderate",
+    aspectRatio: undefined,
+  },
   //@@viewOff:defaultProps
 
-  //@@viewOn:overriding
-  onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
-  },
-  //@@viewOff:overriding
+  render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
 
-  //@@viewOn:private
-  _editRef: UU5.Common.Reference.create(),
+    function handleCopyComponent() {
+      return createCopyTag(
+        LampCore.uu5Tag,
+        props,
+        ["on", "documentUri", "bulbStyle", "bulbSize", "header"],
+        LampCore.defaultProps
+      );
+    }
+    //@@viewOff:private
 
-  _handleCopyTag() {
-    return createCopyTag(
-      STATICS.tagName,
-      this.props,
-      ["on", "documentUri", "bulbStyle", "bulbSize", "header"],
-      DEFAULT_PROPS
-    );
-  },
-  //@@viewOff:private
-
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const { baseUri, documentId } = parseBaseUriAndId(this.props.documentUri);
+    //@@viewOn:render
+    const { baseUri, documentId } = parseBaseUriAndId(props.documentUri);
 
     return (
-      <Core.ErrorBoundary nestingLevel={currentNestingLevel} {...attrs}>
-        {this.isInlineEdited() && (
-          <EditModal
-            props={this.props}
-            onClose={this.endEditation}
-            ref={this._editRef}
-            fallback={this.getEditingLoading()}
-          />
-        )}
+      <LampProvider uuDocKitUri={baseUri} documentId={documentId} on={props.on}>
+        {(lamp) => {
+          function handleSwitchClick() {
+            lamp.setOn(!lamp.on);
+          }
 
-        <LampCore
-          key={this.props.documentUri}
-          uuDocKitUri={baseUri}
-          documentId={documentId}
-          on={this.props.on}
-          bulbStyle={this.props.bulbStyle}
-          bulbSize={this.props.bulbSize}
-          bgStyle={this.props.bgStyle}
-          cardView={this.props.cardView}
-          colorSchema={this.props.colorSchema}
-          elevation={this.props.elevation}
-          borderRadius={this.props.borderRadius}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-        />
-      </Core.ErrorBoundary>
+          return (
+            <LampView
+              {...props}
+              on={lamp.on}
+              documentDataObject={lamp.documentDataObject}
+              header={props.header || lsi.header}
+              help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+              onCopyComponent={handleCopyComponent}
+              showSwitch={lamp.canSwitch}
+              onSwitchClick={lamp.canSwitch ? handleSwitchClick : undefined}
+            />
+          );
+        }}
+      </LampProvider>
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
 //@@viewOn:helpers
@@ -123,11 +99,19 @@ function parseBaseUriAndId(documentUri) {
     return { baseUri: undefined, documentId: undefined };
   }
 
-  const baseUri = documentUri.match("(http|https)://.*/").shift();
-  const url = UU5.Common.Url.parse(documentUri);
-  const documentId = url.parameters.documentId;
-  return { baseUri, documentId };
+  const uri = Uri.Uri.parse(documentUri);
+  const baseUri = uri.getBaseUri(documentUri);
+  const { documentId } = uri.getParameters("documentId");
+  return { baseUri: baseUri.toString(), documentId };
 }
 //@@viewOff:helpers
 
+let Lamp = Core.withAuthentication(LampCore);
+Lamp = withMargin(Lamp);
+Lamp = withEditModal(Lamp, EditModal);
+Lamp = withErrorBoundary(Lamp);
+
+//@@viewOn:exports
+export { Lamp };
 export default Lamp;
+//@@viewOff:exports

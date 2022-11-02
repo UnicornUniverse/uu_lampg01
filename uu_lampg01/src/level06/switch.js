@@ -21,7 +21,7 @@ const SwitchCore = createVisualComponent({
     card: PropTypes.string,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["common", "highlighted"]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     colorScheme: PropTypes.colorScheme,
     borderRadius: PropTypes.borderRadius,
     aspectRatio: PropTypes.string,

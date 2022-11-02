@@ -1,26 +1,19 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useMemo, useState, useDataObject, useEffect, useRef } from "uu5g04-hooks";
+import { PropTypes, createComponent, useMemo, useState, useDataObject, useEffect, useRef } from "uu5g05";
 import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports
 
-const STATICS = {
+const Provider = createComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "LampProvider",
-  //@@viewOff:statics
-};
-
-export const LampProvider = createComponent({
-  //@@viewOn:statics
-  ...STATICS,
+  uu5Tag: Config.TAG + "Provider",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    uuDocKitUri: UU5.PropTypes.string.isRequired,
-    documentId: UU5.PropTypes.string.isRequired,
-    on: UU5.PropTypes.bool,
+    uuDocKitUri: PropTypes.string.isRequired,
+    documentId: PropTypes.string.isRequired,
+    on: PropTypes.bool,
   },
   //@@viewOff:propTypes
 
@@ -91,4 +84,7 @@ export const LampProvider = createComponent({
   },
 });
 
-export default LampProvider;
+//@@viewOn:exports
+export { Provider };
+export default Provider;
+//@@viewOff:exports

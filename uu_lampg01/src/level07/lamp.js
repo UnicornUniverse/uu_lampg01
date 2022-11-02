@@ -1,5 +1,14 @@
 //@@viewOn:imports
-import { PropTypes, TimeZoneProvider, createVisualComponent, Lsi, useLsi, useState, usePreviousValue, useEffect } from "uu5g05";
+import {
+  PropTypes,
+  TimeZoneProvider,
+  createVisualComponent,
+  Lsi,
+  useLsi,
+  useState,
+  usePreviousValue,
+  useEffect,
+} from "uu5g05";
 import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
@@ -37,12 +46,12 @@ const LampCore = createVisualComponent({
     timeZone: "Europe/Prague",
     bulbStyle: "filled",
     bulbSize: "xl",
-    card: "none",
+    card: "full",
     width: undefined,
     height: undefined,
     significance: "common",
     colorScheme: "yellow",
-    borderRadius: "none",
+    borderRadius: "moderate",
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
@@ -57,14 +66,19 @@ const LampCore = createVisualComponent({
       if (!prevTimeZone) {
         return;
       }
-      
+
       if (prevTimeZone.current !== props.timeZone) {
         setTimeZone(props.timeZone);
       }
-    }, [props.timeZone]);
+    }, [prevTimeZone, props.timeZone]);
 
     function handleCopyComponent() {
-      return createCopyTag(LampCore.uu5Tag, props, ["timeZone", "bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
+      return createCopyTag(
+        LampCore.uu5Tag,
+        props,
+        ["timeZone", "bulbStyle", "bulbSize", "header"],
+        LampCore.defaultProps
+      );
     }
 
     function handleTimeZoneChange(data) {

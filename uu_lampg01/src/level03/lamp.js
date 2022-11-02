@@ -35,7 +35,7 @@ const LampCore = createVisualComponent({
     on: false,
     bulbStyle: "filled",
     bulbSize: "xl",
-    card: "none",
+    card: "full",
     width: undefined,
     height: undefined,
     significance: "common",

@@ -1,34 +1,38 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent, useRef } from "uu5g04-hooks";
+import { PropTypes, createVisualComponent, Utils, useLsi } from "uu5g05";
+import { useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
-import LampViewInline from "./lamp-view/lamp-view-inline";
-import LampViewSmallBox from "./lamp-view/lamp-view-small-box";
-import LampViewBox from "./lamp-view/lamp-view-box";
-import Lsi from "./lamp-view-lsi";
+import AreaView from "./lamp-view/area-view";
+import InlineView from "./lamp-view/inline-view";
+import BoxView from "./lamp-view/box-view";
+import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampView",
-  nestingLevel: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "LampView",
+  nestingLevel: ["area", "box", "inline"],
   //@@viewOff:statics
 };
 
-export const LampView = createVisualComponent({
+const LampView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    lampDataObject: UU5.PropTypes.object.isRequired,
-    header: UU5.PropTypes.node,
-    help: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    lampDataObject: PropTypes.object.isRequired,
+    header: PropTypes.node,
+    help: PropTypes.node,
+    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    colorScheme: PropTypes.colorScheme,
+    card: PropTypes.oneOf(["none", "full", "content"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
+    onCopyComponent: PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -38,17 +42,21 @@ export const LampView = createVisualComponent({
     header: "",
     help: "",
     bulbStyle: "filled",
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
+    bulbSize: "xl",
+    colorScheme: "yellow",
+    card: "full",
+    width: undefined,
+    height: undefined,
+    significance: "common",
+    borderRadius: "moderate",
+    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:private
-    const alertBusRef = useRef();
+    const lsi = useLsi(importLsi, [LampView.uu5Tag]);
+    const { addAlert } = useAlertBus();
 
     function handleSwitchClick() {
       props.lampDataObject.handlerMap.setOn(!props.lampDataObject.data.on);
@@ -60,67 +68,48 @@ export const LampView = createVisualComponent({
 
     async function handleSavePreference(preferenceType) {
       try {
+        console.log("debug");
         await props.lampDataObject.handlerMap.savePreference(preferenceType);
-        alertBusRef.current.addAlert({
-          content: <UU5.Bricks.Lsi lsi={Lsi.preferenceSuccess} />,
-          closeTimer: 2000,
-          colorSchema: "success",
+        addAlert({
+          message: lsi.preferenceSuccess,
+          durationMs: 2000,
+          colorScheme: "success",
         });
       } catch (error) {
         // TODO Switch Lsi for Error component
-        alertBusRef.current.addAlert({
-          content: <UU5.Bricks.Lsi lsi={Lsi.preferenceError} />,
-          closeTimer: 5000,
-          colorSchema: "danger",
+        addAlert({
+          message: lsi.preferenceError,
+          durationMs: 5000,
+          colorScheme: "danger",
         });
       }
     }
     //@@viewOff:private
 
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
-
-    let child;
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     switch (currentNestingLevel) {
-      case "box":
-        child = (
-          <LampViewBox
+      case "area":
+        return (
+          <AreaView
             {...props}
-            {...attrs}
-            nestingLevel={currentNestingLevel}
             onSwitchClick={handleSwitchClick}
             onBulbSizeChange={handleBulbSizeChange}
             onSavePreference={handleSavePreference}
           />
         );
-        break;
-      case "smallBox":
-        child = (
-          <LampViewSmallBox
-            {...props}
-            {...attrs}
-            nestingLevel={currentNestingLevel}
-            onSwitchClick={handleSwitchClick}
-          />
-        );
-        break;
+      case "box":
+        return <BoxView {...props} onSwitchClick={handleSwitchClick} />;
       case "inline":
       default:
-        child = (
-          <LampViewInline {...props} {...attrs} nestingLevel={currentNestingLevel} onSwitchClick={handleSwitchClick} />
-        );
+        return <InlineView {...props} onSwitchClick={handleSwitchClick} />;
     }
-
-    return (
-      <>
-        {child}
-        <UU5.Bricks.AlertBus ref_={alertBusRef} />
-      </>
-    );
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { LampView };
 export default LampView;
+//@@viewOff:exports

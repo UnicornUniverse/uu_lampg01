@@ -8,9 +8,12 @@ import importLsi from "../../lsi/import-lsi";
 
 //@@viewOn:css
 const Css = {
-  box: () =>
+  box: (block) =>
     Config.Css.css({
       textAlign: "center",
+      borderBottomLeftRadius: "inherit",
+      borderBottomRightRadius: "inherit",
+      ...block.style,
     }),
 };
 //@@viewOff:css
@@ -45,9 +48,9 @@ const AreaView = createVisualComponent({
     bulbStyle: "filled",
     bulbSize: "xl",
     colorScheme: "yellow",
-    card: "none",
+    card: "full",
     significance: "common",
-    borderRadius: "none",
+    borderRadius: "moderate",
     showSwitch: false,
   },
   //@@viewOff:defaultProps
@@ -79,20 +82,27 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
-        significance={props.significance}
         colorScheme={props.colorScheme}
+        headerSeparator={true}
         actionList={actionList}
         {...elementProps}
       >
-        <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
-          <Bulb
-            on={props.on}
-            bulbSize={props.bulbSize}
-            bulbStyle={props.bulbStyle}
+        {(block) => (
+          <Box
+            className={Css.box(block)}
             colorScheme={props.colorScheme}
-            nestingLevel="area"
-          />
-        </Box>
+            shape="interactiveElement"
+            significance={props.significance === "common" ? "subdued" : "highlighted"}
+          >
+            <Bulb
+              on={props.on}
+              bulbSize={props.bulbSize}
+              bulbStyle={props.bulbStyle}
+              colorScheme={props.colorScheme}
+              nestingLevel="area"
+            />
+          </Box>
+        )}
       </Block>
     );
     //@@viewOff:render

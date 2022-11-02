@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent, useState } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent, useState, Content } from "uu5g05";
 import Config from "./config/config";
 import InlineView from "./room-view/inline-view";
 import AreaView from "./room-view/area-view";
@@ -78,7 +78,7 @@ const RoomView = createVisualComponent({
         )}
         {isDetailModal && (
           <DetailModal open onClose={handleDetailClose} room={props.room} header={props.header}>
-            {props.children}
+            <Content nestingLevel="area">{props.children}</Content>
           </DetailModal>
         )}
       </>

@@ -1,10 +1,15 @@
 //@@viewOn:imports
-import { PropTypes, Utils, createVisualComponent } from "uu5g05";
+import { PropTypes, createVisualComponent, Utils, useLsi } from "uu5g05";
 import { Box, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import Bulb from "../bulb";
-import LampSwitch from "../lamp-switch";
+import Core from "../../../core/core";
+import BulbSizePicker from "./bulb-size-picker";
+import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
+
+//@@viewOn:constants
+const PLACEHOLDER_HEIGHT = "100%";
+//@@viewOff:constants
 
 //@@viewOn:css
 const Css = {
@@ -23,24 +28,24 @@ const BoxView = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    on: PropTypes.bool,
+    lampDataObject: PropTypes.object.isRequired,
     header: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
     bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
     colorScheme: PropTypes.colorScheme,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     aspectRatio: PropTypes.string,
-    showSwitch: PropTypes.bool,
+    onBulbSizeChange: PropTypes.func,
     onSwitchClick: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    on: false,
+    lampDataObject: undefined,
     header: "",
     bulbStyle: "filled",
     bulbSize: "xl",
@@ -50,11 +55,14 @@ const BoxView = createVisualComponent({
     significance: "common",
     borderRadius: "none",
     aspectRatio: undefined,
-    showSwitch: false,
   },
   //@@viewOff:defaultProps
 
   render(props) {
+    //@@viewOn:private
+    const errorsLsi = useLsi(importLsi, ["Errors"]);
+    //@@viewOff:private
+
     //@@viewOn:render
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
@@ -69,22 +77,27 @@ const BoxView = createVisualComponent({
         aspectRatio={props.aspectRatio}
         {...elementProps}
       >
-        <Bulb
-          on={props.on}
-          bulbSize={props.bulbSize}
-          bulbStyle={props.bulbStyle}
-          colorScheme={props.colorScheme}
-          nestingLevel="box"
-        />
-        {props.showSwitch && (
-          <LampSwitch
-            on={props.on}
-            bulbSize={props.bulbSize}
+        <Core.DataObjectStateResolver
+          dataObject={props.lampDataObject}
+          height={PLACEHOLDER_HEIGHT}
+          customErrorLsi={errorsLsi}
+        >
+          <BulbSizePicker bulbSize={props.lampDataObject.data?.bulbSize} onChange={props.onBulbSizeChange} />
+          <Core.Bulb
+            on={props.lampDataObject.data?.on}
+            bulbSize={props.lampDataObject.data?.bulbSize}
+            bulbStyle={props.bulbStyle}
+            colorScheme={props.colorScheme}
+            nestingLevel="box"
+          />
+          <Core.LampSwitch
+            on={props.lampDataObject.data?.on}
+            bulbSize={props.lampDataObject.data?.bulbSize}
             colorScheme={props.colorScheme}
             onClick={props.onSwitchClick}
             nestingLevel="box"
           />
-        )}
+        </Core.DataObjectStateResolver>
       </Box>
     );
     //@@viewOff:render

@@ -6,10 +6,10 @@ import Config from "./config/config";
 
 //@@viewOn:css
 const Css = {
-  box: () =>
+  box: (block) =>
     Config.Css.css({
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      ...block.style,
     }),
   icon: () =>
     Config.Css.css({
@@ -47,7 +47,7 @@ const AreaView = createVisualComponent({
     card: "none",
     colorScheme: "yellow",
     significance: "common",
-    borderRadius: "none",
+    borderRadius: "moderate",
     aspectRatio: undefined,
     level: "",
   },
@@ -65,13 +65,21 @@ const AreaView = createVisualComponent({
         card={props.card}
         borderRadius={props.borderRadius}
         significance={props.significance}
+        headerSeparator={true}
         actionList={actionList}
         {...elementProps}
       >
-        <Box className={Css.box()} colorScheme={props.colorScheme} significance={props.significance}>
-          <Text>{props.info}</Text>
-          <Icon className={Css.icon()} icon={props.icon} colorScheme={props.colorScheme} />
-        </Box>
+        {(block) => (
+          <Box
+            className={Css.box(block)}
+            colorScheme={props.colorScheme}
+            shape="interactiveElement"
+            significance="subdued"
+          >
+            <Text>{props.info}</Text>
+            <Icon className={Css.icon()} icon={props.icon} colorScheme={props.colorScheme} />
+          </Box>
+        )}
       </Block>
     );
     //@@viewOff:render

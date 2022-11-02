@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
+import { Utils, PropTypes, createVisualComponent, useLsi, Content } from "uu5g05";
 import { Block, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
 import Header from "./header";
@@ -68,7 +68,7 @@ const AreaView = createVisualComponent({
         actionList={actionList}
         {...elementProps}
       >
-        {props.children}
+        {(block) => <Content nestingLevel="area">{props.children}</Content>}
       </Block>
     );
     //@@viewOff:render

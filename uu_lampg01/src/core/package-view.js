@@ -43,7 +43,7 @@ const PackageView = createVisualComponent({
     card: "none",
     colorScheme: "yellow",
     significance: "common",
-    borderRadius: "none",
+    borderRadius: "moderate",
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

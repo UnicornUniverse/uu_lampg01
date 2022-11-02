@@ -1,72 +1,52 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent } from "uu5g04-hooks";
-import "uu_plus4u5g01-bricks";
-
+import { PropTypes, createComponent } from "uu5g05";
 import Config from "./config/config";
 import Error from "./error";
 import DataObjectPending from "./data-object-state-resolver/data-object-pending";
 //@@viewOff:imports
 
-const STATICS = {
+const DataObjectStateResolver = createComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "DataObjectStateResolver",
-  nestingLevel: ["bigBox", "boxCollection", "box", "smallBoxCollection", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "DataObjectStateResolver",
   //@@viewOff:statics
-};
-
-export const DataObjectStateResolver = createComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    dataObject: UU5.PropTypes.object,
-    height: UU5.PropTypes.number,
-    customErrorLsi: UU5.PropTypes.object,
-    passErrorNoData: UU5.PropTypes.bool,
+    dataObject: PropTypes.object.isRequired,
+    height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    customErrorLsi: PropTypes.object,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     dataObject: {},
-    height: undefined,
+    height: "100%",
     customErrorLsi: undefined,
-    passErrorNoData: false,
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const { dataObject, customErrorLsi, children, ...viewProps } = props;
 
-    switch (props.dataObject.state) {
+    switch (dataObject.state) {
       case "ready":
       case "error":
       case "pending":
-        return props.children;
-      case "errorNoData":
-        return props.passErrorNoData ? (
-          props.children
-        ) : (
-          <Error
-            height={props.height}
-            moreInfo
-            errorData={props.dataObject.errorData}
-            customErrorLsi={props.customErrorLsi}
-            nestingLevel={currentNestingLevel}
-            {...attrs}
-          />
-        );
+        return typeof children === "function" ? children() : children;
       case "readyNoData":
       case "pendingNoData":
-        return <DataObjectPending height={props.height} nestingLevel={currentNestingLevel} {...attrs} />;
+        return <DataObjectPending {...viewProps} />;
+      case "errorNoData":
       default:
-        return <Error height={props.height} nestingLevel={currentNestingLevel} {...attrs} />;
+        return <Error {...viewProps} errorData={dataObject.errorData} customErrorLsi={customErrorLsi} />;
     }
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { DataObjectStateResolver };
 export default DataObjectStateResolver;
+//@@viewOff:exports

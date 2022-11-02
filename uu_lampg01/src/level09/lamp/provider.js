@@ -1,38 +1,34 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useDataObject, useEffect, useRef } from "uu5g04-hooks";
+import { PropTypes, createComponent, useEffect, useRef, useDataObject } from "uu5g05";
+import { usePerson } from "uu_plus4u5g02";
 import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampProvider",
+  uu5Tag: Config.TAG + "Provider",
   //@@viewOff:statics
 };
 
-const PROPERTY_CODE = STATICS.displayName.replaceAll(".", "");
+const PROPERTY_CODE = STATICS.uu5Tag.replaceAll(".", "");
 // MFA TODO - Revise the scope
 const PROPERTY_SCOPE = "uuAppWorkspace";
 
-export const LampProvider = createComponent({
-  //@@viewOn:statics
+const Provider = createComponent({
   ...STATICS,
-  //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: UU5.PropTypes.string.isRequired,
-    personDataObject: UU5.PropTypes.object.isRequired,
-    code: UU5.PropTypes.string,
-    on: UU5.PropTypes.bool,
+    baseUri: PropTypes.string.isRequired,
+    code: PropTypes.string,
+    on: PropTypes.bool,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     baseUri: undefined,
-    personDataObject: undefined,
     code: undefined,
     on: false,
   },
@@ -48,8 +44,9 @@ export const LampProvider = createComponent({
         savePreference: handleSavePreference,
       },
     });
+    const personDataObject = usePerson();
 
-    const prevPropsRef = useRef(props);
+    const prevPropsRef = useRef({ ...props, personDataObject });
 
     async function handleGet() {
       let lamp = { on: props.on, bulbSize: props.bulbSize }; // default lamp
@@ -64,7 +61,7 @@ export const LampProvider = createComponent({
       codeList.push(PROPERTY_CODE);
 
       const dtoIn = {
-        mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
+        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
         codeList,
       };
 
@@ -83,8 +80,10 @@ export const LampProvider = createComponent({
           }
         }
       } catch (error) {
-        console.error(error);
-        console.warn(`The user preference for component ${STATICS.displayName} can't be loaded due to error above!`);
+        Provider.logger.error(error);
+        Provider.logger.warn(
+          `The user preference for component ${Provider.uu5Tag} can't be loaded due to error above!`
+        );
       }
 
       return lamp;
@@ -119,14 +118,14 @@ export const LampProvider = createComponent({
         if (
           prevProps.baseUri === props.baseUri &&
           prevProps.code === props.code &&
-          prevProps.personDataObject === props.personDataObject
+          prevProps.personDataObject === personDataObject
         ) {
           return;
         }
 
         // Are we ready to start reload?
         if (
-          props.personDataObject.state !== "ready" ||
+          personDataObject.state !== "ready" ||
           lampDataObject.state === "pendingNoData" ||
           lampDataObject.state === "pending"
         ) {
@@ -134,15 +133,15 @@ export const LampProvider = createComponent({
         }
 
         try {
-          prevPropsRef.current = props;
+          prevPropsRef.current = { ...props, personDataObject };
           await lampDataObject.handlerMap.get();
         } catch (error) {
-          console.error(error);
+          Provider.logger.error(error);
         }
       }
 
       checkPropsAndReload();
-    }, [lampDataObject, props]);
+    }, [lampDataObject, personDataObject, props]);
     //@@viewOff:private
 
     //@@viewOn:render
@@ -151,7 +150,7 @@ export const LampProvider = createComponent({
   },
 });
 
-//@@viewOn:helpres
+//@@viewOn:helpers
 function getPropertyCode(code, preferenceType) {
   switch (preferenceType) {
     case Config.PreferenceType.SPECIFIC:
@@ -163,4 +162,7 @@ function getPropertyCode(code, preferenceType) {
 }
 //@@viewOff:helpers
 
-export default LampProvider;
+//@@viewOn:exports
+export { Provider };
+export default Provider;
+//@@viewOff:exports

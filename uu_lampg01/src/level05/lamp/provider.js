@@ -3,9 +3,9 @@ import { PropTypes, createComponent, useMemo, useState, useEffect, useRef } from
 import Config from "./config/config";
 //@@viewOff:imports
 
-const LampProvider = createComponent({
+const Provider = createComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "LampProvider",
+  uu5Tag: Config.TAG + "Provider",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -47,6 +47,6 @@ const LampProvider = createComponent({
 });
 
 //@@viewOn:exports
-export { LampProvider };
-export default LampProvider;
+export { Provider };
+export default Provider;
 //@@viewOff:exports

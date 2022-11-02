@@ -1,4 +1,20 @@
 {
+  "Errors": {
+    "defaultError": "Sorry, we really do not known what could have gone wrong. If the problem persists please send an issue to helpdesk.",
+    "badRequest": "Sorry, something went wrong while processing your request.",
+    "unauthorized": "You are not authorized. If you think this is a mistake, please contact competent person or send issue to helpdesk.",
+    "forbidden": "You are not authorized. If you think this is a mistake, please contact competent person or send issue to helpdesk.",
+    "notFound": "Request is invalid. Please check provided URL.",
+    "internal": "Internal error occured. Please try again and if the problem persists send an issue to helpdesk.",
+    "serviceUnavailable": "Service is currently unavailable. Please try again later.",
+    "requestTimeout": "Request timeout. Please try again later.",
+    "baseNetworkError": "Network error - resource is not available or does not exist.",
+    "uu-gateway-main/invalidRequest": "Request is invalid. Please check provided URL.",
+    "uu-app-workspace/forbiddenAwidSysState": "Application workspace is not in active state and is probably under maintenance. Please try again later.",
+    "uu-app-workspace/forbiddenAsidSysState": "Application instance is not in active state and is probably under maintenance. Please try again later.",
+    "uu-dockit-main/document/load/documentDoesNotExist": "The document does not exist. Please, check the property Document URL.",
+    "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "You have no access rights to the document. The lamp and switch are hidden."
+  },
   "UuLamp.Level01.LampCore": {
     "header": "uuLamp Level 01 - Dynamic Rendering",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
@@ -28,7 +44,7 @@
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
-    "colorSchema": "Color Schema",
+    "colorScheme": "Color Scheme",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -52,7 +68,7 @@
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
-    "colorScheme": "Color Schema",
+    "colorScheme": "Color Scheme",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -74,7 +90,7 @@
     "bulbSize": "Bulb Size",
     "visual": "Visual",
     "card": "Card View",
-    "colorScheme": "Color Schema",
+    "colorScheme": "Color Scheme",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -94,7 +110,7 @@
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
-    "colorScheme": "Color Schema",
+    "colorScheme": "Color Scheme",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -116,7 +132,7 @@
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
-    "colorScheme": "Color Schema",
+    "colorScheme": "Color Scheme",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -138,7 +154,7 @@
     "bulbSize": "Bulb Size",
     "visual": "Visual",
     "card": "Card View",
-    "colorScheme": "Color Schema",
+    "colorScheme": "Color Scheme",
     "borderRadius": "Border Radius",
     "width": "Width",
     "height": "Height",
@@ -158,6 +174,73 @@
     "Europe/Prague": "Prague",
     "Asia/Tokyo": "Tokyo",
     "America/Los_Angeles": "Los Angeles"
+  },
+  "UuLamp.Level08.Lamp.EditModalLazy": {
+    "properties": "Lamp",
+    "documentUri": "Document URL",
+    "state": "State",
+    "on": "on",
+    "off": "off",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Scheme",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level08.LampCore": {
+    "header": "uuLamp Level 08 - Authorization Lamp",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
+  },
+  "UuLamp.Level08.Lamp.LampView.AreaView": {
+    "switchOn": "Turn on",
+    "switchOff": "Turn off",
+    "copyComponent": "Copy component",
+    "copyComponentSuccess": "The component copied to clipboard"
+  },
+  "UuLamp.Level09.Lamp.EditModalLazy": {
+    "properties": "Lamp",
+    "baseUri": "Lamp Applicaton URL",
+    "code": "Identification Code",
+    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
+    "state": "State",
+    "on": "on",
+    "off": "off",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Scheme",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level09.LampCore": {
+    "header": "uuLamp Level 09 - User Preference Lamp",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
+  },
+  "UuLamp.Level09.Lamp.LampView": {
+    "preferenceSuccess": "User preference has been saved.",
+    "preferenceError": "User preference has not been saved due to error."
+  },
+  "UuLamp.Level09.Lamp.LampView.AreaView": {
+    "switchOn": "Turn on",
+    "switchOff": "Turn off",
+    "preference": "Save preference",
+    "preferenceDefault": "As default",
+    "preferenceSpecific": "Only for this lamp",
+    "copyComponent": "Copy component",
+    "copyComponentSuccess": "The component copied to clipboard"
   },
   "UuLamp.Core.LampView.AreaView": {
     "switchOn": "Turn on",

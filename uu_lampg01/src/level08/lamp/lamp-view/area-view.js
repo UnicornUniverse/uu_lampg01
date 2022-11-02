@@ -1,23 +1,21 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
-import { Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
+import { Utils, PropTypes, createVisualComponent, useLsi, useEffect } from "uu5g05";
+import { Block, Box, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
-import Clock from "../clock";
 import Core from "../../../core/core";
-import TimeZoneSwitch from "../time-zone-switch";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
+
+//@@viewOn:constants
+const PLACEHOLDER_HEIGHT = "150px";
+//@@viewOff:constants
 
 //@@viewOn:css
 const Css = {
   box: (block) =>
     Config.Css.css({
       textAlign: "center",
-      ...block.style
-    }),
-  bulb: () =>
-    Config.Css.css({
-      display: "block",
+      ...block.style,
     }),
 };
 //@@viewOff:css
@@ -29,6 +27,7 @@ const AreaView = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
+    documentDataObject: PropTypes.object.isRequired,
     on: PropTypes.bool,
     header: PropTypes.node,
     help: PropTypes.node,
@@ -46,6 +45,7 @@ const AreaView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
+    documentDataObject: undefined,
     on: false,
     header: "",
     help: "",
@@ -62,7 +62,22 @@ const AreaView = createVisualComponent({
   render(props) {
     //@@viewOn:private
     const lsi = useLsi(importLsi, [AreaView.uu5Tag]);
+    const errorsLsi = useLsi(importLsi, ["Errors"]);
     const { addAlert } = useAlertBus();
+
+    useEffect(() => {
+      async function checkDataAndLoad() {
+        if (props.documentDataObject.state === "readyNoData") {
+          try {
+            await props.documentDataObject.handlerMap.load();
+          } catch (error) {
+            AreaView.logger.error("Error loading preference data", error);
+          }
+        }
+      }
+
+      checkDataAndLoad();
+    });
 
     function handleCopyComponent() {
       const uu5string = props.onCopyComponent();
@@ -77,10 +92,8 @@ const AreaView = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const actionList = getActions(props, lsi, { handleCopyComponent });
     const [elementProps] = Utils.VisualComponent.splitProps(props);
-    const clockCss = Config.Css.css`margin: 20px`;
-    const switchCss = Config.Css.css`margin: 20px`;
+    const actionList = getActions(props, lsi, { handleCopyComponent });
 
     return (
       <Block
@@ -90,23 +103,25 @@ const AreaView = createVisualComponent({
         borderRadius={props.borderRadius}
         significance={props.significance}
         colorScheme={props.colorScheme}
-        headerSeparator={true}
         actionList={actionList}
         {...elementProps}
       >
         {(block) => (
-          <Box className={Css.box(block)} colorScheme={props.colorScheme} shape="interactiveElement" significance="subdued">
-            <Core.Bulb
-              className={Css.bulb()}
-              on={props.on}
-              bulbSize={props.bulbSize}
-              bulbStyle={props.bulbStyle}
-              colorScheme={props.colorScheme}
-              nestingLevel="area"
-            />
-            <Clock className={clockCss} />
-            <TimeZoneSwitch className={switchCss} />
-          </Box>
+          <Core.DataObjectStateResolver
+            dataObject={props.documentDataObject}
+            height={PLACEHOLDER_HEIGHT}
+            customErrorLsi={errorsLsi}
+          >
+            <Box className={Css.box(block)} colorScheme={props.colorScheme} significance={props.significance}>
+              <Core.Bulb
+                on={props.on}
+                bulbSize={props.bulbSize}
+                bulbStyle={props.bulbStyle}
+                colorScheme={props.colorScheme}
+                nestingLevel="area"
+              />
+            </Box>
+          </Core.DataObjectStateResolver>
         )}
       </Block>
     );

@@ -1,23 +1,22 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
-import { Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
+import { Block, Box, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
-import Clock from "../clock";
 import Core from "../../../core/core";
-import TimeZoneSwitch from "../time-zone-switch";
+import BulbSizePicker from "./bulb-size-picker";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
+
+//@@viewOn:constants
+const PLACEHOLDER_HEIGHT = "150px";
+//@@viewOff:constants
 
 //@@viewOn:css
 const Css = {
   box: (block) =>
     Config.Css.css({
       textAlign: "center",
-      ...block.style
-    }),
-  bulb: () =>
-    Config.Css.css({
-      display: "block",
+      ...block.style,
     }),
 };
 //@@viewOff:css
@@ -29,7 +28,7 @@ const AreaView = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    on: PropTypes.bool,
+    lampDataObject: PropTypes.object.isRequired,
     header: PropTypes.node,
     help: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
@@ -41,12 +40,14 @@ const AreaView = createVisualComponent({
     showSwitch: PropTypes.bool,
     onSwitchClick: PropTypes.func,
     onCopyComponent: PropTypes.func,
+    onBulbSizeChange: PropTypes.func,
+    onSavePreference: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    on: false,
+    lampDataObject: undefined,
     header: "",
     help: "",
     bulbStyle: "filled",
@@ -62,6 +63,7 @@ const AreaView = createVisualComponent({
   render(props) {
     //@@viewOn:private
     const lsi = useLsi(importLsi, [AreaView.uu5Tag]);
+    const errorsLsi = useLsi(importLsi, ["Errors"]);
     const { addAlert } = useAlertBus();
 
     function handleCopyComponent() {
@@ -77,10 +79,8 @@ const AreaView = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const actionList = getActions(props, lsi, { handleCopyComponent });
     const [elementProps] = Utils.VisualComponent.splitProps(props);
-    const clockCss = Config.Css.css`margin: 20px`;
-    const switchCss = Config.Css.css`margin: 20px`;
+    const actionList = getActions(props, lsi, { handleCopyComponent });
 
     return (
       <Block
@@ -90,23 +90,26 @@ const AreaView = createVisualComponent({
         borderRadius={props.borderRadius}
         significance={props.significance}
         colorScheme={props.colorScheme}
-        headerSeparator={true}
         actionList={actionList}
         {...elementProps}
       >
         {(block) => (
-          <Box className={Css.box(block)} colorScheme={props.colorScheme} shape="interactiveElement" significance="subdued">
-            <Core.Bulb
-              className={Css.bulb()}
-              on={props.on}
-              bulbSize={props.bulbSize}
-              bulbStyle={props.bulbStyle}
-              colorScheme={props.colorScheme}
-              nestingLevel="area"
-            />
-            <Clock className={clockCss} />
-            <TimeZoneSwitch className={switchCss} />
-          </Box>
+          <Core.DataObjectStateResolver
+            dataObject={props.lampDataObject}
+            height={PLACEHOLDER_HEIGHT}
+            customErrorLsi={errorsLsi}
+          >
+            <Box className={Css.box(block)} colorScheme={props.colorScheme} significance={props.significance}>
+              <BulbSizePicker bulbSize={props.lampDataObject.data?.bulbSize} onChange={props.onBulbSizeChange} />
+              <Core.Bulb
+                on={props.lampDataObject.data?.on}
+                bulbSize={props.lampDataObject.data?.bulbSize}
+                bulbStyle={props.bulbStyle}
+                colorScheme={props.colorScheme}
+                nestingLevel="area"
+              />
+            </Box>
+          </Core.DataObjectStateResolver>
         )}
       </Block>
     );
@@ -118,11 +121,25 @@ const AreaView = createVisualComponent({
 function getActions(props, lsi, { handleCopyComponent }) {
   const actionList = [];
 
-  if (props.showSwitch) {
+  if (props.lampDataObject.data) {
     actionList.push({
-      children: props.on ? lsi.switchOff : lsi.switchOn,
+      children: props.lampDataObject.data?.on ? lsi.switchOff : lsi.switchOn,
       primary: true,
       onClick: props.onSwitchClick,
+    });
+
+    actionList.push({
+      children: lsi.preference,
+      itemList: [
+        {
+          children: lsi.preferenceDefault,
+          onClick: () => props.onSavePreference("DEFAULT"),
+        },
+        {
+          children: lsi.preferenceSpecific,
+          onClick: () => props.onSavePreference("SPECIFIC"),
+        },
+      ],
     });
   }
 

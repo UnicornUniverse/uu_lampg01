@@ -14,6 +14,10 @@ const Css = {
       textAlign: "center",
       padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
     }),
+  bulb: () =>
+    Config.Css.css({
+      display: "block",
+    }),
 };
 //@@viewOff:css
 
@@ -73,6 +77,7 @@ const BoxView = createVisualComponent({
         {...elementProps}
       >
         <Core.Bulb
+          className={Css.bulb()}
           on={props.on}
           bulbSize={props.bulbSize}
           bulbStyle={props.bulbStyle}

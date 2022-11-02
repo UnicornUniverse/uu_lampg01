@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UuLamp.Level03.Lamp Demo</title>
+    <title>UuLamp.Level09.Lamp Demo</title>
     <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.plus4u.net/uu-lampg01/0.0.0/assets/example-config.js" crossorigin="anonymous"></script>
 
@@ -21,10 +21,13 @@
       import { createVisualComponent, Utils, Lsi, SessionProvider, useRef } from "uu5g05";
       import { SpaProvider } from "uu_plus4u5g02";
       import { Spa, RouteBar, RouteHeader } from "uu_plus4u5g02-app";
-      import { Block, UuGds } from "uu5g05-elements";
+      import { UuGds } from "uu5g05-elements";
       import { Config } from "uu5g05-dev";
       import UuLamp from "uu_lampg01";
       import UuEcc from "uu_editablecomponentcontentg03";
+
+      // uuCloud - DEV
+      const baseUri = "https://uuapp-dev.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/";
 
       //@@viewOn:constants
       const section = {
@@ -33,59 +36,56 @@
         awid: "awid-1",
         content: `<uu5string/>
           <Uu5Elements.Block header="Default Properties" headerType="heading">
-            <UuLamp.Level03.Lamp />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="on = True" headerType="heading">
-            <UuLamp.Level03.Lamp on="true" significance="highlighted" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="on = True and colorScheme = Green" headerType="heading">
-            <UuLamp.Level03.Lamp on="true" colorScheme="green" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="bulbStyle = outline" headerType="heading">
-            <UuLamp.Level03.Lamp bulbStyle="outline" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="on = True and bulbSize = S" headerType="heading">
-            <UuLamp.Level03.Lamp on="true" bulbSize="s" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="on = True and significance = Highlighted and colorScheme = Blue" headerType="heading">
-            <UuLamp.Level03.Lamp on="true" significance="highlighted" colorScheme="blue" />
-          </Uu5Elements.Block>
-          <Uu5Elements.Block header="significance = Highlighted and colorScheme = Blue" headerType="heading">
-            <UuLamp.Level03.Lamp significance="highlighted" colorScheme="blue" />
+            <UuLamp.Level09.Lamp baseUri="${baseUri}" code="123" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (string)" headerType="heading">
-            <UuLamp.Level03.Lamp header="Lamp 3" />
+            <UuLamp.Level09.Lamp baseUri="${baseUri}"  header="Lamp 9" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
-            <UuLamp.Level03.Lamp header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 3\\\", \\\"cs\\\": \\\"Lampa 3\\\"}"/>' />
+            <UuLamp.Level09.Lamp baseUri="${baseUri}" header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 9\\\", \\\"cs\\\": \\\"Lampa 9\\\"}"/>' />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
-            <UuLamp.Level03.Lamp nestingLevel="inline" />
+            <UuLamp.Level09.Lamp baseUri="${baseUri}" nestingLevel="inline" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Inline and font size equal to 50px" headerType="heading">
+            <div style="<uu5json/>{\\\"fontSize\\\": \\\"50px\\\"}">
+                <span>Some custom text before ...</span><UuLamp.Level09.Lamp baseUri="${baseUri}" nestingLevel="inline" /><span>... and some custom text after.</span>
+            </div>     
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box and BulbSize = S" headerType="heading">
+            <UuLamp.Level09.Lamp baseUri="${baseUri}"  nestingLevel="box" bulbSize="s" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box and BulbSize = M" headerType="heading">
+            <UuLamp.Level09.Lamp baseUri="${baseUri}"  nestingLevel="box" bulbSize="m" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box and BulbSize = L" headerType="heading">
+            <UuLamp.Level09.Lamp baseUri="${baseUri}"  nestingLevel="box" bulbSize="l" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box and BulbSize = XL" headerType="heading">
+            <UuLamp.Level09.Lamp baseUri="${baseUri}"  nestingLevel="box" bulbSize="xl" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box" headerType="heading">
-            <UuLamp.Level03.Lamp nestingLevel="box" />
+            <UuLamp.Level09.Lamp baseUri="${baseUri}" nestingLevel="box" />
           </Uu5Elements.Block>
-          <Uu5Elements.Block header="Nesting Level = Area" headerType="heading">
-            <UuLamp.Level03.Lamp nestingLevel="area" />
-          </Uu5Elements.Block>
+
           <Uu5g05.SessionProvider authenticationService={undefined}>
             <Uu5Elements.Block header="Not-authenticated" headerType="heading">
-              <UuLamp.Level03.Lamp />
+              <UuLamp.Level09.Lamp baseUri="${baseUri}" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and colorScheme = Blue" headerType="heading">
-              <UuLamp.Level03.Lamp colorScheme="blue" />
+              <UuLamp.Level09.Lamp baseUri="${baseUri}" colorScheme="blue" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and significance = Highlighted" headerType="heading">
-              <UuLamp.Level03.Lamp significance="highlighted" />
+              <UuLamp.Level09.Lamp baseUri="${baseUri}" significance="highlighted" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
-              <UuLamp.Level03.Lamp nestingLevel="inline" />
+              <UuLamp.Level09.Lamp baseUri="${baseUri}" nestingLevel="inline" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
-              <UuLamp.Level03.Lamp nestingLevel="box" />
+              <UuLamp.Level09.Lamp baseUri="${baseUri}" nestingLevel="box" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
-              <UuLamp.Level03.Lamp nestingLevel="area" />
+              <UuLamp.Level09.Lamp baseUri="${baseUri}" nestingLevel="area" />
             </Uu5Elements.Block>
           </Uu5g05.SessionProvider>
         `,
@@ -131,7 +131,7 @@
               <Spa>
                 <UuEcc.PageEditProvider>
                   <RouteBar appActionList={[{ component: <UuEcc.PageEditButton /> }]}>
-                    <RouteHeader title="UuLamp.Level03.Lamp Demo" />
+                    <RouteHeader title="UuLamp.Level09.Lamp Demo" />
                   </RouteBar>
                   <div className={Css.route()}>
                     <div className={Css.section()}>
