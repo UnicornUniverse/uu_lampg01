@@ -67,7 +67,6 @@ const BoxView = createVisualComponent({
         significance={props.significance}
         borderRadius={props.borderRadius}
         aspectRatio={props.aspectRatio}
-        shape="interactiveElement"
         {...elementProps}
       >
         <Bulb
