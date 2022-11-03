@@ -25,6 +25,15 @@ function withAuthentication(Component) {
       //@@viewOn:private
       const lsi = useLsi(importLsi, [Component.uu5Tag]);
       const session = useSession();
+
+      // function handleCopyComponent() {
+      //   return createCopyTag(
+      //     Config.TAG + "Lamp",
+      //     props,
+      //     ["baseUri", "bulbStyle", "bulbSize", "header", "code"],
+      //     LampCore.defaultProps
+      //   );
+      // }
       //@@viewOff:private
 
       //@@viewOn:render

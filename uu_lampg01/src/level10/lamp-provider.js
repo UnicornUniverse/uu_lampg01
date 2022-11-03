@@ -1,6 +1,6 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useDataObject, useEffect, useRef } from "uu5g04-hooks";
+import { PropTypes, createComponent, useDataObject, useEffect, useRef } from "uu5g05";
+import { usePerson } from "uu_plus4u5g02";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Calls from "calls";
@@ -9,29 +9,27 @@ import Errors from "./lamp-provider-errors";
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampProvider",
+  uu5Tag: Config.TAG + "LampProvider",
   //@@viewOff:statics
 };
 
-const PROPERTY_CODE = STATICS.displayName.replaceAll(".", "");
+const PROPERTY_CODE = STATICS.uu5Tag.replaceAll(".", "");
 const PROPERTY_SCOPE = "uuAppWorkspace";
 
-export const LampProvider = createComponent({
+const LampProvider = createComponent({
   //@@viewOn:statics
   ...STATICS,
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    personDataObject: UU5.PropTypes.object.isRequired,
-    baseUri: UU5.PropTypes.string.isRequired,
-    code: UU5.PropTypes.string,
+    baseUri: PropTypes.string.isRequired,
+    code: PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    personDataObject: undefined,
     baseUri: undefined,
     code: undefined,
   },
@@ -45,8 +43,9 @@ export const LampProvider = createComponent({
         setOn: handleSetOn,
       },
     });
+    const personDataObject = usePerson();
 
-    const prevPropsRef = useRef(props);
+    const prevPropsRef = useRef({ ...props, personDataObject });
 
     async function handleGet() {
       let lamp = { on: false, nextUpdateAt: getNextUpdateAt() }; // default lamp
@@ -64,7 +63,7 @@ export const LampProvider = createComponent({
       }
 
       const dtoIn = {
-        mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
+        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
         code: getPropertyCode(props.code),
         scope: PROPERTY_SCOPE,
       };
@@ -82,7 +81,7 @@ export const LampProvider = createComponent({
 
     async function handleSetOn(on) {
       const dtoIn = {
-        mtMainBaseUri: props.personDataObject.data.mtMainBaseUri,
+        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
         code: getPropertyCode(props.code),
         scope: PROPERTY_SCOPE,
         data: { on },
@@ -102,14 +101,14 @@ export const LampProvider = createComponent({
         if (
           prevProps.baseUri === props.baseUri &&
           prevProps.code === props.code &&
-          prevProps.personDataObject === props.personDataObject
+          prevProps.personDataObject === personDataObject
         ) {
           return;
         }
 
         // Are we ready to start reload?
         if (
-          props.personDataObject.state !== "ready" ||
+          personDataObject.state !== "ready" ||
           lampDataObject.state === "pendingNoData" ||
           lampDataObject.state === "pending"
         ) {
@@ -117,7 +116,7 @@ export const LampProvider = createComponent({
         }
 
         try {
-          prevPropsRef.current = props;
+          prevPropsRef.current = { ...props, personDataObject };
           await lampDataObject.handlerMap.get();
         } catch (error) {
           console.error(error);
@@ -125,7 +124,7 @@ export const LampProvider = createComponent({
       }
 
       checkPropsAndReload();
-    }, [lampDataObject, props]);
+    }, [lampDataObject, personDataObject, props]);
 
     // Auto-reload of the lamp
     useEffect(() => {
@@ -166,4 +165,7 @@ function getNextUpdateAt() {
 }
 //@@viewOff:helpers
 
+//@@viewOn:exports
+export { LampProvider };
 export default LampProvider;
+//@@viewOff:exports

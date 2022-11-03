@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { PropTypes, createVisualComponent, useLsi, Lsi, Utils } from "uu5g05";
+import { PropTypes, createVisualComponent, useLsi, Lsi } from "uu5g05";
 import { Uri } from "uu_appg01";
 import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
@@ -24,7 +24,7 @@ const LampCore = createVisualComponent({
     header: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
     bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
-    card: PropTypes.string,
+    card: PropTypes.oneOf(["none", "content", "full"]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
@@ -65,11 +65,11 @@ const LampCore = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { documentUri, on, ...viewProps } = props;
     const { baseUri, documentId } = parseBaseUriAndId(props.documentUri);
 
     return (
-      <LampProvider uuDocKitUri={baseUri} documentId={documentId} on={props.on}>
+      <LampProvider uuDocKitUri={baseUri} documentId={documentId} on={on}>
         {(lamp) => {
           function handleSwitchClick() {
             lamp.setOn(!lamp.on);
@@ -77,21 +77,11 @@ const LampCore = createVisualComponent({
 
           return (
             <LampView
-              {...elementProps}
+              {...viewProps}
               documentDataObject={lamp.documentDataObject}
               on={lamp.on}
               header={props.header || lsi.header}
               help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
-              bulbStyle={props.bulbStyle}
-              bulbSize={props.bulbSize}
-              colorScheme={props.colorScheme}
-              card={props.card}
-              width={props.width}
-              height={props.height}
-              significance={props.significance}
-              borderRadius={props.borderRadius}
-              aspectRatio={props.aspectRatio}
-              nestingLevel={props.nestingLevel}
               onCopyComponent={handleCopyComponent}
               showSwitch={lamp.documentDataObject.state === "ready"}
               canSwitch={lamp.canSwitch}

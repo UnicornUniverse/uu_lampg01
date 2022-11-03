@@ -1,35 +1,38 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent, useRef } from "uu5g04-hooks";
+import { PropTypes, Utils, createVisualComponent, useLsi } from "uu5g05";
+import { useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
-import SwitchViewInline from "./switch-view/switch-view-inline";
-import SwitchViewSmallBox from "./switch-view/switch-view-small-box";
-import SwitchViewBox from "./switch-view/switch-view-box";
-import Lsi from "./switch-view-lsi";
+import AreaView from "./switch-view/area-view";
+import BoxView from "./switch-view/box-view";
+import InlineView from "./switch-view/inline-view";
+import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Switch",
-  nestingLevel: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "SwitchView",
+  nestingLevel: ["area", "box", "inline"],
   //@@viewOff:statics
 };
 
-export const Switch = createVisualComponent({
+const SwitchView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    lampDataObject: UU5.PropTypes.object.isRequired,
-    header: UU5.PropTypes.node,
-    help: UU5.PropTypes.node,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onSwitchClick: UU5.PropTypes.func,
-    onCopyLamp: UU5.PropTypes.func,
+    lampDataObject: PropTypes.object.isRequired,
+    header: PropTypes.node,
+    help: PropTypes.node,
+    card: PropTypes.oneOf(["none", "content", "full"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
+    onSwitchClick: PropTypes.func,
+    onCopyComponent: PropTypes.func,
+    onCopyLamp: PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -38,29 +41,30 @@ export const Switch = createVisualComponent({
     lampDataObject: undefined,
     header: "",
     help: "",
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
-    onSwitchClick: () => {},
-    onCopyLamp: () => {},
+    card: "none",
+    width: undefined,
+    height: undefined,
+    colorScheme: "yellow",
+    significance: "common",
+    borderRadius: "none",
+    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:private
-    const alertBusRef = useRef();
+    const lsi = useLsi(importLsi, [SwitchView.uu5Tag]);
+    const { addAlert } = useAlertBus();
 
     async function handleSwitchClick() {
       try {
         await props.lampDataObject.handlerMap.setOn(!props.lampDataObject.data.on);
       } catch (error) {
-        console.error(error);
-        alertBusRef.current.addAlert({
-          content: <UU5.Bricks.Lsi lsi={Lsi.setOnError} />,
-          colorSchema: "danger",
-          closeTimer: 3000,
+        SwitchView.logger.error(error);
+        addAlert({
+          message: lsi.setOnError,
+          priority: "error",
+          durationMs: 3000,
         });
       }
     }
@@ -69,42 +73,33 @@ export const Switch = createVisualComponent({
       try {
         await props.lampDataObject.handlerMap.get();
       } catch (error) {
-        console.error(error);
-        alertBusRef.current.addAlert({
-          content: <UU5.Bricks.Lsi lsi={Lsi.reloadError} />,
-          colorSchema: "danger",
-          closeTimer: 3000,
+        SwitchView.logger.error(error);
+        addAlert({
+          message: lsi.reloadError,
+          priority: "error",
+          durationMs: 3000,
         });
       }
     }
     //@@viewOff:private
 
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
-
-    let child;
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     switch (currentNestingLevel) {
+      case "area":
+        return <AreaView {...props} onSwitchClick={handleSwitchClick} onReload={handleReload} />;
       case "box":
-        child = <SwitchViewBox {...props} {...attrs} onSwitchClick={handleSwitchClick} onReload={handleReload} />;
-        break;
-      case "smallBox":
-        child = <SwitchViewSmallBox {...props} {...attrs} onSwitchClick={handleSwitchClick} />;
-        break;
+        return <BoxView {...props} onSwitchClick={handleSwitchClick} />;
       case "inline":
       default:
-        child = <SwitchViewInline {...props} {...attrs} onSwitchClick={handleSwitchClick} />;
+        return <InlineView {...props} onSwitchClick={handleSwitchClick} />;
     }
-
-    return (
-      <>
-        {child}
-        <UU5.Bricks.AlertBus ref_={alertBusRef} />
-      </>
-    );
     //@@viewOff:render
   },
 });
 
-export default Switch;
+//@@viewOn:exports
+export { SwitchView };
+export default SwitchView;
+//@@viewOff:exports

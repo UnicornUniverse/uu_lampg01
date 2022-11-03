@@ -9,6 +9,9 @@
     "serviceUnavailable": "Service is currently unavailable. Please try again later.",
     "requestTimeout": "Request timeout. Please try again later.",
     "baseNetworkError": "Network error - resource is not available or does not exist.",
+    "uulamp-level10-lamp-provider/no-base-uri": "The Lamp URL property (baseUri) is not defined.",
+    "uulamp-level10-lamp-provider/no-code": "The Identification Code property (code) is not defined.",
+    "uulamp-level10-lamp-provider/code-format": "Identification Code property (code) can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
     "uu-gateway-main/invalidRequest": "Request is invalid. Please check provided URL.",
     "uu-app-workspace/forbiddenAwidSysState": "Application workspace is not in active state and is probably under maintenance. Please try again later.",
     "uu-app-workspace/forbiddenAsidSysState": "Application instance is not in active state and is probably under maintenance. Please try again later.",
@@ -181,6 +184,8 @@
     "state": "State",
     "on": "on",
     "off": "off",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
@@ -212,6 +217,8 @@
     "state": "State",
     "on": "on",
     "off": "off",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
     "header": "Header",
     "visual": "Visual",
     "card": "Card View",
@@ -241,6 +248,81 @@
     "preferenceSpecific": "Only for this lamp",
     "copyComponent": "Copy component",
     "copyComponentSuccess": "The component copied to clipboard"
+  },
+  "UuLamp.Level10.LampCore": {
+    "header": "uuLamp Level 10 - uuCloud Lamp",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
+  },
+  "UuLamp.Level10.Lamp.LampView": {
+    "reloadError": "The light state was not synchronized due to error!"
+  },
+  "UuLamp.Level10.Lamp.LampView.AreaView": {
+    "reload": "Synchronize",
+    "copySwitch": "Copy switch",
+    "copySwitchSuccess": "The switch component copied to clipboard",
+    "copyComponent": "Copy component",
+    "copyComponentSuccess": "The component copied to clipboard"
+  },
+  "UuLamp.Level10.SwitchCore": {
+    "header": "uuLamp Level 10 - uuCloud Switch",
+    "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
+    "noRoom": "The Switch component is not placed in room! Thats why we hide switch in the box because we don't know state of light in the room. Maybe it's time to place Switch into component Room."
+  },
+  "UuLamp.Level10.Switch.SwitchView": {
+    "reloadError": "The light state was not synchronized due to error!",
+    "setOnError": "The light state was not changed due to error!"
+  },
+  "UuLamp.Level10.Switch.SwitchView.AreaView": {
+    "reload": "Synchronize",
+    "copyLamp": "Copy lamp",
+    "copyLampSuccess": "The lamp component copied to clipboard",
+    "copyComponent": "Copy component",
+    "copyComponentSuccess": "The component copied to clipboard"
+  },
+  "UuLamp.Level10.Lamp.EditModalLazy": {
+    "properties": "Lamp",
+    "baseUri": "Lamp Applicaton URL",
+    "code": "Identification Code",
+    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Scheme",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level10.Switch.EditModalLazy": {
+    "properties": "Switch",
+    "baseUri": "Lamp Applicaton URL",
+    "code": "Identification Code",
+    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
+    "bulbStyle": "Bulb Style",
+    "bulbSize": "Bulb Size",
+    "header": "Header",
+    "visual": "Visual",
+    "card": "Card View",
+    "colorScheme": "Color Scheme",
+    "borderRadius": "Border Radius",
+    "width": "Width",
+    "height": "Height",
+    "significance": "Significance",
+    "aspectRatio": "Aspect Ratio",
+    "advancedConfiguration": "Advanced settings",
+    "level": "Heading size",
+    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+  },
+  "UuLamp.Level10.LampReloadInfo": {
+    "synchronizing": "Synchronizing...",
+    "nextUpdateAt": "The light state will be synchronized {0}",
+    "error": "Synchronization ended in error."
   },
   "UuLamp.Core.LampView.AreaView": {
     "switchOn": "Turn on",

@@ -29,6 +29,7 @@ const PackageView = createVisualComponent({
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     aspectRatio: PropTypes.string,
+    onCopyComponent: PropTypes.func,
   },
   //@@viewOff:propTypes
 

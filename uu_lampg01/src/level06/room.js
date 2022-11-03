@@ -19,15 +19,8 @@ const RoomCore = createVisualComponent({
   propTypes: {
     header: PropTypes.node,
     on: PropTypes.bool,
-    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
-    card: PropTypes.string,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["common", "highlighted"]),
-    colorScheme: PropTypes.colorScheme,
+    card: PropTypes.oneOf(["none", "content", "full"]),
     borderRadius: PropTypes.borderRadius,
-    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
@@ -35,15 +28,8 @@ const RoomCore = createVisualComponent({
   defaultProps: {
     header: undefined,
     on: false,
-    bulbStyle: "filled",
-    bulbSize: "xl",
     card: "full",
-    width: undefined,
-    height: undefined,
-    significance: "common",
-    colorScheme: "yellow",
     borderRadius: "moderate",
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

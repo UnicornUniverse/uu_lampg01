@@ -1,123 +1,102 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { PropTypes, createVisualComponent, Utils, Lsi, useLsi } from "uu5g05";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
-import Core from "../core/core";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
+import Core from "../core/core";
 import EditModal from "./lamp/edit-modal";
+import LampProvider from "./lamp-provider";
+import LampView from "./lamp/lamp-view";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const LampCore = createVisualComponent({
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevelList: ["box", "smallBox", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: true,
-    lazy: true,
-  },
+  uu5Tag: Config.TAG + "LampCore",
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  baseUri: undefined,
-  code: undefined,
-  bulbStyle: "filled",
-  bulbSize: "xl",
-  bgStyle: "transparent",
-  cardView: "full",
-  colorSchema: "amber",
-  elevation: 1,
-  borderRadius: "0",
-};
-
-export const Lamp = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: UU5.PropTypes.string.isRequired,
-    code: UU5.PropTypes.string,
-    header: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    baseUri: PropTypes.string,
+    code: PropTypes.string,
+    header: PropTypes.node,
+    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    card: PropTypes.oneOf(["none", "content", "full"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["common", "highlighted"]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {
+    baseUri: undefined,
+    code: undefined,
+    bulbStyle: "filled",
+    bulbSize: "xl",
+    card: "full",
+    width: undefined,
+    height: undefined,
+    significance: "common",
+    colorScheme: "yellow",
+    borderRadius: "moderate",
+    aspectRatio: undefined,
+  },
   //@@viewOff:defaultProps
 
-  //@@viewOn:overriding
-  onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
-  },
-  //@@viewOff:overriding
+  render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
 
-  //@@viewOn:private
-  _editRef: UU5.Common.Reference.create(),
+    function handleCopySwitch() {
+      const component = `<UuLamp.Level10.Switch baseUri="${baseUri}" code="${code}" />`;
+      Utils.Clipboard.write(component);
+    }
 
-  _handleCopyTag() {
-    return createCopyTag(
-      STATICS.tagName,
-      this.props,
-      ["baseUri", "bulbStyle", "bulbSize", "header", "code"],
-      DEFAULT_PROPS
-    );
-  },
+    function handleCopyComponent() {
+      return createCopyTag(
+        Config.TAG + "Lamp",
+        props,
+        ["baseUri", "bulbStyle", "bulbSize", "header", "code"],
+        LampCore.defaultProps
+      );
+    }
+    //@@viewOff:private
 
-  _handleCopySwitch() {
-    const component = `<UuLamp.Level10.Switch baseUri="${this.props.baseUri}" code="${this.props.code}" />`;
-    UU5.Utils.Clipboard.write(component);
-  },
-  //@@viewOff:private
-
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
+    //@@viewOn:render
+    const { baseUri, code, on, header, ...viewProps } = props;
 
     return (
-      <Core.ErrorBoundary nestingLevel={currentNestingLevel} {...attrs}>
-        {this.isInlineEdited() && (
-          <EditModal
-            props={this.props}
-            onClose={this.endEditation}
-            ref={this._editRef}
-            fallback={this.getEditingLoading()}
-          />
-        )}
-
-        <LampCore
-          code={this.props.code}
-          baseUri={this.props.baseUri}
-          bulbStyle={this.props.bulbStyle}
-          bulbSize={this.props.bulbSize}
-          bgStyle={this.props.bgStyle}
-          cardView={this.props.cardView}
-          colorSchema={this.props.colorSchema}
-          elevation={this.props.elevation}
-          borderRadius={this.props.borderRadius}
-          nestingLevel={currentNestingLevel}
-          copyTagFunc={this._handleCopyTag}
-          onCopySwitch={this._handleCopySwitch}
-        />
-      </Core.ErrorBoundary>
+      <LampProvider baseUri={props.baseUri} code={props.code}>
+        {(lampDataObject) => {
+          return (
+            <LampView
+              {...viewProps}
+              lampDataObject={lampDataObject}
+              header={header || lsi.header}
+              help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+              onCopyComponent={handleCopyComponent}
+              onCopySwitch={handleCopySwitch}
+            />
+          );
+        }}
+      </LampProvider>
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
+let Lamp = Core.withAuthentication(LampCore);
+Lamp = withMargin(Lamp);
+Lamp = withEditModal(Lamp, EditModal);
+Lamp = withErrorBoundary(Lamp);
+
+//@@viewOn:exports
+export { Lamp };
 export default Lamp;
+//@@viewOff:exports

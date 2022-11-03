@@ -20,7 +20,7 @@ const LampCore = createVisualComponent({
     on: PropTypes.bool,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
     bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
-    card: PropTypes.string,
+    card: PropTypes.oneOf(["none", "content", "full"]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     significance: PropTypes.oneOf(["common", "highlighted"]),

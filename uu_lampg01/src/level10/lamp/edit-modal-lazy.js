@@ -18,13 +18,11 @@ const EditModalLazy = createVisualComponent({
     const lsi = useLsi(importLsi, [EditModalLazy.uu5Tag]);
     useEffect(() => props.onReady(), [props]);
 
-    console.log(EditModalLazy.uu5Tag);
-
     const tabList = [
       {
         label: lsi.properties,
         layout: {
-          xs: "documentUri, on, bulbStyle, bulbSize, header",
+          xs: "baseUri, bulbStyle, bulbSize, header, code",
         },
       },
       {
@@ -51,20 +49,23 @@ const EditModalLazy = createVisualComponent({
     ];
 
     const propInputMap = {
-      on: {
-        component: FormSwitchSelect,
-        props: {
-          label: lsi.state,
-          itemList: [
-            { value: true, children: lsi.on },
-            { value: false, children: lsi.off },
-          ],
-        },
-      },
-      documentUri: {
+      baseUri: {
         component: FormText,
         props: {
-          label: lsi.documentUri,
+          label: lsi.baseUri,
+        },
+      },
+      code: {
+        component: FormText,
+        props: {
+          label: lsi.code,
+          pattern: "^\\w{3,32}$",
+          validationMap: {
+            pattern: {
+              message: lsi.codePatternMessage,
+              feedback: "error",
+            },
+          },
         },
       },
       bulbStyle: {

@@ -18,7 +18,7 @@ const SwitchCore = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     header: PropTypes.node,
-    card: PropTypes.string,
+    card: PropTypes.oneOf(["none", "content", "full"]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
