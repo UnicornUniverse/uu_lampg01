@@ -18,8 +18,6 @@ const EditModalLazy = createVisualComponent({
     const lsi = useLsi(importLsi, [EditModalLazy.uu5Tag]);
     useEffect(() => props.onReady(), [props]);
 
-    console.log(EditModalLazy.uu5Tag);
-
     const tabList = [
       {
         label: lsi.properties,
