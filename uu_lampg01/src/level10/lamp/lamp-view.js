@@ -31,6 +31,7 @@ const LampView = createVisualComponent({
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
     onCopyComponent: PropTypes.func,
     onCopySwitch: PropTypes.func,
@@ -50,6 +51,7 @@ const LampView = createVisualComponent({
     height: undefined,
     significance: "common",
     borderRadius: "moderate",
+    level: undefined,
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

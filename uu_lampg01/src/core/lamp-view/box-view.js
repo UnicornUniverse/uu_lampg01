@@ -10,8 +10,12 @@ import LampSwitch from "../lamp-switch";
 const Css = {
   box: () =>
     Config.Css.css({
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
 };
 //@@viewOff:css

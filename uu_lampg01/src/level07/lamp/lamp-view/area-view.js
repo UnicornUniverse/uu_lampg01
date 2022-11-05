@@ -12,6 +12,10 @@ import importLsi from "../../../lsi/import-lsi";
 const Css = {
   box: (block) =>
     Config.Css.css({
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
       textAlign: "center",
       ...block.style,
     }),
@@ -38,6 +42,7 @@ const AreaView = createVisualComponent({
     card: PropTypes.oneOf(["none", "full", "content"]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     showSwitch: PropTypes.bool,
     onSwitchClick: PropTypes.func,
     onCopyComponent: PropTypes.func,
@@ -55,6 +60,7 @@ const AreaView = createVisualComponent({
     card: "full",
     significance: "common",
     borderRadius: "moderate",
+    level: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps
@@ -79,8 +85,7 @@ const AreaView = createVisualComponent({
     //@@viewOn:render
     const actionList = getActions(props, lsi, { handleCopyComponent });
     const [elementProps] = Utils.VisualComponent.splitProps(props);
-    const clockCss = Config.Css.css`margin: 20px`;
-    const switchCss = Config.Css.css`margin: 20px`;
+    const clockCss = Config.Css.css({ padding: UuGds.SpacingPalette.getValue(["fixed", "g"]) });
 
     return (
       <Block
@@ -88,6 +93,8 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        level={props.level}
+        headerType={props.level ? "heading" : undefined}
         colorScheme={props.colorScheme}
         headerSeparator={true}
         actionList={actionList}
@@ -109,7 +116,7 @@ const AreaView = createVisualComponent({
               nestingLevel="area"
             />
             <Clock className={clockCss} />
-            <TimeZoneSwitch className={switchCss} />
+            <TimeZoneSwitch />
           </Box>
         )}
       </Block>

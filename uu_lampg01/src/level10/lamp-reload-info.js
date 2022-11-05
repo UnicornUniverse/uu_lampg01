@@ -1,10 +1,18 @@
 //@@viewOn:imports
 import { PropTypes, createVisualComponent, useState, useLayoutEffect, useLanguage, Utils, useLsi, Lsi } from "uu5g05";
+import { UuGds } from "uu5g05-elements";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Core from "../core/core";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
+
+const Css = {
+  info: () =>
+    Config.Css.css({
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
+    })
+};
 
 const LampReloadInfo = createVisualComponent({
   //@@viewOn:statics
@@ -79,10 +87,8 @@ function getRemainingSeconds(nextUpdateAt) {
   return Math.ceil(diffMs / 1000);
 }
 
-const infoCss = () => Config.Css.css`padding-top:25px; padding-bottom:25px`;
-
 function SyncInfo({ lsi }) {
-  return <div className={infoCss()}>{lsi.synchronizing}</div>;
+  return <div className={Css.info()}>{lsi.synchronizing}</div>;
 }
 
 function ReloadInfo({ seconds }) {
@@ -92,7 +98,7 @@ function ReloadInfo({ seconds }) {
   const secondsFormatted = rtf.format(seconds, "second");
 
   return (
-    <div className={infoCss()}>
+    <div className={Css.info()}>
       <Lsi import={importLsi} path={[LampReloadInfo.uu5Tag, "nextUpdateAt"]} params={[secondsFormatted]} />
     </div>
   );

@@ -31,11 +31,7 @@ const EditModalLazy = createVisualComponent({
           xs: `
           nestingLevel nestingLevel,
           card card,
-          significance significance,
-          borderRadius borderRadius,
-          aspectRatio aspectRatio,
-          width height,
-          colorScheme colorScheme
+          borderRadius borderRadius
           `,
         },
         columns: "1fr 1fr",
@@ -67,17 +63,7 @@ const EditModalLazy = createVisualComponent({
       },
       nestingLevel: {
         props: {
-          valueList: ["area", "box", "inline"],
-        },
-      },
-      significance: {
-        props: {
-          valueList: ["common", "highlighted"],
-        },
-      },
-      aspectRatio: {
-        props: {
-          valueList: ["1:1", "2:1", "2:3", "3:1", "3:2", "3:4", "4:3", "4:5", "5:4", "16:9", "16:10"],
+          valueList: ["area", "inline"],
         },
       },
       level: {

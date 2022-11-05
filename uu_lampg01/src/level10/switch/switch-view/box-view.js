@@ -11,12 +11,12 @@ import importLsi from "../../../lsi/import-lsi";
 const Css = {
   box: () =>
     Config.Css.css({
-      // display: "flex",
-      // flexDirection: "column",
-      // justifyContent: "center",
-      // alignItems: "center",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
 };
 //@@viewOff:css
@@ -66,7 +66,7 @@ const BoxView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     if (!props.aspectRatio && !props.width) {
-      props.height = "200px";
+      props.height = "230px";
     }
 
     return (
@@ -85,7 +85,6 @@ const BoxView = createVisualComponent({
           height={props.height}
           customErrorLsi={errorsLsi}
         >
-          <LampReloadInfo lampDataObject={props.lampDataObject} />
           <Core.LampSwitch
             on={props.lampDataObject.data?.on}
             onClick={props.onSwitchClick}
@@ -93,6 +92,7 @@ const BoxView = createVisualComponent({
             disabled={props.lampDataObject.state !== "ready"}
             nestingLevel="box"
           />
+          <LampReloadInfo lampDataObject={props.lampDataObject} />
         </Core.DataObjectStateResolver>
       </Box>
     );

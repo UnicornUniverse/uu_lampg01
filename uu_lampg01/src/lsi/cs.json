@@ -18,6 +18,11 @@
     "uu-dockit-main/document/load/documentDoesNotExist": "Dokument neexistuje. Zkontrolujte prosím vlastnost URL dokumentu.",
     "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "Nemáte přístupová práva k dokumentu. Lampa a vypínač jsou schované."
   },
+  "TimeZones": {
+    "Europe/Prague": "Praha",
+    "Asia/Tokyo": "Tokio",
+    "America/Los_Angeles": "Los Angeles"
+  },
   "UuLamp.Level01.LampCore": {
     "header": "uuLamp Level 01 - Dynamické vykreslování",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>."

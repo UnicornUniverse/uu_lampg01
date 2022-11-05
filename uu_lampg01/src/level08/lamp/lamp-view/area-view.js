@@ -6,10 +6,6 @@ import Core from "../../../core/core";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const PLACEHOLDER_HEIGHT = "150px";
-//@@viewOff:constants
-
 //@@viewOn:css
 const Css = {
   box: (block) =>
@@ -37,6 +33,7 @@ const AreaView = createVisualComponent({
     card: PropTypes.oneOf(["none", "full", "content"]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     showSwitch: PropTypes.bool,
     canSwitch: PropTypes.bool,
     onSwitchClick: PropTypes.func,
@@ -56,6 +53,7 @@ const AreaView = createVisualComponent({
     card: "full",
     significance: "common",
     borderRadius: "moderate",
+    level: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps
@@ -96,12 +94,18 @@ const AreaView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
     const actionList = getActions(props, lsi, { handleCopyComponent });
 
+    if (!props.aspectRatio && !props.width) {
+      props.height = "150px%";
+    }
+
     return (
       <Block
         header={props.header}
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        level={props.level}
+        headerType={props.level ? "heading" : undefined}
         colorScheme={props.colorScheme}
         headerSeparator={true}
         actionList={actionList}
@@ -110,7 +114,7 @@ const AreaView = createVisualComponent({
         {(block) => (
           <Core.DataObjectStateResolver
             dataObject={props.documentDataObject}
-            height={PLACEHOLDER_HEIGHT}
+            height={props.height}
             customErrorLsi={errorsLsi}
           >
             <Box

@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
-import { Icon, Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
+import { Icon, Block, Box, useAlertBus } from "uu5g05-elements";
 import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
 import importLsi from "../../lsi/import-lsi";
@@ -8,9 +8,10 @@ import importLsi from "../../lsi/import-lsi";
 
 //@@viewOn:css
 const Css = {
-  box: () =>
+  box: (block) =>
     Config.Css.css({
       textAlign: "center",
+      ...block.style,
     }),
 };
 //@@viewOff:css
@@ -29,6 +30,7 @@ const AreaView = createVisualComponent({
     card: PropTypes.oneOf(["none", "full", "content"]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     onSwitchClick: PropTypes.func,
     onCopyComponent: PropTypes.func,
   },
@@ -43,6 +45,7 @@ const AreaView = createVisualComponent({
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "none",
+    level: undefined,
   },
   //@@viewOff:defaultProps
 
@@ -73,22 +76,26 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        level={props.level}
+        headerType={props.level ? "heading" : undefined}
         colorScheme={props.colorScheme}
         actionList={actionList}
         {...elementProps}
       >
-        <Box
-          className={Css.box()}
-          colorScheme={props.colorScheme}
-          significance={props.significance === "common" ? "subdued" : "highlighted"}
-        >
-          <SwitchSelect
-            {...elementProps}
-            value={props.on}
-            onChange={props.onSwitchClick}
-            itemList={getItemList(props)}
-          />
-        </Box>
+        {(block) => (
+          <Box
+            className={Css.box(block)}
+            colorScheme={props.colorScheme}
+            significance={props.significance === "common" ? "subdued" : "highlighted"}
+          >
+            <SwitchSelect
+              {...elementProps}
+              value={props.on}
+              onChange={props.onSwitchClick}
+              itemList={getItemList(props)}
+            />
+          </Box>
+        )}
       </Block>
     );
     //@@viewOff:render

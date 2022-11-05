@@ -29,6 +29,7 @@ const SwitchView = createVisualComponent({
     significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     colorScheme: PropTypes.colorScheme,
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
     onSwitchClick: PropTypes.func,
     onCopyComponent: PropTypes.func,
@@ -47,6 +48,7 @@ const SwitchView = createVisualComponent({
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "none",
+    level: undefined,
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

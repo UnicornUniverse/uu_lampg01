@@ -24,6 +24,7 @@ const SwitchCore = createVisualComponent({
     significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     colorScheme: PropTypes.colorScheme,
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
@@ -37,6 +38,7 @@ const SwitchCore = createVisualComponent({
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "moderate",
+    level: undefined,
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

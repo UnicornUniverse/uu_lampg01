@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Utils, createVisualComponent, useTimeZone, Lsi } from "uu5g05";
+import { Utils, createVisualComponent, useTimeZone, Lsi, useLsi } from "uu5g05";
 import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
 import TimeZone from "./utils/time-zone";
@@ -27,6 +27,7 @@ const TimeZoneSwitch = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
+    const timeZonesLsi = useLsi(importLsi, ["TimeZones"]);
     const [timeZone, setTimeZone] = useTimeZone();
 
     function handleChange(ev) {
@@ -41,7 +42,7 @@ const TimeZoneSwitch = createVisualComponent({
     const items = TimeZone.list().map((timeZone) => {
       return {
         value: timeZone,
-        content: <Lsi lsi={TimeZone.getLsi(timeZone)} />,
+        children: timeZonesLsi[timeZone],
       };
     });
 

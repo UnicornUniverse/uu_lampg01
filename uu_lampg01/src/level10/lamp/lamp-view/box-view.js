@@ -15,7 +15,7 @@ const Css = {
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
 };
 //@@viewOff:css
@@ -64,7 +64,7 @@ const BoxView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     if (!props.aspectRatio && !props.width) {
-      props.height = "200px";
+      props.height = "230px";
     }
 
     return (

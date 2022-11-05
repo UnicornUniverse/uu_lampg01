@@ -1,10 +1,26 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent, useLsi, Content } from "uu5g05";
-import { Block, useAlertBus } from "uu5g05-elements";
+import { Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
 import Header from "./header";
 import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
+
+//@@viewOn:css
+const Css = {
+  box: () =>
+    Config.Css.css({
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      textAlign: "center",
+      borderBottomLeftRadius: "inherit",
+      borderBottomRightRadius: "inherit",
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
+    }),
+};
+//@@viewOff:css
 
 const AreaView = createVisualComponent({
   //@@viewOn:statics
@@ -20,6 +36,7 @@ const AreaView = createVisualComponent({
     card: PropTypes.oneOf(["none", "full", "content"]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     onCopyComponent: PropTypes.func,
   },
   //@@viewOff:propTypes
@@ -32,6 +49,7 @@ const AreaView = createVisualComponent({
     colorScheme: "yellow",
     card: "none",
     significance: "common",
+    level: undefined,
     borderRadius: "none",
   },
   //@@viewOff:defaultProps
@@ -63,11 +81,18 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        level={props.level}
+        headerType={props.level ? "heading" : undefined}
+        headerSeparator={true}
         colorScheme={props.colorScheme}
         actionList={actionList}
         {...elementProps}
       >
-        {() => <Content nestingLevel="area">{props.children}</Content>}
+        {() => (
+          <Box className={Css.box()} significance="subdued" shape="interactiveElement">
+            <Content nestingLevel="area">{props.children}</Content>
+          </Box>
+        )}
       </Block>
     );
     //@@viewOff:render

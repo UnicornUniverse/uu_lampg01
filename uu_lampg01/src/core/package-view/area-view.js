@@ -10,6 +10,8 @@ const Css = {
   box: (block) =>
     Config.Css.css({
       textAlign: "center",
+      borderBottomLeftRadius: "inherit",
+      borderBottomRightRadius: "inherit",
       ...block.style,
     }),
   icon: () =>
@@ -35,6 +37,7 @@ const AreaView = createVisualComponent({
     colorScheme: PropTypes.colorScheme,
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
     onCopyComponent: PropTypes.func,
   },
@@ -51,7 +54,7 @@ const AreaView = createVisualComponent({
     significance: "common",
     borderRadius: "moderate",
     aspectRatio: undefined,
-    level: "",
+    level: undefined,
   },
   //@@viewOff:defaultProps
 
@@ -73,7 +76,7 @@ const AreaView = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const actionList = getActions(props, lsi, { handleCopyComponent });
+    const actionList = [];
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
@@ -82,6 +85,8 @@ const AreaView = createVisualComponent({
         info={props.help}
         card={props.card}
         borderRadius={props.borderRadius}
+        level={props.level}
+        headerType={props.level ? "heading" : undefined}
         headerSeparator={true}
         actionList={actionList}
         {...elementProps}
@@ -102,22 +107,6 @@ const AreaView = createVisualComponent({
     //@@viewOff:render
   },
 });
-
-//@@viewOn:helpers
-function getActions(props, lsi, { handleCopyComponent }) {
-  const actionList = [];
-
-  actionList.push({
-    icon: "mdi-content-copy",
-    children: lsi.copyComponent,
-    onClick: handleCopyComponent,
-    collapsed: true,
-    disabled: props.disabled,
-  });
-
-  return actionList;
-}
-//@@viewOff:helpers
 
 //@@viewOn:exports
 export { AreaView };

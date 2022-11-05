@@ -7,16 +7,16 @@ import BulbSizePicker from "./bulb-size-picker";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const PLACEHOLDER_HEIGHT = "100%";
-//@@viewOff:constants
-
 //@@viewOn:css
 const Css = {
   box: () =>
     Config.Css.css({
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      flexDirection: "column",
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
 };
 //@@viewOff:css
@@ -66,6 +66,10 @@ const BoxView = createVisualComponent({
     //@@viewOn:render
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
+    if (!props.aspectRatio && !props.width) {
+      props.height = "100%";
+    }
+
     return (
       <Box
         className={Css.box()}
@@ -79,7 +83,7 @@ const BoxView = createVisualComponent({
       >
         <Core.DataObjectStateResolver
           dataObject={props.lampDataObject}
-          height={PLACEHOLDER_HEIGHT}
+          height={props.height}
           customErrorLsi={errorsLsi}
         >
           <BulbSizePicker bulbSize={props.lampDataObject.data?.bulbSize} onChange={props.onBulbSizeChange} />

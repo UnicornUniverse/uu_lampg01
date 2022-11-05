@@ -25,15 +25,6 @@ function withAuthentication(Component) {
       //@@viewOn:private
       const lsi = useLsi(importLsi, [Component.uu5Tag]);
       const session = useSession();
-
-      // function handleCopyComponent() {
-      //   return createCopyTag(
-      //     Config.TAG + "Lamp",
-      //     props,
-      //     ["baseUri", "bulbStyle", "bulbSize", "header", "code"],
-      //     LampCore.defaultProps
-      //   );
-      // }
       //@@viewOff:private
 
       //@@viewOn:render
@@ -44,7 +35,7 @@ function withAuthentication(Component) {
           return (
             <PackageView
               {...props}
-              header={props.header ?? lsi.header}
+              header={props.header || lsi.header}
               help={<Lsi import={importLsi} path={[Component.uu5Tag, "help"]} />}
               info={<Lsi import={importLsi} path={[Config.TAG + "withAuthentication", "notAuthenticated"]} />}
             />

@@ -11,8 +11,12 @@ import Clock from "../clock";
 const Css = {
   box: () =>
     Config.Css.css({
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      flexDirection: "column",
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
   bulb: () =>
     Config.Css.css({
@@ -62,8 +66,7 @@ const BoxView = createVisualComponent({
   render(props) {
     //@@viewOn:render
     const [elementProps] = Utils.VisualComponent.splitProps(props);
-    const clockCss = Config.Css.css`margin: 5px`;
-    const switchCss = Config.Css.css`margin: 5px`;
+    const clockCss = Config.Css.css({ padding: UuGds.SpacingPalette.getValue(["fixed", "e"]) });
 
     return (
       <Box
@@ -84,7 +87,7 @@ const BoxView = createVisualComponent({
           colorSchema={props.colorSchema}
         />
         <Clock className={clockCss} />
-        <TimeZoneSwitch className={switchCss} />
+        <TimeZoneSwitch />
       </Box>
     );
     //@@viewOff:render

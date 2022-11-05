@@ -33,13 +33,13 @@ const InlineView = createVisualComponent({
     return (
       <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel="inline">
         <Text nestingLevel="inline" {...elementProps}>
-          <LampReloadInfo lampDataObject={props.lampDataObject} />
           <Core.LampSwitch
             on={props.lampDataObject.data?.on}
             onClick={props.onSwitchClick}
             colorScheme={props.colorScheme}
             nestingLevel="inline"
           />
+          <LampReloadInfo lampDataObject={props.lampDataObject} />
         </Text>
       </Core.DataObjectStateResolver>
     );

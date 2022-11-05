@@ -9,7 +9,7 @@ const Css = {
   box: () =>
     Config.Css.css({
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "b"]),
+      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
   icon: () =>
     Config.Css.css({

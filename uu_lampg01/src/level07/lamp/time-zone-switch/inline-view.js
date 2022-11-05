@@ -50,7 +50,7 @@ const InlineView = createVisualComponent({
 
     return (
       <Text nestingLevel={"inline"} {...elementProps}>
-        <Link onClick={handleClick}>{props.items[valueIndex].content}</Link>
+        <Link onClick={handleClick}>{props.items[valueIndex].children}</Link>
       </Text>
     );
     //@@viewOff:render

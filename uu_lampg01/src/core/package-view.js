@@ -28,6 +28,7 @@ const PackageView = createVisualComponent({
     colorScheme: PropTypes.colorScheme,
     significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
     onCopyComponent: PropTypes.func,
   },
@@ -45,6 +46,7 @@ const PackageView = createVisualComponent({
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "moderate",
+    level: undefined,
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

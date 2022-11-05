@@ -30,6 +30,7 @@ const LampCore = createVisualComponent({
     significance: PropTypes.oneOf(["common", "highlighted"]),
     colorScheme: PropTypes.colorScheme,
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
@@ -47,6 +48,7 @@ const LampCore = createVisualComponent({
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "moderate",
+    level: undefined,
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps

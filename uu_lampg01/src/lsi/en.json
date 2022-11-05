@@ -18,6 +18,11 @@
     "uu-dockit-main/document/load/documentDoesNotExist": "The document does not exist. Please, check the property Document URL.",
     "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "You have no access rights to the document. The lamp and switch are hidden."
   },
+  "TimeZones": {
+    "Europe/Prague": "Prague",
+    "Asia/Tokyo": "Tokyo",
+    "America/Los_Angeles": "Los Angeles"
+  },
   "UuLamp.Level01.LampCore": {
     "header": "uuLamp Level 01 - Dynamic Rendering",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."

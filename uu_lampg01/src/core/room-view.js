@@ -27,6 +27,7 @@ const RoomView = createVisualComponent({
     significance: PropTypes.oneOf(["common", "highlighted"]),
     colorScheme: PropTypes.colorScheme,
     borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
     aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
@@ -42,6 +43,7 @@ const RoomView = createVisualComponent({
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "none",
+    level: undefined,
     aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
