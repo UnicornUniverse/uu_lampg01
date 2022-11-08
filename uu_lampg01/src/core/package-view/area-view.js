@@ -86,7 +86,7 @@ const AreaView = createVisualComponent({
         card={props.card}
         borderRadius={props.borderRadius}
         level={props.level}
-        headerType={props.level ? "heading" : undefined}
+        headerType={props.card === "full" ? "title" : "heading"}
         headerSeparator={true}
         actionList={actionList}
         {...elementProps}
