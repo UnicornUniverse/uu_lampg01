@@ -39,7 +39,7 @@ const LampProvider = createComponent({
     //@@viewOn:private
     const lampDataObject = useDataObject({
       handlerMap: {
-        get: handleGet,
+        load: handleGet,
         setOn: handleSetOn,
       },
     });
@@ -117,7 +117,7 @@ const LampProvider = createComponent({
 
         try {
           prevPropsRef.current = { ...props, personDataObject };
-          await lampDataObject.handlerMap.get();
+          await lampDataObject.handlerMap.load();
         } catch (error) {
           LampProvider.logger.error(error);
         }
@@ -140,7 +140,7 @@ const LampProvider = createComponent({
         const now = UuDateTime.utc();
 
         if (now.toIsoString() > lampDataObject.data.nextUpdateAt.toIsoString()) {
-          lampDataObject.handlerMap.get().catch((error) => LampProvider.logger.error(error));
+          lampDataObject.handlerMap.load().catch((error) => LampProvider.logger.error(error));
         }
       }
 

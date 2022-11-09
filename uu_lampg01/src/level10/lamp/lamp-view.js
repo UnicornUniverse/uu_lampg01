@@ -63,7 +63,7 @@ const LampView = createVisualComponent({
 
     async function handleReload() {
       try {
-        await props.lampDataObject.handlerMap.get();
+        await props.lampDataObject.handlerMap.load();
       } catch (error) {
         LampView.logger.error(error);
         addAlert({
