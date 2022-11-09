@@ -2,11 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Run & Debug",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "start"],
+      "skipFiles": ["<node_internals>/**"],
+      "serverReadyAction": {
+        "pattern": "Project is running at http://localhost:([0-9]+)",
+        "action": "startDebugging",
+        "name": "Debug"
+      }
+    },
+    {
       "name": "Debug",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:4323/",
-      "webRoot": "${workspaceFolder}/uu_lampg01/"
+      "webRoot": "${workspaceFolder}/uu_lampg01/",
+      "userDataDir": "${env:VSCODE_CHROME_USER_DATA_DIR}"
     }
   ]
 }
