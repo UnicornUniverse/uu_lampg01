@@ -49,7 +49,7 @@ const LampCore = createVisualComponent({
 });
 
 let Lamp = withMargin(LampCore);
-Lamp = withEditModal(Lamp, null, { editMode: { customEdit: false } });
+Lamp = withEditModal(Lamp);
 Lamp = withErrorBoundary(Lamp);
 
 //@@viewOn:exports
