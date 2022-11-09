@@ -216,7 +216,7 @@
   },
   "UuLamp.Level09.Lamp.EditModalLazy": {
     "properties": "Lamp",
-    "baseUri": "Lamp Applicaton URL",
+    "baseUri": "Lamp Application URL",
     "code": "Identification Code",
     "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
     "state": "State",
@@ -286,7 +286,7 @@
   },
   "UuLamp.Level10.Lamp.EditModalLazy": {
     "properties": "Lamp",
-    "baseUri": "Lamp Applicaton URL",
+    "baseUri": "Lamp Application URL",
     "code": "Identification Code",
     "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
     "bulbStyle": "Bulb Style",
@@ -306,7 +306,7 @@
   },
   "UuLamp.Level10.Switch.EditModalLazy": {
     "properties": "Switch",
-    "baseUri": "Lamp Applicaton URL",
+    "baseUri": "Lamp Application URL",
     "code": "Identification Code",
     "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
     "bulbStyle": "Bulb Style",
