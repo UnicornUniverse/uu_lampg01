@@ -93,8 +93,7 @@ const AreaView = createVisualComponent({
           <Box
             className={Css.box(block)}
             colorScheme={props.colorScheme}
-            shape="interactiveElement"
-            significance={props.significance === "common" ? "subdued" : "highlighted"}
+            significance={props.significance === "highlighted" ? "highlighted" : "subdued"}
           >
             <Text>{props.info}</Text>
             <Icon className={Css.icon()} icon={props.icon} colorScheme={props.colorScheme} />
