@@ -21,7 +21,6 @@ const InlineView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    lampDataObject: undefined,
     colorScheme: "yellow",
   },
   //@@viewOff:defaultProps

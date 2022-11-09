@@ -24,7 +24,6 @@ const LampViewInline = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    documentDataObject: undefined,
     on: false,
     bulbStyle: "filled",
     colorScheme: "yellow",

@@ -48,13 +48,9 @@ const LampCore = createVisualComponent({
     bulbStyle: "filled",
     bulbSize: "xl",
     card: "full",
-    width: undefined,
-    height: undefined,
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "moderate",
-    level: undefined,
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

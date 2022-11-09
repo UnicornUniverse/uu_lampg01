@@ -18,7 +18,6 @@ const Header = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    room: undefined,
     header: "",
   },
   //@@viewOff:defaultProps

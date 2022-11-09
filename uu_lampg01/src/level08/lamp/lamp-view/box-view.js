@@ -45,17 +45,13 @@ const BoxView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    documentDataObject: undefined,
     on: false,
     header: "",
     bulbStyle: "filled",
     bulbSize: "xl",
     colorScheme: "yellow",
-    width: undefined,
-    height: undefined,
     significance: "common",
     borderRadius: "none",
-    aspectRatio: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps

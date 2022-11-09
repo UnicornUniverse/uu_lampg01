@@ -39,12 +39,8 @@ const BoxView = createVisualComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     icon: "mdi-gift",
-    colorScheme: undefined,
-    width: undefined,
-    height: undefined,
     significance: "common",
     borderRadius: "none",
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

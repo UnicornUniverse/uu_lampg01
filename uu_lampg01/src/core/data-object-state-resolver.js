@@ -22,7 +22,6 @@ const DataObjectStateResolver = createComponent({
   defaultProps: {
     dataObject: {},
     height: "100%",
-    customErrorLsi: undefined,
   },
   //@@viewOff:defaultProps
 

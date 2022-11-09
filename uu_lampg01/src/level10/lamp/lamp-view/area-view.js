@@ -48,7 +48,6 @@ const AreaView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    lampDataObject: undefined,
     header: "",
     help: "",
     bulbStyle: "filled",
@@ -57,7 +56,6 @@ const AreaView = createVisualComponent({
     card: "full",
     significance: "common",
     borderRadius: "moderate",
-    level: undefined,
   },
   //@@viewOff:defaultProps
 

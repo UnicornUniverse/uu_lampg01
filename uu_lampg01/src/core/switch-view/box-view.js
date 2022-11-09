@@ -39,11 +39,8 @@ const BoxView = createVisualComponent({
     on: false,
     header: "",
     colorScheme: "yellow",
-    width: undefined,
-    height: undefined,
     significance: "common",
     borderRadius: "none",
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

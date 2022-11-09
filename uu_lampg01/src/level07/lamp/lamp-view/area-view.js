@@ -60,7 +60,6 @@ const AreaView = createVisualComponent({
     card: "full",
     significance: "common",
     borderRadius: "moderate",
-    level: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps

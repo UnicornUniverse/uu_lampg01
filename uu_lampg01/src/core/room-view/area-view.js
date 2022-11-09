@@ -43,13 +43,11 @@ const AreaView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    room: undefined,
     header: "",
     help: "",
     colorScheme: "yellow",
     card: "none",
     significance: "common",
-    level: undefined,
     borderRadius: "none",
   },
   //@@viewOff:defaultProps

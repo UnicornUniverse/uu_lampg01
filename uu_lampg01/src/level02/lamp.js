@@ -20,9 +20,7 @@ const LampCore = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    header: undefined,
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {

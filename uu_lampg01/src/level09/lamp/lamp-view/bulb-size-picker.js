@@ -17,9 +17,7 @@ const BulbSizePicker = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    bulbSize: undefined,
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {

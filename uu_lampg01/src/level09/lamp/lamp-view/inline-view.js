@@ -22,7 +22,6 @@ const InlineView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    lampDataObject: undefined,
     bulbStyle: "filled",
     colorScheme: "yellow",
     showSwitch: true,

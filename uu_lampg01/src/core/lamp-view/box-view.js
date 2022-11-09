@@ -49,11 +49,8 @@ const BoxView = createVisualComponent({
     bulbStyle: "filled",
     bulbSize: "xl",
     colorScheme: "yellow",
-    width: undefined,
-    height: undefined,
     significance: "common",
     borderRadius: "none",
-    aspectRatio: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps

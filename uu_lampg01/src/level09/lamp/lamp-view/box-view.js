@@ -45,16 +45,12 @@ const BoxView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    lampDataObject: undefined,
     header: "",
     bulbStyle: "filled",
     bulbSize: "xl",
     colorScheme: "yellow",
-    width: undefined,
-    height: undefined,
     significance: "common",
     borderRadius: "none",
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

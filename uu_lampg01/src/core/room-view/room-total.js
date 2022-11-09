@@ -16,9 +16,7 @@ const RoomTotal = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    room: undefined,
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {

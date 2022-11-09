@@ -19,8 +19,6 @@ const Provider = createComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    uuDocKitUri: undefined,
-    documentId: undefined,
     on: false,
   },
   //@@viewOff:defaultProps

@@ -53,8 +53,6 @@ const AreaView = createVisualComponent({
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "moderate",
-    aspectRatio: undefined,
-    level: undefined,
   },
   //@@viewOff:defaultProps
 

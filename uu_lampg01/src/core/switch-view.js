@@ -40,13 +40,9 @@ const SwitchView = createVisualComponent({
     header: "",
     help: "",
     card: "none",
-    width: undefined,
-    height: undefined,
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "none",
-    level: undefined,
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

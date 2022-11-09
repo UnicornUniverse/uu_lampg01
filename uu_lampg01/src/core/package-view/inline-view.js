@@ -19,7 +19,6 @@ const InlineView = createVisualComponent({
   //@@viewOn:defaultProps
   defaultProps: {
     icon: "mdi-gift",
-    colorScheme: undefined,
   },
   //@@viewOff:defaultProps
 

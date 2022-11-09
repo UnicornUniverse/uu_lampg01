@@ -43,7 +43,6 @@ const AreaView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    documentDataObject: undefined,
     on: false,
     header: "",
     help: "",
@@ -53,7 +52,6 @@ const AreaView = createVisualComponent({
     card: "full",
     significance: "common",
     borderRadius: "moderate",
-    level: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps

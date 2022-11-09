@@ -34,17 +34,12 @@ const RoomView = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    room: undefined,
     header: "",
     help: "",
     card: "none",
-    width: undefined,
-    height: undefined,
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "none",
-    level: undefined,
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

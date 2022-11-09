@@ -39,7 +39,6 @@ const DetailModal = createVisualComponent({
   defaultProps: {
     open: false,
     actionList: [],
-    room: undefined,
     header: "",
   },
   //@@viewOff:defaultProps

@@ -18,8 +18,8 @@ const SwitchCore = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string,
-    code: PropTypes.string,
+    baseUri: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
     header: PropTypes.node,
     card: PropTypes.oneOf(["none", "content", "full"]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -34,16 +34,10 @@ const SwitchCore = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    baseUri: undefined,
-    code: undefined,
     card: "full",
-    width: undefined,
-    height: undefined,
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "moderate",
-    level: undefined,
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

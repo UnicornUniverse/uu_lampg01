@@ -11,7 +11,7 @@ const Css = {
   info: () =>
     Config.Css.css({
       padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
-    })
+    }),
 };
 
 const LampReloadInfo = createVisualComponent({
@@ -26,9 +26,7 @@ const LampReloadInfo = createVisualComponent({
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    lampDataObject: undefined,
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {

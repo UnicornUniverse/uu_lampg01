@@ -18,8 +18,8 @@ const LampCore = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string,
-    code: PropTypes.string,
+    baseUri: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
     header: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
     bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
@@ -36,18 +36,12 @@ const LampCore = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    baseUri: undefined,
-    code: undefined,
     bulbStyle: "filled",
     bulbSize: "xl",
     card: "full",
-    width: undefined,
-    height: undefined,
     significance: "common",
     colorScheme: "yellow",
     borderRadius: "moderate",
-    level: undefined,
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

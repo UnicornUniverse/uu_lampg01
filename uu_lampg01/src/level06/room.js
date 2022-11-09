@@ -26,7 +26,6 @@ const RoomCore = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    header: undefined,
     on: false,
     card: "full",
     borderRadius: "moderate",

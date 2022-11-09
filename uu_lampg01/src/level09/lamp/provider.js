@@ -28,8 +28,6 @@ const Provider = createComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    baseUri: undefined,
-    code: undefined,
     on: false,
   },
   //@@viewOff:defaultProps

@@ -33,13 +33,9 @@ const SwitchCore = createVisualComponent({
   defaultProps: {
     header: "",
     card: "full",
-    width: undefined,
-    height: undefined,
     colorScheme: "yellow",
     significance: "common",
     borderRadius: "moderate",
-    level: undefined,
-    aspectRatio: undefined,
   },
   //@@viewOff:defaultProps
 

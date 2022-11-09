@@ -47,12 +47,8 @@ const LampView = createVisualComponent({
     bulbSize: "xl",
     colorScheme: "yellow",
     card: "full",
-    width: undefined,
-    height: undefined,
     significance: "common",
     borderRadius: "moderate",
-    level: undefined,
-    aspectRatio: undefined,
     showSwitch: false,
   },
   //@@viewOff:defaultProps

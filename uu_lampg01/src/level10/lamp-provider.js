@@ -24,15 +24,12 @@ const LampProvider = createComponent({
   //@@viewOn:propTypes
   propTypes: {
     baseUri: PropTypes.string.isRequired,
-    code: PropTypes.string,
+    code: PropTypes.string.isRequired,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    baseUri: undefined,
-    code: undefined,
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {
