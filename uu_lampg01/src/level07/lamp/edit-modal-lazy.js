@@ -104,7 +104,7 @@ const EditModalLazy = createVisualComponent({
       },
       aspectRatio: {
         props: {
-          valueList: ["1:1", "2:1", "2:3", "3:1", "3:2", "3:4", "4:3", "4:5", "5:4", "16:9", "16:10"],
+          valueList: ["1x1", "2x1", "2x3", "3x1", "3x2", "3x4", "4x3", "4x5", "5x4", "16x9", "16x10"],
         },
       },
       level: {

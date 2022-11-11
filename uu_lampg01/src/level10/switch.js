@@ -25,10 +25,7 @@ const SwitchCore = createVisualComponent({
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     significance: PropTypes.oneOf(["common", "highlighted"]),
-    colorScheme: PropTypes.colorScheme,
-    borderRadius: PropTypes.borderRadius,
     level: PropTypes.number,
-    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
@@ -36,8 +33,6 @@ const SwitchCore = createVisualComponent({
   defaultProps: {
     card: "full",
     significance: "common",
-    colorScheme: "yellow",
-    borderRadius: "moderate",
   },
   //@@viewOff:defaultProps
 

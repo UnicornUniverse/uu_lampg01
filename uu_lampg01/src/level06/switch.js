@@ -80,7 +80,6 @@ const SwitchCore = createVisualComponent({
           onSwitchClick={handleSwitchClick}
           icon="mdi-home-alert"
         />
-        // <></>
       );
     } else {
       return (
