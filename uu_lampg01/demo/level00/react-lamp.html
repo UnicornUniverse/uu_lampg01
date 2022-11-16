@@ -9,25 +9,27 @@
       rel="stylesheet"
       href="https://cdn.plus4u.net/libs/materialdesignicons/3.5.95/css/materialdesignicons.min.css"
     />
-    <script src="https://cdn.plus4u.net/libs/systemjs/0.19.47/system.js"></script>
-    <script>
-      SystemJS.config({
-        paths: {
-          react: "https://cdn.plus4u.net/libs/react/16.13.1/react.js",
-          "react-dom": "https://cdn.plus4u.net/libs/react-dom/16.13.1/react-dom.js",
-        },
-      });
-    </script>
     <style>
       html {
-        font-family: ClearSans, sans-serif;
+        font-family: Roboto, ClearSans, sans-serif;
+      }
+
+      .layout {
+        display: grid;
+        row-gap: 16px;
+        padding: 16px;
       }
 
       .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: 0.3s;
-        margin-top: 24px;
-        margin-bottom: 24px;
+        box-shadow: rgb(33 33 33 / 32%) 0px 1px 4px 0px;
+        border-radius: 8px;
+        padding-bottom: 16px;
+      }
+
+      .actionBar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
       }
 
       .help-icon {
@@ -37,7 +39,7 @@
         height: 1em;
         font-size: 20px;
         cursor: pointer;
-        color: rgba(0, 0, 0, 0.54);
+        color: rgb(128, 128, 128);
       }
 
       .header {
@@ -46,38 +48,44 @@
         justify-content: space-between;
         padding-left: 16px;
         padding-right: 16px;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 16px;
+        padding-bottom: 16px;
       }
 
       .heading {
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 500;
+        line-height: 32px;
       }
 
       .button-menu {
         background-color: rgb(255, 255, 255);
-        border-color: rgb(189, 189, 189);
-        border-width: 1px;
-        border-style: solid;
+        border-width: 0px;
         font-size: 20px;
         cursor: pointer;
+        color: rgb(128, 128, 128);
       }
 
       .content {
         color: #f9c033;
         font-size: 80px;
         text-align: center;
-        margin-top: 16px;
       }
     </style>
+    <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
+    <script>
+      Uu5Loader.config({
+        imports: {
+          react: "https://cdn.plus4u.net/libs/react/16.13.1/react.js",
+          "react-dom": "https://cdn.plus4u.net/libs/react-dom/16.13.1/react-dom.js",
+        },
+      });
+    </script>
   </head>
   <body>
     <div id="renderHere"></div>
 
-    <script src="https://cdn.plus4u.net/uu-app-templateg01/1.0.0/in-browser-transpilation.js"></script>
     <script type="text/babel">
-      /*@@viewOn:0*/
       import React from "react";
       import ReactDOM from "react-dom";
 
@@ -89,31 +97,30 @@
         return (
           <div className="card">
             <div className="header">
-              <div className="heading">
-                Lamp
-                <span className="help-icon mdi mdi-help-circle" />
+              <div className="heading">Lamp</div>
+              <div className="actionBar">
+                <span className="help-icon mdi mdi-information-outline" />
+                <button className="mdi mdi-dots-vertical button-menu" />
               </div>
-              <button className="mdi mdi-dots-vertical button-menu" />
             </div>
             <div className="content">
-              <span className={className} style={{color: props.colorSchema}}></span>
+              <span className={className} style={{ color: props.colorSchema }}></span>
             </div>
           </div>
         );
       }
 
-      function Content() {
+      function Page() {
         return (
-          <div>
+          <div className="layout">
             <Lamp on />
-            <Lamp colorSchema="black" />
-            <Lamp colorSchema="black" bulbStyle="outline" />
+            <Lamp colorSchema="grey" />
+            <Lamp colorSchema="grey" bulbStyle="outline" />
           </div>
         );
       }
 
-      ReactDOM.render(<Content />, document.getElementById("renderHere"));
-      /*@@viewOff:0*/
+      ReactDOM.render(<Page />, document.getElementById("renderHere"));
     </script>
   </body>
 </html>
