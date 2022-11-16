@@ -1,7 +1,7 @@
 {
   "name": "uu_lampg01",
-  "version": "0.9.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "workspaces": [
     "uu_lampg01"
   ],
@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "uu_appg01_devkit": "^5.5.0"
+  },
+  "prettier": {
+    "printWidth": 120
   }
 }

@@ -35,6 +35,7 @@ const RoomCore = createVisualComponent({
   render(props) {
     //@@viewOn:private
     const lsi = useLsi(importLsi, [RoomCore.uu5Tag]);
+    const { on, header, children, ...viewProps } = props;
 
     function handleCopyComponent() {
       return createCopyTag(Config.TAG + "Room", props, ["on", "header"], RoomCore.defaultProps);
@@ -43,16 +44,16 @@ const RoomCore = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <RoomProvider on={props.on}>
+      <RoomProvider on={on}>
         {(room) => (
           <Core.RoomView
-            {...props}
-            header={props.header ?? lsi.header}
+            {...viewProps}
+            header={header ?? lsi.header}
             help={<Lsi import={importLsi} path={[RoomCore.uu5Tag, "help"]} />}
             room={room}
             onCopyComponent={handleCopyComponent}
           >
-            {props.children}
+            {children}
           </Core.RoomView>
         )}
       </RoomProvider>

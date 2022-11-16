@@ -1,6 +1,6 @@
 {
   "name": "uu_lampg01",
-  "version": "0.9.1-beta.1",
+  "version": "1.0.0",
   "description": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
   "license": "License Commercial",
   "namespace": "UuLamp",
@@ -21,6 +21,9 @@
   },
   "uuBuildSettings": {
     "externals": {}
+  },
+  "devDependencies": {
+    "uu_appg01_devkit": "^5.5.0"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -44,8 +47,5 @@
   ],
   "prettier": {
     "printWidth": 120
-  },
-  "devDependencies": {
-    "uu_appg01_devkit": "^5.5.0"
   }
 }

@@ -34,7 +34,6 @@ const AreaView = createVisualComponent({
     help: PropTypes.node,
     colorScheme: PropTypes.colorScheme,
     card: PropTypes.oneOf(["none", "full", "content"]),
-    significance: PropTypes.oneOf(["common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     level: PropTypes.number,
     onCopyComponent: PropTypes.func,
@@ -47,7 +46,6 @@ const AreaView = createVisualComponent({
     help: "",
     colorScheme: "yellow",
     card: "none",
-    significance: "common",
     borderRadius: "none",
   },
   //@@viewOff:defaultProps
@@ -86,11 +84,7 @@ const AreaView = createVisualComponent({
         actionList={actionList}
         {...elementProps}
       >
-        {() => (
-          <Box className={Css.box()} significance="subdued" shape="interactiveElement">
-            <Content nestingLevel="area">{props.children}</Content>
-          </Box>
-        )}
+        {() => <Content nestingLevel="area">{props.children}</Content>}
       </Block>
     );
     //@@viewOff:render

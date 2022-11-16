@@ -29,7 +29,7 @@ const LampView = createVisualComponent({
     card: PropTypes.oneOf(["none", "full", "content"]),
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["common", "highlighted"]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     level: PropTypes.number,
     aspectRatio: PropTypes.string,

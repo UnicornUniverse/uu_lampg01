@@ -2,11 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run & Debug",
+      "name": "Run",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "start"],
+      "runtimeArgs": ["start"],
       "skipFiles": ["<node_internals>/**"],
       "serverReadyAction": {
         "pattern": "Project is running at http://localhost:([0-9]+)",

@@ -26,7 +26,7 @@ const PackageView = createVisualComponent({
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     card: PropTypes.oneOf(["none", "full", "content"]),
     colorScheme: PropTypes.colorScheme,
-    significance: PropTypes.oneOf(["common", "highlighted"]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     level: PropTypes.number,
     aspectRatio: PropTypes.string,

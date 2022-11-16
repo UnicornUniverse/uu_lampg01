@@ -2,11 +2,16 @@
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Icon, UuGds } from "uu5g05-elements";
 import { SwitchSelect } from "uu5g05-forms";
+import config from "../config/config";
 import Config from "../lamp-view/config/config";
 //@@viewOff:imports
 
 //@@viewOn:css
 const Css = {
+  input: () =>
+    Config.Css.css({
+      maxWidth: 200,
+    }),
   switchIcon: (bulbSize) =>
     Config.Css.css({
       ...getSwitchTypography(bulbSize),
@@ -38,9 +43,13 @@ const BoxView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const attrs = Utils.VisualComponent.getAttrs(props);
 
-    return <SwitchSelect {...elementProps} value={props.on} onChange={props.onClick} itemList={getItemList(props)} />;
+    return (
+      <div {...attrs}>
+        <SwitchSelect value={props.on} onChange={props.onClick} itemList={getItemList(props)} className={Css.input()} />
+      </div>
+    );
     //@@viewOff:render
   },
 });

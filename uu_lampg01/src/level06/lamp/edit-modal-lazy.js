@@ -84,7 +84,7 @@ const EditModalLazy = createVisualComponent({
       },
       significance: {
         props: {
-          valueList: ["common", "highlighted"],
+          valueList: ["subdued", "common", "highlighted"],
         },
       },
       aspectRatio: {

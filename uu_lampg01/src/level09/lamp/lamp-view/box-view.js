@@ -35,7 +35,7 @@ const BoxView = createVisualComponent({
     colorScheme: PropTypes.colorScheme,
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    significance: PropTypes.oneOf(["common", "highlighted"]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
     borderRadius: PropTypes.borderRadius,
     aspectRatio: PropTypes.string,
     onBulbSizeChange: PropTypes.func,

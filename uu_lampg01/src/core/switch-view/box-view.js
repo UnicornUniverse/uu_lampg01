@@ -9,8 +9,12 @@ import Config from "./config/config";
 const Css = {
   box: () =>
     Config.Css.css({
-      textAlign: "center",
       padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
+    }),
+  input: () =>
+    Config.Css.css({
+      maxWidth: 200,
+      margin: "0 auto",
     }),
 };
 //@@viewOff:css
@@ -60,7 +64,13 @@ const BoxView = createVisualComponent({
         shape="interactiveElement"
         {...elementProps}
       >
-        <SwitchSelect {...elementProps} value={props.on} onChange={props.onSwitchClick} itemList={getItemList(props)} />
+        <SwitchSelect
+          {...elementProps}
+          value={props.on}
+          onChange={props.onSwitchClick}
+          itemList={getItemList(props)}
+          className={Css.input()}
+        />
       </Box>
     );
     //@@viewOff:render
