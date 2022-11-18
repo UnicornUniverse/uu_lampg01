@@ -23,6 +23,7 @@ const Css = {
     Config.Css.css({
       display: "block",
     }),
+  clock: () => Config.Css.css({ padding: UuGds.SpacingPalette.getValue(["fixed", "g"]) }),
 };
 //@@viewOff:css
 
@@ -84,7 +85,6 @@ const AreaView = createVisualComponent({
     //@@viewOn:render
     const actionList = getActions(props, lsi, { handleCopyComponent });
     const [elementProps] = Utils.VisualComponent.splitProps(props);
-    const clockCss = Config.Css.css({ padding: UuGds.SpacingPalette.getValue(["fixed", "g"]) });
 
     return (
       <Block
@@ -114,7 +114,7 @@ const AreaView = createVisualComponent({
               colorScheme={props.colorScheme}
               nestingLevel="area"
             />
-            <Clock className={clockCss} />
+            <Clock className={Css.clock()} />
             <TimeZoneSwitch />
           </Box>
         )}

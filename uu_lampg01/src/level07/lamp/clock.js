@@ -28,7 +28,7 @@ const Clock = createVisualComponent({
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     return (
-      <Text {...elementProps} nestingLevel={currentNestingLevel}>
+      <Text {...elementProps} nestingLevel={currentNestingLevel} colorScheme="building">
         <DateTime />
       </Text>
     );
