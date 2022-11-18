@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Utils, createVisualComponent, useTimeZone, Lsi, useLsi } from "uu5g05";
+import { Utils, createVisualComponent, useTimeZone, useLsi } from "uu5g05";
 import { SwitchSelect } from "uu5g05-forms";
 import Config from "./config/config";
 import TimeZone from "./utils/time-zone";

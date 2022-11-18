@@ -21,7 +21,7 @@
     "level": "",
     "info": "<uu5string/>Для отримання додаткової інформації дивись <UU5.Bricks.Link href='%s' target='_blank' content='документацію'/>."
   },
-  "UuLamp.Level07.TimeZone": {
+  "TimeZones": {
     "Europe/Prague": "Прага",
     "Asia/Tokyo": "Токіо",
     "America/Los_Angeles": "Лос-Анджелес"
