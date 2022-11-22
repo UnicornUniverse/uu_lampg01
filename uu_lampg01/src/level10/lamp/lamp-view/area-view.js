@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { PropTypes, createVisualComponent, useLsi, Utils } from "uu5g05";
-import { Block, Box, Icon, useAlertBus } from "uu5g05-elements";
+import { Block, Box, Icon, useAlertBus, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
 import Core from "../../../core/core";
 import LampReloadInfo from "../../lamp-reload-info";
@@ -13,10 +13,14 @@ const PLACEHOLDER_HEIGHT = "300px";
 
 //@@viewOn:css
 const Css = {
-  box: (block) =>
+  box: () =>
     Config.Css.css({
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
       textAlign: "center",
-      ...block.style,
+      gap: UuGds.SpacingPalette.getValue(["fixed", "f"]),
     }),
 };
 //@@viewOff:css
@@ -119,29 +123,27 @@ const AreaView = createVisualComponent({
         actionList={actionList}
         {...elementProps}
       >
-        {(block) => (
-          <Core.DataObjectStateResolver
-            dataObject={props.lampDataObject}
-            height={PLACEHOLDER_HEIGHT}
-            customErrorLsi={errorsLsi}
+        <Core.DataObjectStateResolver
+          dataObject={props.lampDataObject}
+          height={PLACEHOLDER_HEIGHT}
+          customErrorLsi={errorsLsi}
+        >
+          <Box
+            className={Css.box()}
+            colorScheme={props.colorScheme}
+            shape="interactiveElement"
+            significance={props.significance === "common" ? "subdued" : "highlighted"}
           >
-            <Box
-              className={Css.box(block)}
+            <Core.Bulb
+              on={props.lampDataObject.data?.on}
+              bulbSize={props.lampDataObject.data?.bulbSize}
+              bulbStyle={props.bulbStyle}
               colorScheme={props.colorScheme}
-              shape="interactiveElement"
-              significance={props.significance === "common" ? "subdued" : "highlighted"}
-            >
-              <Core.Bulb
-                on={props.lampDataObject.data?.on}
-                bulbSize={props.lampDataObject.data?.bulbSize}
-                bulbStyle={props.bulbStyle}
-                colorScheme={props.colorScheme}
-                nestingLevel="area"
-              />
-              <LampReloadInfo lampDataObject={props.lampDataObject} />
-            </Box>
-          </Core.DataObjectStateResolver>
-        )}
+              nestingLevel="area"
+            />
+            <LampReloadInfo lampDataObject={props.lampDataObject} />
+          </Box>
+        </Core.DataObjectStateResolver>
       </Block>
     );
     //@@viewOff:render
