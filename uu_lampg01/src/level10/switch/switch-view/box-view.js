@@ -16,7 +16,7 @@ const Css = {
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
+      gap: UuGds.SpacingPalette.getValue(["fixed", "f"]),
     }),
 };
 //@@viewOff:css
