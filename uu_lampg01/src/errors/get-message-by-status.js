@@ -1,20 +1,8 @@
 //@@viewOn:imports
 import HttpStatus from "./http-status";
-import getErrorStatus from "./get-error-status";
 //@@viewOff:imports
 
-function getErrorLsi(errorData, errorsLsi) {
-  let lsi = getErrorMessage(errorData, errorsLsi);
-
-  if (!lsi) {
-    const errorStatus = getErrorStatus(errorData);
-    lsi = getErrorMessageByStatus(errorStatus, errorsLsi);
-  }
-
-  return lsi;
-}
-
-function getErrorMessageByStatus(errorStatus, errorsLsi = {}) {
+function getMessageByStatus(errorStatus, errorsLsi = {}) {
   let lsi;
 
   switch (errorStatus) {
@@ -49,12 +37,7 @@ function getErrorMessageByStatus(errorStatus, errorsLsi = {}) {
   return lsi;
 }
 
-function getErrorMessage(errorData, errorsLsi = {}) {
-  const code = errorData?.error?.code || errorData.code;
-  return errorsLsi[code];
-}
-
 //@@viewOn:exports
-export { getErrorLsi };
-export default getErrorLsi;
+export { getMessageByStatus };
+export default getMessageByStatus;
 //@@viewOff:exports

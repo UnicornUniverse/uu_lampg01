@@ -33,10 +33,22 @@ const Provider = createComponent({
       },
     });
 
-    // TODO Smazat await a testnout
     async function handleLoad() {
       const dtoIn = { id: props.documentId };
-      return await Calls.loadDocument(props.uuDocKitUri, dtoIn);
+      let dtoOut;
+
+      try {
+        dtoOut = await Calls.loadDocument(props.uuDocKitUri, dtoIn);
+      } catch (error) {
+        // Fix of uuDocKit API where unathorized access is returned with status 400
+        if (error.code === "uu-dockit-main/document/load/userHasNotRightsToLoadDocument") {
+          error.status = 401;
+        }
+
+        throw error;
+      }
+
+      return dtoOut;
     }
 
     // *** ON ***
