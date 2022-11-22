@@ -1,33 +1,36 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import Config from "./config/config";
-import SwitchViewInline from "./switch-view/switch-view-inline";
-import SwitchViewSmallBox from "./switch-view/switch-view-small-box";
-import SwitchViewBox from "./switch-view/switch-view-box";
+import InlineView from "./switch-view/inline-view";
+import BoxView from "./switch-view/box-view";
+import AreaView from "./switch-view/area-view";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Switch",
-  nestingLevel: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "SwitchView",
+  nestingLevel: ["area", "box", "inline"],
   //@@viewOff:statics
 };
 
-export const Switch = createVisualComponent({
+const SwitchView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
-    header: UU5.PropTypes.node,
-    help: UU5.PropTypes.node,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    onSwitchClick: UU5.PropTypes.func,
+    on: PropTypes.bool,
+    header: PropTypes.node,
+    help: PropTypes.node,
+    card: PropTypes.oneOf(["none", "full", "content"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
+    aspectRatio: PropTypes.string,
+    onSwitchClick: PropTypes.func,
+    onCopyComponent: PropTypes.func,
   },
   //@@viewOff:propTypes
 
@@ -36,33 +39,31 @@ export const Switch = createVisualComponent({
     on: false,
     header: "",
     help: "",
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
-    onSwitchClick: () => {},
+    card: "none",
+    colorScheme: "yellow",
+    significance: "common",
+    borderRadius: "none",
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     switch (currentNestingLevel) {
+      case "area":
+        return <AreaView {...props} {...elementProps} />;
       case "box":
-        return <SwitchViewBox {...props} {...attrs} />;
-      case "smallBox":
-        return <SwitchViewSmallBox {...props} {...attrs} />;
+        return <BoxView {...props} {...elementProps} />;
       case "inline":
       default:
         return (
-          <SwitchViewInline
+          <InlineView
             on={props.on}
-            colorSchema={props.colorSchema}
+            colorScheme={props.colorScheme}
             onSwitchClick={props.onSwitchClick}
-            {...attrs}
+            {...elementProps}
           />
         );
     }
@@ -70,4 +71,7 @@ export const Switch = createVisualComponent({
   },
 });
 
-export default Switch;
+//@@viewOn:exports
+export { SwitchView };
+export default SwitchView;
+//@@viewOff:exports

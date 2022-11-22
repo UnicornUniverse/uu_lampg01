@@ -1,36 +1,30 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent, useState, useLayoutEffect, useLanguage } from "uu5g04-hooks";
+import { PropTypes, createVisualComponent, useState, useLayoutEffect, useLanguage, Utils, useLsi, Lsi } from "uu5g05";
+import { UuGds, Text } from "uu5g05-elements";
 import { UuDateTime } from "uu_i18ng01";
-import Core from "../core/core";
 import Config from "./config/config";
-import Lsi from "./lamp-reload-info-lsi";
+import Core from "../core/core";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const LampReloadInfo = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "LampReloadInfo",
-  nestingLevel: "box",
+  uu5Tag: Config.TAG + "LampReloadInfo",
   //@@viewOff:statics
-};
-
-export const LampReloadInfo = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    lampDataObject: UU5.PropTypes.object.isRequired,
+    lampDataObject: PropTypes.object.isRequired,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    lampDataObject: undefined,
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:private
+    const lsi = useLsi(importLsi, [LampReloadInfo.uu5Tag]);
     const [, forceRender] = useState(0);
 
     useLayoutEffect(() => {
@@ -43,13 +37,13 @@ export const LampReloadInfo = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     let child;
 
     switch (props.lampDataObject.state) {
       case "pending":
-        child = <SyncInfo />;
+        child = <SyncInfo lsi={lsi} />;
         break;
       case "ready": {
         let seconds = getRemainingSeconds(props.lampDataObject.data.nextUpdateAt);
@@ -57,13 +51,17 @@ export const LampReloadInfo = createVisualComponent({
         break;
       }
       case "error":
-        child = <Core.Error errorData={props.lampDataObject.errorData} />;
+        child = <Core.Error errorData={props.lampDataObject.errorData} nestingLevel="inline" />;
         break;
       default:
         child = null;
     }
 
-    return <span {...attrs}>{child}</span>;
+    return (
+      <Text {...elementProps} colorScheme="building" nestingLevel="inline">
+        {child}
+      </Text>
+    );
     //@@viewOff:render
   },
 });
@@ -84,14 +82,8 @@ function getRemainingSeconds(nextUpdateAt) {
   return Math.ceil(diffMs / 1000);
 }
 
-const infoCss = () => Config.Css.css`padding-top:25px; padding-bottom:25px`;
-
-function SyncInfo() {
-  return (
-    <div className={infoCss()}>
-      <UU5.Bricks.Lsi lsi={Lsi.synchronizing} />
-    </div>
-  );
+function SyncInfo({ lsi }) {
+  return <span>{lsi.synchronizing}</span>;
 }
 
 function ReloadInfo({ seconds }) {
@@ -101,11 +93,14 @@ function ReloadInfo({ seconds }) {
   const secondsFormatted = rtf.format(seconds, "second");
 
   return (
-    <div className={infoCss()}>
-      <UU5.Bricks.Lsi lsi={Lsi.nextUpdateAt} params={[secondsFormatted]} />
-    </div>
+    <span>
+      <Lsi import={importLsi} path={[LampReloadInfo.uu5Tag, "nextUpdateAt"]} params={[secondsFormatted]} />
+    </span>
   );
 }
 //@@viewOff:helpers
 
+//@@viewOn:exports
+export { LampReloadInfo };
 export default LampReloadInfo;
+//@@viewOff:exports

@@ -1,59 +1,70 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { PropTypes, Lsi, createVisualComponent, useSession, useLsi } from "uu5g05";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
+import Core from "../core/core";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const LampCore = createVisualComponent({
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevelList: ["box", "smallBox", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: false,
-  },
+  uu5Tag: Config.TAG + "LampCore",
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  header: undefined,
-};
-
-export const Lamp = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
+    header: PropTypes.node,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {},
   //@@viewOff:defaultProps
 
-  //@@viewOn:private
-  _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["header"], DEFAULT_PROPS);
+  render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
+    const session = useSession();
+
+    function handleOnCopyComponent() {
+      return createCopyTag(Config.TAG + "Lamp", props, ["header"], LampCore.defaultProps);
+    }
+    //@@viewOff:private
+
+    //@@viewOn:render
+    switch (session.state) {
+      case "authenticated":
+        return (
+          <Core.LampView
+            {...props}
+            header={props.header ?? lsi.header}
+            help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+            onCopyComponent={handleOnCopyComponent}
+            on
+          />
+        );
+      default:
+        return (
+          <Core.PackageView
+            {...props}
+            header={props.header ?? lsi.header}
+            help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+            info={<Lsi import={importLsi} path={[LampCore.uu5Tag, "hiddenInfo"]} />}
+            onCopyComponent={handleOnCopyComponent}
+          />
+        );
+    }
+    //@@viewOff:render
   },
-  //@@viewOff:private
-
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-
-    return <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />;
-  },
-  //@@viewOff:render
 });
 
+let Lamp = withMargin(LampCore);
+Lamp = withEditModal(Lamp);
+Lamp = withErrorBoundary(Lamp);
+
+//@@viewOn:exports
+export { Lamp };
 export default Lamp;
+//@@viewOff:exports

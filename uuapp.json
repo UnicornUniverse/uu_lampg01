@@ -1,6 +1,6 @@
 {
   "product": "uu_lampg01",
-  "version": "0.9.1-beta.1",
+  "version": "1.0.0",
   "license": "License Commercial",
   "description": {
     "en": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>."
@@ -29,7 +29,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level01.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel01Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level01.Lamp />"
       },
@@ -43,7 +43,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel02Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level02.Lamp />"
       },
@@ -57,7 +57,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel03Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level03.Lamp />"
       },
@@ -71,7 +71,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel04Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level04.Lamp />"
       },
@@ -85,7 +85,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel05Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level05.Lamp />"
       },
@@ -99,7 +99,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel06Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level06.Lamp />"
       },
@@ -113,7 +113,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-toggle-switch-outline",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel06Switch",
         "uuEccReady": true,
         "template": "<UuLamp.Level06.Switch />"
       },
@@ -127,7 +127,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-home-variant-outline",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel06Room",
         "uuEccReady": true,
         "template": "<UuLamp.Level06.Room />"
       },
@@ -141,7 +141,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel07Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level07.Lamp />"
       },
@@ -155,7 +155,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel08Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level08.Lamp />"
       },
@@ -169,7 +169,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level09.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel09Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level09.Lamp baseUri=\"https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
       },
@@ -183,7 +183,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level10.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-desk-lamp",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel10Lamp",
         "uuEccReady": true,
         "template": "<UuLamp.Level10.Lamp baseUri=\"https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
       },
@@ -197,7 +197,7 @@
           "cs": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"vzdělávacích materiálech uuLamp\" target=\"_blank\"/>."
         },
         "icon": "mdi-toggle-switch-outline",
-        "imageUri": "",
+        "imageUri": "https://docs.unicorn.com/UuLampLevel10Switch",
         "uuEccReady": true,
         "template": "<UuLamp.Level10.Switch baseUri=\"https://uuapp.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
       }

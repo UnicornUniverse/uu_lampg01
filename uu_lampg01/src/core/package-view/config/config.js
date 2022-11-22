@@ -1,12 +1,12 @@
-import UU5 from "uu5g04";
+import { Utils } from "uu5g05";
 import Config from "../../config/config";
 
-const TAG = Config.TAG + "Package.";
+const TAG = Config.TAG + "PackageView.";
 
 export default {
   ...Config,
   TAG,
-  Css: UU5.Common.Css.createCssModule(
+  Css: Utils.Css.createCssModule(
     TAG.replace(/\.$/, "")
       .toLowerCase()
       .replace(/\./g, "-")

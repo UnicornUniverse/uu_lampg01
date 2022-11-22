@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UuLamp.Level04.Lamp Demo</title>
+    <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.plus4u.net/uu-lampg01/0.0.0/assets/example-config.js" crossorigin="anonymous"></script>
+
+    <script>
+      var uu5Environment = {
+        uu5g05_componentUveUri:
+          "https://uuapp.plus4u.net/uu-plus4ugo-maing01/f34b62a867db4bd89490534bb26451ad/component/render",
+      };
+    </script>
+  </head>
+  <body>
+    <div id="renderHere"></div>
+
+    <script type="text/babel">
+      import UU5 from "uu5g04";
+      import { createVisualComponent, Utils, Lsi, SessionProvider, useRef } from "uu5g05";
+      import { SpaProvider } from "uu_plus4u5g02";
+      import { Spa, RouteBar, RouteHeader } from "uu_plus4u5g02-app";
+      import { Block, UuGds } from "uu5g05-elements";
+      import { Config } from "uu5g05-dev";
+      import UuLamp from "uu_lampg01";
+      import UuEcc from "uu_editablecomponentcontentg03";
+
+      //@@viewOn:constants
+      const section = {
+        oid: "section-1",
+        bid: "branch-1",
+        awid: "awid-1",
+        content: `<uu5string/>
+          <Uu5Elements.Block header="Default Properties" headerType="heading">
+            <UuLamp.Level04.Lamp />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Custom Header (string)" headerType="heading">
+            <UuLamp.Level04.Lamp header="Lamp 4" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
+            <UuLamp.Level04.Lamp header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 4\\\", \\\"cs\\\": \\\"Lampa 4\\\"}"/>' />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
+            <UuLamp.Level04.Lamp nestingLevel="inline" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Box" headerType="heading">
+            <UuLamp.Level04.Lamp nestingLevel="box" />
+          </Uu5Elements.Block>
+          <Uu5Elements.Block header="Nesting Level = Area" headerType="heading">
+            <UuLamp.Level04.Lamp nestingLevel="area" />
+          </Uu5Elements.Block>
+          <Uu5g05.SessionProvider authenticationService={undefined}>
+            <Uu5Elements.Block header="Not-authenticated" headerType="heading">
+              <UuLamp.Level04.Lamp />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and colorScheme = Blue" headerType="heading">
+              <UuLamp.Level04.Lamp colorScheme="blue" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and significance = Highlighted" headerType="heading">
+              <UuLamp.Level04.Lamp significance="highlighted" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
+              <UuLamp.Level04.Lamp nestingLevel="inline" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
+              <UuLamp.Level04.Lamp nestingLevel="box" />
+            </Uu5Elements.Block>
+            <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
+              <UuLamp.Level04.Lamp nestingLevel="area" />
+            </Uu5Elements.Block>
+          </Uu5g05.SessionProvider>
+        `,
+        readOnly: false,
+        authorUuIdentity: "6565-1",
+        authorName: "Martin Farkaš",
+        commitTs: Date.now(),
+        deleted: false,
+      };
+      //@@viewOff:constants
+
+      //@@viewOn:css
+      const Css = {
+        route: () =>
+          Config.Css.css({
+            padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
+          }),
+        section: () =>
+          Config.Css.css({
+            margin: "0 auto",
+            maxWidth: 1000,
+          }),
+      };
+      //@@viewOff:css
+
+      const Page = createVisualComponent({
+        render() {
+          //@@viewOn:private
+          const sectionRef = useRef(section);
+
+          const handlerMap = {
+            sectionGet: () => sectionRef.current,
+            sectionLock: () => sectionRef.current,
+            sectionUpdate: (dtoIn) => (sectionRef.current = dtoIn),
+          };
+
+          const sectionDto = UuEcc.useSection({ cmdInfo: { handlerMap } });
+          //@@viewOff:private
+
+          return (
+            //@@viewOn:render
+            <SpaProvider skipAppWorkspaceProvider initialLanguageList={["en", "cs"]}>
+              <Spa>
+                <UuEcc.PageEditProvider>
+                  <RouteBar appActionList={[{ component: <UuEcc.PageEditButton /> }]}>
+                    <RouteHeader title="UuLamp.Level04.Lamp Demo" />
+                  </RouteBar>
+                  <div className={Css.route()}>
+                    <div className={Css.section()}>
+                      <UuEcc.Section {...sectionDto} />
+                    </div>
+                  </div>
+                </UuEcc.PageEditProvider>
+              </Spa>
+            </SpaProvider>
+            //@@viewOff:render
+          );
+        },
+      });
+
+      Utils.Dom.render(<Page />, document.getElementById("renderHere"));
+    </script>
+  </body>
+</html>

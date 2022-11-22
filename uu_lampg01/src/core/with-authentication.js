@@ -1,36 +1,52 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createComponent, useSession } from "uu5g04-hooks";
+import { createComponent, useSession, useLsi, Lsi } from "uu5g05";
 import PackageView from "./package-view";
-import Lsi from "./with-authentication-lsi";
+import Config from "./config/config";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-function withAuthentication(Component, displayName, header, help) {
+function withAuthentication(Component) {
   return createComponent({
     //@@viewOn:statics
-    displayName: `withAuthentication(${displayName})`,
+    uu5Tag: Config.TAG + `withAuthentication(${Component.uu5Tag})`,
     //@@viewOff:statics
 
     //@@viewOn:propTypes
-    propTypes: {},
+    propTypes: { ...Component.propTypes },
     //@@viewOff:propTypes
 
     //@@viewOn:defaultProps
-    defaultProps: {},
+    defaultProps: {
+      ...Component.defaultProps,
+    },
     //@@viewOff:defaultProps
 
     render(props) {
-      //@@viewOn:render
-      const { sessionState } = useSession();
+      //@@viewOn:private
+      const lsi = useLsi(importLsi, [Component.uu5Tag]);
+      const session = useSession();
+      //@@viewOff:private
 
-      if (sessionState === "authenticated") {
-        return <Component {...props} />;
-      } else {
-        return <PackageView info={<UU5.Bricks.Lsi lsi={Lsi.notAuthenticated} />} {...props} />;
+      //@@viewOn:render
+      switch (session.state) {
+        case "authenticated":
+          return <Component {...props} />;
+        default:
+          return (
+            <PackageView
+              {...props}
+              header={props.header || lsi.header}
+              help={<Lsi import={importLsi} path={[Component.uu5Tag, "help"]} />}
+              info={<Lsi import={importLsi} path={[Config.TAG + "withAuthentication", "notAuthenticated"]} />}
+            />
+          );
       }
       //@@viewOff:render
     },
   });
 }
 
+//@@viewOn:exports
+export { withAuthentication };
 export default withAuthentication;
+//@@viewOff:exports

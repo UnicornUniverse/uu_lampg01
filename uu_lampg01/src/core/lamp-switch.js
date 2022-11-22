@@ -1,51 +1,51 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import Config from "./lamp-view/config/config";
-import LampSwitchInline from "./lamp-switch/lamp-switch-inline";
-import LampSwitchSmallBox from "./lamp-switch/lamp-switch-small-box";
+import InlineView from "./lamp-switch/inline-view";
+import BoxView from "./lamp-switch/box-view";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampSwitch",
-  nestingLevel: ["smallBox", "inline"],
+  uu5Tag: Config.TAG + "LampSwitch",
+  nestingLevel: ["box", "inline"],
   //@@viewOff:statics
 };
 
-export const LampSwitch = createVisualComponent({
+const LampSwitch = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    on: UU5.PropTypes.bool,
-    colorSchema: UU5.PropTypes.string,
-    onClick: UU5.PropTypes.func,
+    on: PropTypes.bool,
+    colorScheme: PropTypes.colorScheme,
+    onClick: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     on: false,
-    colorSchema: "amber",
-    onClick: () => {},
+    colorScheme: "yellow",
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     switch (currentNestingLevel) {
-      case "smallBox":
-        return <LampSwitchSmallBox {...props} {...attrs} />;
+      case "box":
+        return <BoxView {...props} />;
       case "inline":
       default:
-        return <LampSwitchInline {...props} {...attrs} />;
+        return <InlineView {...props} />;
     }
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { LampSwitch };
 export default LampSwitch;
+//@@viewOff:exports

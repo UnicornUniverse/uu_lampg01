@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lamp in HTML</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.plus4u.net/libs/materialdesignicons/3.5.95/css/materialdesignicons.min.css"
+    />
+    <style>
+      html {
+        font-family: Roboto, ClearSans, sans-serif;
+      }
+
+      .layout {
+        display: grid;
+        row-gap: 16px;
+        padding: 16px;
+      }
+
+      .card {
+        box-shadow: rgb(33 33 33 / 32%) 0px 1px 4px 0px;
+        border-radius: 8px;
+        padding-bottom: 16px;
+      }
+
+      .actionBar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .help-icon {
+        margin-left: 4px;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgb(128, 128, 128);
+      }
+
+      .header {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .heading {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+      }
+
+      .button-menu {
+        background-color: rgb(255, 255, 255);
+        border-width: 0px;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgb(128, 128, 128);
+      }
+
+      .content {
+        color: #f9c033;
+        font-size: 80px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="card">
+        <div class="header">
+          <div class="heading">Lamp</div>
+          <div class="actionBar">
+            <span class="help-icon mdi mdi-information-outline"></span>
+            <button class="mdi mdi-dots-vertical button-menu" />
+          </div>
+        </div>
+        <div class="content">
+          <span class="mdi mdi-lightbulb-on"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="header">
+          <div class="heading">Lamp</div>
+          <div class="actionBar">
+            <span class="help-icon mdi mdi-information-outline"></span>
+            <button class="mdi mdi-dots-vertical button-menu" />
+          </div>
+        </div>
+        <div class="content">
+          <span class="mdi mdi-lightbulb" style="color: grey"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="header">
+          <div class="heading">Lamp</div>
+          <div class="actionBar">
+            <span class="help-icon mdi mdi-information-outline"></span>
+            <button class="mdi mdi-dots-vertical button-menu" />
+          </div>
+        </div>
+        <div class="content">
+          <span class="mdi mdi-lightbulb-outline" style="color: grey"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lamp in UU5</title>
+    <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.plus4u.net/uu-uu5g05/1.0.0/assets/example-config.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="renderHere"></div>
+
+    <script type="text/babel">
+      /*@@viewOn:0*/
+      import { createVisualComponent, Utils, Lsi } from "uu5g05";
+      import { Block, Icon, Grid, useAlertBus } from "uu5g05-elements";
+
+      const Lamp = createVisualComponent({
+        render({ on, bulbStyle, colorScheme = "yellow" }) {
+          const { addAlert } = useAlertBus();
+          const iconStateCode = on ? "-on" : "";
+          const bulbStyleCode = bulbStyle == "outline" ? "-outline" : "";
+          const icon = `mdi mdi-lightbulb${iconStateCode}${bulbStyleCode}`;
+
+          return (
+            <Block
+              header="Lamp"
+              card="full"
+              headerType="heading"
+              level={4}
+              info="There could be info about this component."
+              style={{ textAlign: "center" }}
+              actionList={[
+                {
+                  children: "Say Hello",
+                  collapsed: true,
+                  icon: "mdi-chat-outline",
+                  onClick: () => addAlert({ children: "Hello!", durationMs: 2000 }),
+                },
+              ]}
+            >
+              <Icon icon={icon} colorScheme={colorScheme} style={{ fontSize: 80 }} />
+            </Block>
+          );
+        },
+      });
+
+      const Page = createVisualComponent({
+        render() {
+          return (
+            <Grid style={{ padding: 24 }}>
+              <Lamp on />
+              <Lamp colorScheme="grey" />
+              <Lamp colorScheme="grey" bulbStyle="outline" />
+            </Grid>
+          );
+        },
+      });
+
+      Utils.Dom.render(<Page />, document.getElementById("renderHere"));
+      /*@@viewOff:0*/
+    </script>
+  </body>
+</html>

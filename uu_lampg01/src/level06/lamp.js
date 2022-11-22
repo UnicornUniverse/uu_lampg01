@@ -1,94 +1,99 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { PropTypes, createVisualComponent, useLsi, Lsi, useEffect } from "uu5g05";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import LampCore from "./lamp/lamp-core";
+import Core from "../core/core";
 import EditModal from "./lamp/edit-modal";
+import { useRoom } from "./room/context";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const LampCore = createVisualComponent({
   //@@viewOn:statics
-  tagName: Config.TAG + "Lamp",
-  nestingLevelList: ["box", "smallBox", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: true,
-    lazy: true,
-  },
+  uu5Tag: Config.TAG + "LampCore",
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  bulbStyle: "filled",
-  bulbSize: "xl",
-  bgStyle: "transparent",
-  cardView: "full",
-  colorSchema: "amber",
-  elevation: 1,
-  borderRadius: "0",
-};
-
-export const Lamp = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    header: PropTypes.node,
+    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    card: PropTypes.oneOf(["none", "content", "full"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {
+    bulbStyle: "filled",
+    bulbSize: "xl",
+    card: "full",
+    significance: "common",
+    colorScheme: "yellow",
+    borderRadius: "moderate",
+  },
   //@@viewOff:defaultProps
 
-  //@@viewOn:overriding
-  onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
-  },
-  //@@viewOff:overriding
+  render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
+    const room = useRoom();
 
-  //@@viewOn:private
-  _editRef: UU5.Common.Reference.create(),
+    useEffect(() => {
+      if (!room) {
+        return;
+      }
 
-  _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["on", "bulbStyle", "bulbSize", "header"], DEFAULT_PROPS);
-  },
-  //@@viewOff:private
+      room.registerLamp(props.id);
 
-  //@@viewOn:interface
-  //@@viewOff:interface
+      return () => room.unregisterLamp(props.id);
+    }, [room, props.id]);
 
-  //@@viewOn:render
-  render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
+    function handleCopyComponent() {
+      return createCopyTag(Config.TAG + "Lamp", props, ["bulbStyle", "bulbSize", "header"], LampCore.defaultProps);
+    }
+    //@@viewOff:private
 
-    return (
-      <>
-        {this.isInlineEdited() && (
-          <EditModal
-            props={this.props}
-            onClose={this.endEditation}
-            ref={this._editRef}
-            fallback={this.getEditingLoading()}
-          />
-        )}
-        <LampCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag} />
-      </>
-    );
+    //@@viewOn:render
+    if (room) {
+      return (
+        <Core.LampView
+          {...props}
+          header={props.header || lsi.header}
+          help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+          onCopyComponent={handleCopyComponent}
+          on={room.light.on}
+        />
+      );
+    } else {
+      return (
+        <Core.PackageView
+          {...props}
+          header={props.header || lsi.header}
+          help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
+          info={<Lsi import={importLsi} path={[LampCore.uu5Tag, "noRoom"]} />}
+          icon="mdi-home-alert"
+        />
+      );
+    }
   },
   //@@viewOff:render
 });
 
+let Lamp = Core.withAuthentication(LampCore);
+Lamp = withMargin(Lamp);
+Lamp = withEditModal(Lamp, EditModal);
+Lamp = withErrorBoundary(Lamp);
+
+//@@viewOn:exports
+export { Lamp };
 export default Lamp;
+//@@viewOff:exports

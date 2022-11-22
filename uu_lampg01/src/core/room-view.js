@@ -1,70 +1,88 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { Utils, PropTypes, createVisualComponent, useState, Content } from "uu5g05";
 import Config from "./config/config";
-import RoomViewInline from "./room-view/room-view-inline";
-import RoomViewBox from "./room-view/room-view-box";
+import InlineView from "./room-view/inline-view";
+import AreaView from "./room-view/area-view";
+import DetailModal from "./room-view/detail-modal";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "RoomView",
-  nestingLevel: ["box", "inline"],
+  uu5Tag: Config.TAG + "RoomView",
+  nestingLevel: ["area", "inline"],
   //@@viewOff:statics
 };
 
-export const RoomView = createVisualComponent({
+const RoomView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    room: UU5.PropTypes.object.isRequired,
-    header: UU5.PropTypes.node,
-    help: UU5.PropTypes.node,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    room: PropTypes.object.isRequired,
+    header: PropTypes.node,
+    help: PropTypes.node,
+    card: PropTypes.oneOf(["none", "full", "content"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    colorScheme: PropTypes.colorScheme,
+    borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
+    aspectRatio: PropTypes.string,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    room: undefined,
     header: "",
     help: "",
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
+    card: "none",
+    colorScheme: "yellow",
+    borderRadius: "none",
   },
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    //@@viewOn:private
+    const [isDetailModal, setIsDetailModal] = useState(false);
 
-    switch (currentNestingLevel) {
-      case "box":
-        return <RoomViewBox {...props} nestingLevel={currentNestingLevel} {...attrs} />;
-      case "inline":
-      default:
-        return (
-          <RoomViewInline
+    function handleDetailOpen() {
+      setIsDetailModal(true);
+    }
+    function handleDetailClose() {
+      setIsDetailModal(false);
+    }
+    //@@viewOff:private
+
+    //@@viewOn:render
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
+    const [elementProps, otherProps] = Utils.VisualComponent.splitProps(props);
+
+    return (
+      <>
+        {currentNestingLevel === "area" && <AreaView {...elementProps} {...otherProps} />}
+        {currentNestingLevel === "inline" && (
+          <InlineView
+            {...elementProps}
             header={props.header}
-            colorSchema={props.colorSchema}
-            nestingLevel={currentNestingLevel}
-            {...attrs}
+            room={props.room}
+            onDetail={handleDetailOpen}
+            colorScheme={props.colorScheme}
           >
             {props.children}
-          </RoomViewInline>
-        );
-    }
+          </InlineView>
+        )}
+        {isDetailModal && (
+          <DetailModal open onClose={handleDetailClose} room={props.room} header={props.header}>
+            <Content nestingLevel="area">{props.children}</Content>
+          </DetailModal>
+        )}
+      </>
+    );
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { RoomView };
 export default RoomView;
+//@@viewOff:exports

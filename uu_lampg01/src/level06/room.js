@@ -1,95 +1,73 @@
 //@@viewOn:imports
-import UU5, { createVisualComponent } from "uu5g04";
+import { PropTypes, createVisualComponent, useLsi, Lsi } from "uu5g05";
+import { withEditModal, withMargin } from "uu5g05-bricks-support";
+import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import RoomCore from "./room/room-core";
+import Core from "../core/core";
 import EditModal from "./room/edit-modal";
+import RoomProvider from "./room/provider";
+import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
-const STATICS = {
+const RoomCore = createVisualComponent({
   //@@viewOn:statics
-  tagName: Config.TAG + "Room",
-  nestingLevelList: ["box", "inline"],
-  editMode: {
-    displayType: "block",
-    customEdit: true,
-    lazy: true,
-    enablePlaceholder: true,
-  },
+  uu5Tag: Config.TAG + "RoomCore",
   //@@viewOff:statics
-};
-
-const DEFAULT_PROPS = {
-  on: false,
-  bgStyle: "transparent",
-  cardView: "full",
-  colorSchema: "amber",
-  elevation: 1,
-  borderRadius: "0",
-};
-
-export const Room = createVisualComponent({
-  statics: STATICS,
-
-  //@@viewOn:mixins
-  mixins: [UU5.Common.BaseMixin, UU5.Common.EditableMixin],
-  //@@viewOff:mixins
 
   //@@viewOn:propTypes
   propTypes: {
-    header: UU5.PropTypes.node,
-    on: UU5.PropTypes.bool,
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    header: PropTypes.node,
+    on: PropTypes.bool,
+    card: PropTypes.oneOf(["none", "content", "full"]),
+    borderRadius: PropTypes.borderRadius,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: DEFAULT_PROPS,
+  defaultProps: {
+    on: false,
+    card: "full",
+    borderRadius: "moderate",
+  },
   //@@viewOff:defaultProps
 
-  //@@viewOn:overriding
-  onBeforeForceEndEditation_() {
-    return this._editRef ? this._editRef.current.getPropsToSave() : undefined;
-  },
-  //@@viewOff:overriding
+  render(props) {
+    //@@viewOn:private
+    const lsi = useLsi(importLsi, [RoomCore.uu5Tag]);
+    const { on, header, children, ...viewProps } = props;
 
-  //@@viewOn:private
-  _editRef: UU5.Common.Reference.create(),
+    function handleCopyComponent() {
+      return createCopyTag(Config.TAG + "Room", props, ["on", "header"], RoomCore.defaultProps);
+    }
+    //@@viewOff:private
 
-  _handleCopyTag() {
-    return createCopyTag(STATICS.tagName, this.props, ["on", "header"], DEFAULT_PROPS);
-  },
-  //@@viewOff:private
-
-  //@@viewOn:interface
-  //@@viewOff:interface
-
-  //@@viewOn:render
-  render() {
-    const attrs = UU5.Common.VisualComponent.getAttrs(this.props);
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(this.props, STATICS);
-
+    //@@viewOn:render
     return (
-      <>
-        {this.isInlineEdited() && (
-          <EditModal
-            props={this.props}
-            onClose={this.endEditation}
-            ref={this._editRef}
-            fallback={this.getEditingLoading()}
-          />
+      <RoomProvider on={on}>
+        {(room) => (
+          <Core.RoomView
+            {...viewProps}
+            header={header ?? lsi.header}
+            help={<Lsi import={importLsi} path={[RoomCore.uu5Tag, "help"]} />}
+            room={room}
+            onCopyComponent={handleCopyComponent}
+          >
+            {children}
+          </Core.RoomView>
         )}
-        <RoomCore {...this.props} {...attrs} nestingLevel={currentNestingLevel} copyTagFunc={this._handleCopyTag}>
-          {this.props.content || this.props.children}
-        </RoomCore>
-      </>
+      </RoomProvider>
     );
+    //@@viewOff:render
   },
-  //@@viewOff:render
 });
 
+let Room = Core.withAuthentication(RoomCore);
+Room = withMargin(Room);
+Room = withEditModal(Room, EditModal);
+Room = withErrorBoundary(Room);
+
+//@@viewOn:exports
+export { Room };
 export default Room;
+//@@viewOff:exports

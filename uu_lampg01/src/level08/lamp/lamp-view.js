@@ -1,70 +1,76 @@
 //@@viewOn:imports
-import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import Config from "./config/config";
-import LampViewInline from "./lamp-view/lamp-view-inline";
-import LampViewSmallBox from "./lamp-view/lamp-view-small-box";
-import LampViewBox from "./lamp-view/lamp-view-box";
+import InlineView from "./lamp-view/inline-view";
+import BoxView from "./lamp-view/box-view";
+import AreaView from "./lamp-view/area-view";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "LampView",
-  nestingLevel: ["box", "smallBox", "inline"],
+  uu5Tag: Config.TAG + "LampView",
+  nestingLevel: ["area", "box", "inline"],
   //@@viewOff:statics
 };
 
-export const LampView = createVisualComponent({
+const LampView = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    documentDataObject: UU5.PropTypes.object.isRequired,
-    on: UU5.PropTypes.bool,
-    header: UU5.PropTypes.node,
-    help: UU5.PropTypes.node,
-    bulbStyle: UU5.PropTypes.oneOf(["filled", "outline"]),
-    bulbSize: UU5.PropTypes.oneOf(["s", "m", "l", "xl"]),
-    bgStyle: UU5.PropTypes.string,
-    cardView: UU5.PropTypes.string,
-    colorSchema: UU5.PropTypes.string,
-    elevation: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
-    borderRadius: UU5.PropTypes.oneOfType([UU5.PropTypes.string, UU5.PropTypes.number]),
+    documentDataObject: PropTypes.object.isRequired,
+    on: PropTypes.bool,
+    header: PropTypes.node,
+    help: PropTypes.node,
+    bulbStyle: PropTypes.oneOf(["filled", "outline"]),
+    bulbSize: PropTypes.oneOf(["s", "m", "l", "xl"]),
+    colorScheme: PropTypes.colorScheme,
+    card: PropTypes.oneOf(["none", "full", "content"]),
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    significance: PropTypes.oneOf(["subdued", "common", "highlighted"]),
+    borderRadius: PropTypes.borderRadius,
+    level: PropTypes.number,
+    aspectRatio: PropTypes.string,
+    showSwitch: PropTypes.bool,
+    onSwitchClick: PropTypes.func,
+    onCopyComponent: PropTypes.func,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    documentDataObject: undefined,
     on: false,
     header: "",
     help: "",
     bulbStyle: "filled",
     bulbSize: "xl",
-    bgStyle: "transparent",
-    cardView: "full",
-    colorSchema: "amber",
-    elevation: 1,
-    borderRadius: "0",
+    colorScheme: "yellow",
+    card: "full",
+    significance: "common",
+    borderRadius: "moderate",
+    showSwitch: false,
   },
   //@@viewOff:defaultProps
 
   render(props) {
     //@@viewOn:render
-    const currentNestingLevel = UU5.Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const attrs = UU5.Common.VisualComponent.getAttrs(props);
+    const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     switch (currentNestingLevel) {
+      case "area":
+        return <AreaView {...props} />;
       case "box":
-        return <LampViewBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
-      case "smallBox":
-        return <LampViewSmallBox {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        return <BoxView {...props} />;
       case "inline":
       default:
-        return <LampViewInline {...props} {...attrs} nestingLevel={currentNestingLevel} />;
+        return <InlineView {...props} />;
     }
     //@@viewOff:render
   },
 });
 
+//@@viewOn:exports
+export { LampView };
 export default LampView;
+//@@viewOff:exports

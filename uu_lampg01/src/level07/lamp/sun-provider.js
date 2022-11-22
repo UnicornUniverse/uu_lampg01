@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createComponent, useState, useEffect, useMemo, useTimeZone } from "uu5g04-hooks";
+import { createComponent, useEffect, useTimeZone, useState, useMemo } from "uu5g05";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -7,15 +7,9 @@ import Config from "./config/config";
 const SHINE_FROM_HOUR = 7;
 const SHINE_TO_HOUR = 21;
 
-const STATICS = {
+const SunProvider = createComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "SunProvider",
-  //@@viewOff:statics
-};
-
-export const SunProvider = createComponent({
-  //@@viewOn:statics
-  ...STATICS,
+  uu5Tag: Config.TAG + "SunProvider",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -56,4 +50,7 @@ export const SunProvider = createComponent({
   },
 });
 
+//@@viewOn:exports
+export { SunProvider };
 export default SunProvider;
+//@@viewOff:exports

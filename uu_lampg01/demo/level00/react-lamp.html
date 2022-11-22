@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lamp in React</title>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.plus4u.net/libs/materialdesignicons/3.5.95/css/materialdesignicons.min.css"
+    />
+    <style>
+      html {
+        font-family: Roboto, ClearSans, sans-serif;
+      }
+
+      .layout {
+        display: grid;
+        row-gap: 16px;
+        padding: 16px;
+      }
+
+      .card {
+        box-shadow: rgb(33 33 33 / 32%) 0px 1px 4px 0px;
+        border-radius: 8px;
+        padding-bottom: 16px;
+      }
+
+      .actionBar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .help-icon {
+        margin-left: 4px;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgb(128, 128, 128);
+      }
+
+      .header {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .heading {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+      }
+
+      .button-menu {
+        background-color: rgb(255, 255, 255);
+        border-width: 0px;
+        font-size: 20px;
+        cursor: pointer;
+        color: rgb(128, 128, 128);
+      }
+
+      .content {
+        color: #f9c033;
+        font-size: 80px;
+        text-align: center;
+      }
+    </style>
+    <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
+    <script>
+      Uu5Loader.config({
+        imports: {
+          react: "https://cdn.plus4u.net/libs/react/16.13.1/react.js",
+          "react-dom": "https://cdn.plus4u.net/libs/react-dom/16.13.1/react-dom.js",
+        },
+      });
+    </script>
+  </head>
+  <body>
+    <div id="renderHere"></div>
+
+    <script type="text/babel">
+      import React from "react";
+      import ReactDOM from "react-dom";
+
+      function Lamp(props) {
+        const iconStateCode = props.on ? "-on" : "";
+        const bulbStyleCode = props.bulbStyle == "outline" ? "-outline" : "";
+        const className = `mdi mdi-lightbulb${iconStateCode}${bulbStyleCode}`;
+
+        return (
+          <div className="card">
+            <div className="header">
+              <div className="heading">Lamp</div>
+              <div className="actionBar">
+                <span className="help-icon mdi mdi-information-outline" />
+                <button className="mdi mdi-dots-vertical button-menu" />
+              </div>
+            </div>
+            <div className="content">
+              <span className={className} style={{ color: props.colorSchema }}></span>
+            </div>
+          </div>
+        );
+      }
+
+      function Page() {
+        return (
+          <div className="layout">
+            <Lamp on />
+            <Lamp colorSchema="grey" />
+            <Lamp colorSchema="grey" bulbStyle="outline" />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Page />, document.getElementById("renderHere"));
+    </script>
+  </body>
+</html>
