@@ -49,9 +49,10 @@ const Error = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const className = props.height
-      ? Utils.Css.joinClassName(props.className, Css.placeholder(props.height))
-      : props.className;
+    const className =
+      props.height && props.nestingLevel !== "inline"
+        ? Utils.Css.joinClassName(props.className, Css.placeholder(props.height))
+        : props.className;
 
     const [elementProps] = Utils.VisualComponent.splitProps(props, className);
     const errorStatus = getErrorStatus(props.errorData);
