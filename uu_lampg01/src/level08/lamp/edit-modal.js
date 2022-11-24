@@ -30,7 +30,6 @@ const EditModal = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  
   render({ fallback, ...modalProps }) {
     //@@viewOn:render
     return (
