@@ -3,7 +3,7 @@ import { Utils, createVisualComponent, useLsi, useEffect } from "uu5g05";
 import Config from "./config/config";
 import importLsi from "../../lsi/import-lsi";
 const { EditModal } = Utils.Uu5Loader.get("uu5g05-editing");
-const { FormText, FormSwitchSelect } = Utils.Uu5Loader.get("uu5g05-forms");
+const { FormText, FormSwitchSelect, FormSelect } = Utils.Uu5Loader.get("uu5g05-forms");
 //@@viewOff:imports
 
 //TODO MFA - Add documentation link to info header
@@ -59,6 +59,30 @@ const EditModalLazy = createVisualComponent({
         component: FormText,
         props: {
           label: lsi.header,
+        },
+      },
+      colorScheme: {
+        component: FormSelect,
+        props: {
+          label: lsi.colorScheme,
+          itemList: [
+            { value: "dark-blue" },
+            { value: "blue" },
+            { value: "light-blue" },
+            { value: "cyan" },
+            { value: "dark-green" },
+            { value: "green" },
+            { value: "light-green" },
+            { value: "yellow" },
+            { value: "orange" },
+            { value: "red" },
+            { value: "pink" },
+            { value: "purple" },
+            { value: "dark-purple" },
+            { value: "brown" },
+            { value: "grey" },
+            { value: "steel" },
+          ],
         },
       },
       nestingLevel: {
