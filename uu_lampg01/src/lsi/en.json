@@ -1,21 +1,21 @@
 {
   "Errors": {
-    "defaultError": "Sorry, we really do not known what could have gone wrong. If the problem persists please send an issue to helpdesk.",
+    "defaultError": "Sorry, we really do not know what could have gone wrong. If the problem persists, please send an issue to helpdesk.",
     "badRequest": "Sorry, something went wrong while processing your request.",
-    "unauthorized": "You are not authorized. If you think this is a mistake, please contact competent person or send issue to helpdesk.",
-    "forbidden": "You are not authorized. If you think this is a mistake, please contact competent person or send issue to helpdesk.",
-    "notFound": "Request is invalid. Please check provided URL.",
-    "internal": "Internal error occured. Please try again and if the problem persists send an issue to helpdesk.",
+    "unauthorized": "You are not authorized. If you think this is a mistake, please contact a competent person or send an issue to helpdesk.",
+    "forbidden": "You are not authorized. If you think this is a mistake, please contact a competent person or send an issue to helpdesk.",
+    "notFound": "Request is invalid. Please check the provided URL.",
+    "internal": "Internal error occurred. Please try again and if the problem persists, send an issue to helpdesk.",
     "serviceUnavailable": "Service is currently unavailable. Please try again later.",
     "requestTimeout": "Request timeout. Please try again later.",
     "baseNetworkError": "Network error - resource is not available or does not exist.",
     "uulamp-level10-lamp-provider/no-base-uri": "The Lamp URL property (baseUri) is not defined.",
-    "uulamp-level10-lamp-provider/no-code": "The Identification Code property (code) is not defined.",
-    "uulamp-level10-lamp-provider/code-format": "Identification Code property (code) can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
-    "uu-gateway-main/invalidRequest": "Request is invalid. Please check provided URL.",
-    "uu-app-workspace/forbiddenAwidSysState": "Application workspace is not in active state and is probably under maintenance. Please try again later.",
-    "uu-app-workspace/forbiddenAsidSysState": "Application instance is not in active state and is probably under maintenance. Please try again later.",
-    "uu-dockit-main/document/load/documentDoesNotExist": "The document does not exist. Please, check the property Document URL.",
+    "uulamp-level10-lamp-provider/no-code": "The Identification code property (code) is not defined.",
+    "uulamp-level10-lamp-provider/code-format": "The Identification code property (code) can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
+    "uu-gateway-main/invalidRequest": "Request is invalid. Please check the provided URL.",
+    "uu-app-workspace/forbiddenAwidSysState": "Application workspace is not in an active state and is probably under maintenance. Please try again later.",
+    "uu-app-workspace/forbiddenAsidSysState": "Application instance is not in an active state and is probably under maintenance. Please try again later.",
+    "uu-dockit-main/document/load/documentDoesNotExist": "The document does not exist. Please check the property Document URL.",
     "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "You have no access rights to the document. The lamp and switch are hidden."
   },
   "TimeZones": {
@@ -30,40 +30,41 @@
   "UuLamp.Level02.LampCore": {
     "header": "uuLamp Level 02 - Identity Lamp",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
-    "hiddenInfo": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! Thats why we hide lamp in the box and now you can't tell its state.</UU5.Bricks.P><UU5.Bricks.P>It can be off, it can be on or it can be both - wink - who can tell.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log-in and see for yourself!</UU5.Bricks.P>"
+    "hiddenInfo": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! That is why we hid the lamp in a box and now you cannot tell its state.</UU5.Bricks.P><UU5.Bricks.P>It can be off, it can be on or it can be both - wink - who can tell.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log in and see for yourself!</UU5.Bricks.P>"
   },
   "UuLamp.Level03.LampCore": {
-    "header": "uuLamp Level 03 - Lamp With Props",
+    "header": "uuLamp Level 03 - Lamp with Props",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
-    "hiddenInfo": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! Thats why we hide lamp in the box and now you can't tell its state.</UU5.Bricks.P><UU5.Bricks.P>It can be off, it can be on or it can be both - wink - who can tell.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log-in and see for yourself!</UU5.Bricks.P>"
+    "hiddenInfo": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! That is why we hid the lamp in a box and now you cannot tell its state.</UU5.Bricks.P><UU5.Bricks.P>It can be off, it can be on or it can be both - wink - who can tell.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log in and see for yourself!</UU5.Bricks.P>"
   },
   "UuLamp.Level04.LampCore": {
     "header": "uuLamp Level 04 - Editable Lamp",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
-    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy neznáte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit ho!</UU5.Bricks.P>"
   },
   "UuLamp.Level04.Lamp.EditModalLazy": {
     "properties": "Lamp",
     "state": "State",
     "on": "on",
     "off": "off",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>.",
+    "colorSchema": "Color schema"
   },
   "UuLamp.Level05.LampCore": {
-    "header": "uuLamp Level 05 - Lamp With State",
+    "header": "uuLamp Level 05 - Lamp with State",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level05.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
   },
   "UuLamp.Level05.Lamp.EditModalLazy": {
@@ -71,65 +72,65 @@
     "state": "State",
     "on": "on",
     "off": "off",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level06.LampCore": {
-    "header": "uuLamp Level 06 - Lamp With Context",
+    "header": "uuLamp Level 06 - Lamp with Context",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
-    "noRoom": "The Lamp component is not placed in room! Thats why we hide lamp in the box because we don't know state of light in the room. Maybe it's time to place Lamp into component Room."
+    "noRoom": "The Lamp component is not placed in a room! That is why we hide the lamp in a box - because we don't know the state of light in the room. Maybe it's time to place Lamp into the component Room."
   },
   "UuLamp.Level06.Lamp.EditModalLazy": {
     "properties": "Lamp",
     "header": "Header",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level06.SwitchCore": {
-    "header": "uuLamp Level 06 - Switch With Context",
+    "header": "uuLamp Level 06 - Switch with Context",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
-    "noRoom": "The Switch component is not placed in room! Thats why we hide switch in the box because we don't know state of light in the room. Maybe it's time to place Switch into component Room."
+    "noRoom": "The Switch component is not placed in a room! That is why we hide the switch in a box - because we don't know the state of light in the room. Maybe it's time to place Switch into the component Room."
   },
   "UuLamp.Level06.Switch.EditModalLazy": {
     "properties": "Switch",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level06.RoomCore": {
-    "header": "uuLamp Level 06 - Room With Context",
+    "header": "uuLamp Level 06 - Room with Context",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level06.Room</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
   },
   "UuLamp.Level06.Room.EditModalLazy": {
@@ -139,44 +140,44 @@
     "off": "off",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level07.LampCore": {
-    "header": "uuLamp Level 07 - Time Zone Lamp",
+    "header": "uuLamp Level 07 - Time zone Lamp",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level07.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
   },
   "UuLamp.Level07.Lamp.EditModalLazy": {
     "properties": "Lamp",
-    "timeZone": "Time Zone",
+    "timeZone": "Time zone",
     "header": "Header",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level07.Lamp.LampView.AreaView": {
-    "switchOn": "Turn on",
-    "switchOff": "Turn off",
+    "switchOn": "Switch on",
+    "switchOff": "Switch off",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Level07.TimeZone": {
     "Europe/Prague": "Prague",
@@ -189,53 +190,53 @@
     "state": "State",
     "on": "on",
     "off": "off",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level08.LampCore": {
     "header": "uuLamp Level 08 - Authorization Lamp",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level08.Lamp</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>."
   },
   "UuLamp.Level08.Lamp.LampView.AreaView": {
-    "switchOn": "Turn on",
-    "switchOff": "Turn off",
+    "switchOn": "Switch on",
+    "switchOff": "Switch off",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Level09.Lamp.EditModalLazy": {
     "properties": "Lamp",
     "baseUri": "Lamp Application URL",
-    "code": "Identification Code",
-    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
+    "code": "Identification code",
+    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
     "state": "State",
     "on": "on",
     "off": "off",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level09.LampCore": {
     "header": "uuLamp Level 09 - User Preference Lamp",
@@ -246,13 +247,13 @@
     "preferenceError": "User preference has not been saved due to error."
   },
   "UuLamp.Level09.Lamp.LampView.AreaView": {
-    "switchOn": "Turn on",
-    "switchOff": "Turn off",
+    "switchOn": "Switch on",
+    "switchOff": "Switch off",
     "preference": "Save preference",
     "preferenceDefault": "As default",
     "preferenceSpecific": "Only for this lamp",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Level10.LampCore": {
     "header": "uuLamp Level 10 - uuCloud Lamp",
@@ -264,14 +265,14 @@
   "UuLamp.Level10.Lamp.LampView.AreaView": {
     "reload": "Synchronize",
     "copySwitch": "Copy switch",
-    "copySwitchSuccess": "The switch component copied to clipboard",
+    "copySwitchSuccess": "The switch component was copied to the clipboard",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Level10.SwitchCore": {
     "header": "uuLamp Level 10 - uuCloud Switch",
     "help": "<uu5string/>The <UU5.Bricks.Code>UuLamp.Level10.Switch</UU5.Bricks.Code> component is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='uuLamp educational material' target='_blank'/>.",
-    "noRoom": "The Switch component is not placed in room! Thats why we hide switch in the box because we don't know state of light in the room. Maybe it's time to place Switch into component Room."
+    "noRoom": "The Switch component is not placed in a room! That is why we hide the switch in a box - because we don't know the state of light in the room. Maybe it's time to place Switch into the component Room."
   },
   "UuLamp.Level10.Switch.SwitchView": {
     "reloadError": "The light state was not synchronized due to error!",
@@ -280,76 +281,80 @@
   "UuLamp.Level10.Switch.SwitchView.AreaView": {
     "reload": "Synchronize",
     "copyLamp": "Copy lamp",
-    "copyLampSuccess": "The lamp component copied to clipboard",
+    "copyLampSuccess": "The lamp component was copied to the clipboard",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Level10.Lamp.EditModalLazy": {
     "properties": "Lamp",
-    "baseUri": "Lamp Application URL",
-    "code": "Identification Code",
-    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "baseUri": "Lamp application URL",
+    "code": "Identification code",
+    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level10.Switch.EditModalLazy": {
     "properties": "Switch",
-    "baseUri": "Lamp Application URL",
-    "code": "Identification Code",
-    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. Must have at least 3 characters but not more than 32 characters.",
-    "bulbStyle": "Bulb Style",
-    "bulbSize": "Bulb Size",
+    "baseUri": "Lamp application URL",
+    "code": "Identification code",
+    "codePatternMessage": "Code can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
+    "bulbStyle": "Bulb style",
+    "bulbSize": "Bulb size",
     "header": "Header",
     "visual": "Visual",
-    "card": "Card View",
-    "colorScheme": "Color Scheme",
-    "borderRadius": "Border Radius",
+    "card": "Card view",
+    "colorScheme": "Color scheme",
+    "borderRadius": "Border radius",
     "width": "Width",
     "height": "Height",
     "significance": "Significance",
-    "aspectRatio": "Aspect Ratio",
+    "aspectRatio": "Aspect ratio",
     "advancedConfiguration": "Advanced settings",
     "level": "Heading size",
-    "info": "<uu5string/>For more information see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
+    "info": "<uu5string/>For more information, see <UU5.Bricks.Link href='%s' target='_blank' content='documentation'/>."
   },
   "UuLamp.Level10.LampReloadInfo": {
     "synchronizing": "Synchronizing...",
     "nextUpdateAt": "The light state will be synchronized {0}",
-    "error": "Synchronization ended in error."
+    "error": "Synchronization ended in an error."
   },
   "UuLamp.Core.LampView.AreaView": {
-    "switchOn": "Turn on",
-    "switchOff": "Turn off",
+    "switchOn": "Switch on",
+    "switchOff": "Switch off",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Core.RoomView.AreaView": {
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Core.SwitchView.AreaView": {
-    "switchOn": "Turn on",
-    "switchOff": "Turn off",
+    "switchOn": "Switch on",
+    "switchOff": "Switch off",
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Core.PackageView.AreaView": {
     "copyComponent": "Copy component",
-    "copyComponentSuccess": "The component copied to clipboard"
+    "copyComponentSuccess": "The component was copied to the clipboard"
   },
   "UuLamp.Core.withAuthentication": {
-    "notAuthenticated": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! Thats why we hide content in the box and now you can't tell its state.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log-in and see for yourself!</UU5.Bricks.P>"
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>You are not authenticated and we don't know who you are! That is why we hide the content in a box and now you cannot tell its state.</UU5.Bricks.P><UU5.Bricks.P>Maybe it's time for you to log in and see for yourself!</UU5.Bricks.P>"
+  },
+  "UuLamp.Level10.Lamp.SwitchView": {
+    "reloadError": "The light state was not synchronized due to error!",
+    "setOnError": "The light state was not changed due to error!"
   }
 }

@@ -30,17 +30,17 @@
   "UuLamp.Level02.LampCore": {
     "header": "uuLamp Level 02 - Lampa s identitou",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level02.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
-    "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy nevíte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+    "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy neznáte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit ho!</UU5.Bricks.P>"
   },
   "UuLamp.Level03.LampCore": {
     "header": "uuLamp Level 03 - Lampa s vlastnostmi",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level03.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
-    "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy nevíte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+    "hiddenInfo": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je lampa schována v krabici a vy neznáte její stav.</UU5.Bricks.P><UU5.Bricks.P>Může být rozvíscená, může být zhasnutá, těžko říct.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit ho!</UU5.Bricks.P>"
   },
   "UuLamp.Level04.LampCore": {
     "header": "uuLamp Level 04 - Lampa s editací",
     "help": "<uu5string/>Komponenta <UU5.Bricks.Code>UuLamp.Level04.Lamp</UU5.Bricks.Code> je součástí kurzu uuLamp. Více informace můžete nalézt ve <UU5.Bricks.Link href='https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272' content='vzdělávacích materiálech uuLamp' target='_blank'/>.",
-    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy neznáte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit ho!</UU5.Bricks.P>"
   },
   "UuLamp.Level04.Lamp.EditModalLazy": {
     "properties": "Lampa",
@@ -176,7 +176,7 @@
     "switchOn": "Rozsvítit",
     "switchOff": "Zhasnout",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Level07.TimeZone": {
     "Europe/Prague": "Praha",
@@ -212,7 +212,7 @@
     "switchOn": "Rozsvítit",
     "switchOff": "Zhasnout",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Level09.Lamp.EditModalLazy": {
     "properties": "Lampa",
@@ -252,7 +252,7 @@
     "preferenceDefault": "Jako výchozí",
     "preferenceSpecific": "Pouze pro tuto lampu",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Level10.LampCore": {
     "header": "uuLamp Level 10 - Lampa s uuCloud",
@@ -264,9 +264,9 @@
   "UuLamp.Level10.Lamp.LampView.AreaView": {
     "reload": "Synchronizovat",
     "copySwitch": "Zkopíruj vypínač",
-    "copySwitchSuccess": "Komponenta vypínača zkopírována do schránky",
+    "copySwitchSuccess": "Komponenta vypínače byla zkopírována do schránky",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Level10.SwitchCore": {
     "header": "uuLamp Level 10 - Vypínač se uuCloud",
@@ -280,9 +280,9 @@
   "UuLamp.Level10.Switch.SwitchView.AreaView": {
     "reload": "Synchronizovat",
     "copyLamp": "Zkopíruj lampu",
-    "copyLampSuccess": "Komponenta lampy zkopírována do schránky",
+    "copyLampSuccess": "Komponenta lampy byla zkopírována do schránky",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Level10.Lamp.EditModalLazy": {
     "properties": "Lampa",
@@ -333,23 +333,23 @@
     "switchOn": "Rozsvítit",
     "switchOff": "Zhasnout",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Core.SwitchView.AreaView": {
     "switchOn": "Rozsvítit",
     "switchOff": "Zhasnout",
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Core.RoomView.AreaView": {
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Core.PackageView.AreaView": {
     "copyComponent": "Zkopírovat komponentu",
-    "copyComponentSuccess": "Komponenta zkopírována do schránky"
+    "copyComponentSuccess": "Komponenta byla zkopírována do schránky"
   },
   "UuLamp.Core.withAuthentication": {
-    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy nevíte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit to!</UU5.Bricks.P>"
+    "notAuthenticated": "<uu5string/><UU5.Bricks.P>Nejste přihlášen(a) a nevíme kdo jste! Proto je obsah schován v krabici a vy neznáte jeho stav.</UU5.Bricks.P><UU5.Bricks.P>Asi je čas se přihlásit a zjistit ho!</UU5.Bricks.P>"
   }
 }
