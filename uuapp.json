@@ -10,9 +10,9 @@
   "imageUri": "https://uuapp.plus4u.net/uu-bookkit-maing01/473f29c1997149ba9d3007f756fd4a02/getBookLogo?language=en&type=16x9",
   "devkit": {
     "development": {
-      "appBoxLocationUri": "ues:DEV0114-BT:UU.LAMP/APPBOXES",
-      "appDeploymentUri": "ues:DEV0114-BT[84723967990073193]:AWE_DEMO[5c90a9904f1d8a75778df379]:UU.LAMPG01[603626d5f439f915fa74eb96]",
-      "resourcePoolUri": "ues:DEV0114-BT:AWE_DEMO"
+      "appBoxLocationUri": "ues:UU-BT:UULAMP/UULAMPG01/APPBOXES",
+      "resourcePoolUri": "ues:EMF-BT:FAMILY_EM_DEV_RESOURCEPOOL_AWE",
+      "appDeploymentUri": "ues:EMF-BT[52816343470606949]:FAMILY_EM_DEV_RESOURCEPOOL_AWE[60378981f90380f4b78eef93]:UU.LAMPG01[6380748811b484feca1e6d9d]"
     }
   },
   "uu_lampg01": {
