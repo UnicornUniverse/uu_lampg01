@@ -1,18 +1,15 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
-	"name": "Node.js",
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:16",	
-	"forwardPorts": [4323]
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  "name": "uu_lampg01",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:16",
+  "forwardPorts": [4323],
+  "mounts": ["source=uu_lampg01-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"],
+  "postCreateCommand": "sudo chown node:node -R ./",
+  "remoteEnv": {
+    "DEV_CHROME_DIR": "${localEnv:DEV_CHROME_DIR}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "mhutchie.git-graph", "eamodio.gitlens"]
+    }
+  }
 }
