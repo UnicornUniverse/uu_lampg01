@@ -5,8 +5,7 @@
       "label": "eslint",
       "type": "shell",
       "command": "./node_modules/.bin/eslint",
-      "options": { "cwd": "${workspaceFolder}/uu_lampg01" },
-      "args": ["./src", "./test", "./mock"],
+      "args": ["**/src", "**/test", "**/mock"],
       "problemMatcher": "$eslint-stylish"
     }
   ]
