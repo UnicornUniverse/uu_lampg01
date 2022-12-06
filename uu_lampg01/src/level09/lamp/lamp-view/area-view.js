@@ -140,6 +140,7 @@ function getActions(props, lsi, { handleCopyComponent }) {
     });
 
     actionList.push({
+      icon: "mdi-settings",
       children: lsi.preference,
       collapsed: true,
       itemList: [
