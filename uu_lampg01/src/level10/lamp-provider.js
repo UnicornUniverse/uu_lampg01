@@ -158,7 +158,12 @@ function getPropertyCode(code) {
 }
 
 function getNextUpdateAt() {
-  return UuDateTime.utc().shiftTime(10000);
+  const now = UuDateTime.utc();
+  // Try to synchronize lamps and switches to have same counter value.
+  // The difference between current time (e.g. 14:52:12) and next multipe of ten (e.g 14:52:20)
+  // is found (e.g. 8 s) and converted to miliseconds (e.g. 8000 ms).
+  const shift = (10 - (now.getSecond() % 10)) * 1000;
+  return now.shiftTime(shift);
 }
 //@@viewOff:helpers
 
