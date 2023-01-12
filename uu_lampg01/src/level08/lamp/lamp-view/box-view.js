@@ -8,7 +8,7 @@ import importLsi from "../../../lsi/import-lsi";
 
 //@@viewOn:css
 const Css = {
-  box: () =>
+  main: () =>
     Config.Css.css({
       display: "flex",
       justifyContent: "center",
@@ -62,7 +62,7 @@ const BoxView = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const { elementProps } = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props, Css.main());
 
     if (!props.aspectRatio && !props.width) {
       props.height = "100%";
@@ -70,14 +70,13 @@ const BoxView = createVisualComponent({
 
     return (
       <Box
-        className={Css.box()}
+        {...elementProps}
         colorScheme={props.colorScheme}
         width={props.width}
         height={props.height}
         significance={props.significance}
         borderRadius={props.borderRadius}
         aspectRatio={props.aspectRatio}
-        {...elementProps}
       >
         <Core.DataObjectStateResolver
           dataObject={props.documentDataObject}

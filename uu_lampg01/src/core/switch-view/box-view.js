@@ -7,7 +7,7 @@ import Config from "./config/config";
 
 //@@viewOn:css
 const Css = {
-  box: () =>
+  main: () =>
     Config.Css.css({
       padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
     }),
@@ -50,11 +50,11 @@ const BoxView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const { elementProps } = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props, Css.main());
 
     return (
       <Box
-        className={Css.box()}
+        {...elementProps}
         colorScheme={props.colorScheme}
         width={props.width}
         height={props.height}
@@ -62,7 +62,6 @@ const BoxView = createVisualComponent({
         borderRadius={props.borderRadius}
         aspectRatio={props.aspectRatio}
         shape="interactiveElement"
-        {...elementProps}
       >
         <SwitchSelect
           {...elementProps}

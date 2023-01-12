@@ -42,17 +42,17 @@
             <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (string)" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}"  header="Lamp 10" />
+            <UuLamp.Level10.Switch baseUri="${baseUri}"  header="Lamp 10" code="123" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}"   header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 10\\\", \\\"cs\\\": \\\"Lampa 10\\\"}"/>' />
+            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123"    header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 10\\\", \\\"cs\\\": \\\"Lampa 10\\\"}"/>' />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
             <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="inline" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Inline and font size equal to 50px" headerType="heading">
             <div style="<uu5json/>{\\\"fontSize\\\": \\\"50px\\\"}">
-                <span>Some custom text before ...</span><UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="inline" /><span>... and some custom text after.</span>
+                <span>Some custom text before ...</span><UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="inline" code="123"  /><span>... and some custom text after.</span>
             </div>     
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box and BulbSize = S" headerType="heading">
@@ -68,7 +68,7 @@
             <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="box" bulbSize="xl" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="box" />
+            <UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="box" code="123"  />
           </Uu5Elements.Block>
 
           <Uu5g05.SessionProvider authenticationService={undefined}>
