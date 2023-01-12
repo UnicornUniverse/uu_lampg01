@@ -24,7 +24,7 @@ const Clock = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     return (

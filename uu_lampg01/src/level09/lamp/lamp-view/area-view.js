@@ -79,7 +79,7 @@ const AreaView = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
     const actionList = getActions(props, lsi, { handleCopyComponent });
 
     if (!props.aspectRatio && !props.width) {

@@ -41,20 +41,20 @@ const DataObjectPending = createVisualComponent({
   render(props) {
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const { height, ...otherProps } = props;
     const className = Css.placeholder(height);
-    const [elementProps, pendingProps] = Utils.VisualComponent.splitProps(otherProps, className);
+    const { elementProps, componentProps } = Utils.VisualComponent.splitProps(viewProps, className);
+    const { height, ...viewProps } = componentProps;
 
     switch (currentNestingLevel) {
       case "box":
         return (
           <div {...elementProps}>
-            <Pending {...pendingProps} size="xl" className={Config.Css.css`display: block`} />
+            <Pending {...viewProps} size="xl" className={Config.Css.css`display: block`} />
           </div>
         );
       case "inline":
       default:
-        return <Pending {...pendingProps} nestingLevel="inline" />;
+        return <Pending {...elementProps} {...viewProps} nestingLevel="inline" />;
     }
     //@@viewOff:render
   },

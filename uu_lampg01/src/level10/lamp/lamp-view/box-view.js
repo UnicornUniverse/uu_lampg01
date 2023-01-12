@@ -57,7 +57,7 @@ const BoxView = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
 
     if (!props.aspectRatio && !props.width) {
       props.height = "230px";

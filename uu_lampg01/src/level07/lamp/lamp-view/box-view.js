@@ -62,7 +62,7 @@ const BoxView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
     const clockCss = Config.Css.css({ padding: UuGds.SpacingPalette.getValue(["fixed", "e"]) });
 
     return (

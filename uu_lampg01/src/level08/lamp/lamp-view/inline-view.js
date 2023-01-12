@@ -38,7 +38,7 @@ const LampViewInline = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
 
     return (
       <Core.DataObjectStateResolver
