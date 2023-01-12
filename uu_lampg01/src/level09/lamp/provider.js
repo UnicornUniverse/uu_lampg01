@@ -36,7 +36,7 @@ const Provider = createComponent({
     //@@viewOn:private
     const lampDataObject = useDataObject({
       handlerMap: {
-        get: handleGet,
+        load: handleLoad,
         setOn: handleSetOn,
         setBulbSize: handleSetBulbSize,
         savePreference: handleSavePreference,
@@ -46,7 +46,7 @@ const Provider = createComponent({
 
     const prevPropsRef = useRef({ ...props, personDataObject });
 
-    async function handleGet() {
+    async function handleLoad() {
       let lamp = { on: props.on, bulbSize: props.bulbSize }; // default lamp
 
       const codeList = [];
@@ -132,7 +132,7 @@ const Provider = createComponent({
 
         try {
           prevPropsRef.current = { ...props, personDataObject };
-          await lampDataObject.handlerMap.get();
+          await lampDataObject.handlerMap.load();
         } catch (error) {
           Provider.logger.error(error);
         }
