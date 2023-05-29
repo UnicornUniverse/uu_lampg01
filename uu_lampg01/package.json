@@ -4,7 +4,7 @@
   "description": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
   "license": "License Commercial",
   "namespace": "UuLamp",
-  "spec": "uu5-lib; uu_appg01_devkit@5.5.0",
+  "spec": "uu5-lib; uu_appg01_devkit@5.14.0",
   "dependencies": {
     "uu_appg01": "^5.14.1",
     "uu_i18ng01": "^1.1.0",
@@ -41,7 +41,8 @@
   },
   "main": "src/index.js",
   "files": [
-    "dist*"
+    "dist",
+    "dist-node"
   ],
   "prettier": {
     "printWidth": 120
