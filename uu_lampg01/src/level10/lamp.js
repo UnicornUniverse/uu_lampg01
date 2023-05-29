@@ -48,6 +48,7 @@ const LampCore = createVisualComponent({
   render(props) {
     //@@viewOn:private
     const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
+    const { baseUri, code, on, header, ...viewProps } = props;
 
     function handleCopySwitch() {
       const component = `<UuLamp.Level10.Switch baseUri="${baseUri}" code="${code}" />`;
@@ -65,8 +66,6 @@ const LampCore = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const { baseUri, code, on, header, ...viewProps } = props;
-
     return (
       <LampProvider baseUri={props.baseUri} code={props.code}>
         {(lampDataObject) => {

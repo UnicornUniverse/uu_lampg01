@@ -1,8 +1,7 @@
 //@@viewOn:imports
-import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
-import { Block, Text, Box, Icon, UuGds, useAlertBus } from "uu5g05-elements";
+import { Utils, PropTypes, createVisualComponent } from "uu5g05";
+import { Block, Text, Box, Icon, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -58,19 +57,6 @@ const AreaView = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-    const lsi = useLsi(importLsi, [AreaView.uu5Tag]);
-    const { addAlert } = useAlertBus();
-
-    function handleCopyComponent() {
-      const uu5string = props.onCopyComponent();
-      Utils.Clipboard.write(uu5string);
-
-      addAlert({
-        message: lsi.copyComponentSuccess,
-        priority: "success",
-        durationMs: 2000,
-      });
-    }
     //@@viewOff:private
 
     //@@viewOn:render

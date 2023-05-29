@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { PropTypes, createVisualComponent, useState, useLayoutEffect, useLanguage, Utils, useLsi, Lsi } from "uu5g05";
-import { UuGds, Text } from "uu5g05-elements";
+import { Text } from "uu5g05-elements";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Core from "../core/core";

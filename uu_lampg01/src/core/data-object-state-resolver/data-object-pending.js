@@ -41,7 +41,7 @@ const DataObjectPending = createVisualComponent({
   render(props) {
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const className = Css.placeholder(height);
+    const className = Css.placeholder(props.height);
     const { elementProps, componentProps } = Utils.VisualComponent.splitProps(props, className);
     const { height, ...viewProps } = componentProps;
 

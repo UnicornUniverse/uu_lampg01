@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { Content, createVisualComponent, PropTypes } from "uu5g05";
-import { Box, Modal, UuGds } from "uu5g05-elements";
+import { Box, Modal } from "uu5g05-elements";
 import Config from "./config/config.js";
 import RoomHeader from "./header";
 //@@viewOff:imports
