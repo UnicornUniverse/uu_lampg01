@@ -171,7 +171,7 @@
         "icon": "mdi-desk-lamp",
         "imageUri": "https://docs.unicorn.com/UuLampLevel09Lamp",
         "uuEccReady": true,
-        "template": "<UuLamp.Level09.Lamp baseUri=\"https://uuapp-dev.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
+        "template": "<UuLamp.Level09.Lamp code=\"${idHex32}\" />"
       },
       {
         "code": "UuLamp.Level10.Lamp",
@@ -185,7 +185,7 @@
         "icon": "mdi-desk-lamp",
         "imageUri": "https://docs.unicorn.com/UuLampLevel10Lamp",
         "uuEccReady": true,
-        "template": "<UuLamp.Level10.Lamp baseUri=\"https://uuapp-dev.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
+        "template": "<UuLamp.Level10.Lamp code=\"${idHex32}\" />"
       },
       {
         "code": "UuLamp.Level10.Switch",
@@ -199,7 +199,7 @@
         "icon": "mdi-toggle-switch-outline",
         "imageUri": "https://docs.unicorn.com/UuLampLevel10Switch",
         "uuEccReady": true,
-        "template": "<UuLamp.Level10.Switch baseUri=\"https://uuapp-dev.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/\" code=\"${idHex32}\" />"
+        "template": "<UuLamp.Level10.Switch code=\"${idHex32}\" />"
       }
     ]
   }

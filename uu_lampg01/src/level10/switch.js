@@ -18,7 +18,6 @@ const SwitchCore = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
     header: PropTypes.node,
     card: PropTypes.oneOf(["none", "content", "full"]),
@@ -41,20 +40,20 @@ const SwitchCore = createVisualComponent({
     const lsi = useLsi(importLsi, [SwitchCore.uu5Tag]);
 
     function handleCopyLamp() {
-      const component = `<UuLamp.Level10.Lamp baseUri="${props.baseUri}" code="${props.code}" />`;
+      const component = `<UuLamp.Level10.Lamp code="${props.code}" />`;
       Utils.Clipboard.write(component);
     }
 
     function handleCopyComponent() {
-      return createCopyTag(Config.TAG + "Switch", props, ["header", "baseUri", "code"], SwitchCore.defaultProps);
+      return createCopyTag(Config.TAG + "Switch", props, ["header", "code"], SwitchCore.defaultProps);
     }
     //@@viewOff:private
 
     //@@viewOn:render
-    const { baseUri, code, on, header, ...viewProps } = props;
+    const { code, on, header, ...viewProps } = props;
 
     return (
-      <LampProvider baseUri={baseUri} code={code}>
+      <LampProvider code={code}>
         {(lampDataObject) => {
           return (
             <SwitchView

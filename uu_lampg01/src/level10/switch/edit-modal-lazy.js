@@ -22,7 +22,7 @@ const EditModalLazy = createVisualComponent({
       {
         label: lsi.properties,
         layout: {
-          xs: "header, baseUri, code",
+          xs: "header, code",
         },
       },
       {
@@ -50,12 +50,6 @@ const EditModalLazy = createVisualComponent({
     ];
 
     const propInputMap = {
-      baseUri: {
-        component: FormText,
-        props: {
-          label: lsi.baseUri,
-        },
-      },
       code: {
         component: FormText,
         props: {

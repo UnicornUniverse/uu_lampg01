@@ -43,12 +43,13 @@ const DataObjectPending = createVisualComponent({
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
     const className = Css.placeholder(props.height);
     const { elementProps, componentProps } = Utils.VisualComponent.splitProps(props, className);
+    const attrs = Utils.VisualComponent.getAttrs(elementProps, className);
     const { height, ...viewProps } = componentProps;
 
     switch (currentNestingLevel) {
       case "box":
         return (
-          <div {...elementProps}>
+          <div {...attrs}>
             <Pending {...viewProps} size="xl" className={Config.Css.css`display: block`} />
           </div>
         );

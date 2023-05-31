@@ -9,7 +9,6 @@
     "serviceUnavailable": "Service is currently unavailable. Please try again later.",
     "requestTimeout": "Request timeout. Please try again later.",
     "baseNetworkError": "Network error - resource is not available or does not exist.",
-    "uulamp-level10-lamp-provider/no-base-uri": "The Lamp URL property (baseUri) is not defined.",
     "uulamp-level10-lamp-provider/no-code": "The Identification code property (code) is not defined.",
     "uulamp-level10-lamp-provider/code-format": "The Identification code property (code) can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
     "uu-gateway-main/invalidRequest": "Request is invalid. Please check the provided URL.",
@@ -217,7 +216,6 @@
   },
   "UuLamp.Level09.Lamp.EditModalLazy": {
     "properties": "Lamp",
-    "baseUri": "Lamp Application URL",
     "code": "Identification code",
     "codePatternMessage": "Code can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
     "state": "State",
@@ -287,7 +285,6 @@
   },
   "UuLamp.Level10.Lamp.EditModalLazy": {
     "properties": "Lamp",
-    "baseUri": "Lamp application URL",
     "code": "Identification code",
     "codePatternMessage": "Code can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
     "bulbStyle": "Bulb style",
@@ -307,7 +304,6 @@
   },
   "UuLamp.Level10.Switch.EditModalLazy": {
     "properties": "Switch",
-    "baseUri": "Lamp application URL",
     "code": "Identification code",
     "codePatternMessage": "Code can contain only alphanumeric characters and underscore. It must have at least 3 characters but not more than 32 characters.",
     "bulbStyle": "Bulb style",

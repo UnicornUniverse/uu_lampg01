@@ -5,6 +5,7 @@ import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
 import Calls from "calls";
 import Errors from "./lamp-provider-errors";
+import Provider from "../level09/lamp/provider";
 //@@viewOff:imports
 
 const STATICS = {
@@ -13,9 +14,6 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-const PROPERTY_CODE = STATICS.uu5Tag.replaceAll(".", "");
-const PROPERTY_SCOPE = "uuAppWorkspace";
-
 const LampProvider = createComponent({
   //@@viewOn:statics
   ...STATICS,
@@ -23,7 +21,6 @@ const LampProvider = createComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
   },
   //@@viewOff:propTypes
@@ -34,22 +31,21 @@ const LampProvider = createComponent({
 
   render(props) {
     //@@viewOn:private
+    const personDataObject = usePerson();
+
     const lampDataObject = useDataObject({
       handlerMap: {
         load: handleGet,
         setOn: handleSetOn,
       },
+      skipInitialLoad: personDataObject.state !== "ready",
     });
-    const personDataObject = usePerson();
 
     const prevPropsRef = useRef({ ...props, personDataObject });
 
     async function handleGet() {
       let lamp = { on: false, nextUpdateAt: getNextUpdateAt() }; // default lamp
-
-      if (!props.baseUri) {
-        throw new Errors.NoBaseUriError();
-      }
+      const mtBaseUri = personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri;
 
       if (!props.code) {
         throw new Errors.NoCodeError();
@@ -60,14 +56,13 @@ const LampProvider = createComponent({
       }
 
       const dtoIn = {
-        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
-        code: getPropertyCode(props.code),
-        scope: PROPERTY_SCOPE,
+        key: Provider.uu5Tag,
+        target: props.code,
       };
 
-      const lampProperty = await Calls.getUserPreferenceProperty(props.baseUri, dtoIn);
+      const lampProperty = await Calls.getUserPreferences(mtBaseUri, dtoIn);
 
-      let data = lampProperty.data?.data;
+      let data = lampProperty.data;
 
       if (data && Object.prototype.hasOwnProperty.call(data, "on")) {
         lamp.on = data.on;
@@ -77,16 +72,17 @@ const LampProvider = createComponent({
     }
 
     async function handleSetOn(on) {
+      const mtBaseUri = personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri;
+
       const dtoIn = {
-        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
-        code: getPropertyCode(props.code),
-        scope: PROPERTY_SCOPE,
+        key: Provider.uu5Tag,
+        target: props.code,
         data: { on },
       };
 
-      const lampProperty = await Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn);
+      const lampProperty = await Calls.setUserPreferences(mtBaseUri, dtoIn);
 
-      return { ...lampProperty.data.data, nextUpdateAt: getNextUpdateAt() };
+      return { ...lampProperty.data, nextUpdateAt: getNextUpdateAt() };
     }
 
     // Trigger of the lamp synchronization everytime the dependencies changed
@@ -95,11 +91,7 @@ const LampProvider = createComponent({
         const prevProps = prevPropsRef.current;
 
         // No change = no reload is required
-        if (
-          prevProps.baseUri === props.baseUri &&
-          prevProps.code === props.code &&
-          prevProps.personDataObject === personDataObject
-        ) {
+        if (prevProps.code === props.code && prevProps.personDataObject === personDataObject) {
           return;
         }
 
@@ -153,10 +145,6 @@ const LampProvider = createComponent({
 });
 
 //@@viewOn:helpers
-function getPropertyCode(code) {
-  return `${PROPERTY_CODE}_${code}`;
-}
-
 function getNextUpdateAt() {
   const now = UuDateTime.utc();
   // Try to synchronize lamps and switches to have same counter value.
