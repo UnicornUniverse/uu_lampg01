@@ -44,7 +44,7 @@ const SwitchView = createVisualComponent({
     card: "none",
     colorScheme: "yellow",
     significance: "common",
-    borderRadius: "none",
+    borderRadius: "moderate",
   },
   //@@viewOff:defaultProps
 
@@ -68,7 +68,7 @@ const SwitchView = createVisualComponent({
 
     async function handleReload() {
       try {
-        await props.lampDataObject.handlerMap.get();
+        await props.lampDataObject.handlerMap.load();
       } catch (error) {
         SwitchView.logger.error(error);
         addAlert({
