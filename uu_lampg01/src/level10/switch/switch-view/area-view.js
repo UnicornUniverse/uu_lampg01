@@ -102,7 +102,7 @@ const AreaView = createVisualComponent({
       props.lampDataObject.state === "error"
     ) {
       actionList.push({
-        icon: <Icon icon="mdi-sync" />,
+        icon: <Icon icon="uugds-refresh" />,
         collapsedChildren: lsi.reload,
         primary: true,
         onClick: props.onReload,
