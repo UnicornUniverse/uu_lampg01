@@ -29,7 +29,6 @@ const EditModalLazy = createVisualComponent({
         template: "visual",
         layout: {
           xs: `
-            colorScheme colorScheme,
             nestingLevel nestingLevel,
             card card,
             significance significance,
