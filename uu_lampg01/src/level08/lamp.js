@@ -1,13 +1,12 @@
 //@@viewOn:imports
 import { PropTypes, createVisualComponent, useLsi, Lsi } from "uu5g05";
-import { Uri } from "uu_appg01";
 import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
 import LampView from "./lamp/lamp-view";
-import LampProvider from "./lamp/provider";
 import EditModal from "./lamp/edit-modal";
+import ProviderResolver from "./lamp/provider-resolver.js";
 import withAuthentication from "../core/with-authentication.js";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
@@ -63,10 +62,9 @@ const LampCore = createVisualComponent({
 
     //@@viewOn:render
     const { documentUri, on, ...viewProps } = props;
-    const { baseUri, documentId } = parseBaseUriAndId(props.documentUri);
 
     return (
-      <LampProvider uuDocKitUri={baseUri} documentId={documentId} on={on}>
+      <ProviderResolver documentUri={documentUri} on={on}>
         {(lamp) => {
           function handleSwitchClick() {
             lamp.setOn(!lamp.on);
@@ -86,24 +84,11 @@ const LampCore = createVisualComponent({
             />
           );
         }}
-      </LampProvider>
+      </ProviderResolver>
     );
     //@@viewOff:render
   },
 });
-
-//@@viewOn:helpers
-function parseBaseUriAndId(documentUri) {
-  if (!documentUri) {
-    return { baseUri: undefined, documentId: undefined };
-  }
-
-  const uri = Uri.Uri.parse(documentUri);
-  const baseUri = uri.getBaseUri(documentUri);
-  const { documentId } = uri.getParameters("documentId");
-  return { baseUri: baseUri.toString(), documentId };
-}
-//@@viewOff:helpers
 
 let Lamp = withAuthentication(LampCore);
 Lamp = withMargin(Lamp);

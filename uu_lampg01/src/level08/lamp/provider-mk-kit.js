@@ -11,8 +11,8 @@ const Provider = createComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    uuDocKitUri: PropTypes.string.isRequired,
-    documentId: PropTypes.string.isRequired,
+    baseUri: PropTypes.string.isRequired,
+    oid: PropTypes.string.isRequired,
     on: PropTypes.bool,
   },
   //@@viewOff:propTypes
@@ -33,22 +33,9 @@ const Provider = createComponent({
       },
     });
 
-    async function handleLoad() {
-      const dtoIn = { id: props.documentId };
-      let dtoOut;
-
-      try {
-        dtoOut = await Calls.loadDocument(props.uuDocKitUri, dtoIn);
-      } catch (error) {
-        // Fix of uuDocKit API where unathorized access is returned with status 400
-        if (error.code === "uu-dockit-main/document/load/userHasNotRightsToLoadDocument") {
-          error.status = 401;
-        }
-
-        throw error;
-      }
-
-      return dtoOut;
+    function handleLoad() {
+      const dtoIn = { oid: props.oid };
+      return Calls.loadDocumentFromManagementKit(props.baseUri, dtoIn);
     }
 
     // *** ON ***
@@ -68,7 +55,7 @@ const Provider = createComponent({
         return false;
       }
 
-      const profiles = documentDataObject.data.uuAppTypeProfileList;
+      const profiles = documentDataObject.data.territoryData.data.authorizationResult.authorizedUuAppTypeProfileList;
       const isWriter = profiles.indexOf("Writers") > -1;
       return isWriter;
     }, [documentDataObject]);

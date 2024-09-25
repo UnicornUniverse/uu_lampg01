@@ -10,8 +10,13 @@ let Calls = {
     return response.data;
   },
 
-  loadDocument(baseUri, dtoIn) {
+  loadDocumentFromDocKit(baseUri, dtoIn) {
     let commandUri = Calls.getCommandUri("document/load", baseUri);
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
+  loadDocumentFromManagementKit(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("document/loadByOid", baseUri);
     return Calls.call("get", commandUri, dtoIn);
   },
 
