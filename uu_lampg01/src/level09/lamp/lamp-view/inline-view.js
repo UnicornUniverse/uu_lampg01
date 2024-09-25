@@ -1,8 +1,10 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Text } from "uu5g05-elements";
-import Core from "../../../core/core";
 import Config from "./config/config";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import LampSwitch from "../../../core/lamp-switch";
+import Bulb from "../../../core/bulb";
 //@@viewOff:imports
 
 const InlineView = createVisualComponent({
@@ -33,16 +35,16 @@ const InlineView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel="inline">
+      <DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel="inline">
         <Text nestingLevel="inline" {...elementProps}>
-          <Core.Bulb
+          <Bulb
             on={props.lampDataObject.data?.on}
             bulbStyle={props.bulbStyle}
             colorScheme={props.colorScheme}
             nestingLevel="inline"
           />
           {props.showSwitch && (
-            <Core.LampSwitch
+            <LampSwitch
               on={props.lampDataObject.data?.on}
               colorScheme={props.colorScheme}
               onClick={props.onSwitchClick}
@@ -50,7 +52,7 @@ const InlineView = createVisualComponent({
             />
           )}
         </Text>
-      </Core.DataObjectStateResolver>
+      </DataObjectStateResolver>
     );
     //@@viewOff:render
   },

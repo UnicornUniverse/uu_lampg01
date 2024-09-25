@@ -2,7 +2,9 @@
 import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
 import { Text } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import LampSwitch from "../../../core/lamp-switch";
+import Bulb from "../../../core/bulb";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -41,15 +43,11 @@ const LampViewInline = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      <Core.DataObjectStateResolver
-        dataObject={props.documentDataObject}
-        nestingLevel={"inline"}
-        customErrorLsi={errorsLsi}
-      >
+      <DataObjectStateResolver dataObject={props.documentDataObject} nestingLevel={"inline"} customErrorLsi={errorsLsi}>
         <Text nestingLevel={"inline"} {...elementProps}>
-          <Core.Bulb on={props.on} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} nestingLevel="inline" />
+          <Bulb on={props.on} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} nestingLevel="inline" />
           {props.showSwitch && (
-            <Core.LampSwitch
+            <LampSwitch
               on={props.on}
               colorScheme={props.colorScheme}
               onClick={props.onSwitchClick}
@@ -57,7 +55,7 @@ const LampViewInline = createVisualComponent({
             />
           )}
         </Text>
-      </Core.DataObjectStateResolver>
+      </DataObjectStateResolver>
     );
     //@@viewOff:render
   },

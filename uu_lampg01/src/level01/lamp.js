@@ -4,7 +4,7 @@ import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import Core from "../core/core";
+import LampView from "../core/lamp-view";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -34,7 +34,7 @@ const LampCore = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <Core.LampView
+      <LampView
         {...props}
         header={props.header ?? lsi.header}
         help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}

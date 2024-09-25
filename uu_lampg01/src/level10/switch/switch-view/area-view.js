@@ -2,8 +2,9 @@
 import { PropTypes, createVisualComponent, useLsi, Utils } from "uu5g05";
 import { Block, Box, Icon, useAlertBus, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
 import LampReloadInfo from "../../lamp-reload-info";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import LampSwitch from "../../../core/lamp-switch";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -123,7 +124,7 @@ const AreaView = createVisualComponent({
         actionList={actionList}
         {...elementProps}
       >
-        <Core.DataObjectStateResolver
+        <DataObjectStateResolver
           dataObject={props.lampDataObject}
           height={PLACEHOLDER_HEIGHT}
           customErrorLsi={errorsLsi}
@@ -134,7 +135,7 @@ const AreaView = createVisualComponent({
             shape="interactiveElement"
             significance={props.significance === "common" ? "subdued" : "highlighted"}
           >
-            <Core.LampSwitch
+            <LampSwitch
               on={props.lampDataObject.data?.on}
               onClick={props.onSwitchClick}
               colorScheme={props.colorScheme}
@@ -143,7 +144,7 @@ const AreaView = createVisualComponent({
             />
             <LampReloadInfo lampDataObject={props.lampDataObject} />
           </Box>
-        </Core.DataObjectStateResolver>
+        </DataObjectStateResolver>
       </Block>
     );
     //@@viewOff:render

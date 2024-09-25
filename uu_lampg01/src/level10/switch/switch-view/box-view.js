@@ -2,8 +2,9 @@
 import { PropTypes, Utils, createVisualComponent, useLsi } from "uu5g05";
 import { Box, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
 import LampReloadInfo from "../../lamp-reload-info";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import LampSwitch from "../../../core/lamp-switch";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -76,12 +77,8 @@ const BoxView = createVisualComponent({
         aspectRatio={props.aspectRatio}
         {...elementProps}
       >
-        <Core.DataObjectStateResolver
-          dataObject={props.lampDataObject}
-          height={props.height}
-          customErrorLsi={errorsLsi}
-        >
-          <Core.LampSwitch
+        <DataObjectStateResolver dataObject={props.lampDataObject} height={props.height} customErrorLsi={errorsLsi}>
+          <LampSwitch
             on={props.lampDataObject.data?.on}
             onClick={props.onSwitchClick}
             colorScheme={props.colorScheme}
@@ -89,7 +86,7 @@ const BoxView = createVisualComponent({
             nestingLevel="box"
           />
           <LampReloadInfo lampDataObject={props.lampDataObject} />
-        </Core.DataObjectStateResolver>
+        </DataObjectStateResolver>
       </Box>
     );
     //@@viewOff:render

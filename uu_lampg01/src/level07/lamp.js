@@ -13,7 +13,7 @@ import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import Core from "../core/core";
+import withAuthentication from "../core/with-authentication";
 import SunProvider from "./lamp/sun-provider";
 import EditModal from "./lamp/edit-modal";
 import LampView from "./lamp/lamp-view";
@@ -75,7 +75,7 @@ const LampCore = createVisualComponent({
         Config.TAG + "Lamp",
         props,
         ["timeZone", "bulbStyle", "bulbSize", "header"],
-        LampCore.defaultProps
+        LampCore.defaultProps,
       );
     }
 
@@ -106,7 +106,7 @@ const LampCore = createVisualComponent({
   },
 });
 
-let Lamp = Core.withAuthentication(LampCore);
+let Lamp = withAuthentication(LampCore);
 Lamp = withMargin(Lamp);
 Lamp = withEditModal(Lamp, EditModal);
 Lamp = withErrorBoundary(Lamp);

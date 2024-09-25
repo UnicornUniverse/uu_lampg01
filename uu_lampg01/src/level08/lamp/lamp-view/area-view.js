@@ -2,7 +2,8 @@
 import { Utils, PropTypes, createVisualComponent, useLsi, useEffect } from "uu5g05";
 import { Block, Box, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import Bulb from "../../../core/bulb";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -110,7 +111,7 @@ const AreaView = createVisualComponent({
         {...elementProps}
       >
         {(block) => (
-          <Core.DataObjectStateResolver
+          <DataObjectStateResolver
             dataObject={props.documentDataObject}
             height={props.height}
             customErrorLsi={errorsLsi}
@@ -121,7 +122,7 @@ const AreaView = createVisualComponent({
               shape="interactiveElement"
               significance={props.significance === "common" ? "subdued" : "highlighted"}
             >
-              <Core.Bulb
+              <Bulb
                 on={props.on}
                 bulbSize={props.bulbSize}
                 bulbStyle={props.bulbStyle}
@@ -129,7 +130,7 @@ const AreaView = createVisualComponent({
                 nestingLevel="area"
               />
             </Box>
-          </Core.DataObjectStateResolver>
+          </DataObjectStateResolver>
         )}
       </Block>
     );

@@ -2,8 +2,9 @@
 import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
 import { Block, Box, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
 import BulbSizePicker from "./bulb-size-picker";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import Bulb from "../../../core/bulb";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -100,11 +101,7 @@ const AreaView = createVisualComponent({
         {...elementProps}
       >
         {(block) => (
-          <Core.DataObjectStateResolver
-            dataObject={props.lampDataObject}
-            height={props.height}
-            customErrorLsi={errorsLsi}
-          >
+          <DataObjectStateResolver dataObject={props.lampDataObject} height={props.height} customErrorLsi={errorsLsi}>
             <Box
               className={Css.box(block)}
               colorScheme={props.colorScheme}
@@ -112,7 +109,7 @@ const AreaView = createVisualComponent({
               significance={props.significance === "common" ? "subdued" : "highlighted"}
             >
               <BulbSizePicker bulbSize={props.lampDataObject.data?.bulbSize} onChange={props.onBulbSizeChange} />
-              <Core.Bulb
+              <Bulb
                 on={props.lampDataObject.data?.on}
                 bulbSize={props.lampDataObject.data?.bulbSize}
                 bulbStyle={props.bulbStyle}
@@ -120,7 +117,7 @@ const AreaView = createVisualComponent({
                 nestingLevel="area"
               />
             </Box>
-          </Core.DataObjectStateResolver>
+          </DataObjectStateResolver>
         )}
       </Block>
     );

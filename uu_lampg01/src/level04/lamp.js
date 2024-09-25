@@ -4,7 +4,8 @@ import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import Core from "../core/core";
+import withAuthentication from "../core/with-authentication.js";
+import LampView from "../core/lamp-view.js";
 import EditModal from "./lamp/edit-modal";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
@@ -52,14 +53,14 @@ const LampCore = createVisualComponent({
         Config.TAG + "Lamp",
         props,
         ["on", "bulbStyle", "bulbSize", "header"],
-        LampCore.defaultProps
+        LampCore.defaultProps,
       );
     }
     //@@viewOff:private
 
     //@@viewOn:render
     return (
-      <Core.LampView
+      <LampView
         {...props}
         header={props.header ?? lsi.header}
         help={<Lsi import={importLsi} path={[LampCore.uu5Tag, "help"]} />}
@@ -70,7 +71,7 @@ const LampCore = createVisualComponent({
   },
 });
 
-let Lamp = Core.withAuthentication(LampCore);
+let Lamp = withAuthentication(LampCore);
 Lamp = withMargin(Lamp);
 Lamp = withEditModal(Lamp, EditModal);
 Lamp = withErrorBoundary(Lamp);

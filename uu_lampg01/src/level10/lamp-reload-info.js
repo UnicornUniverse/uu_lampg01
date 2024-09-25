@@ -1,9 +1,9 @@
 //@@viewOn:imports
 import { PropTypes, createVisualComponent, useState, useLayoutEffect, useLanguage, Utils, useLsi, Lsi } from "uu5g05";
-import { UuGds, Text } from "uu5g05-elements";
+import { Text } from "uu5g05-elements";
 import { UuDateTime } from "uu_i18ng01";
 import Config from "./config/config";
-import Core from "../core/core";
+import Error from "../core/error";
 import importLsi from "../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -51,7 +51,7 @@ const LampReloadInfo = createVisualComponent({
         break;
       }
       case "error":
-        child = <Core.Error errorData={props.lampDataObject.errorData} nestingLevel="inline" />;
+        child = <Error errorData={props.lampDataObject.errorData} nestingLevel="inline" />;
         break;
       default:
         child = null;

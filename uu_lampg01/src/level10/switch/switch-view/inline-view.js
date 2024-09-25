@@ -2,8 +2,9 @@
 import { PropTypes, createVisualComponent, Utils } from "uu5g05";
 import { Text } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
 import LampReloadInfo from "../../lamp-reload-info";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
+import LampSwitch from "../../../core/lamp-switch";
 //@@viewOff:imports
 
 const InlineView = createVisualComponent({
@@ -30,9 +31,9 @@ const InlineView = createVisualComponent({
     const [elementProps] = Utils.VisualComponent.splitProps(props);
 
     return (
-      <Core.DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel="inline">
+      <DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel="inline">
         <Text nestingLevel="inline" {...elementProps}>
-          <Core.LampSwitch
+          <LampSwitch
             on={props.lampDataObject.data?.on}
             onClick={props.onSwitchClick}
             colorScheme={props.colorScheme}
@@ -40,7 +41,7 @@ const InlineView = createVisualComponent({
           />
           <LampReloadInfo lampDataObject={props.lampDataObject} />
         </Text>
-      </Core.DataObjectStateResolver>
+      </DataObjectStateResolver>
     );
     //@@viewOff:render
   },

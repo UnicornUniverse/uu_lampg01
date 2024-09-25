@@ -3,8 +3,8 @@ import { Utils, PropTypes, createVisualComponent, useLsi } from "uu5g05";
 import { Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
 import Clock from "../clock";
-import Core from "../../../core/core";
 import TimeZoneSwitch from "../time-zone-switch";
+import Bulb from "../../../core/bulb";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
 
@@ -106,7 +106,7 @@ const AreaView = createVisualComponent({
             shape="interactiveElement"
             significance={props.significance === "common" ? "subdued" : "highlighted"}
           >
-            <Core.Bulb
+            <Bulb
               className={Css.bulb()}
               on={props.on}
               bulbSize={props.bulbSize}

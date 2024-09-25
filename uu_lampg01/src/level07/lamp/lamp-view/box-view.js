@@ -2,8 +2,8 @@
 import { PropTypes, Utils, createVisualComponent } from "uu5g05";
 import { Box, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
 import TimeZoneSwitch from "../time-zone-switch";
+import Bulb from "../../../core/bulb";
 import Clock from "../clock";
 //@@viewOff:imports
 
@@ -76,7 +76,7 @@ const BoxView = createVisualComponent({
         aspectRatio={props.aspectRatio}
         {...elementProps}
       >
-        <Core.Bulb
+        <Bulb
           className={Css.bulb()}
           on={props.on}
           bulbSize={props.bulbSize}

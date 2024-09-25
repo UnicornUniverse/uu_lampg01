@@ -2,7 +2,9 @@
 import { PropTypes, createVisualComponent, Utils, useLsi } from "uu5g05";
 import { Box, UuGds } from "uu5g05-elements";
 import Config from "./config/config";
-import Core from "../../../core/core";
+import Bulb from "../../../core/bulb";
+import LampSwitch from "../../../core/lamp-switch";
+import DataObjectStateResolver from "../../../core/data-object-state-resolver";
 import BulbSizePicker from "./bulb-size-picker";
 import importLsi from "../../../lsi/import-lsi";
 //@@viewOff:imports
@@ -77,27 +79,23 @@ const BoxView = createVisualComponent({
         aspectRatio={props.aspectRatio}
         {...elementProps}
       >
-        <Core.DataObjectStateResolver
-          dataObject={props.lampDataObject}
-          height={props.height}
-          customErrorLsi={errorsLsi}
-        >
+        <DataObjectStateResolver dataObject={props.lampDataObject} height={props.height} customErrorLsi={errorsLsi}>
           <BulbSizePicker bulbSize={props.lampDataObject.data?.bulbSize} onChange={props.onBulbSizeChange} />
-          <Core.Bulb
+          <Bulb
             on={props.lampDataObject.data?.on}
             bulbSize={props.lampDataObject.data?.bulbSize}
             bulbStyle={props.bulbStyle}
             colorScheme={props.colorScheme}
             nestingLevel="box"
           />
-          <Core.LampSwitch
+          <LampSwitch
             on={props.lampDataObject.data?.on}
             bulbSize={props.lampDataObject.data?.bulbSize}
             colorScheme={props.colorScheme}
             onClick={props.onSwitchClick}
             nestingLevel="box"
           />
-        </Core.DataObjectStateResolver>
+        </DataObjectStateResolver>
       </Box>
     );
     //@@viewOff:render

@@ -4,7 +4,8 @@ import { withEditModal, withMargin } from "uu5g05-bricks-support";
 import { withErrorBoundary } from "uu_plus4u5g02-elements";
 import { createCopyTag } from "../utils/utils";
 import Config from "./config/config";
-import Core from "../core/core";
+import withAuthentication from "../core/with-authentication";
+import RoomView from "../core/room-view";
 import EditModal from "./room/edit-modal";
 import RoomProvider from "./room/provider";
 import importLsi from "../lsi/import-lsi";
@@ -46,7 +47,7 @@ const RoomCore = createVisualComponent({
     return (
       <RoomProvider on={on}>
         {(room) => (
-          <Core.RoomView
+          <RoomView
             {...viewProps}
             header={header ?? lsi.header}
             help={<Lsi import={importLsi} path={[RoomCore.uu5Tag, "help"]} />}
@@ -54,7 +55,7 @@ const RoomCore = createVisualComponent({
             onCopyComponent={handleCopyComponent}
           >
             {children}
-          </Core.RoomView>
+          </RoomView>
         )}
       </RoomProvider>
     );
@@ -62,7 +63,7 @@ const RoomCore = createVisualComponent({
   },
 });
 
-let Room = Core.withAuthentication(RoomCore);
+let Room = withAuthentication(RoomCore);
 Room = withMargin(Room);
 Room = withEditModal(Room, EditModal);
 Room = withErrorBoundary(Room);

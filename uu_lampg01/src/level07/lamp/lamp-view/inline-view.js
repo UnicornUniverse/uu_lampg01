@@ -3,7 +3,7 @@ import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Text } from "uu5g05-elements";
 import Config from "./config/config";
 import Clock from "../clock";
-import Core from "../../../core/core";
+import Bulb from "../../../core/bulb";
 import TimeZoneSwitch from "../time-zone-switch";
 //@@viewOff:imports
 
@@ -37,7 +37,7 @@ const InlineView = createVisualComponent({
 
     return (
       <Text nestingLevel={"inline"} {...elementProps}>
-        <Core.Bulb on={props.on} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} nestingLevel="inline" />
+        <Bulb on={props.on} bulbStyle={props.bulbStyle} colorScheme={props.colorScheme} nestingLevel="inline" />
         {` `}
         <Clock nestingLevel="inline" />
         {` [`}
