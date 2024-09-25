@@ -29,7 +29,7 @@ const InlineView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
 
     return (
       <DataObjectStateResolver dataObject={props.lampDataObject} nestingLevel="inline">

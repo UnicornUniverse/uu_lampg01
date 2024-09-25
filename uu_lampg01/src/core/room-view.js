@@ -55,11 +55,11 @@ const RoomView = createVisualComponent({
 
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const [elementProps, otherProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps, componentProps } = Utils.VisualComponent.splitProps(props);
 
     return (
       <>
-        {currentNestingLevel === "area" && <AreaView {...elementProps} {...otherProps} />}
+        {currentNestingLevel === "area" && <AreaView {...elementProps} {...componentProps} />}
         {currentNestingLevel === "inline" && (
           <InlineView
             {...elementProps}

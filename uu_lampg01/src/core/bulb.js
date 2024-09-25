@@ -60,7 +60,7 @@ const Bulb = createVisualComponent({
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
     const className = currentNestingLevel !== "inline" ? Css.text(props.bulbSize) : null;
-    const [elementProps] = Utils.VisualComponent.splitProps(props, className);
+    const { elementProps } = Utils.VisualComponent.splitProps(props, className);
 
     const stateCode = props.on ? "-on" : "";
     const styleCode = props.bulbStyle == "outline" ? "-outline" : "";

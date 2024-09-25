@@ -22,14 +22,13 @@ const EditModalLazy = createVisualComponent({
       {
         label: lsi.properties,
         layout: {
-          xs: "baseUri, on, bulbStyle, bulbSize, header, code",
+          xs: "on, bulbStyle, bulbSize, header, code",
         },
       },
       {
         template: "visual",
         layout: {
           xs: `
-            colorScheme colorScheme,
             nestingLevel nestingLevel,
             card card,
             significance significance,
@@ -58,12 +57,6 @@ const EditModalLazy = createVisualComponent({
             { value: true, children: lsi.on },
             { value: false, children: lsi.off },
           ],
-        },
-      },
-      baseUri: {
-        component: FormText,
-        props: {
-          label: lsi.baseUri,
         },
       },
       code: {

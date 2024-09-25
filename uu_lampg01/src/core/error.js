@@ -54,7 +54,7 @@ const Error = createVisualComponent({
         ? Utils.Css.joinClassName(props.className, Css.placeholder(props.height))
         : props.className;
 
-    const [elementProps] = Utils.VisualComponent.splitProps(props, className);
+    const { elementProps } = Utils.VisualComponent.splitProps(props, className);
     const errorStatus = getErrorStatus(props.errorData);
     let message = getMessageByCode(props.errorData, { ...errorsLsi, ...props.customErrorLsi });
 

@@ -9,7 +9,7 @@ import Clock from "../clock";
 
 //@@viewOn:css
 const Css = {
-  box: () =>
+  main: () =>
     Config.Css.css({
       display: "flex",
       justifyContent: "center",
@@ -62,19 +62,18 @@ const BoxView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props, Css.main());
     const clockCss = Config.Css.css({ padding: UuGds.SpacingPalette.getValue(["fixed", "e"]) });
 
     return (
       <Box
-        className={Css.box()}
+        {...elementProps}
         colorScheme={props.colorScheme}
         width={props.width}
         height={props.height}
         significance={props.significance}
         borderRadius={props.borderRadius}
         aspectRatio={props.aspectRatio}
-        {...elementProps}
       >
         <Bulb
           className={Css.bulb()}

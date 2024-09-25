@@ -84,7 +84,7 @@ const AreaView = createVisualComponent({
 
     //@@viewOn:render
     const actionList = getActions(props, lsi, { handleCopyComponent });
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
 
     return (
       <Block

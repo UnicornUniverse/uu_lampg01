@@ -32,9 +32,14 @@ const InlineView = createVisualComponent({
 
     const colorScheme = props.on ? props.colorScheme : "grey";
 
-    const [elementProps] = Utils.VisualComponent.splitProps(props, switchCss);
+    const { elementProps } = Utils.VisualComponent.splitProps(props, switchCss);
     return (
-      <Text nestingLevel="inline" elementAttrs={{ onClick: props.onClick }} colorScheme={colorScheme} {...elementProps}>
+      <Text
+        {...elementProps}
+        nestingLevel="inline"
+        elementAttrs={{ ...elementProps.elementAttrs, onClick: props.onClick }}
+        colorScheme={colorScheme}
+      >
         <Icon icon={switchIcon} />
       </Text>
     );

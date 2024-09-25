@@ -55,13 +55,14 @@ const LampView = createVisualComponent({
   render(props) {
     //@@viewOn:render
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
-    const [elementProps, { onCopyComponent, ...otherProps }] = Utils.VisualComponent.splitProps(props);
+    const { elementProps, componentProps } = Utils.VisualComponent.splitProps(props);
+    const { onCopyComponent, ...viewProps } = componentProps;
 
     switch (currentNestingLevel) {
       case "area":
-        return <AreaView {...elementProps} {...otherProps} onCopyComponent={onCopyComponent} />;
+        return <AreaView {...elementProps} {...viewProps} onCopyComponent={onCopyComponent} />;
       case "box":
-        return <BoxView {...elementProps} {...otherProps} />;
+        return <BoxView {...elementProps} {...viewProps} />;
       case "inline":
       default:
         return (

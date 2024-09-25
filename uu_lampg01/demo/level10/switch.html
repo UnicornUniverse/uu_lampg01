@@ -26,9 +26,6 @@
       import UuLamp from "uu_lampg01";
       import UuEcc from "uu_editablecomponentcontentg03";
 
-      // uuCloud - DEV
-      const baseUri = "https://uuapp-dev.plus4u.net/uu-lamp-maing01/b00d87b719474dc6945ce48c6b722773/";
-
       //@@viewOn:constants
       const section = {
         oid: "section-1",
@@ -39,56 +36,56 @@
             <UuLamp.Level10.Switch />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Code = 123" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" />
+            <UuLamp.Level10.Switch code="123" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (string)" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}"  header="Lamp 10" />
+            <UuLamp.Level10.Switch  header="Lamp 10" code="123" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Custom Header (LSI)" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}"   header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 10\\\", \\\"cs\\\": \\\"Lampa 10\\\"}"/>' />
+            <UuLamp.Level10.Switch code="123"    header='<uu5string/><UU5.Bricks.Lsi lsi="<uu5json/>{\\\"en\\\": \\\"Lamp 10\\\", \\\"cs\\\": \\\"Lampa 10\\\"}"/>' />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Inline" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="inline" />
+            <UuLamp.Level10.Switch code="123" nestingLevel="inline" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Inline and font size equal to 50px" headerType="heading">
             <div style="<uu5json/>{\\\"fontSize\\\": \\\"50px\\\"}">
-                <span>Some custom text before ...</span><UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="inline" /><span>... and some custom text after.</span>
+                <span>Some custom text before ...</span><UuLamp.Level10.Switch nestingLevel="inline" code="123"  /><span>... and some custom text after.</span>
             </div>     
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box and BulbSize = S" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="box" bulbSize="s" />
+            <UuLamp.Level10.Switch code="123" nestingLevel="box" bulbSize="s" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box and BulbSize = M" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="box" bulbSize="m" />
+            <UuLamp.Level10.Switch code="123" nestingLevel="box" bulbSize="m" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box and BulbSize = L" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="box" bulbSize="l" />
+            <UuLamp.Level10.Switch code="123" nestingLevel="box" bulbSize="l" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box and BulbSize = XL" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" code="123" nestingLevel="box" bulbSize="xl" />
+            <UuLamp.Level10.Switch code="123" nestingLevel="box" bulbSize="xl" />
           </Uu5Elements.Block>
           <Uu5Elements.Block header="Nesting Level = Box" headerType="heading">
-            <UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="box" />
+            <UuLamp.Level10.Switch nestingLevel="box" code="123"  />
           </Uu5Elements.Block>
 
           <Uu5g05.SessionProvider authenticationService={undefined}>
             <Uu5Elements.Block header="Not-authenticated" headerType="heading">
-              <UuLamp.Level10.Switch baseUri="${baseUri}" />
+              <UuLamp.Level10.Switch />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and colorScheme = Blue" headerType="heading">
-              <UuLamp.Level10.Switch baseUri="${baseUri}" colorScheme="blue" />
+              <UuLamp.Level10.Switch colorScheme="blue" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and significance = Highlighted" headerType="heading">
-              <UuLamp.Level10.Switch baseUri="${baseUri}" significance="highlighted" />
+              <UuLamp.Level10.Switch significance="highlighted" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Inline" headerType="heading">
-              <UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="inline" />
+              <UuLamp.Level10.Switch nestingLevel="inline" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Box" headerType="heading">
-              <UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="box" />
+              <UuLamp.Level10.Switch nestingLevel="box" />
             </Uu5Elements.Block>
             <Uu5Elements.Block header="Not-authenticated and Nesting Level = Area" headerType="heading">
-              <UuLamp.Level10.Switch baseUri="${baseUri}" nestingLevel="area" />
+              <UuLamp.Level10.Switch nestingLevel="area" />
             </Uu5Elements.Block>
           </Uu5g05.SessionProvider>
         `,

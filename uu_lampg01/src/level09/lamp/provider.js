@@ -5,22 +5,13 @@ import Config from "./config/config";
 import Calls from "calls";
 //@@viewOff:imports
 
-const STATICS = {
+const Provider = createComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "Provider",
   //@@viewOff:statics
-};
-
-const PROPERTY_CODE = STATICS.uu5Tag.replaceAll(".", "");
-// MFA TODO - Revise the scope
-const PROPERTY_SCOPE = "uuAppWorkspace";
-
-const Provider = createComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string.isRequired,
     code: PropTypes.string,
     on: PropTypes.bool,
   },
@@ -34,6 +25,8 @@ const Provider = createComponent({
 
   render(props) {
     //@@viewOn:private
+    const personDataObject = usePerson();
+
     const lampDataObject = useDataObject({
       handlerMap: {
         load: handleLoad,
@@ -41,32 +34,25 @@ const Provider = createComponent({
         setBulbSize: handleSetBulbSize,
         savePreference: handleSavePreference,
       },
+      skipInitialLoad: personDataObject.state !== "ready",
     });
-    const personDataObject = usePerson();
 
     const prevPropsRef = useRef({ ...props, personDataObject });
 
     async function handleLoad() {
       let lamp = { on: props.on, bulbSize: props.bulbSize }; // default lamp
-
-      const codeList = [];
-
-      if (props.code) {
-        codeList.push(`${PROPERTY_CODE}_${props.code}`);
-      }
-
-      // Order of codeList is IMPORTANT because of priority!
-      codeList.push(PROPERTY_CODE);
-
-      const dtoIn = {
-        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
-        codeList,
-      };
+      const mtBaseUri = personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri;
 
       try {
-        const lampProperty = await Calls.loadFirstUserPreferenceProperty(props.baseUri, dtoIn);
+        // First attempt to load user preferences for particular lamp accordit its code
+        let lampProperty = await Calls.getUserPreferences(mtBaseUri, { key: Provider.uu5Tag, target: props.code });
 
-        let data = lampProperty.data?.data;
+        // Otherwise we try to load default user preferences for Provider
+        if (!lampProperty.data) {
+          lampProperty = await Calls.getUserPreferences(mtBaseUri, { key: Provider.uu5Tag });
+        }
+
+        let data = lampProperty.data;
 
         if (data) {
           if (Object.prototype.hasOwnProperty.call(data, "on")) {
@@ -96,16 +82,17 @@ const Provider = createComponent({
     }
 
     async function handleSavePreference(preferenceType) {
+      const mtBaseUri = personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri;
+
       const dtoIn = {
-        mtMainBaseUri: personDataObject.data.systemProfileSettings.uuMyTerritoryMainBaseUri,
-        code: getPropertyCode(props.code, preferenceType),
-        scope: PROPERTY_SCOPE,
+        key: Provider.uu5Tag,
+        target: getPropertyTarget(props.code, preferenceType),
         data: lampDataObject.data,
       };
 
-      const lampProperty = await Calls.createOrUpdateUserPreferenceProperty(props.baseUri, dtoIn);
+      const lampProperty = await Calls.setUserPreferences(mtBaseUri, dtoIn);
 
-      return lampProperty.data.data;
+      return lampProperty.data;
     }
 
     useEffect(() => {
@@ -113,11 +100,7 @@ const Provider = createComponent({
         const prevProps = prevPropsRef.current;
 
         // No change = no reload is required
-        if (
-          prevProps.baseUri === props.baseUri &&
-          prevProps.code === props.code &&
-          prevProps.personDataObject === personDataObject
-        ) {
+        if (prevProps.code === props.code && prevProps.personDataObject === personDataObject) {
           return;
         }
 
@@ -149,13 +132,13 @@ const Provider = createComponent({
 });
 
 //@@viewOn:helpers
-function getPropertyCode(code, preferenceType) {
+function getPropertyTarget(code, preferenceType) {
   switch (preferenceType) {
     case Config.PreferenceType.SPECIFIC:
-      return `${PROPERTY_CODE}_${code}`;
+      return code;
     case Config.PreferenceType.DEFAULT:
     default:
-      return PROPERTY_CODE;
+      return null;
   }
 }
 //@@viewOff:helpers

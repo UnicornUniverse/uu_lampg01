@@ -2,11 +2,6 @@ import Config from "./config/config";
 import { PropertyError } from "../errors/errors";
 
 const ERROR_PREFIX = Config.TAG.toLowerCase().replaceAll(".", "-") + "lamp-provider/";
-export class NoBaseUriError extends PropertyError {
-  constructor(cause) {
-    super(ERROR_PREFIX + "no-base-uri", "The required property baseUri is not defined!", cause);
-  }
-}
 
 export class NoCodeError extends PropertyError {
   constructor(cause) {
@@ -20,4 +15,4 @@ export class CodeFormatError extends PropertyError {
   }
 }
 
-export default { PropertyError, NoBaseUriError, NoCodeError, CodeFormatError };
+export default { PropertyError, NoCodeError, CodeFormatError };

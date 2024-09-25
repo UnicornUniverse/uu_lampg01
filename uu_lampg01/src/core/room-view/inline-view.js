@@ -24,7 +24,7 @@ const InlineView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
 
     return (
       // TODO MFA Waiting for fix of LinkModal. Then portal configartion will be default value.

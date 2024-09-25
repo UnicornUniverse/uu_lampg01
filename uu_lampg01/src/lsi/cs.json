@@ -9,7 +9,6 @@
     "serviceUnavailable": "Služba není momentálně dostupná, zkuste to prosím později.",
     "requestTimeout": "Čas pro komunikaci se serverem vypršel. Zkuste to prosím později.",
     "baseNetworkError": "Chyba sítě - požadovaný zdroj není k dispozici a nebo neexistuje.",
-    "uulamp-level10-lamp-provider/no-base-uri": "URL aplikace Lamp (baseUri) není zadáno.",
     "uulamp-level10-lamp-provider/no-code": "Identifikační kód komponenty (code) není zadán.",
     "uulamp-level10-lamp-provider/code-format": "Identifikační kód (code) může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",
     "uu-gateway-main/invalidRequest": "Požadavek nemohl být zpracován. Zkontrolujte prosím zadané URL.",
@@ -218,7 +217,6 @@
     "properties": "Lampa",
     "code": "Identifikační kód",
     "codePatternMessage": "Kód může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",
-    "baseUri": "URL aplikace Lamp",
     "state": "Stav",
     "on": "zapnuto",
     "off": "vypnuto",
@@ -286,7 +284,6 @@
   },
   "UuLamp.Level10.Lamp.EditModalLazy": {
     "properties": "Lampa",
-    "baseUri": "URL aplikace Lamp",
     "code": "Identifikační kód",
     "codePatternMessage": "Kód může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",
     "bulbStyle": "Styl žárovky",
@@ -306,7 +303,6 @@
   },
   "UuLamp.Level10.Switch.EditModalLazy": {
     "properties": "Vypínač",
-    "baseUri": "URL aplikace Lamp",
     "code": "Identifikační kód",
     "codePatternMessage": "Kód může obsahovat pouze alfanumerické znaky a podtržítko. Musí mít alespoň 3 znaky ale ne více než 32 znaků.",
     "bulbStyle": "Styl žárovky",

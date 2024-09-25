@@ -36,7 +36,7 @@ const TimeZoneSwitch = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
     const currentNestingLevel = Utils.NestingLevel.getNestingLevel(props, STATICS);
 
     const items = TimeZone.list().map((timeZone) => {

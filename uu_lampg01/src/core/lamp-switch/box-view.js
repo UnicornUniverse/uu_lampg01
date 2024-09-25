@@ -2,7 +2,6 @@
 import { Utils, PropTypes, createVisualComponent } from "uu5g05";
 import { Icon, UuGds } from "uu5g05-elements";
 import { SwitchSelect } from "uu5g05-forms";
-import config from "../config/config";
 import Config from "../lamp-view/config/config";
 //@@viewOff:imports
 

@@ -38,7 +38,7 @@ const InlineView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps] = Utils.VisualComponent.splitProps(props, Css.text());
+    const { elementProps } = Utils.VisualComponent.splitProps(props, Css.text());
 
     const switchStateCode = props.on ? "-outline" : "-off";
     const switchIcon = `mdi-toggle-switch${switchStateCode}`;

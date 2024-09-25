@@ -25,18 +25,13 @@ let Calls = {
     return Calls.call("get", commandUri, dtoIn);
   },
 
-  createOrUpdateUserPreferenceProperty(baseUri, dtoIn) {
-    let commandUri = Calls.getCommandUri("userPreferenceProperty/createOrUpdate", baseUri);
+  setUserPreferences(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("setUserPreferences", baseUri);
     return Calls.call("post", commandUri, dtoIn);
   },
 
-  getUserPreferenceProperty(baseUri, dtoIn) {
-    let commandUri = Calls.getCommandUri("userPreferenceProperty/get", baseUri);
-    return Calls.call("get", commandUri, dtoIn);
-  },
-
-  loadFirstUserPreferenceProperty(baseUri, dtoIn) {
-    let commandUri = Calls.getCommandUri("userPreferenceProperty/loadFirst", baseUri);
+  getUserPreferences(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("getUserPreferences", baseUri);
     return Calls.call("get", commandUri, dtoIn);
   },
 

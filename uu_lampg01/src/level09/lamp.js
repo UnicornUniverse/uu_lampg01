@@ -18,7 +18,6 @@ const LampCore = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string,
     code: PropTypes.string,
     on: PropTypes.bool,
     header: PropTypes.node,
@@ -62,10 +61,10 @@ const LampCore = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const { baseUri, code, on, header, ...viewProps } = props;
+    const { code, on, header, ...viewProps } = props;
 
     return (
-      <LampProvider baseUri={baseUri} code={code} on={on} bulbSize={props.bulbSize}>
+      <LampProvider code={code} on={on} bulbSize={props.bulbSize}>
         {(lampDataObject) => (
           <LampView
             {...viewProps}

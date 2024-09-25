@@ -46,10 +46,11 @@ const BoxView = createVisualComponent({
 
   render(props) {
     //@@viewOn:render
-    const [elementProps, { icon, ...otherProps }] = Utils.VisualComponent.splitProps(props, Css.box());
+    const { elementProps, componentProps } = Utils.VisualComponent.splitProps(props, Css.box());
+    const { icon, ...viewProps } = componentProps;
 
     return (
-      <Box {...elementProps} {...otherProps}>
+      <Box {...elementProps} {...viewProps}>
         <Text>{props.info}</Text>
         <Icon className={Css.icon()} icon={icon} colorScheme={props.colorScheme} />
       </Box>

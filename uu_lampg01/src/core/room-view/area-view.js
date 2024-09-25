@@ -1,25 +1,12 @@
 //@@viewOn:imports
 import { Utils, PropTypes, createVisualComponent, useLsi, Content } from "uu5g05";
-import { Block, Box, useAlertBus, UuGds } from "uu5g05-elements";
+import { Block, useAlertBus } from "uu5g05-elements";
 import Config from "./config/config";
 import Header from "./header";
 import importLsi from "../../lsi/import-lsi";
 //@@viewOff:imports
 
 //@@viewOn:css
-const Css = {
-  box: () =>
-    Config.Css.css({
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexDirection: "column",
-      textAlign: "center",
-      borderBottomLeftRadius: "inherit",
-      borderBottomRightRadius: "inherit",
-      padding: UuGds.SpacingPalette.getValue(["fixed", "g"]),
-    }),
-};
 //@@viewOff:css
 
 const AreaView = createVisualComponent({
@@ -69,7 +56,7 @@ const AreaView = createVisualComponent({
 
     //@@viewOn:render
     const actionList = getActions(props, lsi, { handleCopyComponent });
-    const [elementProps] = Utils.VisualComponent.splitProps(props);
+    const { elementProps } = Utils.VisualComponent.splitProps(props);
 
     return (
       <Block

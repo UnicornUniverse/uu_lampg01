@@ -18,7 +18,6 @@ const LampCore = createVisualComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
     header: PropTypes.node,
     bulbStyle: PropTypes.oneOf(["filled", "outline"]),
@@ -48,9 +47,10 @@ const LampCore = createVisualComponent({
   render(props) {
     //@@viewOn:private
     const lsi = useLsi(importLsi, [LampCore.uu5Tag]);
+    const { code, on, header, ...viewProps } = props;
 
     function handleCopySwitch() {
-      const component = `<UuLamp.Level10.Switch baseUri="${baseUri}" code="${code}" />`;
+      const component = `<UuLamp.Level10.Switch code="${code}" />`;
       Utils.Clipboard.write(component);
     }
 
@@ -65,10 +65,8 @@ const LampCore = createVisualComponent({
     //@@viewOff:private
 
     //@@viewOn:render
-    const { baseUri, code, on, header, ...viewProps } = props;
-
     return (
-      <LampProvider baseUri={props.baseUri} code={props.code}>
+      <LampProvider code={props.code}>
         {(lampDataObject) => {
           return (
             <LampView
