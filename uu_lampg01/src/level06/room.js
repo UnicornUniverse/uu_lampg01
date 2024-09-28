@@ -65,7 +65,7 @@ const RoomCore = createVisualComponent({
 
 let Room = withAuthentication(RoomCore);
 Room = withMargin(Room);
-Room = withEditModal(Room, EditModal);
+Room = withEditModal(Room, EditModal, { editMode: { enablePlaceholder: true } });
 Room = withErrorBoundary(Room);
 
 //@@viewOn:exports
