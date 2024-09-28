@@ -1,5 +1,5 @@
 {
-  "name": "uu_lampg01",
+  "name": "uu_lampg01~root",
   "version": "1.0.0",
   "private": false,
   "workspaces": [
@@ -7,8 +7,13 @@
   ],
   "description": "<uu5string/>The <UU5.Bricks.Code>uuLamp</UU5.Bricks.Code> library is part of the uuLamp course. You can learn more in the <UU5.Bricks.Link href=\"https://uuapp.plus4u.net/uu-bookkit-maing01/f64b2a2561c240288e9d0912794a6272\" content=\"uuLamp educational material\" target=\"_blank\"/>.",
   "license": "License Commercial",
-  "spec": "nodejs-multi; uu_appg01_devkit@5.14.0",
+  "spec": "nodejs-multi; uu_appg01_devkit@6.2.0; uu5devkitg01-plugin@1.2.0",
   "uuBuildSettings": {},
+  "devDependencies": {
+    "uu_appg01_devkit": "^6.2.0",
+    "uu5devkitg01-plugin": "^1.0.0",
+    "uu_cloudg02-devkit": "^0.12.0"
+  },
   "scripts": {
     "clean": "uu_appg01_devkit clean",
     "test": "uu_appg01_devkit test",
@@ -24,11 +29,12 @@
     "uuCloudUndeploy": "uu_appg01_devkit uuCloudUndeploy",
     "uuCloudDeployList": "uu_appg01_devkit uuCloudDeployList",
     "uuAppDevKitUpgrade": "uu_appg01_devkit uuAppDevKitUpgrade",
-    "lsiExport": "uu_appg01_devkit lsiExport",
-    "lsiImport": "uu_appg01_devkit lsiImport"
-  },
-  "devDependencies": {
-    "uu_appg01_devkit": "^5.5.0"
+    "uuCloudg02AppBox": "uu_cloudg02-devkit appBox",
+    "uuCloudg02Deploy": "uu_cloudg02-devkit deploy",
+    "uu5Deploy": "uu5devkitg01-plugin deploy",
+    "uu5UuAppLibraryRegistryDeploy": "uu5devkitg01-plugin uuAppLibraryRegistryDeploy",
+    "uu5LsiExport": "uu5devkitg01-plugin lsiExport",
+    "uu5LsiImport": "uu5devkitg01-plugin lsiImport"
   },
   "prettier": {
     "printWidth": 120

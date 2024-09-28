@@ -1,5 +1,5 @@
 let config = {
-  extends: ["../node_modules/uu_appg01_devkit/src/config/.eslintrc-uu5.js"],
+  extends: ["../node_modules/uu5devkitg01-plugin/src/config/.eslintrc.js"],
 };
 
 module.exports = config;
