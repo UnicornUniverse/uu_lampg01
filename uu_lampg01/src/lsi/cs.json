@@ -15,7 +15,9 @@
     "uu-app-workspace/forbiddenAwidSysState": "Workspace aplikace není v aktivním stavu a pravděpodobně na něm probíhá údržba. Zkuste to prosím znovu později.",
     "uu-app-workspace/forbiddenAsidSysState": "Instance aplikace není v aktivním stavu a pravděpodobně probíhá údržba. Zkuste to prosím znovu později.",
     "uu-dockit-main/document/load/documentDoesNotExist": "Dokument neexistuje. Zkontrolujte prosím vlastnost URL dokumentu.",
-    "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "Nemáte přístupová práva k dokumentu. Lampa a vypínač jsou schované."
+    "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "Nemáte přístupová práva k dokumentu. Lampa a vypínač jsou schované.",
+    "uu-managementkit-maing02/document/loadByOid/objectDoesNotExists": "Dokument neexistuje. Zkontrolujte prosím vlastnost URL dokumentu.",
+    "uu-managementkit-maing02/document/loadByOid/userIsNotAuthorizedByUuBusinessBrick": "Nemáte přístupová práva k dokumentu. Lampa a vypínač jsou schované."
   },
   "TimeZones": {
     "Europe/Prague": "Praha",

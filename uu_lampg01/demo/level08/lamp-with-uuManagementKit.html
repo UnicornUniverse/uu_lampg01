@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UuLamp.Level08.Lamp Demo</title>
+    <title>UuLamp.Level08.Lamp with uuManagementKit Demo</title>
     <script src="https://cdn.plus4u.net/uu-uu5loaderg01/1.0.0/uu5loaderg01.min.js" crossorigin="anonymous"></script>
     <script>
       var uu5DemoDependencies = {
@@ -30,15 +30,15 @@
       import UuLamp from "uu_lampg01";
       import UuEcc from "uu_editablecomponentcontentg03";
 
-      // uuLamp TextBook
+      // Writable Document
       const documentUri =
-        "https://uuapp.plus4u.net/uu-managementkit-maing02/f91215cbb1c3f25893e3c949215a152f/document?oid=66e6a727946a98002339d408&pageOid=66e6a729946a98002339d416";
+        "https://uuapp.plus4u.net/uu-managementkit-maing02/1590a50b50924742aef46f23d2c9d370/document?oid=669768ff870dc700358a212f&pageOid=66976900870dc700358a2148";
       // Secret Document - No access rights
       const noAccessUri =
-        "https://uuapp.plus4u.net/uu-managementkit-maing02/f91215cbb1c3f25893e3c949215a152f/document?oid=66e6a727946a98002339d408&pageOid=66e6a729946a98002339d416";
+        "https://uuapp.plus4u.net/uu-managementkit-maing02/1590a50b50924742aef46f23d2c9d370/document?oid=669766f8870dc700358a1806&pageOid=669766fb870dc700358a1828";
       // Secret Document - Read-only access rights
       const readOnlyAccessUri =
-        "https://uuapp.plus4u.net/uu-managementkit-maing02/f91215cbb1c3f25893e3c949215a152f/document?oid=66e6a727946a98002339d408&pageOid=66e6a729946a98002339d416";
+        "https://uuapp.plus4u.net/uu-managementkit-maing02/1590a50b50924742aef46f23d2c9d370/document?oid=6697687e870dc700358a1ee8&pageOid=66976881870dc700358a1efe";
 
       //@@viewOn:constants
       const section = {
@@ -148,7 +148,7 @@
               <Spa>
                 <UuEcc.PageEditProvider>
                   <RouteBar appActionList={[{ component: <UuEcc.PageEditButton /> }]}>
-                    <RouteHeader title="UuLamp.Level08.Lamp Demo" />
+                    <RouteHeader title={document.title} />
                   </RouteBar>
                   <div className={Css.route()}>
                     <div className={Css.section()}>

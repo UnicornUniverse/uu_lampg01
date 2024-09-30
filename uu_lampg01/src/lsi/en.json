@@ -15,7 +15,9 @@
     "uu-app-workspace/forbiddenAwidSysState": "Application workspace is not in an active state and is probably under maintenance. Please try again later.",
     "uu-app-workspace/forbiddenAsidSysState": "Application instance is not in an active state and is probably under maintenance. Please try again later.",
     "uu-dockit-main/document/load/documentDoesNotExist": "The document does not exist. Please check the property Document URL.",
-    "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "You have no access rights to the document. The lamp and switch are hidden."
+    "uu-dockit-main/document/load/userHasNotRightsToLoadDocument": "You have no access rights to the document. The lamp and switch are hidden.",
+    "uu-managementkit-maing02/document/loadByOid/objectDoesNotExists": "The document does not exist. Please check the property Document URL.",
+    "uu-managementkit-maing02/document/loadByOid/userIsNotAuthorizedByUuBusinessBrick": "You have no access rights to the document. The lamp and switch are hidden."
   },
   "TimeZones": {
     "Europe/Prague": "Prague",

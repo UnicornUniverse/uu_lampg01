@@ -33,9 +33,22 @@ const Provider = createComponent({
       },
     });
 
-    function handleLoad() {
+    async function handleLoad() {
       const dtoIn = { oid: props.oid };
-      return Calls.loadDocumentFromManagementKit(props.baseUri, dtoIn);
+      let dtoOut;
+
+      try {
+        dtoOut = await Calls.loadDocumentFromManagementKit(props.baseUri, dtoIn);
+      } catch (error) {
+        // Fix of uuDocKit API where unathorized access is returned with status 400
+        if (error.code === "uu-managementkit-maing02/document/loadByOid/userIsNotAuthorizedByUuBusinessBrick") {
+          error.status = 401;
+        }
+
+        throw error;
+      }
+
+      return dtoOut;
     }
 
     // *** ON ***
